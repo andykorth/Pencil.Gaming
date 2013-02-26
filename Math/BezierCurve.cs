@@ -20,7 +20,7 @@ namespace Pencil.Gaming.Math {
     public struct BezierCurve {
         #region Fields
 
-        private List<Vector2> points;
+        internal List<Vector2> points;
 
         /// <summary>
         /// The parallel value.
@@ -218,7 +218,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="points">The points.</param>
         /// <param name="t">The t parameter, value between 0.0f and 1.0f.</param>
         /// <returns>Resulting point.</returns>
-        private static Vector2 CalculatePointOfDerivative(IList<Vector2> points, float t) {
+        internal static Vector2 CalculatePointOfDerivative(IList<Vector2> points, float t) {
             Vector2 r = new Vector2();
             double c = 1.0d - (double)t;
             float temp;

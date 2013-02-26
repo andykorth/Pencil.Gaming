@@ -52,14 +52,15 @@
     <Compile Include="Math\Vector3.cs" />
     <Compile Include="Math\Vector4.cs" />
     <Compile Include="Graphics\Color4.cs" />
-    <Compile Include="Graphics\GL.cs" />
-    <Compile Include="Graphics\GLCore.cs" />
-    <Compile Include="Graphics\GLDelegates.cs" />
     <Compile Include="Graphics\GLEnums.cs" />
-    <Compile Include="Graphics\GLHelper.cs" />
-    <Compile Include="Graphics\GLLoader.cs" />
     <Compile Include="Glfw.cs" />
     <Compile Include="GlfwEnum.cs" />
+    <Compile Include="GlfwDelegates.cs" />
+    <Compile Include="GlfwUtils.cs" />
+    <Compile Include="Graphics\Gl.cs" />
+    <Compile Include="Graphics\GlCore.cs" />
+    <Compile Include="Graphics\GlDelegates.cs" />
+    <Compile Include="Graphics\GlHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

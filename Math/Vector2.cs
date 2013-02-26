@@ -1001,7 +1001,7 @@ namespace Pencil.Gaming.Math {
 
         #region public override string ToString()
 
-        private static string listSeparator = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
+        internal static string listSeparator = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
         /// <summary>
         /// Returns a System.String that represents the current Vector2.
         /// </summary>

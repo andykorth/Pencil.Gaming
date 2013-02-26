@@ -109,7 +109,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="t">The t, value between 0.0f and 1.0f.</param>
         /// <returns>Resulting point.</returns>
-        private Vector2 CalculatePointOfDerivative(float t) {
+        internal Vector2 CalculatePointOfDerivative(float t) {
             Vector2 r = new Vector2();
 
             r.X = (1.0f - t) * StartAnchor.X + t * ControlPoint.X;

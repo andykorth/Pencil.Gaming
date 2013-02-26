@@ -3,295 +3,159 @@ using System.Runtime.InteropServices;
 using Pencil.Gaming.Graphics;
 
 namespace Pencil.Gaming {
-    public static class Glfw {
+    public static partial class Glfw {
         public const double Infinity = 100000.0;
         public const int True = 1;
         public const int False = 0;
-
-        [DllImport("glfw")]
-        private static extern int glfwInit();
-        [DllImport("glfw")]
-        private static extern void glfwTerminate();
-        [DllImport("glfw")]
-        private static extern void glfwGetVersion(out int major, out int minor, out int rev);
-
-        [DllImport("glfw")]
-        private static extern int glfwOpenWindow(int width, int height, int redbits, int greenbits, int bluebits, int alphabits, int depthbits, int stencilbits, int mode);
-        [DllImport("glfw")]
-        private static extern void glfwOpenWindowHint(int target, int hint);
-        [DllImport("glfw")]
-        private static extern void glfwCloseWindow();
-        [DllImport("glfw")]
-        private static extern void glfwSetWindowTitle([MarshalAs(UnmanagedType.LPStr)] string title);
-        [DllImport("glfw")]
-        private static extern void glfwGetWindowSize(out int width, out int height);
-        [DllImport("glfw")]
-        private static extern void glfwSetWindowSize(int width, int height);
-        [DllImport("glfw")]
-        private static extern void glfwSetWindowPos(int x, int y);
-        [DllImport("glfw")]
-        private static extern void glfwIconifyWindow();
-        [DllImport("glfw")]
-        private static extern void glfwRestoreWindow();
-        [DllImport("glfw")]
-        private static extern void glfwSwapBuffers();
-        [DllImport("glfw")]
-        private static extern void glfwSwapInterval(int interval);
-        [DllImport("glfw")]
-        private static extern int glfwGetWindowParam(int param);
-        [DllImport("glfw")]
-        private static extern void glfwSetWindowSizeCallback(/*GLFWwindowsizefun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        private static extern void glfwSetWindowCloseCallback(/*GLFWwindowclosefun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        private static extern void glfwSetWindowRefreshCallback(/*GLFWwindowrefreshfun*/IntPtr cbfun);
-
-        [DllImport("glfw")]
-        private static extern int glfwGetVideoModes(/*GLFWvidmode **/IntPtr list, int maxcount);
-        [DllImport("glfw")]
-        private static extern void glfwGetDesktopMode(/*GLFWvidmode **/IntPtr mode);
-
-        [DllImport("glfw")]
-        private static extern void glfwPollEvents();
-        [DllImport("glfw")]
-        private static extern void glfwWaitEvents();
-        [DllImport("glfw")]
-        private static extern int glfwGetKey(int key);
-        [DllImport("glfw")]
-        private static extern int glfwGetMouseButton(int button);
-        [DllImport("glfw")]
-        private static extern void glfwGetMousePos(out int xpos, out int ypos);
-        [DllImport("glfw")]
-        private static extern void glfwSetMousePos(int xpos, int ypos);
-        [DllImport("glfw")]
-        private static extern int glfwGetMouseWheel();
-        [DllImport("glfw")]
-        private static extern void glfwSetMouseWheel(int pos);
-        [DllImport("glfw")]
-        private static extern void glfwSetKeyCallback(/*GLFWkeyfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        private static extern void glfwSetCharCallback(/*GLFWcharfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        private static extern void glfwSetMouseButtonCallback(/*GLFWmousebuttonfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        private static extern void glfwSetMousePosCallback(/*GLFWmouseposfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        private static extern void glfwSetMouseWheelCallback(/*GLFWmousewheelfun*/IntPtr cbfun);
-
-        [DllImport("glfw")]
-        private static extern int glfwGetJoystickParam(int joy, int param);
-        [DllImport("glfw")]
-        private static extern int glfwGetJoystickPos(int joy, float[] pos, int numaxes);
-        [DllImport("glfw")]
-        private static extern int glfwGetJoystickButtons(int joy, byte[] buttons, int numbuttons);
-
-        [DllImport("glfw")]
-        private static extern double glfwGetTime();
-        [DllImport("glfw")]
-        private static extern void glfwSetTime(double time);
-        [DllImport("glfw")]
-        private static extern void glfwSleep(double time);
-
-        [DllImport("glfw")]
-        private static extern int glfwExtensionSupported([MarshalAs(UnmanagedType.LPStr)] string extension);
-        [DllImport("glfw")]
-        private static extern IntPtr glfwGetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procname);
-        [DllImport("glfw")]
-        private static extern void glfwGetGLVersion(out int major, out int minor, out int rev);
-
-        [DllImport("glfw")]
-        private static extern /*GLFWthread*/IntPtr glfwCreateThread(/*GLFWthreadfun*/IntPtr fun, IntPtr arg);
-        [DllImport("glfw")]
-        private static extern void glfwDestroyThread(/*GLFWthread*/IntPtr ID);
-        [DllImport("glfw")]
-        private static extern int glfwWaitThread(/*GLFWthread*/IntPtr ID, int waitmode);
-        [DllImport("glfw")]
-        private static extern /*GLFWthread*/IntPtr glfwGetThreadID();
-        [DllImport("glfw")]
-        private static extern /*GLFWmutex*/IntPtr glfwCreateMutex();
-        [DllImport("glfw")]
-        private static extern void glfwDestroyMutex(/*GLFWmutex*/IntPtr mutex);
-        [DllImport("glfw")]
-        private static extern void glfwLockMutex(/*GLFWmutex*/IntPtr mutex);
-        [DllImport("glfw")]
-        private static extern void glfwUnlockMutex(/*GLFWmutex*/IntPtr mutex);
-        [DllImport("glfw")]
-        private static extern /*GLFWcond*/IntPtr glfwCreateCond();
-        [DllImport("glfw")]
-        private static extern void glfwDestroyCond(/*GLFWcond*/IntPtr cond);
-        [DllImport("glfw")]
-        private static extern void glfwWaitCond(/*GLFWcond*/IntPtr cond, /*GLFWmutex*/IntPtr mutex, double timeout);
-        [DllImport("glfw")]
-        private static extern void glfwSignalCond(/*GLFWcond*/IntPtr cond);
-        [DllImport("glfw")]
-        private static extern void glfwBroadcastCond(/*GLFWcond*/IntPtr cond);
-        [DllImport("glfw")]
-        private static extern int glfwGetNumberOfProcessors();
-
-        [DllImport("glfw")]
-        private static extern void glfwEnable(int token);
-        [DllImport("glfw")]
-        private static extern void glfwDisable(int token);
-
-        [DllImport("glfw")]
-        private static extern int glfwReadImage([MarshalAs(UnmanagedType.LPStr)] string name, /*GLFWimage **/IntPtr img, int flags);
-        [DllImport("glfw")]
-        private static extern int glfwReadMemoryImage([MarshalAs(UnmanagedType.LPStr)] string data, long size, /*GLFWimage **/IntPtr img, int flags);
-        [DllImport("glfw")]
-        private static extern void glfwFreeImage(/*GLFWimage **/IntPtr img);
-        [DllImport("glfw")]
-        private static extern int glfwLoadTexture2D([MarshalAs(UnmanagedType.LPStr)] string name, int flags);
-        [DllImport("glfw")]
-        private static extern int glfwLoadMemoryTexture2D(IntPtr data, long size, int flags);
-        [DllImport("glfw")]
-        private static extern int glfwLoadTextureImage2D(/*GLFWimage **/IntPtr img, int flags);
-
-
-
-
-
-
+        public const int VersionMajor = 2;
+        public const int VersionMinor = 7;
+        public const int VersionRevision = 2;
 
         public static int Init() {
-            return glfwInit();
+            return GlfwDelegates.glfwInit();
         }
         public static void Terminate() {
-            glfwTerminate();
+            GlfwDelegates.glfwTerminate();
         }
         public static void GetVersion(out int major, out int minor, out int rev) {
-            glfwGetVersion(out major, out minor, out rev);
+            GlfwDelegates.glfwGetVersion(out major, out minor, out rev);
         }
 
         public static int OpenWindow(int width, int height, int redbits, int greenbits, int bluebits, int alphabits, int depthbits, int stencilbits, WindowMode mode) {
-            int result = glfwOpenWindow(width, height, redbits, greenbits, bluebits, alphabits, depthbits, stencilbits, (int)mode);
-            // Now is an appropriate time time load up OpenGL
-            GLLoader.LoadAll();
-
-            return result;
+            Glfw.Utils.widthBackup = width;
+            Glfw.Utils.heightBackup = height;
+            Glfw.Utils.redBitsBackup = redbits;
+            Glfw.Utils.greenBitsBackup = greenbits;
+            Glfw.Utils.blueBitsBackup = bluebits;
+            Glfw.Utils.alphaBitsBackup = alphabits;
+            Glfw.Utils.depthBitsBackup = depthbits;
+            Glfw.Utils.stencilBitsBackup = stencilbits;
+            Glfw.Utils.isFullscreen = (mode == WindowMode.FullScreen);
+            return GlfwDelegates.glfwOpenWindow(width, height, redbits, greenbits, bluebits, alphabits, depthbits, stencilbits, (int)mode);
         }
         public static void OpenWindowHint(int target, WindowOpenHint hint) {
-            glfwOpenWindowHint(target, (int)hint);
+            GlfwDelegates.glfwOpenWindowHint(target, (int)hint);
         }
         public static void CloseWindow() {
-            glfwCloseWindow();
+            GlfwDelegates.glfwCloseWindow();
         }
         public static void SetWindowTitle(string title) {
-            glfwSetWindowTitle(title);
+            GlfwDelegates.glfwSetWindowTitle(title);
         }
         public static void GetWindowSize(out int width, out int height) {
-            glfwGetWindowSize(out width, out height);
+            GlfwDelegates.glfwGetWindowSize(out width, out height);
         }
         public static void SetWindowSize(int width, int height) {
-            glfwSetWindowSize(width, height);
+            GlfwDelegates.glfwSetWindowSize(width, height);
         }
         public static void SetWindowPos(int x, int y) {
-            glfwSetWindowPos(x, y);
+            GlfwDelegates.glfwSetWindowPos(x, y);
         }
         public static void IconifyWindow() {
-            glfwIconifyWindow();
+            GlfwDelegates.glfwIconifyWindow();
         }
         public static void RestoreWindow() {
-            glfwRestoreWindow();
+            GlfwDelegates.glfwRestoreWindow();
         }
         public static void SwapBuffers() {
-            glfwSwapBuffers();
+            GlfwDelegates.glfwSwapBuffers();
         }
         public static void SwapInterval(bool interval) {
-            glfwSwapInterval(interval ? 1 : 0);
+            GlfwDelegates.glfwSwapInterval(interval ? 1 : 0);
         }
         public static int GetWindowParam(WindowParam param) {
-            return glfwGetWindowParam((int)param);
+            return GlfwDelegates.glfwGetWindowParam((int)param);
         }
         public static void SetWindowSizeCallback(/*windowsizefun*/IntPtr cbfun) {
-            glfwSetWindowSizeCallback(cbfun);
+            GlfwDelegates.glfwSetWindowSizeCallback(cbfun);
         }
         public static void SetWindowCloseCallback(/*windowclosefun*/IntPtr cbfun) {
-            glfwSetWindowCloseCallback(cbfun);
+            GlfwDelegates.glfwSetWindowCloseCallback(cbfun);
         }
         public static void SetWindowRefreshCallback(/*windowrefreshfun*/IntPtr cbfun) {
-            glfwSetWindowRefreshCallback(cbfun);
+            GlfwDelegates.glfwSetWindowRefreshCallback(cbfun);
         }
 
         public static int GetVideoModes(/*vidmode **/IntPtr list, int maxcount) {
-            return glfwGetVideoModes(list, maxcount);
+            return GlfwDelegates.glfwGetVideoModes(list, maxcount);
         }
         public static void GetDesktopMode(/*vidmode **/IntPtr mode) {
-            glfwGetDesktopMode(mode);
+            GlfwDelegates.glfwGetDesktopMode(mode);
         }
 
         public static void PollEvents() {
-            glfwPollEvents();
+            GlfwDelegates.glfwPollEvents();
         }
         public static void WaitEvents() {
-            glfwWaitEvents();
+            GlfwDelegates.glfwWaitEvents();
         }
         public static bool GetKey(Key key) {
-            return glfwGetKey((int)key) == 1;
+            return GlfwDelegates.glfwGetKey((int)key) == 1;
         }
         public static bool GetKey(char key) {
-            return glfwGetKey((int)key) == 1;
+            return GlfwDelegates.glfwGetKey((int)key) == 1;
         }
         public static int GetMouseButton(MouseButton button) {
-            return glfwGetMouseButton((int)button);
+            return GlfwDelegates.glfwGetMouseButton((int)button);
         }
         public static void GetMousePos(out int xpos, out int ypos) {
-            glfwGetMousePos(out xpos, out ypos);
+            GlfwDelegates.glfwGetMousePos(out xpos, out ypos);
         }
         public static void SetMousePos(int xpos, int ypos) {
-            glfwSetMousePos(xpos, ypos);
+            GlfwDelegates.glfwSetMousePos(xpos, ypos);
         }
         public static int GetMouseWheel() {
-            return glfwGetMouseWheel();
+            return GlfwDelegates.glfwGetMouseWheel();
         }
         public static void SetMouseWheel(int pos) {
-            glfwSetMouseWheel(pos);
+            GlfwDelegates.glfwSetMouseWheel(pos);
         }
         public static void SetKeyCallback(/*keyfun*/IntPtr cbfun) {
-            glfwSetKeyCallback(cbfun);
+            GlfwDelegates.glfwSetKeyCallback(cbfun);
         }
         public static void SetCharCallback(/*charfun*/IntPtr cbfun) {
-            glfwSetCharCallback(cbfun);
+            GlfwDelegates.glfwSetCharCallback(cbfun);
         }
         public static void SetMouseButtonCallback(/*mousebuttonfun*/IntPtr cbfun) {
-            glfwSetMouseButtonCallback(cbfun);
+            GlfwDelegates.glfwSetMouseButtonCallback(cbfun);
         }
         public static void SetMousePosCallback(/*mouseposfun*/IntPtr cbfun) {
-            glfwSetMousePosCallback(cbfun);
+            GlfwDelegates.glfwSetMousePosCallback(cbfun);
         }
         public static void SetMouseWheelCallback(/*mousewheelfun*/IntPtr cbfun) {
-            glfwSetMouseWheelCallback(cbfun);
+            GlfwDelegates.glfwSetMouseWheelCallback(cbfun);
         }
 
         public static int GetJoystickParam(Joystick joy, int param) {
-            return glfwGetJoystickParam((int)joy, param);
+            return GlfwDelegates.glfwGetJoystickParam((int)joy, param);
         }
         public static int GetJoystickPos(Joystick joy, float[] pos, int numaxes) {
-            return glfwGetJoystickPos((int)joy, pos, numaxes);
+            return GlfwDelegates.glfwGetJoystickPos((int)joy, pos, numaxes);
         }
         public static int GetJoystickButtons(Joystick joy, byte[] buttons, int numbuttons) {
-            return glfwGetJoystickButtons((int)joy, buttons, numbuttons);
+            return GlfwDelegates.glfwGetJoystickButtons((int)joy, buttons, numbuttons);
         }
 
         public static double GetTime() {
-            return glfwGetTime();
+            return GlfwDelegates.glfwGetTime();
         }
         public static void SetTime(double time) {
-            glfwSetTime(time);
+            GlfwDelegates.glfwSetTime(time);
         }
 
         // Couldn't you just use Thread.Sleep()?
         public static void Sleep(double time) {
-            glfwSleep(time);
+            GlfwDelegates.glfwSleep(time);
         }
 
         public static int ExtensionSupported(string extension) {
-            return glfwExtensionSupported(extension);
+            return GlfwDelegates.glfwExtensionSupported(extension);
         }
         public static IntPtr GetProcAddress(string procname) {
-            return glfwGetProcAddress(procname);
+            return GlfwDelegates.glfwGetProcAddress(procname);
         }
         public static void GetGLVersion(out int major, out int minor, out int rev) {
-            glfwGetGLVersion(out major, out minor, out rev);
+            GlfwDelegates.glfwGetGLVersion(out major, out minor, out rev);
         }
 
         #region Threadin
@@ -300,75 +164,75 @@ namespace Pencil.Gaming {
 
 
         public static /*thread*/IntPtr CreateThread(/*threadfun*/IntPtr fun, IntPtr arg) {
-            return glfwCreateThread(fun, arg);
+            return GlfwDelegates.glfwCreateThread(fun, arg);
         }
         public static void DestroyThread(/*thread*/IntPtr ID) {
-            glfwDestroyThread(ID);
+            GlfwDelegates.glfwDestroyThread(ID);
         }
         public static int WaitThread(/*thread*/IntPtr ID, int waitmode) {
-            return glfwWaitThread(ID, waitmode);
+            return GlfwDelegates.glfwWaitThread(ID, waitmode);
         }
         public static /*thread*/IntPtr GetThreadID() {
-            return glfwGetThreadID();
+            return GlfwDelegates.glfwGetThreadID();
         }
         public static /*mutex*/IntPtr CreateMutex() {
-            return glfwCreateMutex();
+            return GlfwDelegates.glfwCreateMutex();
         }
         public static void DestroyMutex(/*mutex*/IntPtr mutex) {
-            glfwDestroyMutex(mutex);
+            GlfwDelegates.glfwDestroyMutex(mutex);
         }
         public static void LockMutex(/*mutex*/IntPtr mutex) {
-            glfwLockMutex(mutex);
+            GlfwDelegates.glfwLockMutex(mutex);
         }
         public static void UnlockMutex(/*mutex*/IntPtr mutex) {
-            glfwUnlockMutex(mutex);
+            GlfwDelegates.glfwUnlockMutex(mutex);
         }
         public static /*cond*/IntPtr CreateCond() {
-            return glfwCreateCond();
+            return GlfwDelegates.glfwCreateCond();
         }
         public static void DestroyCond(/*cond*/IntPtr cond) {
-            glfwDestroyCond(cond);
+            GlfwDelegates.glfwDestroyCond(cond);
         }
         public static void WaitCond(/*cond*/IntPtr cond, /*mutex*/IntPtr mutex, double timeout) {
-            glfwWaitCond(cond, mutex, timeout);
+            GlfwDelegates.glfwWaitCond(cond, mutex, timeout);
         }
         public static void SignalCond(/*cond*/IntPtr cond) {
-            glfwSignalCond(cond);
+            GlfwDelegates.glfwSignalCond(cond);
         }
         public static void BroadcastCond(/*cond*/IntPtr cond) {
-            glfwBroadcastCond(cond);
+            GlfwDelegates.glfwBroadcastCond(cond);
         }
 
         #endregion
 
         public static int GetNumberOfProcessors() {
-            return glfwGetNumberOfProcessors();
+            return GlfwDelegates.glfwGetNumberOfProcessors();
         }
 
         public static void Enable(int token) {
-            glfwEnable(token);
+            GlfwDelegates.glfwEnable(token);
         }
         public static void Disable(int token) {
-            glfwDisable(token);
+            GlfwDelegates.glfwDisable(token);
         }
 
         public static int ReadImage(string name, /*image **/IntPtr img, int flags) {
-            return glfwReadImage(name, img, flags);
+            return GlfwDelegates.glfwReadImage(name, img, flags);
         }
         public static int ReadMemoryImage(string data, long size, /*image **/IntPtr img, int flags) {
-            return glfwReadMemoryImage(data, size, img, flags);
+            return GlfwDelegates.glfwReadMemoryImage(data, size, img, flags);
         }
         public static void FreeImage(/*image **/IntPtr img) {
-            glfwFreeImage(img);
+            GlfwDelegates.glfwFreeImage(img);
         }
         public static int LoadTexture2D(string name, int flags) {
-            return glfwLoadTexture2D(name, flags);
+            return GlfwDelegates.glfwLoadTexture2D(name, flags);
         }
         public static int LoadMemoryTexture2D(IntPtr data, long size, int flags) {
-            return glfwLoadMemoryTexture2D(data, size, flags);
+            return GlfwDelegates.glfwLoadMemoryTexture2D(data, size, flags);
         }
         public static int LoadTextureImage2D(/*image **/IntPtr img, int flags) {
-            return glfwLoadTextureImage2D(img, flags);
+            return GlfwDelegates.glfwLoadTextureImage2D(img, flags);
         }
     }
 }
