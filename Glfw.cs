@@ -75,13 +75,13 @@ namespace Pencil.Gaming {
 //        public static void SetWindowRefreshCallback(/*windowrefreshfun*/IntPtr cbfun) {
 //            GlfwDelegates.glfwSetWindowRefreshCallback(cbfun);
 //        }
-//
-//        public static int GetVideoModes(/*vidmode **/IntPtr list, int maxcount) {
-//            return GlfwDelegates.glfwGetVideoModes(list, maxcount);
-//        }
-//        public static void GetDesktopMode(/*vidmode **/IntPtr mode) {
-//            GlfwDelegates.glfwGetDesktopMode(mode);
-//        }
+
+        public static int GetVideoModes(GlfwVidMode[] list, int maxcount) {
+            return GlfwDelegates.glfwGetVideoModes(list, maxcount);
+        }
+        public static void GetDesktopMode(out GlfwVidMode mode) {
+            GlfwDelegates.glfwGetDesktopMode(out mode);
+        }
 
         public static void PollEvents() {
             GlfwDelegates.glfwPollEvents();

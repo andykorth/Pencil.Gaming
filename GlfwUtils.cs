@@ -29,14 +29,28 @@ namespace Pencil.Gaming {
             }
 
             public static void ToggleFullscreen() {
-                isFullscreen = !isFullscreen;
-                SetFullscreenState(isFullscreen);
+                SetFullscreenState(!isFullscreen);
             }
 
             public static void SetFullscreenState(bool state) {
                 Glfw.CloseWindow();
-                WindowMode mode = state ? WindowMode.FullScreen : WindowMode.Window;
-                Glfw.OpenWindow(
+                isFullscreen = state;
+                if (state) {
+                    GlfwVidMode desktop; 
+                    Glfw.GetDesktopMode(out desktop);
+                    Glfw.OpenWindow(
+                        desktop.Width, 
+                        desktop.Height, 
+                        redBitsBackup, 
+                        greenBitsBackup, 
+                        blueBitsBackup, 
+                        alphaBitsBackup, 
+                        depthBitsBackup, 
+                        stencilBitsBackup,
+                        WindowMode.FullScreen
+                    );
+                } else {
+                    Glfw.OpenWindow(
                         widthBackup, 
                         heightBackup, 
                         redBitsBackup, 
@@ -45,8 +59,9 @@ namespace Pencil.Gaming {
                         alphaBitsBackup, 
                         depthBitsBackup, 
                         stencilBitsBackup, 
-                        mode
-                );
+                        WindowMode.Window
+                    );
+                }
             }
         }
     }
