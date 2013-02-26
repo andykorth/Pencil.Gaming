@@ -61,6 +61,7 @@
     <Compile Include="Graphics\GlCore.cs" />
     <Compile Include="Graphics\GlDelegates.cs" />
     <Compile Include="Graphics\GlHelper.cs" />
+    <Compile Include="GlfwStructs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

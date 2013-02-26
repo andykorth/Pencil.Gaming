@@ -34,17 +34,17 @@ namespace Pencil.Gaming {
         internal static extern void glfwSwapInterval(int interval);
         [DllImport("glfw")]
         internal static extern int glfwGetWindowParam(int param);
-        [DllImport("glfw")]
-        internal static extern void glfwSetWindowSizeCallback(/*GLFWwindowsizefun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        internal static extern void glfwSetWindowCloseCallback(/*GLFWwindowclosefun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        internal static extern void glfwSetWindowRefreshCallback(/*GLFWwindowrefreshfun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetWindowSizeCallback(/*GLFWwindowsizefun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetWindowCloseCallback(/*GLFWwindowclosefun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetWindowRefreshCallback(/*GLFWwindowrefreshfun*/IntPtr cbfun);
 
         [DllImport("glfw")]
-        internal static extern int glfwGetVideoModes(/*GLFWvidmode **/IntPtr list, int maxcount);
+        internal static extern int glfwGetVideoModes([MarshalAs(UnmanagedType.LPArray)] GlfwVidMode[] list, int maxcount);
         [DllImport("glfw")]
-        internal static extern void glfwGetDesktopMode(/*GLFWvidmode **/IntPtr mode);
+        internal static extern void glfwGetDesktopMode(out GlfwVidMode mode);
 
         [DllImport("glfw")]
         internal static extern void glfwPollEvents();
@@ -62,23 +62,23 @@ namespace Pencil.Gaming {
         internal static extern int glfwGetMouseWheel();
         [DllImport("glfw")]
         internal static extern void glfwSetMouseWheel(int pos);
-        [DllImport("glfw")]
-        internal static extern void glfwSetKeyCallback(/*GLFWkeyfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        internal static extern void glfwSetCharCallback(/*GLFWcharfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        internal static extern void glfwSetMouseButtonCallback(/*GLFWmousebuttonfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        internal static extern void glfwSetMousePosCallback(/*GLFWmouseposfun*/IntPtr cbfun);
-        [DllImport("glfw")]
-        internal static extern void glfwSetMouseWheelCallback(/*GLFWmousewheelfun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetKeyCallback(/*GLFWkeyfun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetCharCallback(/*GLFWcharfun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetMouseButtonCallback(/*GLFWmousebuttonfun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetMousePosCallback(/*GLFWmouseposfun*/IntPtr cbfun);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSetMouseWheelCallback(/*GLFWmousewheelfun*/IntPtr cbfun);
 
         [DllImport("glfw")]
         internal static extern int glfwGetJoystickParam(int joy, int param);
         [DllImport("glfw")]
-        internal static extern int glfwGetJoystickPos(int joy, float[] pos, int numaxes);
+        internal static extern int glfwGetJoystickPos(int joy, [MarshalAs(UnmanagedType.LPArray)] float[] pos, int numaxes);
         [DllImport("glfw")]
-        internal static extern int glfwGetJoystickButtons(int joy, byte[] buttons, int numbuttons);
+        internal static extern int glfwGetJoystickButtons(int joy, [MarshalAs(UnmanagedType.LPArray)] byte[] buttons, int numbuttons);
 
         [DllImport("glfw")]
         internal static extern double glfwGetTime();
@@ -94,32 +94,32 @@ namespace Pencil.Gaming {
         [DllImport("glfw")]
         internal static extern void glfwGetGLVersion(out int major, out int minor, out int rev);
 
-        [DllImport("glfw")]
-        internal static extern /*GLFWthread*/IntPtr glfwCreateThread(/*GLFWthreadfun*/IntPtr fun, IntPtr arg);
-        [DllImport("glfw")]
-        internal static extern void glfwDestroyThread(/*GLFWthread*/IntPtr ID);
-        [DllImport("glfw")]
-        internal static extern int glfwWaitThread(/*GLFWthread*/IntPtr ID, int waitmode);
-        [DllImport("glfw")]
-        internal static extern /*GLFWthread*/IntPtr glfwGetThreadID();
-        [DllImport("glfw")]
-        internal static extern /*GLFWmutex*/IntPtr glfwCreateMutex();
-        [DllImport("glfw")]
-        internal static extern void glfwDestroyMutex(/*GLFWmutex*/IntPtr mutex);
-        [DllImport("glfw")]
-        internal static extern void glfwLockMutex(/*GLFWmutex*/IntPtr mutex);
-        [DllImport("glfw")]
-        internal static extern void glfwUnlockMutex(/*GLFWmutex*/IntPtr mutex);
-        [DllImport("glfw")]
-        internal static extern /*GLFWcond*/IntPtr glfwCreateCond();
-        [DllImport("glfw")]
-        internal static extern void glfwDestroyCond(/*GLFWcond*/IntPtr cond);
-        [DllImport("glfw")]
-        internal static extern void glfwWaitCond(/*GLFWcond*/IntPtr cond, /*GLFWmutex*/IntPtr mutex, double timeout);
-        [DllImport("glfw")]
-        internal static extern void glfwSignalCond(/*GLFWcond*/IntPtr cond);
-        [DllImport("glfw")]
-        internal static extern void glfwBroadcastCond(/*GLFWcond*/IntPtr cond);
+        //[DllImport("glfw")]
+        //internal static extern /*GLFWthread*/IntPtr glfwCreateThread(/*GLFWthreadfun*/IntPtr fun, IntPtr arg);
+        //[DllImport("glfw")]
+        //internal static extern void glfwDestroyThread(/*GLFWthread*/IntPtr ID);
+        //[DllImport("glfw")]
+        //internal static extern int glfwWaitThread(/*GLFWthread*/IntPtr ID, int waitmode);
+        //[DllImport("glfw")]
+        //internal static extern /*GLFWthread*/IntPtr glfwGetThreadID();
+        //[DllImport("glfw")]
+        //internal static extern /*GLFWmutex*/IntPtr glfwCreateMutex();
+        //[DllImport("glfw")]
+        //internal static extern void glfwDestroyMutex(/*GLFWmutex*/IntPtr mutex);
+        //[DllImport("glfw")]
+        //internal static extern void glfwLockMutex(/*GLFWmutex*/IntPtr mutex);
+        //[DllImport("glfw")]
+        //internal static extern void glfwUnlockMutex(/*GLFWmutex*/IntPtr mutex);
+        //[DllImport("glfw")]
+        //internal static extern /*GLFWcond*/IntPtr glfwCreateCond();
+        //[DllImport("glfw")]
+        //internal static extern void glfwDestroyCond(/*GLFWcond*/IntPtr cond);
+        //[DllImport("glfw")]
+        //internal static extern void glfwWaitCond(/*GLFWcond*/IntPtr cond, /*GLFWmutex*/IntPtr mutex, double timeout);
+        //[DllImport("glfw")]
+        //internal static extern void glfwSignalCond(/*GLFWcond*/IntPtr cond);
+        //[DllImport("glfw")]
+        //internal static extern void glfwBroadcastCond(/*GLFWcond*/IntPtr cond);
         [DllImport("glfw")]
         internal static extern int glfwGetNumberOfProcessors();
 
@@ -129,17 +129,17 @@ namespace Pencil.Gaming {
         internal static extern void glfwDisable(int token);
 
         [DllImport("glfw")]
-        internal static extern int glfwReadImage([MarshalAs(UnmanagedType.LPStr)] string name, /*GLFWimage **/IntPtr img, int flags);
+        internal static extern int glfwReadImage([MarshalAs(UnmanagedType.LPStr)] string name, out GlfwImage img, int flags);
         [DllImport("glfw")]
-        internal static extern int glfwReadMemoryImage([MarshalAs(UnmanagedType.LPStr)] string data, long size, /*GLFWimage **/IntPtr img, int flags);
+        internal static extern int glfwReadMemoryImage(IntPtr data, long size, ref GlfwImage img, int flags);
         [DllImport("glfw")]
-        internal static extern void glfwFreeImage(/*GLFWimage **/IntPtr img);
+        internal static extern void glfwFreeImage(ref GlfwImage img);
         [DllImport("glfw")]
         internal static extern int glfwLoadTexture2D([MarshalAs(UnmanagedType.LPStr)] string name, int flags);
         [DllImport("glfw")]
         internal static extern int glfwLoadMemoryTexture2D(IntPtr data, long size, int flags);
         [DllImport("glfw")]
-        internal static extern int glfwLoadTextureImage2D(/*GLFWimage **/IntPtr img, int flags);
+        internal static extern int glfwLoadTextureImage2D(ref GlfwImage img, int flags);
     }
 }
 

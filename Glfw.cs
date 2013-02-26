@@ -66,22 +66,22 @@ namespace Pencil.Gaming {
         public static int GetWindowParam(WindowParam param) {
             return GlfwDelegates.glfwGetWindowParam((int)param);
         }
-        public static void SetWindowSizeCallback(/*windowsizefun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetWindowSizeCallback(cbfun);
-        }
-        public static void SetWindowCloseCallback(/*windowclosefun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetWindowCloseCallback(cbfun);
-        }
-        public static void SetWindowRefreshCallback(/*windowrefreshfun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetWindowRefreshCallback(cbfun);
-        }
-
-        public static int GetVideoModes(/*vidmode **/IntPtr list, int maxcount) {
-            return GlfwDelegates.glfwGetVideoModes(list, maxcount);
-        }
-        public static void GetDesktopMode(/*vidmode **/IntPtr mode) {
-            GlfwDelegates.glfwGetDesktopMode(mode);
-        }
+//        public static void SetWindowSizeCallback(/*windowsizefun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetWindowSizeCallback(cbfun);
+//        }
+//        public static void SetWindowCloseCallback(/*windowclosefun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetWindowCloseCallback(cbfun);
+//        }
+//        public static void SetWindowRefreshCallback(/*windowrefreshfun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetWindowRefreshCallback(cbfun);
+//        }
+//
+//        public static int GetVideoModes(/*vidmode **/IntPtr list, int maxcount) {
+//            return GlfwDelegates.glfwGetVideoModes(list, maxcount);
+//        }
+//        public static void GetDesktopMode(/*vidmode **/IntPtr mode) {
+//            GlfwDelegates.glfwGetDesktopMode(mode);
+//        }
 
         public static void PollEvents() {
             GlfwDelegates.glfwPollEvents();
@@ -104,27 +104,28 @@ namespace Pencil.Gaming {
         public static void SetMousePos(int xpos, int ypos) {
             GlfwDelegates.glfwSetMousePos(xpos, ypos);
         }
+        
         public static int GetMouseWheel() {
             return GlfwDelegates.glfwGetMouseWheel();
         }
         public static void SetMouseWheel(int pos) {
             GlfwDelegates.glfwSetMouseWheel(pos);
         }
-        public static void SetKeyCallback(/*keyfun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetKeyCallback(cbfun);
-        }
-        public static void SetCharCallback(/*charfun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetCharCallback(cbfun);
-        }
-        public static void SetMouseButtonCallback(/*mousebuttonfun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetMouseButtonCallback(cbfun);
-        }
-        public static void SetMousePosCallback(/*mouseposfun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetMousePosCallback(cbfun);
-        }
-        public static void SetMouseWheelCallback(/*mousewheelfun*/IntPtr cbfun) {
-            GlfwDelegates.glfwSetMouseWheelCallback(cbfun);
-        }
+//        public static void SetKeyCallback(/*keyfun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetKeyCallback(cbfun);
+//        }
+//        public static void SetCharCallback(/*charfun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetCharCallback(cbfun);
+//        }
+//        public static void SetMouseButtonCallback(/*mousebuttonfun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetMouseButtonCallback(cbfun);
+//        }
+//        public static void SetMousePosCallback(/*mouseposfun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetMousePosCallback(cbfun);
+//        }
+//        public static void SetMouseWheelCallback(/*mousewheelfun*/IntPtr cbfun) {
+//            GlfwDelegates.glfwSetMouseWheelCallback(cbfun);
+//        }
 
         public static int GetJoystickParam(Joystick joy, int param) {
             return GlfwDelegates.glfwGetJoystickParam((int)joy, param);
@@ -163,45 +164,45 @@ namespace Pencil.Gaming {
         // This is C# ladies and gentlemen, no need for 3rd party threading libraries!!!
 
 
-        public static /*thread*/IntPtr CreateThread(/*threadfun*/IntPtr fun, IntPtr arg) {
-            return GlfwDelegates.glfwCreateThread(fun, arg);
-        }
-        public static void DestroyThread(/*thread*/IntPtr ID) {
-            GlfwDelegates.glfwDestroyThread(ID);
-        }
-        public static int WaitThread(/*thread*/IntPtr ID, int waitmode) {
-            return GlfwDelegates.glfwWaitThread(ID, waitmode);
-        }
-        public static /*thread*/IntPtr GetThreadID() {
-            return GlfwDelegates.glfwGetThreadID();
-        }
-        public static /*mutex*/IntPtr CreateMutex() {
-            return GlfwDelegates.glfwCreateMutex();
-        }
-        public static void DestroyMutex(/*mutex*/IntPtr mutex) {
-            GlfwDelegates.glfwDestroyMutex(mutex);
-        }
-        public static void LockMutex(/*mutex*/IntPtr mutex) {
-            GlfwDelegates.glfwLockMutex(mutex);
-        }
-        public static void UnlockMutex(/*mutex*/IntPtr mutex) {
-            GlfwDelegates.glfwUnlockMutex(mutex);
-        }
-        public static /*cond*/IntPtr CreateCond() {
-            return GlfwDelegates.glfwCreateCond();
-        }
-        public static void DestroyCond(/*cond*/IntPtr cond) {
-            GlfwDelegates.glfwDestroyCond(cond);
-        }
-        public static void WaitCond(/*cond*/IntPtr cond, /*mutex*/IntPtr mutex, double timeout) {
-            GlfwDelegates.glfwWaitCond(cond, mutex, timeout);
-        }
-        public static void SignalCond(/*cond*/IntPtr cond) {
-            GlfwDelegates.glfwSignalCond(cond);
-        }
-        public static void BroadcastCond(/*cond*/IntPtr cond) {
-            GlfwDelegates.glfwBroadcastCond(cond);
-        }
+//        public static /*thread*/IntPtr CreateThread(/*threadfun*/IntPtr fun, IntPtr arg) {
+//            return GlfwDelegates.glfwCreateThread(fun, arg);
+//        }
+//        public static void DestroyThread(/*thread*/IntPtr ID) {
+//            GlfwDelegates.glfwDestroyThread(ID);
+//        }
+//        public static int WaitThread(/*thread*/IntPtr ID, int waitmode) {
+//            return GlfwDelegates.glfwWaitThread(ID, waitmode);
+//        }
+//        public static /*thread*/IntPtr GetThreadID() {
+//            return GlfwDelegates.glfwGetThreadID();
+//        }
+//        public static /*mutex*/IntPtr CreateMutex() {
+//            return GlfwDelegates.glfwCreateMutex();
+//        }
+//        public static void DestroyMutex(/*mutex*/IntPtr mutex) {
+//            GlfwDelegates.glfwDestroyMutex(mutex);
+//        }
+//        public static void LockMutex(/*mutex*/IntPtr mutex) {
+//            GlfwDelegates.glfwLockMutex(mutex);
+//        }
+//        public static void UnlockMutex(/*mutex*/IntPtr mutex) {
+//            GlfwDelegates.glfwUnlockMutex(mutex);
+//        }
+//        public static /*cond*/IntPtr CreateCond() {
+//            return GlfwDelegates.glfwCreateCond();
+//        }
+//        public static void DestroyCond(/*cond*/IntPtr cond) {
+//            GlfwDelegates.glfwDestroyCond(cond);
+//        }
+//        public static void WaitCond(/*cond*/IntPtr cond, /*mutex*/IntPtr mutex, double timeout) {
+//            GlfwDelegates.glfwWaitCond(cond, mutex, timeout);
+//        }
+//        public static void SignalCond(/*cond*/IntPtr cond) {
+//            GlfwDelegates.glfwSignalCond(cond);
+//        }
+//        public static void BroadcastCond(/*cond*/IntPtr cond) {
+//            GlfwDelegates.glfwBroadcastCond(cond);
+//        }
 
         #endregion
 
@@ -209,30 +210,30 @@ namespace Pencil.Gaming {
             return GlfwDelegates.glfwGetNumberOfProcessors();
         }
 
-        public static void Enable(int token) {
-            GlfwDelegates.glfwEnable(token);
+        public static void Enable(GlfwEnableCap token) {
+            GlfwDelegates.glfwEnable((int)token);
         }
-        public static void Disable(int token) {
-            GlfwDelegates.glfwDisable(token);
+        public static void Disable(GlfwEnableCap token) {
+            GlfwDelegates.glfwDisable((int)token);
         }
 
-        public static int ReadImage(string name, /*image **/IntPtr img, int flags) {
-            return GlfwDelegates.glfwReadImage(name, img, flags);
+        public static int ReadImage(string name, out GlfwImage img, ReadImageModes flags) {
+            return GlfwDelegates.glfwReadImage(name, out img, (int)flags);
         }
-        public static int ReadMemoryImage(string data, long size, /*image **/IntPtr img, int flags) {
-            return GlfwDelegates.glfwReadMemoryImage(data, size, img, flags);
+        public static int ReadMemoryImage(IntPtr data, long size, ref GlfwImage img, ReadImageModes flags) {
+            return GlfwDelegates.glfwReadMemoryImage(data, size, ref img, (int)flags);
         }
-        public static void FreeImage(/*image **/IntPtr img) {
-            GlfwDelegates.glfwFreeImage(img);
+        public static void FreeImage(ref GlfwImage img) {
+            GlfwDelegates.glfwFreeImage(ref img);
         }
-        public static int LoadTexture2D(string name, int flags) {
-            return GlfwDelegates.glfwLoadTexture2D(name, flags);
+        public static int LoadTexture2D(string name, ReadImageModes flags) {
+            return GlfwDelegates.glfwLoadTexture2D(name, (int)flags);
         }
-        public static int LoadMemoryTexture2D(IntPtr data, long size, int flags) {
-            return GlfwDelegates.glfwLoadMemoryTexture2D(data, size, flags);
+        public static int LoadMemoryTexture2D(IntPtr data, long size, ReadImageModes flags) {
+            return GlfwDelegates.glfwLoadMemoryTexture2D(data, size, (int)flags);
         }
-        public static int LoadTextureImage2D(/*image **/IntPtr img, int flags) {
-            return GlfwDelegates.glfwLoadTextureImage2D(img, flags);
+        public static int LoadTextureImage2D(ref GlfwImage img, ReadImageModes flags) {
+            return GlfwDelegates.glfwLoadTextureImage2D(ref img, (int)flags);
         }
     }
 }
