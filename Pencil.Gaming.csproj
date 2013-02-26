@@ -62,10 +62,21 @@
     <Compile Include="Graphics\GlDelegates.cs" />
     <Compile Include="Graphics\GlHelper.cs" />
     <Compile Include="GlfwStructs.cs" />
+    <Compile Include="Glfw64.cs" />
+    <Compile Include="Glfw32.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Math\" />
     <Folder Include="Graphics\" />
+    <Folder Include="Natives\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libglfw64.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libglfw32.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
