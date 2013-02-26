@@ -93,15 +93,6 @@ namespace Pencil.Gaming.Graphics {
             A = a / (float)Byte.MaxValue;
         }
 
-        /// <summary>
-        /// Constructs a new Color4 structure from the specified System.Drawing.Color.
-        /// </summary>
-        /// <param name="color">The System.Drawing.Color containing the component values.</param>
-        [Obsolete("Use new Color4(r, g, b, a) instead.")]
-        public Color4(Color color)
-            : this(color.R, color.G, color.B, color.A) {
-        }
-
         #endregion
 
         #region Public Members

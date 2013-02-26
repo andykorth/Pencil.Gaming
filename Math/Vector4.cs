@@ -175,85 +175,6 @@ namespace Pencil.Gaming.Math {
 
         #region Instance
 
-        #region public void Add()
-
-        /// <summary>Add the Vector passed as parameter to this instance.</summary>
-        /// <param name="right">Right operand. This parameter is only read from.</param>
-        [Obsolete("Use static Add() method instead.")]
-        public void Add(Vector4 right) {
-            this.X += right.X;
-            this.Y += right.Y;
-            this.Z += right.Z;
-            this.W += right.W;
-        }
-
-        /// <summary>Add the Vector passed as parameter to this instance.</summary>
-        /// <param name="right">Right operand. This parameter is only read from.</param>
-        [CLSCompliant(false)]
-        [Obsolete("Use static Add() method instead.")]
-        public void Add(ref Vector4 right) {
-            this.X += right.X;
-            this.Y += right.Y;
-            this.Z += right.Z;
-            this.W += right.W;
-        }
-
-        #endregion public void Add()
-
-        #region public void Sub()
-
-        /// <summary>Subtract the Vector passed as parameter from this instance.</summary>
-        /// <param name="right">Right operand. This parameter is only read from.</param>
-        [Obsolete("Use static Subtract() method instead.")]
-        public void Sub(Vector4 right) {
-            this.X -= right.X;
-            this.Y -= right.Y;
-            this.Z -= right.Z;
-            this.W -= right.W;
-        }
-
-        /// <summary>Subtract the Vector passed as parameter from this instance.</summary>
-        /// <param name="right">Right operand. This parameter is only read from.</param>
-        [CLSCompliant(false)]
-        [Obsolete("Use static Subtract() method instead.")]
-        public void Sub(ref Vector4 right) {
-            this.X -= right.X;
-            this.Y -= right.Y;
-            this.Z -= right.Z;
-            this.W -= right.W;
-        }
-
-        #endregion public void Sub()
-
-        #region public void Mult()
-
-        /// <summary>Multiply this instance by a scalar.</summary>
-        /// <param name="f">Scalar operand.</param>
-        [Obsolete("Use static Multiply() method instead.")]
-        public void Mult(float f) {
-            this.X *= f;
-            this.Y *= f;
-            this.Z *= f;
-            this.W *= f;
-        }
-
-        #endregion public void Mult()
-
-        #region public void Div()
-
-        /// <summary>Divide this instance by a scalar.</summary>
-        /// <param name="f">Scalar operand.</param>
-        [Obsolete("Use static Divide() method instead.")]
-        public void Div(float f) {
-            float mult = 1.0f / f;
-            this.X *= mult;
-            this.Y *= mult;
-            this.Z *= mult;
-            this.W *= mult;
-        }
-
-        #endregion public void Div()
-
         #region public float Length
 
         /// <summary>
@@ -337,51 +258,9 @@ namespace Pencil.Gaming.Math {
 
         #endregion
 
-        #region public void Scale()
-
-        /// <summary>
-        /// Scales the current Vector4 by the given amounts.
-        /// </summary>
-        /// <param name="sx">The scale of the X component.</param>
-        /// <param name="sy">The scale of the Y component.</param>
-        /// <param name="sz">The scale of the Z component.</param>
-        /// <param name="sw">The scale of the Z component.</param>
-        [Obsolete("Use static Multiply() method instead.")]
-        public void Scale(float sx, float sy, float sz, float sw) {
-            this.X = X * sx;
-            this.Y = Y * sy;
-            this.Z = Z * sz;
-            this.W = W * sw;
-        }
-
-        /// <summary>Scales this instance by the given parameter.</summary>
-        /// <param name="scale">The scaling of the individual components.</param>
-        [Obsolete("Use static Multiply() method instead.")]
-        public void Scale(Vector4 scale) {
-            this.X *= scale.X;
-            this.Y *= scale.Y;
-            this.Z *= scale.Z;
-            this.W *= scale.W;
-        }
-
-        /// <summary>Scales this instance by the given parameter.</summary>
-        /// <param name="scale">The scaling of the individual components.</param>
-        [CLSCompliant(false)]
-        [Obsolete("Use static Multiply() method instead.")]
-        public void Scale(ref Vector4 scale) {
-            this.X *= scale.X;
-            this.Y *= scale.Y;
-            this.Z *= scale.Z;
-            this.W *= scale.W;
-        }
-
-        #endregion public void Scale()
-
         #endregion
 
         #region Static
-
-        #region Obsolete
 
         #region Sub
 
@@ -939,8 +818,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Xy {
             get { return new Vector2(X, Y); }
-            set { X = value.X;
-                Y = value.Y; }
+            set {
+                X = value.X;
+                Y = value.Y;
+            }
         }
 
         /// <summary>
@@ -949,8 +830,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Xz {
             get { return new Vector2(X, Z); }
-            set { X = value.X;
-                Z = value.Y; }
+            set {
+                X = value.X;
+                Z = value.Y;
+            }
         }
 
         /// <summary>
@@ -959,8 +842,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Xw {
             get { return new Vector2(X, W); }
-            set { X = value.X;
-                W = value.Y; }
+            set {
+                X = value.X;
+                W = value.Y;
+            }
         }
 
         /// <summary>
@@ -969,8 +854,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Yx {
             get { return new Vector2(Y, X); }
-            set { Y = value.X;
-                X = value.Y; }
+            set {
+                Y = value.X;
+                X = value.Y;
+            }
         }
 
         /// <summary>
@@ -979,8 +866,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Yz {
             get { return new Vector2(Y, Z); }
-            set { Y = value.X;
-                Z = value.Y; }
+            set {
+                Y = value.X;
+                Z = value.Y;
+            }
         }
 
         /// <summary>
@@ -989,8 +878,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Yw {
             get { return new Vector2(Y, W); }
-            set { Y = value.X;
-                W = value.Y; }
+            set {
+                Y = value.X;
+                W = value.Y;
+            }
         }
 
         /// <summary>
@@ -999,8 +890,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Zx {
             get { return new Vector2(Z, X); }
-            set { Z = value.X;
-                X = value.Y; }
+            set {
+                Z = value.X;
+                X = value.Y;
+            }
         }
 
         /// <summary>
@@ -1009,8 +902,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Zy {
             get { return new Vector2(Z, Y); }
-            set { Z = value.X;
-                Y = value.Y; }
+            set {
+                Z = value.X;
+                Y = value.Y;
+            }
         }
 
         /// <summary>
@@ -1019,8 +914,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Zw {
             get { return new Vector2(Z, W); }
-            set { Z = value.X;
-                W = value.Y; }
+            set {
+                Z = value.X;
+                W = value.Y;
+            }
         }
 
         /// <summary>
@@ -1029,8 +926,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Wx {
             get { return new Vector2(W, X); }
-            set { W = value.X;
-                X = value.Y; }
+            set {
+                W = value.X;
+                X = value.Y;
+            }
         }
 
         /// <summary>
@@ -1039,8 +938,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Wy {
             get { return new Vector2(W, Y); }
-            set { W = value.X;
-                Y = value.Y; }
+            set {
+                W = value.X;
+                Y = value.Y;
+            }
         }
 
         /// <summary>
@@ -1049,8 +950,10 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector2 Wz {
             get { return new Vector2(W, Z); }
-            set { W = value.X;
-                Z = value.Y; }
+            set {
+                W = value.X;
+                Z = value.Y;
+            }
         }
 
         #endregion
@@ -1063,9 +966,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Xyz {
             get { return new Vector3(X, Y, Z); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Y = value.Y;
-                Z = value.Z; }
+                Z = value.Z;
+            }
         }
 
         /// <summary>
@@ -1074,9 +979,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Xyw {
             get { return new Vector3(X, Y, W); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Y = value.Y;
-                W = value.Z; }
+                W = value.Z;
+            }
         }
 
         /// <summary>
@@ -1085,9 +992,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Xzy {
             get { return new Vector3(X, Z, Y); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Z = value.Y;
-                Y = value.Z; }
+                Y = value.Z;
+            }
         }
 
         /// <summary>
@@ -1096,9 +1005,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Xzw {
             get { return new Vector3(X, Z, W); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Z = value.Y;
-                W = value.Z; }
+                W = value.Z;
+            }
         }
 
         /// <summary>
@@ -1107,9 +1018,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Xwy {
             get { return new Vector3(X, W, Y); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 W = value.Y;
-                Y = value.Z; }
+                Y = value.Z;
+            }
         }
 
         /// <summary>
@@ -1118,9 +1031,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Xwz {
             get { return new Vector3(X, W, Z); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 W = value.Y;
-                Z = value.Z; }
+                Z = value.Z;
+            }
         }
 
         /// <summary>
@@ -1129,9 +1044,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Yxz {
             get { return new Vector3(Y, X, Z); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 X = value.Y;
-                Z = value.Z; }
+                Z = value.Z;
+            }
         }
 
         /// <summary>
@@ -1140,9 +1057,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Yxw {
             get { return new Vector3(Y, X, W); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 X = value.Y;
-                W = value.Z; }
+                W = value.Z;
+            }
         }
 
         /// <summary>
@@ -1151,9 +1070,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Yzx {
             get { return new Vector3(Y, Z, X); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 Z = value.Y;
-                X = value.Z; }
+                X = value.Z;
+            }
         }
 
         /// <summary>
@@ -1162,9 +1083,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Yzw {
             get { return new Vector3(Y, Z, W); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 Z = value.Y;
-                W = value.Z; }
+                W = value.Z;
+            }
         }
 
         /// <summary>
@@ -1173,9 +1096,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Ywx {
             get { return new Vector3(Y, W, X); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 W = value.Y;
-                X = value.Z; }
+                X = value.Z;
+            }
         }
 
         /// <summary>
@@ -1184,9 +1109,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Ywz {
             get { return new Vector3(Y, W, Z); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 W = value.Y;
-                Z = value.Z; }
+                Z = value.Z;
+            }
         }
 
         /// <summary>
@@ -1195,9 +1122,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Zxy {
             get { return new Vector3(Z, X, Y); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 X = value.Y;
-                Y = value.Z; }
+                Y = value.Z;
+            }
         }
 
         /// <summary>
@@ -1206,9 +1135,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Zxw {
             get { return new Vector3(Z, X, W); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 X = value.Y;
-                W = value.Z; }
+                W = value.Z;
+            }
         }
 
         /// <summary>
@@ -1217,9 +1148,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Zyx {
             get { return new Vector3(Z, Y, X); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 Y = value.Y;
-                X = value.Z; }
+                X = value.Z;
+            }
         }
 
         /// <summary>
@@ -1228,9 +1161,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Zyw {
             get { return new Vector3(Z, Y, W); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 Y = value.Y;
-                W = value.Z; }
+                W = value.Z;
+            }
         }
 
         /// <summary>
@@ -1239,9 +1174,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Zwx {
             get { return new Vector3(Z, W, X); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 W = value.Y;
-                X = value.Z; }
+                X = value.Z;
+            }
         }
 
         /// <summary>
@@ -1250,9 +1187,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Zwy {
             get { return new Vector3(Z, W, Y); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 W = value.Y;
-                Y = value.Z; }
+                Y = value.Z;
+            }
         }
 
         /// <summary>
@@ -1261,9 +1200,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Wxy {
             get { return new Vector3(W, X, Y); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 X = value.Y;
-                Y = value.Z; }
+                Y = value.Z;
+            }
         }
 
         /// <summary>
@@ -1272,9 +1213,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Wxz {
             get { return new Vector3(W, X, Z); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 X = value.Y;
-                Z = value.Z; }
+                Z = value.Z;
+            }
         }
 
         /// <summary>
@@ -1283,9 +1226,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Wyx {
             get { return new Vector3(W, Y, X); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Y = value.Y;
-                X = value.Z; }
+                X = value.Z;
+            }
         }
 
         /// <summary>
@@ -1294,9 +1239,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Wyz {
             get { return new Vector3(W, Y, Z); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Y = value.Y;
-                Z = value.Z; }
+                Z = value.Z;
+            }
         }
 
         /// <summary>
@@ -1305,9 +1252,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Wzx {
             get { return new Vector3(W, Z, X); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Z = value.Y;
-                X = value.Z; }
+                X = value.Z;
+            }
         }
 
         /// <summary>
@@ -1316,9 +1265,11 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector3 Wzy {
             get { return new Vector3(W, Z, Y); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Z = value.Y;
-                Y = value.Z; }
+                Y = value.Z;
+            }
         }
 
         #endregion
@@ -1331,10 +1282,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Xywz {
             get { return new Vector4(X, Y, W, Z); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Y = value.Y;
                 W = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1343,10 +1296,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Xzyw {
             get { return new Vector4(X, Z, Y, W); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Z = value.Y;
                 Y = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         /// <summary>
@@ -1355,10 +1310,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Xzwy {
             get { return new Vector4(X, Z, W, Y); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Z = value.Y;
                 W = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1367,10 +1324,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Xwyz {
             get { return new Vector4(X, W, Y, Z); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 W = value.Y;
                 Y = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1379,10 +1338,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Xwzy {
             get { return new Vector4(X, W, Z, Y); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 W = value.Y;
                 Z = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1391,10 +1352,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Yxzw {
             get { return new Vector4(Y, X, Z, W); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 X = value.Y;
                 Z = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         /// <summary>
@@ -1403,10 +1366,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Yxwz {
             get { return new Vector4(Y, X, W, Z); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 X = value.Y;
                 W = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1415,10 +1380,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Yyzw {
             get { return new Vector4(Y, Y, Z, W); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Y = value.Y;
                 Z = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         /// <summary>
@@ -1427,10 +1394,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Yywz {
             get { return new Vector4(Y, Y, W, Z); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Y = value.Y;
                 W = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1439,10 +1408,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Yzxw {
             get { return new Vector4(Y, Z, X, W); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 Z = value.Y;
                 X = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         /// <summary>
@@ -1451,10 +1422,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Yzwx {
             get { return new Vector4(Y, Z, W, X); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 Z = value.Y;
                 W = value.Z;
-                X = value.W; }
+                X = value.W;
+            }
         }
 
         /// <summary>
@@ -1463,10 +1436,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Ywxz {
             get { return new Vector4(Y, W, X, Z); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 W = value.Y;
                 X = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1475,10 +1450,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Ywzx {
             get { return new Vector4(Y, W, Z, X); }
-            set { Y = value.X;
+            set {
+                Y = value.X;
                 W = value.Y;
                 Z = value.Z;
-                X = value.W; }
+                X = value.W;
+            }
         }
 
         /// <summary>
@@ -1487,10 +1464,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zxyw {
             get { return new Vector4(Z, X, Y, W); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 X = value.Y;
                 Y = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         /// <summary>
@@ -1499,10 +1478,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zxwy {
             get { return new Vector4(Z, X, W, Y); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 X = value.Y;
                 W = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1511,10 +1492,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zyxw {
             get { return new Vector4(Z, Y, X, W); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 Y = value.Y;
                 X = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         /// <summary>
@@ -1523,10 +1506,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zywx {
             get { return new Vector4(Z, Y, W, X); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 Y = value.Y;
                 W = value.Z;
-                X = value.W; }
+                X = value.W;
+            }
         }
 
         /// <summary>
@@ -1535,10 +1520,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zwxy {
             get { return new Vector4(Z, W, X, Y); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 W = value.Y;
                 X = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1547,10 +1534,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zwyx {
             get { return new Vector4(Z, W, Y, X); }
-            set { Z = value.X;
+            set {
+                Z = value.X;
                 W = value.Y;
                 Y = value.Z;
-                X = value.W; }
+                X = value.W;
+            }
         }
 
         /// <summary>
@@ -1559,10 +1548,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Zwzy {
             get { return new Vector4(Z, W, Z, Y); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 W = value.Y;
                 Z = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1571,10 +1562,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wxyz {
             get { return new Vector4(W, X, Y, Z); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 X = value.Y;
                 Y = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1583,10 +1576,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wxzy {
             get { return new Vector4(W, X, Z, Y); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 X = value.Y;
                 Z = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1595,10 +1590,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wyxz {
             get { return new Vector4(W, Y, X, Z); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Y = value.Y;
                 X = value.Z;
-                Z = value.W; }
+                Z = value.W;
+            }
         }
 
         /// <summary>
@@ -1607,10 +1604,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wyzx {
             get { return new Vector4(W, Y, Z, X); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Y = value.Y;
                 Z = value.Z;
-                X = value.W; }
+                X = value.W;
+            }
         }
 
         /// <summary>
@@ -1619,10 +1618,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wzxy {
             get { return new Vector4(W, Z, X, Y); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Z = value.Y;
                 X = value.Z;
-                Y = value.W; }
+                Y = value.W;
+            }
         }
 
         /// <summary>
@@ -1631,10 +1632,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wzyx {
             get { return new Vector4(W, Z, Y, X); }
-            set { W = value.X;
+            set {
+                W = value.X;
                 Z = value.Y;
                 Y = value.Z;
-                X = value.W; }
+                X = value.W;
+            }
         }
 
         /// <summary>
@@ -1643,10 +1646,12 @@ namespace Pencil.Gaming.Math {
         [XmlIgnore]
         public Vector4 Wzyw {
             get { return new Vector4(W, Z, Y, W); }
-            set { X = value.X;
+            set {
+                X = value.X;
                 Z = value.Y;
                 Y = value.Z;
-                W = value.W; }
+                W = value.W;
+            }
         }
 
         #endregion
@@ -1764,7 +1769,6 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
-        [CLSCompliant(false)]
         unsafe public static explicit operator float*(Vector4 v) {
             return &v.X;
         }
@@ -1822,8 +1826,6 @@ namespace Pencil.Gaming.Math {
 
             return this.Equals((Vector4)obj);
         }
-
-        #endregion
 
         #endregion
 

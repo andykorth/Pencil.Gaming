@@ -53,29 +53,40 @@
     <Compile Include="Math\Vector4.cs" />
     <Compile Include="Graphics\Color4.cs" />
     <Compile Include="Graphics\GLEnums.cs" />
-    <Compile Include="Glfw.cs" />
-    <Compile Include="GlfwEnum.cs" />
-    <Compile Include="GlfwDelegates.cs" />
-    <Compile Include="GlfwUtils.cs" />
     <Compile Include="Graphics\Gl.cs" />
-    <Compile Include="Graphics\GlCore.cs" />
     <Compile Include="Graphics\GlDelegates.cs" />
     <Compile Include="Graphics\GlHelper.cs" />
-    <Compile Include="GlfwStructs.cs" />
-    <Compile Include="Glfw64.cs" />
-    <Compile Include="Glfw32.cs" />
+    <Compile Include="Glfw\Glfw.cs" />
+    <Compile Include="Glfw\Glfw32.cs" />
+    <Compile Include="Glfw\Glfw64.cs" />
+    <Compile Include="Glfw\GlfwDelegates.cs" />
+    <Compile Include="Glfw\GlfwEnum.cs" />
+    <Compile Include="Glfw\GlfwStructs.cs" />
+    <Compile Include="Glfw\GlfwUtils.cs" />
+    <Compile Include="Audio\Al32.cs" />
+    <Compile Include="Audio\Al64.cs" />
+    <Compile Include="Audio\AlDelegates.cs" />
+    <Compile Include="Audio\Al.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Math\" />
     <Folder Include="Graphics\" />
     <Folder Include="Natives\" />
+    <Folder Include="Glfw\" />
+    <Folder Include="Audio\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="libglfw64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="libglfw32.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libopenal32.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libopenal64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

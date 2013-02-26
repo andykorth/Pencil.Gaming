@@ -49,9 +49,6 @@ namespace Pencil.Gaming.Graphics {
     /// </remarks>
     /// <see href="http://opengl.org/registry/"/>
     public static partial class Gl {
-        internal const string Library = "opengl32.dll";
-        static SortedList<string, bool> AvailableExtensions = new SortedList<string, bool>();
-
         #region --- GL Overloads ---
 
 #pragma warning disable 3019
@@ -232,17 +229,14 @@ namespace Pencil.Gaming.Graphics {
 
         #region Uniform
 
-        [CLSCompliant(false)]
         public static void Uniform2(int location, ref Vector2 vector) {
             Gl.Uniform2(location, vector.X, vector.Y);
         }
 
-        [CLSCompliant(false)]
         public static void Uniform3(int location, ref Vector3 vector) {
             Gl.Uniform3(location, vector.X, vector.Y, vector.Z);
         }
 
-        [CLSCompliant(false)]
         public static void Uniform4(int location, ref Vector4 vector) {
             Gl.Uniform4(location, vector.X, vector.Y, vector.Z, vector.W);
         }
@@ -417,17 +411,14 @@ namespace Pencil.Gaming.Graphics {
 
         #region VertexAttrib|MultiTexCoord
 
-        [CLSCompliant(false)]
         public static void VertexAttrib2(Int32 index, ref Vector2 v) {
             Gl.VertexAttrib2(index, v.X, v.Y);
         }
 
-        [CLSCompliant(false)]
         public static void VertexAttrib3(Int32 index, ref Vector3 v) {
             Gl.VertexAttrib3(index, v.X, v.Y, v.Z);
         }
 
-        [CLSCompliant(false)]
         public static void VertexAttrib4(Int32 index, ref Vector4 v) {
             Gl.VertexAttrib4(index, v.X, v.Y, v.Z, v.W);
         }
@@ -468,12 +459,10 @@ namespace Pencil.Gaming.Graphics {
             Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
         }
 
-        [CLSCompliant(false)]
         public static void Rect(ref RectangleF rect) {
             Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
         }
 
-        [CLSCompliant(false)]
         public static void Rect(ref Rectangle rect) {
             Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
         }
@@ -508,7 +497,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single buffer object
         /// </summary>
         /// <param name="id">The buffer object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteBuffer(uint id) {
             DeleteBuffers(1, ref id);
         }
@@ -543,7 +531,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single framebuffer object
         /// </summary>
         /// <param name="id">The framebuffer object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteFramebuffer(uint id) {
             DeleteFramebuffers(1, ref id);
         }
@@ -578,7 +565,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single program pipeline object
         /// </summary>
         /// <param name="id">The program pipeline object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteProgramPipeline(uint id) {
             DeleteProgramPipelines(1, ref id);
         }
@@ -613,7 +599,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single query object
         /// </summary>
         /// <param name="id">The query object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteQuery(uint id) {
             DeleteQueries(1, ref id);
         }
@@ -648,7 +633,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single renderbuffer object
         /// </summary>
         /// <param name="id">The renderbuffer object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteRenderbuffer(uint id) {
             DeleteRenderbuffers(1, ref id);
         }
@@ -683,7 +667,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single sampler object
         /// </summary>
         /// <param name="id">The sampler object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteSampler(uint id) {
             DeleteSamplers(1, ref id);
         }
@@ -718,7 +701,6 @@ namespace Pencil.Gaming.Graphics {
         /// Delete a single texture name
         /// </summary>
         /// <param name="id">The texture to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteTexture(uint id) {
             DeleteTextures(1, ref id);
         }
@@ -753,7 +735,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single transform feedback object
         /// </summary>
         /// <param name="id">The transform feedback object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteTransformFeedback(uint id) {
             DeleteTransformFeedback(1, ref id);
         }
@@ -788,7 +769,6 @@ namespace Pencil.Gaming.Graphics {
         /// Deletes a single vertex array object
         /// </summary>
         /// <param name="id">The vertex array object to be deleted</param>
-        [CLSCompliant(false)]
         public static void DeleteVertexArray(uint id) {
             DeleteVertexArrays(1, ref id);
         }
@@ -909,92 +889,6 @@ namespace Pencil.Gaming.Graphics {
         public static void TexEnv(TextureEnvTarget target, TextureEnvParameter pname, Color4 color) {
             unsafe {
                 TexEnv(target, pname, &color.R);
-            }
-        }
-
-        #endregion
-
-        #region Obsolete
-
-        [AutoGenerated(Category = "Version11Deprecated", Version = "1.1", EntryPoint = "glDisableClientState")]
-        [Obsolete("Use DisableClientState(ArrayCap) instead.")]
-        public static void DisableClientState(Pencil.Gaming.Graphics.EnableCap array) {
-            DisableClientState((ArrayCap)array);
-        }
-
-        [AutoGenerated(Category = "Version11Deprecated", Version = "1.1", EntryPoint = "glEnableClientState")]
-        [Obsolete("Use EnableClientState(ArrayCap) instead.")]
-        public static void EnableClientState(Pencil.Gaming.Graphics.EnableCap array) {
-            EnableClientState((ArrayCap)array);
-        }
-
-        [AutoGenerated(Category = "ArbUniformBufferObject", Version = "2.0", EntryPoint = "glGetActiveUniformsiv")]
-        [Obsolete("Use GetActiveUniforms(..., ActiveUniformParameter, ...) instead.")]
-        public static void GetActiveUniforms(Int32 program, Int32 uniformCount, Int32[] uniformIndices, ArbUniformBufferObject pname, [OutAttribute] Int32[] @params) {
-            GetActiveUniforms(program, uniformCount, uniformIndices, (ActiveUniformParameter)pname,  @params);
-        }
-
-        [AutoGenerated(Category = "ArbUniformBufferObject", Version = "2.0", EntryPoint = "glGetActiveUniformsiv")]
-        [Obsolete("Use GetActiveUniforms(..., ActiveUniformParameter, ...) instead.")]
-        public static void GetActiveUniforms(Int32 program, Int32 uniformCount, ref Int32 uniformIndices, ArbUniformBufferObject pname, [OutAttribute] out Int32 @params) {
-            GetActiveUniforms(program, uniformCount, ref uniformIndices, (ActiveUniformParameter)pname, out @params);
-        }
-
-        [System.CLSCompliant(false)]
-        [AutoGenerated(Category = "ArbUniformBufferObject", Version = "2.0", EntryPoint = "glGetActiveUniformsiv")]
-        [Obsolete("Use GetActiveUniforms(..., ActiveUniformParameter, ...) instead.")]
-        public static unsafe void GetActiveUniforms(Int32 program, Int32 uniformCount, Int32* uniformIndices, ArbUniformBufferObject pname, [OutAttribute] Int32* @params) {
-            GetActiveUniforms(program, uniformCount, uniformIndices, (ActiveUniformParameter)pname,  @params);
-        }
-
-        [System.CLSCompliant(false)]
-        [AutoGenerated(Category = "ArbUniformBufferObject", Version = "2.0", EntryPoint = "glGetActiveUniformsiv")]
-        [Obsolete("Use GetActiveUniforms(..., ActiveUniformParameter, ...) instead.")]
-        public static void GetActiveUniforms(UInt32 program, Int32 uniformCount, UInt32[] uniformIndices, ArbUniformBufferObject pname, [OutAttribute] Int32[] @params) {
-            GetActiveUniforms(program, uniformCount, uniformIndices, (ActiveUniformParameter)pname,  @params);
-        }
-
-        [System.CLSCompliant(false)]
-        [AutoGenerated(Category = "ArbUniformBufferObject", Version = "2.0", EntryPoint = "glGetActiveUniformsiv")]
-        [Obsolete("Use GetActiveUniforms(..., ActiveUniformParameter, ...) instead.")]
-        public static void GetActiveUniforms(UInt32 program, Int32 uniformCount, ref UInt32 uniformIndices, ArbUniformBufferObject pname, [OutAttribute] out Int32 @params) {
-            GetActiveUniforms(program, uniformCount, ref uniformIndices, (ActiveUniformParameter)pname, out @params);
-        }
-
-        [System.CLSCompliant(false)]
-        [AutoGenerated(Category = "ArbUniformBufferObject", Version = "2.0", EntryPoint = "glGetActiveUniformsiv")]
-        [Obsolete("Use GetActiveUniforms(..., ActiveUniformParameter, ...) instead.")]
-        public static unsafe void GetActiveUniforms(UInt32 program, Int32 uniformCount, UInt32* uniformIndices, ArbUniformBufferObject pname, [OutAttribute] Int32* @params) {
-            GetActiveUniforms(program, uniformCount, uniformIndices, (ActiveUniformParameter)pname,  @params);
-        }
-
-        public static partial class Arb {
-            [AutoGenerated(Category = "ArbGeometryShader4", Version = "3.0", EntryPoint = "glProgramParameteriARB")]
-            [Obsolete("Use ProgramParameter(..., AssemblyProgramParameterArb, ...) instead.")]
-            public static void ProgramParameter(Int32 program, ArbGeometryShader4 pname, Int32 value) {
-                ProgramParameter(program, (AssemblyProgramParameterArb)pname, value);
-            }
-
-            [AutoGenerated(Category = "ArbGeometryShader4", Version = "3.0", EntryPoint = "glProgramParameteriARB")]
-            [Obsolete("Use ProgramParameter(..., AssemblyProgramParameterArb, ...) instead.")]
-            [CLSCompliant(false)]
-            public static void ProgramParameter(UInt32 program, ArbGeometryShader4 pname, Int32 value) {
-                ProgramParameter(program, (AssemblyProgramParameterArb)pname, value);
-            }
-        }
-
-        public static partial class Ext {
-            [AutoGenerated(Category = "EXT_geometry_shader4", Version = "2.0", EntryPoint = "glProgramParameteriEXT")]
-            [Obsolete("Use ProgramParameter(..., AssemblyProgramParameterArb, ...) instead.")]
-            public static void ProgramParameter(Int32 program, ExtGeometryShader4 pname, Int32 value) {
-                ProgramParameter(program, (AssemblyProgramParameterArb)pname, value);
-            }
-
-            [AutoGenerated(Category = "ArbGeometryShader4", Version = "3.0", EntryPoint = "glProgramParameteriARB")]
-            [Obsolete("Use ProgramParameter(..., AssemblyProgramParameterArb, ...) instead.")]
-            [CLSCompliant(false)]
-            public static void ProgramParameter(UInt32 program, ExtGeometryShader4 pname, Int32 value) {
-                ProgramParameter(program, (AssemblyProgramParameterArb)pname, value);
             }
         }
 
