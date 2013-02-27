@@ -1,99 +1,20 @@
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming {
     internal static class GlfwDelegates {
         static GlfwDelegates() {
-            if (Environment.Is64BitOperatingSystem) {
-                glfwInit = Glfw64.glfwInit;
-                glfwTerminate = Glfw64.glfwTerminate;
-                glfwGetVersion = Glfw64.glfwGetVersion;
-                glfwOpenWindow = Glfw64.glfwOpenWindow;
-                glfwOpenWindowHint = Glfw64.glfwOpenWindowHint;
-                glfwCloseWindow = Glfw64.glfwCloseWindow;
-                glfwSetWindowTitle = Glfw64.glfwSetWindowTitle;
-                glfwGetWindowSize = Glfw64.glfwGetWindowSize;
-                glfwSetWindowSize = Glfw64.glfwSetWindowSize;
-                glfwSetWindowPos = Glfw64.glfwSetWindowPos;
-                glfwIconifyWindow = Glfw64.glfwIconifyWindow;
-                glfwRestoreWindow = Glfw64.glfwRestoreWindow;
-                glfwSwapBuffers = Glfw64.glfwSwapBuffers;
-                glfwSwapInterval = Glfw64.glfwSwapInterval;
-                glfwGetWindowParam = Glfw64.glfwGetWindowParam;
-                glfwGetVideoModes = Glfw64.glfwGetVideoModes;
-                glfwGetDesktopMode = Glfw64.glfwGetDesktopMode;
-                glfwPollEvents = Glfw64.glfwPollEvents;
-                glfwWaitEvents = Glfw64.glfwWaitEvents;
-                glfwGetKey = Glfw64.glfwGetKey;
-                glfwGetMouseButton = Glfw64.glfwGetMouseButton;
-                glfwGetMousePos = Glfw64.glfwGetMousePos;
-                glfwSetMousePos = Glfw64.glfwSetMousePos;
-                glfwGetMouseWheel = Glfw64.glfwGetMouseWheel;
-                glfwSetMouseWheel = Glfw64.glfwSetMouseWheel;
-                glfwGetJoystickParam = Glfw64.glfwGetJoystickParam;
-                glfwGetJoystickPos = Glfw64.glfwGetJoystickPos;
-                glfwGetJoystickButtons = Glfw64.glfwGetJoystickButtons;
-                glfwGetTime = Glfw64.glfwGetTime;
-                glfwSetTime = Glfw64.glfwSetTime;
-                glfwSleep = Glfw64.glfwSleep;
-                glfwExtensionSupported = Glfw64.glfwExtensionSupported;
-                glfwGetProcAddress = Glfw64.glfwGetProcAddress;
-                glfwGetGLVersion = Glfw64.glfwGetGLVersion;
-                glfwGetNumberOfProcessors = Glfw64.glfwGetNumberOfProcessors;
-                glfwEnable = Glfw64.glfwEnable;
-                glfwDisable = Glfw64.glfwDisable;
-                glfwReadImage = Glfw64.glfwReadImage;
-                glfwReadMemoryImage = Glfw64.glfwReadMemoryImage;
-                glfwFreeImage = Glfw64.glfwFreeImage;
-                glfwLoadTexture2D = Glfw64.glfwLoadTexture2D;
-                glfwLoadMemoryTexture2D = Glfw64.glfwLoadMemoryTexture2D;
-                glfwLoadTextureImage2D = Glfw64.glfwLoadTextureImage2D;
-            } else {
-                glfwInit = Glfw32.glfwInit;
-                glfwTerminate = Glfw32.glfwTerminate;
-                glfwGetVersion = Glfw32.glfwGetVersion;
-                glfwOpenWindow = Glfw32.glfwOpenWindow;
-                glfwOpenWindowHint = Glfw32.glfwOpenWindowHint;
-                glfwCloseWindow = Glfw32.glfwCloseWindow;
-                glfwSetWindowTitle = Glfw32.glfwSetWindowTitle;
-                glfwGetWindowSize = Glfw32.glfwGetWindowSize;
-                glfwSetWindowSize = Glfw32.glfwSetWindowSize;
-                glfwSetWindowPos = Glfw32.glfwSetWindowPos;
-                glfwIconifyWindow = Glfw32.glfwIconifyWindow;
-                glfwRestoreWindow = Glfw32.glfwRestoreWindow;
-                glfwSwapBuffers = Glfw32.glfwSwapBuffers;
-                glfwSwapInterval = Glfw32.glfwSwapInterval;
-                glfwGetWindowParam = Glfw32.glfwGetWindowParam;
-                glfwGetVideoModes = Glfw32.glfwGetVideoModes;
-                glfwGetDesktopMode = Glfw32.glfwGetDesktopMode;
-                glfwPollEvents = Glfw32.glfwPollEvents;
-                glfwWaitEvents = Glfw32.glfwWaitEvents;
-                glfwGetKey = Glfw32.glfwGetKey;
-                glfwGetMouseButton = Glfw32.glfwGetMouseButton;
-                glfwGetMousePos = Glfw32.glfwGetMousePos;
-                glfwSetMousePos = Glfw32.glfwSetMousePos;
-                glfwGetMouseWheel = Glfw32.glfwGetMouseWheel;
-                glfwSetMouseWheel = Glfw32.glfwSetMouseWheel;
-                glfwGetJoystickParam = Glfw32.glfwGetJoystickParam;
-                glfwGetJoystickPos = Glfw32.glfwGetJoystickPos;
-                glfwGetJoystickButtons = Glfw32.glfwGetJoystickButtons;
-                glfwGetTime = Glfw32.glfwGetTime;
-                glfwSetTime = Glfw32.glfwSetTime;
-                glfwSleep = Glfw32.glfwSleep;
-                glfwExtensionSupported = Glfw32.glfwExtensionSupported;
-                glfwGetProcAddress = Glfw32.glfwGetProcAddress;
-                glfwGetGLVersion = Glfw32.glfwGetGLVersion;
-                glfwGetNumberOfProcessors = Glfw32.glfwGetNumberOfProcessors;
-                glfwEnable = Glfw32.glfwEnable;
-                glfwDisable = Glfw32.glfwDisable;
-                glfwReadImage = Glfw32.glfwReadImage;
-                glfwReadMemoryImage = Glfw32.glfwReadMemoryImage;
-                glfwFreeImage = Glfw32.glfwFreeImage;
-                glfwLoadTexture2D = Glfw32.glfwLoadTexture2D;
-                glfwLoadMemoryTexture2D = Glfw32.glfwLoadMemoryTexture2D;
-                glfwLoadTextureImage2D = Glfw32.glfwLoadTextureImage2D;
+            Type glfwInterop = Environment.Is64BitProcess ? typeof(Glfw64) : typeof(Glfw32);
+            FieldInfo[] fields = typeof(GlfwDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+            foreach (FieldInfo fi in fields) {
+                MethodInfo mi = glfwInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
+                fi.SetValue(null, function);
             }
         }
+
+#pragma warning disable 0649
 
         internal delegate int Init();
         internal static Init glfwInit;

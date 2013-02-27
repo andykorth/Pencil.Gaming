@@ -36,27 +36,27 @@ namespace Pencil.Gaming {
         [DllImport("openal64")]
         internal static extern int alGetEnumValue([MarshalAs(UnmanagedType.LPStr)] string ename);
         [DllImport("openal64")]
-        internal static extern void alListenerf(int param, float @value);
+        internal static extern void alListenerf(int param, float value);
         [DllImport("openal64")]
         internal static extern void alListener3f(int param, float value1, float value2, float value3);
         [DllImport("openal64")]
         internal static extern void alListenerfv(int param, [MarshalAs(UnmanagedType.LPArray)] float[] values); 
         [DllImport("openal64")]
-        internal static extern void alListeneri(int param, int @value);
+        internal static extern void alListeneri(int param, int value);
         [DllImport("openal64")]
         internal static extern void alListener3i(int param, int value1, int value2, int value3);
         [DllImport("openal64")]
         internal static extern void alListeneriv(int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport("openal64")]
-        internal static extern void alGetListenerf(int param, [MarshalAs(UnmanagedType.LPArray)] float[] @value);
+        internal static extern void alGetListenerf(int param, out float value);
         [DllImport("openal64")]
-        internal static extern void alGetListener3f(int param, [MarshalAs(UnmanagedType.LPArray)] float[]value1, [MarshalAs(UnmanagedType.LPArray)] float[]value2, [MarshalAs(UnmanagedType.LPArray)] float[]value3);
+        internal static extern void alGetListener3f(int param, out float value1, out float value2, out float value3);
         [DllImport("openal64")]
         internal static extern void alGetListenerfv(int param, [MarshalAs(UnmanagedType.LPArray)] float[] values);
         [DllImport("openal64")]
-        internal static extern void alGetListeneri(int param, [MarshalAs(UnmanagedType.LPArray)] int[] @value);
+        internal static extern void alGetListeneri(int param, out int value);
         [DllImport("openal64")]
-        internal static extern void alGetListener3i(int param, [MarshalAs(UnmanagedType.LPArray)] int[]value1, [MarshalAs(UnmanagedType.LPArray)] int[]value2, [MarshalAs(UnmanagedType.LPArray)] int[]value3);
+        internal static extern void alGetListener3i(int param, out int value1, out int value2, out int value3);
         [DllImport("openal64")]
         internal static extern void alGetListeneriv(int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport("openal64")]
@@ -66,27 +66,27 @@ namespace Pencil.Gaming {
         [DllImport("openal64")]
         internal static extern bool alIsSource(uint sid); 
         [DllImport("openal64")]
-        internal static extern void alSourcef(uint sid, int param, float @value); 
+        internal static extern void alSourcef(uint sid, int param, float value); 
         [DllImport("openal64")]
         internal static extern void alSource3f(uint sid, int param, float value1, float value2, float value3);
         [DllImport("openal64")]
         internal static extern void alSourcefv(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] values); 
         [DllImport("openal64")]
-        internal static extern void alSourcei(uint sid, int param, int @value); 
+        internal static extern void alSourcei(uint sid, int param, int value); 
         [DllImport("openal64")]
         internal static extern void alSource3i(uint sid, int param, int value1, int value2, int value3);
         [DllImport("openal64")]
         internal static extern void alSourceiv(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport("openal64")]
-        internal static extern void alGetSourcef(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] @value);
+        internal static extern void alGetSourcef(uint sid, int param, out float value);
         [DllImport("openal64")]
-        internal static extern void alGetSource3f(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] value1, [MarshalAs(UnmanagedType.LPArray)] float[] value2, [MarshalAs(UnmanagedType.LPArray)] float[] value3);
+        internal static extern void alGetSource3f(uint sid, int param, out float value1, out float value2, out float value3);
         [DllImport("openal64")]
         internal static extern void alGetSourcefv(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] values);
         [DllImport("openal64")]
-        internal static extern void alGetSourcei(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] @value);
+        internal static extern void alGetSourcei(uint sid, int param, out int value);
         [DllImport("openal64")]
-        internal static extern void alGetSource3i(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] value1, [MarshalAs(UnmanagedType.LPArray)] int[] value2, [MarshalAs(UnmanagedType.LPArray)] int[] value3);
+        internal static extern void alGetSource3i(uint sid, int param, out int value1, out int value2, out int value3);
         [DllImport("openal64")]
         internal static extern void alGetSourceiv(uint sid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport("openal64")]
@@ -118,35 +118,35 @@ namespace Pencil.Gaming {
         [DllImport("openal64")]
         internal static extern void alBufferData(uint bid, int format, IntPtr data, int size, int freq);
         [DllImport("openal64")]
-        internal static extern void alBufferf(uint bid, int param, float @value);
+        internal static extern void alBufferf(uint bid, int param, float value);
         [DllImport("openal64")]
         internal static extern void alBuffer3f(uint bid, int param, float value1, float value2, float value3);
         [DllImport("openal64")]
         internal static extern void alBufferfv(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] values);
         [DllImport("openal64")]
-        internal static extern void alBufferi(uint bid, int param, int @value);
+        internal static extern void alBufferi(uint bid, int param, int value);
         [DllImport("openal64")]
         internal static extern void alBuffer3i(uint bid, int param, int value1, int value2, int value3);
         [DllImport("openal64")]
         internal static extern void alBufferiv(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport("openal64")]
-        internal static extern void alGetBufferf(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] @value);
+        internal static extern void alGetBufferf(uint bid, int param, out float value);
         [DllImport("openal64")]
-        internal static extern void alGetBuffer3f(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] value1, [MarshalAs(UnmanagedType.LPArray)] float[] value2, [MarshalAs(UnmanagedType.LPArray)] float[] value3);
+        internal static extern void alGetBuffer3f(uint bid, int param, out float value1, out float value2, out float value3);
         [DllImport("openal64")]
         internal static extern void alGetBufferfv(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] float[] values);
         [DllImport("openal64")]
-        internal static extern void alGetBufferi(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] @value);
+        internal static extern void alGetBufferi(uint bid, int param, out int value);
         [DllImport("openal64")]
-        internal static extern void alGetBuffer3i(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] value1, [MarshalAs(UnmanagedType.LPArray)] int[] value2, [MarshalAs(UnmanagedType.LPArray)] int[] value3);
+        internal static extern void alGetBuffer3i(uint bid, int param, out int value1, out int value2, out int value3);
         [DllImport("openal64")]
         internal static extern void alGetBufferiv(uint bid, int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport("openal64")]
-        internal static extern void alDopplerFactor(float @value);
+        internal static extern void alDopplerFactor(float value);
         [DllImport("openal64")]
-        internal static extern void alDopplerVelocity(float @value);
+        internal static extern void alDopplerVelocity(float value);
         [DllImport("openal64")]
-        internal static extern void alSpeedOfSound(float @value);
+        internal static extern void alSpeedOfSound(float value);
         [DllImport("openal64")]
         internal static extern void alDistanceModel(int distanceModel);
     }

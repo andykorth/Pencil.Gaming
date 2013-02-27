@@ -2,166 +2,226 @@ using System;
 
 namespace Pencil.Gaming {
     public static class Al {
-        internal static void Enable(int capability) {
+        public static void Enable(int capability) {
             AlDelegates.alEnable(capability);
         }
-        internal static void Disable(int capability) {
+        public static void Disable(int capability) {
             AlDelegates.alDisable(capability);
         } 
-        internal static bool IsEnabled(int capability) {
+        public static bool IsEnabled(int capability) {
             return AlDelegates.alIsEnabled(capability);
         } 
-        internal static unsafe string GetString(int param) {
+        public static unsafe string GetString(int param) {
             sbyte * bptr = AlDelegates.alGetString(param);
             return new string(bptr);
         }
-        internal static void GetBooleanv(int param, bool[] data) {
+        public static void GetBooleanv(int param, bool[] data) {
             AlDelegates.alGetBooleanv(param, data);
         }
-        internal static void GetIntegerv(int param, int[] data) {
+        public static void GetIntegerv(int param, int[] data) {
             AlDelegates.alGetIntegerv(param, data);
         }
-        internal static void GetFloatv(int param, float[] data) {
+        public static void GetFloatv(int param, float[] data) {
             AlDelegates.alGetFloatv(param, data);
         }
-        internal static void GetDoublev(int param, double[] data) {
+        public static void GetDoublev(int param, double[] data) {
             AlDelegates.alGetDoublev(param, data);
         }
-        internal static bool GetBoolean(int param) {
+        public static bool GetBoolean(int param) {
             return AlDelegates.alGetBoolean(param);
         }
-        internal static int GetInteger(int param) {
+        public static int GetInteger(int param) {
             return AlDelegates.alGetInteger(param);
         }
-        internal static float GetFloat(int param) {
+        public static float GetFloat(int param) {
             return AlDelegates.alGetFloat(param);
         }
-        internal static double GetDouble(int param) {
+        public static double GetDouble(int param) {
             return AlDelegates.alGetDouble(param);
         }
-        internal static int GetError() {
+        public static int GetError() {
             return AlDelegates.alGetError();
         }
-        /*internal static bool IsExtensionPresent(string extname) {
+        public static bool IsExtensionPresent(string extname) {
+            return AlDelegates.alIsExtensionPresent(extname);
         }
-        internal static IntPtr GetProcAddress(string fname) {
+        public static IntPtr GetProcAddress(string fname) {
+            return AlDelegates.alGetProcAddress(fname);
         }
-        internal static int GetEnumValue(string ename) {
+        public static int GetEnumValue(string ename) {
+            return AlDelegates.alGetEnumValue(ename);
         }
-        internal static void Listenerf(int param, float @value) {
+        public static void Listenerf(int param, float value) {
+            AlDelegates.alListenerf(param, value);
         }
-        internal static void Listener3f(int param, float value1, float value2, float value3) {
+        public static void Listener3f(int param, float value1, float value2, float value3) {
+            AlDelegates.alListener3f(param, value1, value2, value3);
         }
-        internal static void Listenerfv(int param, float[] values) {
+        public static void Listenerfv(int param, float[] values) {
+            AlDelegates.alListenerfv(param, values);
         } 
-        internal static void Listeneri(int param, int @value) {
+        public static void Listeneri(int param, int value) {
+            AlDelegates.alListeneri(param, value);
         }
-        internal static void Listener3i(int param, int value1, int value2, int value3) {
+        public static void Listener3i(int param, int value1, int value2, int value3) {
+            AlDelegates.alListener3i(param, value1, value2, value3);
         }
-        internal static void Listeneriv(int param, int[] values) {
+        public static void Listeneriv(int param, int[] values) {
+            AlDelegates.alListeneriv(param, values);
         }
-        internal static void GetListenerf(int param, float[] @value) {
+        public static void GetListenerf(int param, out float value) {
+            AlDelegates.alGetListenerf(param, out value);
         }
-        internal static void GetListener3f(int param, float[]value1, float[]value2, float[]value3) {
+        public static void GetListener3f(int param, out float value1, out float value2, out float value3) {
+            AlDelegates.alGetListener3f(param, out value1, out value2, out value3);
         }
-        internal static void GetListenerfv(int param, float[] values) {
+        public static void GetListenerfv(int param, float[] values) {
+            AlDelegates.alGetListenerfv(param, values);
         }
-        internal static void GetListeneri(int param, int[] @value) {
+        public static void GetListeneri(int param, out int value) {
+            AlDelegates.alGetListeneri(param, out value);
         }
-        internal static void GetListener3i(int param, int[]value1, int[]value2, int[]value3) {
+        public static void GetListener3i(int param, out int value1, out int value2, out int value3) {
+            AlDelegates.alGetListener3i(param, out value1, out value2, out value3);
         }
-        internal static void GetListeneriv(int param, int[] values) {
+        public static void GetListeneriv(int param, int[] values) {
+            AlDelegates.alGetListeneriv(param, values);
         }
-        internal static void GenSources(int n, uint[] sources) {
+        public static void GenSources(int n, uint[] sources) {
+            AlDelegates.alGenSources(n, sources);
         } 
-        internal static void DeleteSources(int n, uint[] sources) {
+        public static void DeleteSources(int n, uint[] sources) {
+            AlDelegates.alDeleteSources(n, sources);
         }
-        internal static bool IsSource(uint sid) {
+        public static bool IsSource(uint sid) {
+            return AlDelegates.alIsSource(sid);
         } 
-        internal static void Sourcef(uint sid, int param, float @value) {
+        public static void Sourcef(uint sid, int param, float value) {
+            AlDelegates.alSourcef(sid, param, value);
         } 
-        internal static void Source3f(uint sid, int param, float value1, float value2, float value3) {
+        public static void Source3f(uint sid, int param, float value1, float value2, float value3) {
+            AlDelegates.alSource3f(sid, param, value1, value2, value3);
         }
-        internal static void Sourcefv(uint sid, int param, float[] values) {
+        public static void Sourcefv(uint sid, int param, float[] values) {
+            AlDelegates.alSourcefv(sid, param, values);
         } 
-        internal static void Sourcei(uint sid, int param, int @value) {
+        public static void Sourcei(uint sid, int param, int value) {
+            AlDelegates.alSourcei(sid, param, value);
         } 
-        internal static void Source3i(uint sid, int param, int value1, int value2, int value3) {
+        public static void Source3i(uint sid, int param, int value1, int value2, int value3) {
+            AlDelegates.alSource3i(sid, param, value1, value2, value3);
         }
-        internal static void Sourceiv(uint sid, int param, int[] values) {
+        public static void Sourceiv(uint sid, int param, int[] values) {
+            AlDelegates.alSourceiv(sid, param, values);
         }
-        internal static void GetSourcef(uint sid, int param, float[] @value) {
+        public static void GetSourcef(uint sid, int param, out float value) {
+            AlDelegates.alGetSourcef(sid, param, out value);
         }
-        internal static void GetSource3f(uint sid, int param, float[] value1, float[] value2, float[] value3) {
+        public static void GetSource3f(uint sid, int param, out float value1, out float value2, out float value3) {
+            AlDelegates.alGetSource3f(sid, param, out value1, out value2, out value3);
         }
-        internal static void GetSourcefv(uint sid, int param, float[] values) {
+        public static void GetSourcefv(uint sid, int param, float[] values) {
+            AlDelegates.alGetSourcefv(sid, param, values);
         }
-        internal static void GetSourcei(uint sid, int param, int[] @value) {
+        public static void GetSourcei(uint sid, int param, out int value) {
+            AlDelegates.alGetSourcei(sid, param, out value);
         }
-        internal static void GetSource3i(uint sid, int param, int[] value1, int[] value2, int[] value3) {
+        public static void GetSource3i(uint sid, int param, out int value1, out int value2, out int value3) {
+            AlDelegates.alGetSource3i(sid, param, out value1, out value2, out value3);
         }
-        internal static void GetSourceiv(uint sid, int param, int[] values) {
+        public static void GetSourceiv(uint sid, int param, int[] values) {
+            AlDelegates.alGetSourceiv(sid, param, values);
         }
-        internal static void SourcePlayv(int ns, uint[]sids) {
+        public static void SourcePlayv(int ns, uint[]sids) {
+            AlDelegates.alSourcePlayv(ns, sids);
         }
-        internal static void SourceStopv(int ns, uint[]sids) {
+        public static void SourceStopv(int ns, uint[]sids) {
+            AlDelegates.alSourceStopv(ns, sids);
         }
-        internal static void SourceRewindv(int ns, uint[]sids) {
+        public static void SourceRewindv(int ns, uint[]sids) {
+            AlDelegates.alSourceRewindv(ns, sids);
         }
-        internal static void SourcePausev(int ns, uint[]sids) {
+        public static void SourcePausev(int ns, uint[]sids) {
+            AlDelegates.alSourcePausev(ns, sids);
         }
-        internal static void SourcePlay(uint sid) {
+        public static void SourcePlay(uint sid) {
+            AlDelegates.alSourcePlay(sid);
         }
-        internal static void SourceStop(uint sid) {
+        public static void SourceStop(uint sid) {
+            AlDelegates.alSourceStop(sid);
         }
-        internal static void SourceRewind(uint sid) {
+        public static void SourceRewind(uint sid) {
+            AlDelegates.alSourceRewind(sid);
         }
-        internal static void SourcePause(uint sid) {
+        public static void SourcePause(uint sid) {
+            AlDelegates.alSourcePause(sid);
         }
-        internal static void SourceQueueBuffers(uint sid, int numEntries, uint[]bids) {
+        public static void SourceQueueBuffers(uint sid, int numEntries, uint[]bids) {
+            AlDelegates.alSourceQueueBuffers(sid, numEntries, bids);
         }
-        internal static void SourceUnqueueBuffers(uint sid, int numEntries, uint[]bids) {
+        public static void SourceUnqueueBuffers(uint sid, int numEntries, uint[]bids) {
+            AlDelegates.alSourceUnqueueBuffers(sid, numEntries, bids);
         }
-        internal static void GenBuffers(int n, uint[] buffers) {
+        public static void GenBuffers(int n, uint[] buffers) {
+            AlDelegates.alGenBuffers(n, buffers);
         }
-        internal static void DeleteBuffers(int n, uint[] buffers) {
+        public static void DeleteBuffers(int n, uint[] buffers) {
+            AlDelegates.alDeleteBuffers(n, buffers);
         }
-        internal static bool IsBuffer(uint bid) {
+        public static bool IsBuffer(uint bid) {
+            return AlDelegates.alIsBuffer(bid);
         }
-        internal static void BufferData(uint bid, int format, IntPtr data, int size, int freq) {
+        public static void BufferData(uint bid, int format, IntPtr data, int size, int freq) {
+            AlDelegates.alBufferData(bid, format, data, size, freq);
         }
-        internal static void Bufferf(uint bid, int param, float @value) {
+        public static void Bufferf(uint bid, int param, float value) {
+            AlDelegates.alBufferf(bid, param, value);
         }
-        internal static void Buffer3f(uint bid, int param, float value1, float value2, float value3) {
+        public static void Buffer3f(uint bid, int param, float value1, float value2, float value3) {
+            AlDelegates.alBuffer3f(bid, param, value1, value2, value3);
         }
-        internal static void Bufferfv(uint bid, int param, float[] values) {
+        public static void Bufferfv(uint bid, int param, float[] values) {
+            AlDelegates.alBufferfv(bid, param, values);
         }
-        internal static void Bufferi(uint bid, int param, int @value) {
+        public static void Bufferi(uint bid, int param, int value) {
+            AlDelegates.alBufferi(bid, param, value);
         }
-        internal static void Buffer3i(uint bid, int param, int value1, int value2, int value3) {
+        public static void Buffer3i(uint bid, int param, int value1, int value2, int value3) {
+            AlDelegates.alBuffer3i(bid, param, value1, value2, value3);
         }
-        internal static void Bufferiv(uint bid, int param, int[] values) {
+        public static void Bufferiv(uint bid, int param, int[] values) {
+            AlDelegates.alBufferiv(bid, param, values);
         }
-        internal static void GetBufferf(uint bid, int param, float[] @value) {
+        public static void GetBufferf(uint bid, int param, out float value) {
+            AlDelegates.alGetBufferf(bid, param, out value);
         }
-        internal static void GetBuffer3f(uint bid, int param, float[] value1, float[] value2, float[] value3) {
+        public static void GetBuffer3f(uint bid, int param, out float value1, out float value2, out float value3) {
+            AlDelegates.alGetBuffer3f(bid, param, out value1, out value2, out value3);
         }
-        internal static void GetBufferfv(uint bid, int param, float[] values) {
+        public static void GetBufferfv(uint bid, int param, float[] values) {
+            AlDelegates.alGetBufferfv(bid, param, values);
         }
-        internal static void GetBufferi(uint bid, int param, int[] @value) {
+        public static void GetBufferi(uint bid, int param, out int value) {
+            AlDelegates.alGetBufferi(bid, param, out value);
         }
-        internal static void GetBuffer3i(uint bid, int param, int[] value1, int[] value2, int[] value3) {
+        public static void GetBuffer3i(uint bid, int param, out int value1, out int value2, out int value3) {
+            AlDelegates.alGetBuffer3i(bid, param, out value1, out value2, out value3);
         }
-        internal static void GetBufferiv(uint bid, int param, int[] values) {
+        public static void GetBufferiv(uint bid, int param, int[] values) {
+            AlDelegates.alGetBufferiv(bid, param, values);
         }
-        internal static void DopplerFactor(float @value) {
+        public static void DopplerFactor(float value) {
+            AlDelegates.alDopplerFactor(value);
         }
-        internal static void DopplerVelocity(float @value) {
+        public static void DopplerVelocity(float value) {
+            AlDelegates.alDopplerVelocity(value);
         }
-        internal static void SpeedOfSound(float @value) {
+        public static void SpeedOfSound(float value) {
+            AlDelegates.alSpeedOfSound(value);
         }
-        internal static void DistanceModel(int distanceModel) {
-        }*/
+        public static void DistanceModel(int distanceModel) {
+            AlDelegates.alDistanceModel(distanceModel);
+        }
     }
 }
 

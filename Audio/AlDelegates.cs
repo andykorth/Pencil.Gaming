@@ -1,8 +1,19 @@
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming {
     public static class AlDelegates {
+        static AlDelegates() {
+            Type alInterop = Environment.Is64BitProcess ? typeof(Al64) : typeof(Al32);
+            FieldInfo[] fields = typeof(AlDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+            foreach (FieldInfo fi in fields) {
+                MethodInfo mi = alInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
+                fi.SetValue(null, function);
+            }
+        }
+
         internal delegate void Enable(int capability);
         internal delegate void Disable(int capability); 
         internal delegate bool IsEnabled(int capability); 
@@ -19,32 +30,32 @@ namespace Pencil.Gaming {
         internal delegate bool IsExtensionPresent([MarshalAs(UnmanagedType.LPStr)] string extname);
         internal delegate IntPtr GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string fname);
         internal delegate int GetEnumValue([MarshalAs(UnmanagedType.LPStr)] string ename);
-        internal delegate void Listenerf(int param,float @value);
+        internal delegate void Listenerf(int param,float value);
         internal delegate void Listener3f(int param,float value1,float value2,float value3);
         internal delegate void Listenerfv(int param,[MarshalAs(UnmanagedType.LPArray)] float[] values); 
-        internal delegate void Listeneri(int param,int @value);
+        internal delegate void Listeneri(int param,int value);
         internal delegate void Listener3i(int param,int value1,int value2,int value3);
         internal delegate void Listeneriv(int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
-        internal delegate void GetListenerf(int param,[MarshalAs(UnmanagedType.LPArray)] float[] @value);
-        internal delegate void GetListener3f(int param,[MarshalAs(UnmanagedType.LPArray)] float[]value1,[MarshalAs(UnmanagedType.LPArray)] float[]value2,[MarshalAs(UnmanagedType.LPArray)] float[]value3);
+        internal delegate void GetListenerf(int param,out float value);
+        internal delegate void GetListener3f(int param,out float value1,out float value2,out float value3);
         internal delegate void GetListenerfv(int param,[MarshalAs(UnmanagedType.LPArray)] float[] values);
-        internal delegate void GetListeneri(int param,[MarshalAs(UnmanagedType.LPArray)] int[] @value);
-        internal delegate void GetListener3i(int param,[MarshalAs(UnmanagedType.LPArray)] int[]value1,[MarshalAs(UnmanagedType.LPArray)] int[]value2,[MarshalAs(UnmanagedType.LPArray)] int[]value3);
+        internal delegate void GetListeneri(int param,out int value);
+        internal delegate void GetListener3i(int param,out int value1,out int value2,out int value3);
         internal delegate void GetListeneriv(int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
         internal delegate void GenSources(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] sources); 
         internal delegate void DeleteSources(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] sources);
         internal delegate bool IsSource(uint sid); 
-        internal delegate void Sourcef(uint sid,int param,float @value); 
+        internal delegate void Sourcef(uint sid,int param,float value); 
         internal delegate void Source3f(uint sid,int param,float value1,float value2,float value3);
         internal delegate void Sourcefv(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] values); 
-        internal delegate void Sourcei(uint sid,int param,int @value); 
+        internal delegate void Sourcei(uint sid,int param,int value); 
         internal delegate void Source3i(uint sid,int param,int value1,int value2,int value3);
         internal delegate void Sourceiv(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
-        internal delegate void GetSourcef(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] @value);
-        internal delegate void GetSource3f(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] value1,[MarshalAs(UnmanagedType.LPArray)] float[] value2,[MarshalAs(UnmanagedType.LPArray)] float[] value3);
+        internal delegate void GetSourcef(uint sid,int param,out float value);
+        internal delegate void GetSource3f(uint sid,int param,out float value1,out float value2,out float value3);
         internal delegate void GetSourcefv(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] values);
-        internal delegate void GetSourcei(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] @value);
-        internal delegate void GetSource3i(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] value1,[MarshalAs(UnmanagedType.LPArray)] int[] value2,[MarshalAs(UnmanagedType.LPArray)] int[] value3);
+        internal delegate void GetSourcei(uint sid,int param,out int value);
+        internal delegate void GetSource3i(uint sid,int param,out int value1,out int value2,out int value3);
         internal delegate void GetSourceiv(uint sid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
         internal delegate void SourcePlayv(int ns,[MarshalAs(UnmanagedType.LPArray)] uint[]sids);
         internal delegate void SourceStopv(int ns,[MarshalAs(UnmanagedType.LPArray)] uint[]sids);
@@ -60,21 +71,21 @@ namespace Pencil.Gaming {
         internal delegate void DeleteBuffers(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] buffers);
         internal delegate bool IsBuffer(uint bid);
         internal delegate void BufferData(uint bid,int format,IntPtr data,int size,int freq);
-        internal delegate void Bufferf(uint bid,int param,float @value);
+        internal delegate void Bufferf(uint bid,int param,float value);
         internal delegate void Buffer3f(uint bid,int param,float value1,float value2,float value3);
         internal delegate void Bufferfv(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] values);
-        internal delegate void Bufferi(uint bid,int param,int @value);
+        internal delegate void Bufferi(uint bid,int param,int value);
         internal delegate void Buffer3i(uint bid,int param,int value1,int value2,int value3);
         internal delegate void Bufferiv(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
-        internal delegate void GetBufferf(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] @value);
-        internal delegate void GetBuffer3f(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] value1,[MarshalAs(UnmanagedType.LPArray)] float[] value2,[MarshalAs(UnmanagedType.LPArray)] float[] value3);
+        internal delegate void GetBufferf(uint bid,int param,out float value);
+        internal delegate void GetBuffer3f(uint bid,int param,out float value1,out float value2,out float value3);
         internal delegate void GetBufferfv(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] float[] values);
-        internal delegate void GetBufferi(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] @value);
-        internal delegate void GetBuffer3i(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] value1,[MarshalAs(UnmanagedType.LPArray)] int[] value2,[MarshalAs(UnmanagedType.LPArray)] int[] value3);
+        internal delegate void GetBufferi(uint bid,int param,out int value);
+        internal delegate void GetBuffer3i(uint bid,int param,out int value1,out int value2,out int value3);
         internal delegate void GetBufferiv(uint bid,int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
-        internal delegate void DopplerFactor(float @value);
-        internal delegate void DopplerVelocity(float @value);
-        internal delegate void SpeedOfSound(float @value);
+        internal delegate void DopplerFactor(float value);
+        internal delegate void DopplerVelocity(float value);
+        internal delegate void SpeedOfSound(float value);
         internal delegate void DistanceModel(int distanceModel);
 
         internal static Enable alEnable;
