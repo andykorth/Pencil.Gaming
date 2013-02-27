@@ -69,6 +69,7 @@
     <Compile Include="Audio\Al.cs" />
     <Compile Include="Audio\Alc32.cs" />
     <Compile Include="Audio\Alc64.cs" />
+    <Compile Include="Audio\AlUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

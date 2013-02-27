@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Pencil.Gaming.Audio {
-    public static class Al {
+    public static partial class Al {
         public static class Alc {
             private static IntPtr alcDeviceHandle;
             private static IntPtr alcContextHandle;
