@@ -15,11 +15,31 @@ namespace Pencil.Gaming {
             internal static int alphaBitsBackup;
             internal static int depthBitsBackup;
             internal static int stencilBitsBackup;
+            private static int prevWndWidth = -1;
+            private static int prevWndHeight = -1;
+
+            public delegate void Resize(int width,int height);
+
+            // TODO: Add proper implementation through events
+            public static bool HasWindowSizeChanged(out int width, out int height) {
+                Glfw.GetWindowSize(out width, out height);
+                bool result = (width != prevWndWidth || height != prevWndHeight);
+                prevWndWidth = width;
+                prevWndHeight = height;
+                return result;
+            }
+
+            // TODO: Add PROPER implementation through events
+            public static void RunIfWindowSizeChanged(Resize rsEvent) {
+                int width, height;
+                if (HasWindowSizeChanged(out width, out height)) {
+                    rsEvent(width, height);
+                }
+            }
 
             public static void LoadGLFunctions() {
                 FieldInfo[] fields = typeof(Gl.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
                 foreach (FieldInfo field in fields) {
-                    //Delegate function = FunctionLoaderInstance(field.Name, field.FieldType);
                     IntPtr procAddress = Glfw.GetProcAddress(field.Name);
                     if (procAddress != IntPtr.Zero) {
                         Delegate function = Marshal.GetDelegateForFunctionPointer(procAddress, field.FieldType);

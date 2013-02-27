@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Pencil.Gaming {
+namespace Pencil.Gaming.Audio {
     public static class AlDelegates {
         static AlDelegates() {
             Type alInterop = Environment.Is64BitProcess ? typeof(Al64) : typeof(Al32);
