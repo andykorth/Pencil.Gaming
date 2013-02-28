@@ -25,7 +25,7 @@ namespace Pencil.Gaming.Audio {
                     out short bitsPerSample,
                     out int dataSize) {
 
-                    byte[] sound = File.ReadAllBytes("sound.wav");
+                    byte[] sound = File.ReadAllBytes(file);
 
                     short channels;
 
