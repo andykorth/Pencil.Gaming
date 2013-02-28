@@ -46,7 +46,7 @@ namespace Pencil.Gaming {
                     if (procAddress != IntPtr.Zero) {
                         Delegate function = Marshal.GetDelegateForFunctionPointer(procAddress, field.FieldType);
                         field.SetValue(null, function);
-                    } else {
+                    } else if (isWindows) {
                         // This is necessary for windows
                         // wglGetProcAddress doesn't load core functions
                         MethodInfo minfo = typeof(GlCore).GetMethod(field.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
