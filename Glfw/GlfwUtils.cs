@@ -40,6 +40,7 @@ namespace Pencil.Gaming {
 
             public static void LoadGLFunctions() {
                 FieldInfo[] fields = typeof(Gl.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                bool isWindows = (Environment.OSVersion.Platform != PlatformID.Unix && Environment.OSVersion.Platform != PlatformID.MacOSX);
                 foreach (FieldInfo field in fields) {
                     IntPtr procAddress = Glfw.GetProcAddress(field.Name);
                     if (procAddress != IntPtr.Zero) {

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming.Audio {
     internal static class Alc32 {
-        private const string lib = "openal32";
+        private const string lib = "natives32/openal32.dll";
 
         [DllImport(Alc32.lib)]
         internal static extern /*ALCcontext **/ IntPtr alcCreateContext(/*ref ALCdevice*/IntPtr device, [MarshalAs(UnmanagedType.LPArray)] int[] attrlist);

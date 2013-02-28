@@ -78,24 +78,41 @@
     <Folder Include="Graphics\" />
     <Folder Include="Glfw\" />
     <Folder Include="Audio\" />
+    <Folder Include="natives64\" />
+    <Folder Include="natives32\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="libglfw64.so">
+    <None Include="Pencil.Gaming.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="libglfw32.so">
+    <None Include="natives64\glfw.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="libopenal32.so">
+    <None Include="natives64\libglfw.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="libopenal64.so">
+    <None Include="natives64\libopenal.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="glfw64.dll">
+    <None Include="natives32\glfw.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="glfw32.dll">
+    <None Include="natives32\libglfw.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32\openal32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32\wrap_oal.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64\wrap_oal.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64\openal32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
