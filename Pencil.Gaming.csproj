@@ -70,12 +70,12 @@
     <Compile Include="Audio\Alc64.cs" />
     <Compile Include="Audio\AlUtils.cs" />
     <Compile Include="Audio\AlEnums.cs" />
+    <Compile Include="Graphics\GlCore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Math\" />
     <Folder Include="Graphics\" />
-    <Folder Include="Natives\" />
     <Folder Include="Glfw\" />
     <Folder Include="Audio\" />
   </ItemGroup>

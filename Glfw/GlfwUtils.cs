@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Pencil.Gaming.Graphics;
@@ -44,6 +45,14 @@ namespace Pencil.Gaming {
                     if (procAddress != IntPtr.Zero) {
                         Delegate function = Marshal.GetDelegateForFunctionPointer(procAddress, field.FieldType);
                         field.SetValue(null, function);
+                    } else {
+                        // This is necessary for windows
+                        // wglGetProcAddress doesn't load core functions
+                        MethodInfo minfo = typeof(GlCore).GetMethod(field.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                        if (minfo != null) {
+                            Delegate function = Delegate.CreateDelegate(field.FieldType, minfo);
+                            field.SetValue(null, function);
+                        }
                     }
                 }
             }
