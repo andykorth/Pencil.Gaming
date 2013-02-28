@@ -8,6 +8,8 @@
 
 #region --- Using Directives ---
 
+#define MINIMAL
+
 using System;
 using System.Collections.Generic;
 #if !MINIMAL
@@ -61,13 +63,13 @@ namespace Pencil.Gaming.Graphics {
 
         #region public static void Color[34]() overloads
 
-        public static void Color3(Color color) {
-            Gl.Color3(color.R, color.G, color.B);
-        }
-
-        public static void Color4(Color color) {
-            Gl.Color4(color.R, color.G, color.B, color.A);
-        }
+//        public static void Color3(Color color) {
+//            Gl.Color3(color.R, color.G, color.B);
+//        }
+//
+//        public static void Color4(Color color) {
+//            Gl.Color4(color.R, color.G, color.B, color.A);
+//        }
 
         public static void Color3(Vector3 color) {
             Gl.Color3(color.X, color.Y, color.Z);
@@ -85,9 +87,9 @@ namespace Pencil.Gaming.Graphics {
 
         #region public static void ClearColor() overloads
 
-        public static void ClearColor(Color color) {
-            Gl.ClearColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
-        }
+//        public static void ClearColor(Color color) {
+//            Gl.ClearColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
+//        }
 
         public static void ClearColor(Color4 color) {
             Gl.ClearColor(color.R, color.G, color.B, color.A);
@@ -97,9 +99,9 @@ namespace Pencil.Gaming.Graphics {
 
         #region public static void BlendColor() overloads
 
-        public static void BlendColor(Color color) {
-            Gl.BlendColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
-        }
+//        public static void BlendColor(Color color) {
+//            Gl.BlendColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
+//        }
 
         public static void BlendColor(Color4 color) {
             Gl.BlendColor(color.R, color.G, color.B, color.A);
@@ -451,21 +453,21 @@ namespace Pencil.Gaming.Graphics {
 
         #region Rect
 
-        public static void Rect(RectangleF rect) {
-            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
-        }
-
-        public static void Rect(Rectangle rect) {
-            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
-        }
-
-        public static void Rect(ref RectangleF rect) {
-            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
-        }
-
-        public static void Rect(ref Rectangle rect) {
-            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
-        }
+//        public static void Rect(RectangleF rect) {
+//            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//        }
+//
+//        public static void Rect(Rectangle rect) {
+//            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//        }
+//
+//        public static void Rect(ref RectangleF rect) {
+//            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//        }
+//
+//        public static void Rect(ref Rectangle rect) {
+//            Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//        }
 
         #endregion
 
@@ -853,17 +855,17 @@ namespace Pencil.Gaming.Graphics {
 
         #region Viewport
 
-        public static void Viewport(Size size) {
-            Gl.Viewport(0, 0, size.Width, size.Height);
-        }
-
-        public static void Viewport(Point location, Size size) {
-            Gl.Viewport(location.X, location.Y, size.Width, size.Height);
-        }
-
-        public static void Viewport(Rectangle rectangle) {
-            Gl.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
-        }
+//        public static void Viewport(Size size) {
+//            Gl.Viewport(0, 0, size.Width, size.Height);
+//        }
+//
+//        public static void Viewport(Point location, Size size) {
+//            Gl.Viewport(location.X, location.Y, size.Width, size.Height);
+//        }
+//
+//        public static void Viewport(Rectangle rectangle) {
+//            Gl.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+//        }
 #if NO_SYSDRAWING
         public static void Viewport(OpenTK.Point location, OpenTK.Size size)
         {
@@ -879,12 +881,12 @@ namespace Pencil.Gaming.Graphics {
 
         #region TexEnv
 
-        public static void TexEnv(TextureEnvTarget target, TextureEnvParameter pname, Color color) {
-            Color4 c = new Color4(color.R, color.G, color.B, color.A);
-            unsafe {
-                TexEnv(target, pname, &c.R);
-            }
-        }
+//        public static void TexEnv(TextureEnvTarget target, TextureEnvParameter pname, Color color) {
+//            Color4 c = new Color4(color.R, color.G, color.B, color.A);
+//            unsafe {
+//                TexEnv(target, pname, &c.R);
+//            }
+//        }
 
         public static void TexEnv(TextureEnvTarget target, TextureEnvParameter pname, Color4 color) {
             unsafe {

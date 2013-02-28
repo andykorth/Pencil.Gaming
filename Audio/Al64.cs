@@ -64,8 +64,12 @@ namespace Pencil.Gaming.Audio {
         internal static extern void alGetListeneriv(int param, [MarshalAs(UnmanagedType.LPArray)] int[] values);
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
         internal static extern void alGenSources(int n, [MarshalAs(UnmanagedType.LPArray)] uint[] sources); 
+        [DllImport(Al64.lib, CallingConvention = Al64.cconv, EntryPoint = "alGenSources")]
+        internal static extern void alGenSource(int n, out uint source); 
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
         internal static extern void alDeleteSources(int n, [MarshalAs(UnmanagedType.LPArray)] uint[] sources);
+        [DllImport(Al64.lib, CallingConvention = Al64.cconv, EntryPoint = "alDeleteSources")]
+        internal static extern void alDeleteSource(int n, ref uint sources);
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
         internal static extern bool alIsSource(uint sid); 
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
@@ -114,8 +118,12 @@ namespace Pencil.Gaming.Audio {
         internal static extern void alSourceUnqueueBuffers(uint sid, int numEntries, [MarshalAs(UnmanagedType.LPArray)] uint[]bids);
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
         internal static extern void alGenBuffers(int n, [MarshalAs(UnmanagedType.LPArray)] uint[] buffers);
+        [DllImport(Al64.lib, CallingConvention = Al64.cconv, EntryPoint = "alGenBuffers")]
+        internal static extern void alGenBuffer(int n, out uint buffer);
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
         internal static extern void alDeleteBuffers(int n, [MarshalAs(UnmanagedType.LPArray)] uint[] buffers);
+        [DllImport(Al64.lib, CallingConvention = Al64.cconv, EntryPoint = "alDeleteBuffers")]
+        internal static extern void alDeleteBuffer(int n, ref uint buffer);
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]
         internal static extern bool alIsBuffer(uint bid);
         [DllImport(Al64.lib, CallingConvention = Al64.cconv)]

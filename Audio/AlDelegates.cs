@@ -43,7 +43,9 @@ namespace Pencil.Gaming.Audio {
         internal delegate void GetListener3i(int param,out int value1,out int value2,out int value3);
         internal delegate void GetListeneriv(int param,[MarshalAs(UnmanagedType.LPArray)] int[] values);
         internal delegate void GenSources(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] sources); 
+        internal delegate void GenSource(int n,out uint source);
         internal delegate void DeleteSources(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] sources);
+        internal delegate void DeleteSource(int n,ref uint source);
         internal delegate bool IsSource(uint sid); 
         internal delegate void Sourcef(uint sid,int param,float value); 
         internal delegate void Source3f(uint sid,int param,float value1,float value2,float value3);
@@ -68,7 +70,9 @@ namespace Pencil.Gaming.Audio {
         internal delegate void SourceQueueBuffers(uint sid,int numEntries,[MarshalAs(UnmanagedType.LPArray)] uint[]bids);
         internal delegate void SourceUnqueueBuffers(uint sid,int numEntries,[MarshalAs(UnmanagedType.LPArray)] uint[]bids);
         internal delegate void GenBuffers(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] buffers);
+        internal delegate void GenBuffer(int n,out uint buffer);
         internal delegate void DeleteBuffers(int n,[MarshalAs(UnmanagedType.LPArray)] uint[] buffers);
+        internal delegate void DeleteBuffer(int n,ref uint buffer);
         internal delegate bool IsBuffer(uint bid);
         internal delegate void BufferData(uint bid,int format,IntPtr data,int size,int freq);
         internal delegate void Bufferf(uint bid,int param,float value);
@@ -117,7 +121,9 @@ namespace Pencil.Gaming.Audio {
         internal static GetListener3i alGetListener3i;
         internal static GetListeneriv alGetListeneriv;
         internal static GenSources alGenSources;
+        internal static GenSource alGenSource;
         internal static DeleteSources alDeleteSources;
+        internal static DeleteSource alDeleteSource;
         internal static IsSource alIsSource;
         internal static Sourcef alSourcef;
         internal static Source3f alSource3f;
@@ -142,7 +148,9 @@ namespace Pencil.Gaming.Audio {
         internal static SourceQueueBuffers alSourceQueueBuffers;
         internal static SourceUnqueueBuffers alSourceUnqueueBuffers;
         internal static GenBuffers alGenBuffers;
+        internal static GenBuffer alGenBuffer;
         internal static DeleteBuffers alDeleteBuffers;
+        internal static DeleteBuffer alDeleteBuffer;
         internal static IsBuffer alIsBuffer;
         internal static BufferData alBufferData;
         internal static Bufferf alBufferf;

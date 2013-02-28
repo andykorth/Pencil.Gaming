@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +69,7 @@
     <Compile Include="Audio\Alc32.cs" />
     <Compile Include="Audio\Alc64.cs" />
     <Compile Include="Audio\AlUtils.cs" />
+    <Compile Include="Audio\AlEnums.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

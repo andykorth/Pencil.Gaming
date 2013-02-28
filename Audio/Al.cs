@@ -71,39 +71,39 @@ namespace Pencil.Gaming.Audio {
             }
         }
 
-        public static void Enable(int capability) {
-            AlDelegates.alEnable(capability);
+        public static void Enable(AlCapability capability) {
+            AlDelegates.alEnable((int)capability);
         }
-        public static void Disable(int capability) {
-            AlDelegates.alDisable(capability);
+        public static void Disable(AlCapability capability) {
+            AlDelegates.alDisable((int)capability);
         } 
-        public static bool IsEnabled(int capability) {
-            return AlDelegates.alIsEnabled(capability);
+        public static bool IsEnabled(AlCapability capability) {
+            return AlDelegates.alIsEnabled((int)capability);
         } 
-        public static unsafe string GetString(int param) {
-            sbyte * bptr = AlDelegates.alGetString(param);
+        public static unsafe string GetString(AlGetString param) {
+            sbyte * bptr = AlDelegates.alGetString((int)param);
             return new string(bptr);
         }
-        public static void GetBoolean(int param, bool[] data) {
-            AlDelegates.alGetBooleanv(param, data);
+        public static void GetBoolean(AlGetInteger param, bool[] data) {
+            AlDelegates.alGetBooleanv((int)param, data);
         }
-        public static void GetInteger(int param, int[] data) {
-            AlDelegates.alGetIntegerv(param, data);
+        public static void GetInteger(AlGetInteger param, int[] data) {
+            AlDelegates.alGetIntegerv((int)param, data);
         }
-        public static void GetFloat(int param, float[] data) {
-            AlDelegates.alGetFloatv(param, data);
+        public static void GetFloat(AlGetFloat param, float[] data) {
+            AlDelegates.alGetFloatv((int)param, data);
         }
-        public static void GetDouble(int param, double[] data) {
-            AlDelegates.alGetDoublev(param, data);
+//        public static void GetDouble(int param, double[] data) {
+//            AlDelegates.alGetDoublev(param, data);
+//        }
+        public static bool GetBoolean(AlGetInteger param) {
+            return AlDelegates.alGetBoolean((int)param);
         }
-        public static bool GetBoolean(int param) {
-            return AlDelegates.alGetBoolean(param);
+        public static int GetInteger(AlGetInteger param) {
+            return AlDelegates.alGetInteger((int)param);
         }
-        public static int GetInteger(int param) {
-            return AlDelegates.alGetInteger(param);
-        }
-        public static float GetFloat(int param) {
-            return AlDelegates.alGetFloat(param);
+        public static float GetFloat(AlGetFloat param) {
+            return AlDelegates.alGetFloat((int)param);
         }
         public static double GetDouble(int param) {
             return AlDelegates.alGetDouble(param);
@@ -120,87 +120,101 @@ namespace Pencil.Gaming.Audio {
         public static int GetEnumValue(string ename) {
             return AlDelegates.alGetEnumValue(ename);
         }
-        public static void Listener(int param, float value) {
-            AlDelegates.alListenerf(param, value);
+        public static void Listener(AlListenerf param, float value) {
+            AlDelegates.alListenerf((int)param, value);
         }
-        public static void Listener(int param, float value1, float value2, float value3) {
-            AlDelegates.alListener3f(param, value1, value2, value3);
+        public static void Listener(AlListener3f param, float value1, float value2, float value3) {
+            AlDelegates.alListener3f((int)param, value1, value2, value3);
         }
-        public static void Listener(int param, float[] values) {
-            AlDelegates.alListenerfv(param, values);
+        public static void Listener(AlListenerfv param, float[] values) {
+            AlDelegates.alListenerfv((int)param, values);
         } 
-        public static void Listener(int param, int value) {
-            AlDelegates.alListeneri(param, value);
+//        public static void Listener(int param, int value) {
+//            AlDelegates.alListeneri(param, value);
+//        }
+//        public static void Listener(int param, int value1, int value2, int value3) {
+//            AlDelegates.alListener3i(param, value1, value2, value3);
+//        }
+//        public static void Listener(int param, int[] values) {
+//            AlDelegates.alListeneriv(param, values);
+//        }
+        public static void GetListener(AlListenerf param, out float value) {
+            AlDelegates.alGetListenerf((int)param, out value);
         }
-        public static void Listener(int param, int value1, int value2, int value3) {
-            AlDelegates.alListener3i(param, value1, value2, value3);
+        public static void GetListener(AlListener3f param, out float value1, out float value2, out float value3) {
+            AlDelegates.alGetListener3f((int)param, out value1, out value2, out value3);
         }
-        public static void Listener(int param, int[] values) {
-            AlDelegates.alListeneriv(param, values);
+        public static void GetListener(AlListenerfv param, float[] values) {
+            AlDelegates.alGetListenerfv((int)param, values);
         }
-        public static void GetListener(int param, out float value) {
-            AlDelegates.alGetListenerf(param, out value);
-        }
-        public static void GetListener(int param, out float value1, out float value2, out float value3) {
-            AlDelegates.alGetListener3f(param, out value1, out value2, out value3);
-        }
-        public static void GetListener(int param, float[] values) {
-            AlDelegates.alGetListenerfv(param, values);
-        }
-        public static void GetListener(int param, out int value) {
-            AlDelegates.alGetListeneri(param, out value);
-        }
-        public static void GetListener(int param, out int value1, out int value2, out int value3) {
-            AlDelegates.alGetListener3i(param, out value1, out value2, out value3);
-        }
-        public static void GetListener(int param, int[] values) {
-            AlDelegates.alGetListeneriv(param, values);
-        }
+//        public static void GetListener(int param, out int value) {
+//            AlDelegates.alGetListeneri(param, out value);
+//        }
+//        public static void GetListener(int param, out int value1, out int value2, out int value3) {
+//            AlDelegates.alGetListener3i(param, out value1, out value2, out value3);
+//        }
+//        public static void GetListener(int param, int[] values) {
+//            AlDelegates.alGetListeneriv(param, values);
+//        }
         public static void GenSources(int n, uint[] sources) {
             AlDelegates.alGenSources(n, sources);
         } 
+        public static void GenSources(int n, out uint source) {
+            AlDelegates.alGenSource(n, out source);
+        }
         public static void DeleteSources(int n, uint[] sources) {
             AlDelegates.alDeleteSources(n, sources);
+        }
+        public static void DeleteSources(int n, ref uint source) {
+            AlDelegates.alDeleteSource(n, ref source);
         }
         public static bool IsSource(uint sid) {
             return AlDelegates.alIsSource(sid);
         } 
-        public static void Source(uint sid, int param, float value) {
-            AlDelegates.alSourcef(sid, param, value);
+        public static void Source(uint sid, AlSourcef param, float value) {
+            AlDelegates.alSourcef(sid, (int)param, value);
         } 
-        public static void Source(uint sid, int param, float value1, float value2, float value3) {
-            AlDelegates.alSource3f(sid, param, value1, value2, value3);
+        public static void Source(uint sid, AlSource3f param, float value1, float value2, float value3) {
+            AlDelegates.alSource3f(sid, (int)param, value1, value2, value3);
         }
-        public static void Source(uint sid, int param, float[] values) {
-            AlDelegates.alSourcefv(sid, param, values);
+//        public static void Source(uint sid, int param, float[] values) {
+//            AlDelegates.alSourcefv(sid, param, values);
+//        } 
+        public static void Source(uint sid, AlSourcei param, int value) {
+            AlDelegates.alSourcei(sid, (int)param, value);
         } 
-        public static void Source(uint sid, int param, int value) {
-            AlDelegates.alSourcei(sid, param, value);
-        } 
-        public static void Source(uint sid, int param, int value1, int value2, int value3) {
-            AlDelegates.alSource3i(sid, param, value1, value2, value3);
+        public static void Source(uint sid, AlSource3i param, int value1, int value2, int value3) {
+            AlDelegates.alSource3i(sid, (int)param, value1, value2, value3);
         }
-        public static void Source(uint sid, int param, int[] values) {
-            AlDelegates.alSourceiv(sid, param, values);
+        public static void Source(uint sid, AlSourceb param, bool value) {
+            AlDelegates.alSourcei(sid, (int)param, value ? 1 : 0);
         }
-        public static void GetSource(uint sid, int param, out float value) {
-            AlDelegates.alGetSourcef(sid, param, out value);
+//        public static void Source(uint sid, int param, int[] values) {
+//            AlDelegates.alSourceiv(sid, param, values);
+//        }
+        public static void GetSource(uint sid, AlSourcef param, out float value) {
+            AlDelegates.alGetSourcef(sid, (int)param, out value);
         }
-        public static void GetSource(uint sid, int param, out float value1, out float value2, out float value3) {
-            AlDelegates.alGetSource3f(sid, param, out value1, out value2, out value3);
+        public static void GetSource(uint sid, AlSource3f param, out float value1, out float value2, out float value3) {
+            AlDelegates.alGetSource3f(sid, (int)param, out value1, out value2, out value3);
         }
-        public static void GetSource(uint sid, int param, float[] values) {
-            AlDelegates.alGetSourcefv(sid, param, values);
+//        public static void GetSource(uint sid, int param, float[] values) {
+//            AlDelegates.alGetSourcefv(sid, param, values);
+//        }
+        public static void GetSource(uint sid, AlSourcei param, out int value) {
+            AlDelegates.alGetSourcei(sid, (int)param, out value);
         }
-        public static void GetSource(uint sid, int param, out int value) {
-            AlDelegates.alGetSourcei(sid, param, out value);
+        public static void GetSource(uint sid, AlSource3i param, out int value1, out int value2, out int value3) {
+            AlDelegates.alGetSource3i(sid, (int)param, out value1, out value2, out value3);
         }
-        public static void GetSource(uint sid, int param, out int value1, out int value2, out int value3) {
-            AlDelegates.alGetSource3i(sid, param, out value1, out value2, out value3);
+        public static void GetSource(uint sid, AlSourceb param, out bool value) {
+            int ivalue;
+            AlDelegates.alGetSourcei(sid, (int)param, out ivalue);
+            value = (ivalue != 0);
         }
-        public static void GetSource(uint sid, int param, int[] values) {
-            AlDelegates.alGetSourceiv(sid, param, values);
-        }
+//        public static void GetSource(uint sid, int param, int[] values) {
+//            AlDelegates.alGetSourceiv(sid, param, values);
+//        }
         public static void SourcePlay(int ns, uint[]sids) {
             AlDelegates.alSourcePlayv(ns, sids);
         }
@@ -234,51 +248,57 @@ namespace Pencil.Gaming.Audio {
         public static void GenBuffers(int n, uint[] buffers) {
             AlDelegates.alGenBuffers(n, buffers);
         }
+        public static void GenBuffers(int n, out uint buffer) {
+            AlDelegates.alGenBuffer(n, out buffer);
+        }
         public static void DeleteBuffers(int n, uint[] buffers) {
             AlDelegates.alDeleteBuffers(n, buffers);
+        }
+        public static void DeleteBuffers(int n, ref uint buffer) {
+            AlDelegates.alDeleteBuffer(n, ref buffer);
         }
         public static bool IsBuffer(uint bid) {
             return AlDelegates.alIsBuffer(bid);
         }
-        public static void BufferData(uint bid, int format, IntPtr data, int size, int freq) {
-            AlDelegates.alBufferData(bid, format, data, size, freq);
+        public static void BufferData(uint bid, AlFormat format, IntPtr data, int size, int freq) {
+            AlDelegates.alBufferData(bid, (int)format, data, size, freq);
         }
-        public static void Buffer(uint bid, int param, float value) {
-            AlDelegates.alBufferf(bid, param, value);
+//        public static void Buffer(uint bid, int param, float value) {
+//            AlDelegates.alBufferf(bid, param, value);
+//        }
+//        public static void Buffer(uint bid, int param, float value1, float value2, float value3) {
+//            AlDelegates.alBuffer3f(bid, param, value1, value2, value3);
+//        }
+//        public static void Buffer(uint bid, int param, float[] values) {
+//            AlDelegates.alBufferfv(bid, param, values);
+//        }
+//        public static void Buffer(uint bid, int param, int value) {
+//            AlDelegates.alBufferi(bid, param, value);
+//        }
+//        public static void Buffer(uint bid, int param, int value1, int value2, int value3) {
+//            AlDelegates.alBuffer3i(bid, param, value1, value2, value3);
+//        }
+//        public static void Buffer(uint bid, int param, int[] values) {
+//            AlDelegates.alBufferiv(bid, param, values);
+//        }
+//        public static void GetBuffer(uint bid, int param, out float value) {
+//            AlDelegates.alGetBufferf(bid, param, out value);
+//        }
+//        public static void GetBuffer(uint bid, int param, out float value1, out float value2, out float value3) {
+//            AlDelegates.alGetBuffer3f(bid, param, out value1, out value2, out value3);
+//        }
+//        public static void GetBuffer(uint bid, int param, float[] values) {
+//            AlDelegates.alGetBufferfv(bid, param, values);
+//        }
+        public static void GetBuffer(uint bid, AlGetBufferi param, out int value) {
+            AlDelegates.alGetBufferi(bid, (int)param, out value);
         }
-        public static void Buffer(uint bid, int param, float value1, float value2, float value3) {
-            AlDelegates.alBuffer3f(bid, param, value1, value2, value3);
-        }
-        public static void Buffer(uint bid, int param, float[] values) {
-            AlDelegates.alBufferfv(bid, param, values);
-        }
-        public static void Buffer(uint bid, int param, int value) {
-            AlDelegates.alBufferi(bid, param, value);
-        }
-        public static void Buffer(uint bid, int param, int value1, int value2, int value3) {
-            AlDelegates.alBuffer3i(bid, param, value1, value2, value3);
-        }
-        public static void Buffer(uint bid, int param, int[] values) {
-            AlDelegates.alBufferiv(bid, param, values);
-        }
-        public static void GetBuffer(uint bid, int param, out float value) {
-            AlDelegates.alGetBufferf(bid, param, out value);
-        }
-        public static void GetBuffer(uint bid, int param, out float value1, out float value2, out float value3) {
-            AlDelegates.alGetBuffer3f(bid, param, out value1, out value2, out value3);
-        }
-        public static void GetBuffer(uint bid, int param, float[] values) {
-            AlDelegates.alGetBufferfv(bid, param, values);
-        }
-        public static void GetBuffer(uint bid, int param, out int value) {
-            AlDelegates.alGetBufferi(bid, param, out value);
-        }
-        public static void GetBuffer(uint bid, int param, out int value1, out int value2, out int value3) {
-            AlDelegates.alGetBuffer3i(bid, param, out value1, out value2, out value3);
-        }
-        public static void GetBuffer(uint bid, int param, int[] values) {
-            AlDelegates.alGetBufferiv(bid, param, values);
-        }
+//        public static void GetBuffer(uint bid, int param, out int value1, out int value2, out int value3) {
+//            AlDelegates.alGetBuffer3i(bid, param, out value1, out value2, out value3);
+//        }
+//        public static void GetBuffer(uint bid, int param, int[] values) {
+//            AlDelegates.alGetBufferiv(bid, param, values);
+//        }
         public static void DopplerFactor(float value) {
             AlDelegates.alDopplerFactor(value);
         }

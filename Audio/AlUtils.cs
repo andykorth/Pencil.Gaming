@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming.Audio {
     public static partial class Al {
@@ -12,14 +13,21 @@ namespace Pencil.Gaming.Audio {
             }
 
             public sealed class SimpleSound : Sound {
-                public static unsafe SimpleSound LoadWav(string file) {
+                public static unsafe void LoadWav(
+                    string file, 
+                    out byte[] data,
+                    out uint size, 
+                    out uint chunkSize,
+                    out AlFormat format,
+                    out uint sampleRate,
+                    out uint avgBytesPerSec,
+                    out short bytesPerSample,
+                    out short bitsPerSample,
+                    out int dataSize) {
+
                     byte[] sound = File.ReadAllBytes("sound.wav");
 
-                    uint size, chunkSize;
-                    short formatType, channels;
-                    uint sampleRate, avgBytesPerSec;
-                    short bytesPerSample, bitsPerSample;
-                    int dataSize;
+                    short channels;
 
                     int ptrOffset = 4;
                     if (sound[0] != 'R' || sound[1] != 'I' || sound[2] != 'F' || sound[3] != 'F') {
@@ -34,8 +42,8 @@ namespace Pencil.Gaming.Audio {
                     }
                     ptrOffset = 16;
                     chunkSize = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
-                    ptrOffset = 20;
-                    formatType = ((short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset])));
+                    //ptrOffset = 20;
+                    //formatType = ((short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset])));
                     ptrOffset = 22;
                     channels = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
                     ptrOffset = 24;
@@ -52,32 +60,27 @@ namespace Pencil.Gaming.Audio {
                     ptrOffset = 40;
                     dataSize = ((int)sound[3 + ptrOffset] << 24) | ((int)sound[2 + ptrOffset] << 16) | ((int)sound[1 + ptrOffset] << 8) | ((int)sound[ptrOffset]);
 
-                    int format = 0;
+                    format = (AlFormat)0;
                     if (bitsPerSample == 8) {
                         if (channels == 1)
-                            format = 0x1100;
+                            format = AlFormat.Mono8;
                         else if (channels == 2)
-                            format = 0x1102;
+                            format = AlFormat.Stereo8;
                     } else if (bitsPerSample == 16) {
                         if (channels == 1)
-                            format = 0x1101;
+                            format = AlFormat.Mono16;
                         else if (channels == 2)
-                            format = 0x1103;
+                            format = AlFormat.Stereo16;
                     }
 
-                    SimpleSound result = null;
-                    fixed (byte *bptr = &sound[44]) {
-                        IntPtr idata = new IntPtr(bptr);
-                        result = new SimpleSound(idata, dataSize, format, (int)sampleRate, false);
-                    }
-
-                    return result;
+                    data = new byte[dataSize];
+                    Array.Copy(sound, 44, data, 0, dataSize);
                 }
 
                 private uint source = 0;
                 private uint buffer = 0;
 
-                public SimpleSound(IntPtr data, int dataSize, int format, int frequency, bool looping) {
+                public SimpleSound(IntPtr data, int dataSize, AlFormat format, int frequency, bool looping) {
                     uint[] dummy = new uint[1];
                     Al.GenBuffers(1, dummy);
                     buffer = dummy[0];
@@ -85,8 +88,8 @@ namespace Pencil.Gaming.Audio {
                     source = dummy[0];
 
                     Al.BufferData(buffer, format, data, dataSize, frequency);
-                    Al.Source(source, 0x1009, (int)buffer);
-                    Al.Source(source, 0x1007, looping ? 1 : 0);
+                    Al.Source(source, AlSourcei.Buffer, (int)buffer);
+                    Al.Source(source, AlSourceb.Looping, looping);
                 }
 
                 public override void Play() {
@@ -100,8 +103,8 @@ namespace Pencil.Gaming.Audio {
                 }
 
                 public override void Dispose() {
-                    Al.DeleteBuffers(1, new [] { buffer });
-                    Al.DeleteSources(1, new [] { source });
+                    Al.DeleteBuffers(1, ref buffer);
+                    Al.DeleteSources(1, ref source);
                 }
             }
         }

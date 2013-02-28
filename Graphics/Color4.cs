@@ -25,6 +25,8 @@
 //
 #endregion
 
+#define MINIMAL
+
 using System;
 using System.Collections.Generic;
 #if !MINIMAL
@@ -132,27 +134,27 @@ namespace Pencil.Gaming.Graphics {
             return !left.Equals(right);
         }
 
-        /// <summary>
-        /// Converts the specified System.Drawing.Color to a Color4 structure.
-        /// </summary>
-        /// <param name="color">The System.Drawing.Color to convert.</param>
-        /// <returns>A new Color4 structure containing the converted components.</returns>
-        public static implicit operator Color4(Color color) {
-            return new Color4(color.R, color.G, color.B, color.A);
-        }
-
-        /// <summary>
-        /// Converts the specified Color4 to a System.Drawing.Color structure.
-        /// </summary>
-        /// <param name="color">The Color4 to convert.</param>
-        /// <returns>A new System.Drawing.Color structure containing the converted components.</returns>
-        public static explicit operator Color(Color4 color) {
-            return Color.FromArgb(
-                (int)(color.A * Byte.MaxValue),
-                (int)(color.R * Byte.MaxValue),
-                (int)(color.G * Byte.MaxValue),
-                (int)(color.B * Byte.MaxValue));
-        }
+//        /// <summary>
+//        /// Converts the specified System.Drawing.Color to a Color4 structure.
+//        /// </summary>
+//        /// <param name="color">The System.Drawing.Color to convert.</param>
+//        /// <returns>A new Color4 structure containing the converted components.</returns>
+//        public static implicit operator Color4(Color color) {
+//            return new Color4(color.R, color.G, color.B, color.A);
+//        }
+//
+//        /// <summary>
+//        /// Converts the specified Color4 to a System.Drawing.Color structure.
+//        /// </summary>
+//        /// <param name="color">The Color4 to convert.</param>
+//        /// <returns>A new System.Drawing.Color structure containing the converted components.</returns>
+//        public static explicit operator Color(Color4 color) {
+//            return Color.FromArgb(
+//                (int)(color.A * Byte.MaxValue),
+//                (int)(color.R * Byte.MaxValue),
+//                (int)(color.G * Byte.MaxValue),
+//                (int)(color.B * Byte.MaxValue));
+//        }
 
         /// <summary>
         /// Compares whether this Color4 structure is equal to the specified object.
