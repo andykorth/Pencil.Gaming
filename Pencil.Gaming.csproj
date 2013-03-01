@@ -9,6 +9,9 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Pencil.Gaming</RootNamespace>
     <AssemblyName>Pencil.Gaming</AssemblyName>
+    <ReleaseVersion>0.0.20dev</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <Description>A minimalistic gaming library for C# based on OpenTK.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
