@@ -71,7 +71,6 @@
     <Compile Include="Audio\Al.cs" />
     <Compile Include="Audio\Alc32.cs" />
     <Compile Include="Audio\Alc64.cs" />
-    <Compile Include="Audio\AlUtils.cs" />
     <Compile Include="Audio\AlEnums.cs" />
     <Compile Include="Graphics\GlCore.cs" />
   </ItemGroup>
