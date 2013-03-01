@@ -33,8 +33,8 @@ namespace Pencil.Gaming {
             Glfw.Utils.isFullscreen = (mode == WindowMode.FullScreen);
             return GlfwDelegates.glfwOpenWindow(width, height, redbits, greenbits, bluebits, alphabits, depthbits, stencilbits, (int)mode);
         }
-        public static void OpenWindowHint(int target, WindowOpenHint hint) {
-            GlfwDelegates.glfwOpenWindowHint(target, (int)hint);
+        public static void OpenWindowHint(OpenWindowHint target, int hint) {
+            GlfwDelegates.glfwOpenWindowHint((int)target, hint);
         }
         public static void CloseWindow() {
             GlfwDelegates.glfwCloseWindow();

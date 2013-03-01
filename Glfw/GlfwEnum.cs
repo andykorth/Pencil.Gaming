@@ -131,7 +131,7 @@ namespace Pencil.Gaming {
         StencilBits,
     }
 
-    public enum WindowOpenHint {
+    public enum OpenWindowHint {
         RefreshRate = 0x0002000B,
         AccumRedBits,
         AccumGreenBits,
