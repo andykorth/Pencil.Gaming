@@ -74,5 +74,5 @@ Functionality and stability
 | Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
 | Linux 32-bit   | 304 stable*     | 304 stable*       | 304 stable*     | Stable    |
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
-| Windows 32-bit | Presumed stable | Presumed stable   | Presumed stable | Unknown   |
-* 310 doesn't work
+| Windows 32-bit | Unknown         | Unknown           | Stable          | Stable    |
+\* 310 doesn't work
