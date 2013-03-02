@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Pencil.Gaming.Math {
-#if NO_SYSDRAWING
     /// <summary>
     /// Defines a point on a two-dimensional plane.
     /// </summary>
-    public struct Point : IEquatable<Point>
-    {
+    public struct Point : IEquatable<Point> {
         #region Fields
 
         int x, y;
@@ -24,8 +22,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="x">The X coordinate of this instance.</param>
         /// <param name="y">The Y coordinate of this instance.</param>
         public Point(int x, int y)
-            : this()
-        {
+            : this() {
             X = x;
             Y = y;
         }
@@ -71,8 +68,7 @@ namespace Pencil.Gaming.Math {
         /// <returns>
         /// A new <see cref="Point"/> instance translated by size.
         /// </returns>
-        public static Point operator +(Point point, Size size)
-        {
+        public static Point operator +(Point point, Size size) {
             return new Point(point.X + size.Width, point.Y + size.Height);
         }
 
@@ -88,10 +84,9 @@ namespace Pencil.Gaming.Math {
         /// <returns>
         /// A new <see cref="Point"/> instance translated by size.
         /// </returns>
-        public static Point operator -(Point point, Size size)
-        {
+        public static Point operator -(Point point, Size size) {
             return new Point(point.X - size.Width, point.Y - size.Height);
-          }
+        }
 
         /// <summary>
         /// Compares two instances for equality.
@@ -99,8 +94,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left is equal to right; false otherwise.</returns>
-        public static bool operator ==(Point left, Point right)
-        {
+        public static bool operator ==(Point left, Point right) {
             return left.Equals(right);
         }
 
@@ -110,51 +104,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left is not equal to right; false otherwise.</returns>
-        public static bool operator !=(Point left, Point right)
-        {
+        public static bool operator !=(Point left, Point right) {
             return !left.Equals(right);
-        }
-
-        /// <summary>
-        /// Converts an OpenTK.Point instance to a System.Drawing.Point.
-        /// </summary>
-        /// <param name="point">
-        /// The <see cref="Point"/> instance to convert.
-        /// </param>
-        /// <returns>
-        /// A <see cref="System.Drawing.Point"/> instance equivalent to point.
-        /// </returns>
-        public static implicit operator System.Drawing.Point(Point point)
-        {
-            return new System.Drawing.Point(point.X, point.Y);
-        }
-
-        /// <summary>
-        /// Converts a System.Drawing.Point instance to an OpenTK.Point.
-        /// </summary>
-        /// <param name="point">
-        /// The <see cref="System.Drawing.Point"/> instance to convert.
-        /// </param>
-        /// <returns>
-        /// A <see cref="Point"/> instance equivalent to point.
-        /// </returns>
-        public static implicit operator Point(System.Drawing.Point point)
-        {
-            return new Point(point.X, point.Y);
-        }
-
-        /// <summary>
-        /// Converts an OpenTK.Point instance to a System.Drawing.PointF.
-        /// </summary>
-        /// <param name="point">
-        /// The <see cref="Point"/> instance to convert.
-        /// </param>
-        /// <returns>
-        /// A <see cref="System.Drawing.PointF"/> instance equivalent to point.
-        /// </returns>
-        public static implicit operator System.Drawing.PointF(Point point)
-        {
-            return new System.Drawing.PointF(point.X, point.Y);
         }
 
         /// <summary>
@@ -162,8 +113,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="obj">The object instance to compare to.</param>
         /// <returns>True, if both instances are equal; false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
+        public override bool Equals(object obj) {
             if (obj is Point)
                 return Equals((Point)obj);
 
@@ -174,8 +124,7 @@ namespace Pencil.Gaming.Math {
         /// Returns the hash code for this instance.
         /// </summary>
         /// <returns>A <see cref="System.Int32"/> that represents the hash code for this instance./></returns>
-        public override int GetHashCode()
-        {
+        public override int GetHashCode() {
             return X.GetHashCode() ^ Y.GetHashCode();
         }
 
@@ -183,8 +132,7 @@ namespace Pencil.Gaming.Math {
         /// Returns a <see cref="System.String"/> that describes this instance.
         /// </summary>
         /// <returns>A <see cref="System.String"/> that describes this instance.</returns>
-        public override string ToString()
-        {
+        public override string ToString() {
             return String.Format("{{{0}, {1}}}", X, Y);
         }
 
@@ -197,12 +145,10 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="other">The instance to compare to.</param>
         /// <returns>True, if both instances are equal; false otherwise.</returns>
-        public bool Equals(Point other)
-        {
+        public bool Equals(Point other) {
             return X == other.X && Y == other.Y;
         }
 
         #endregion
     }
-#endif
 }
