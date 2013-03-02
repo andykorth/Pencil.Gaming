@@ -68,43 +68,10 @@ class Program {
 
 Functionality and stability
 ===========================
-Linux 64-bit
-  Tested with Linux Mint 14 Cinnamon 64-bit edition.
 
-  OpenGL core:       Stable on nvidia driver 310, untested with nouveau and 304
-  OpenGL extensions: Stable on nvidia driver 310, untested with nouveau and 304
-  GLFW:              Stable on nvidia driver 310, untested with nouveau and 304
-  OpenAL:            Stable
-
-Linux 32-bit
-  Tested with Linux Mint 14 Cinnamon 32-bit edition
-
-  OpenGL core:       Stable on nvidia driver 304 and 310
-  OpenGL extensions: Stable on nvidia driver 304, broken on 310, untested with nouveau
-  GLFW:              Stable on nvidia driver 304, broken on 310, untested with nouveau
-  OpenAL:            Stable
-
-Windows 64-bit
-  Tested with Window 7 Home Premium 64-bit edition
-
-  OpenGL core:       Stable
-  OpenGL extensions: Stable
-  GLFW:              Stable
-  OpenAL:            Stable
-Windows 32-bit
-  Untested
-
-  OpenGL core:       Presumed stable
-  OpenGL extensions: Presumed stable
-  GLFW:              Presumed stable
-  OpenAL:            Unknown
-
-Mac OS X 64-bit
-  Untested
-
-  Presumably nothing works
-
-Mac OS X 32-bit
-  Untested
-
-  Presumably nothing works
+| Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
+| --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
+| Linux 64-bit   | 310 stable      | 310 stable        | 310 stable      | Stable    |
+| Linux 32-bit   | 304 stable*     | 304 stable*       | 304 stable*     | Stable    |
+| Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
+| Windows 32-bit | Presumed stable | Presumed stable   | Presumed stable | Unknown   |
