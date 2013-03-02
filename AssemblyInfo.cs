@@ -7,9 +7,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("Pencil.Gaming")]
 [assembly: AssemblyDescription("A minimcalistic gaming library for C# based on OpenTK.")]
 #if DEBUG
-[assembly: AssemblyConfiguration("Release - Any CPU")]
-#else
 [assembly: AssemblyConfiguration("Debug - Any CPU")]
+#else
+[assembly: AssemblyConfiguration("Release - Any CPU")]
 #endif
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Pencil.Gaming")]
