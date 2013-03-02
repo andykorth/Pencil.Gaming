@@ -1,10 +1,15 @@
 using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming {
     internal static class GlfwDelegates {
         static GlfwDelegates() {
+#if DEBUG
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+#endif
             Type glfwInterop = Environment.Is64BitProcess ? typeof(Glfw64) : typeof(Glfw32);
             FieldInfo[] fields = typeof(GlfwDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
             foreach (FieldInfo fi in fields) {
@@ -12,6 +17,10 @@ namespace Pencil.Gaming {
                 Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
                 fi.SetValue(null, function);
             }
+#if DEBUG
+            sw.Stop();
+            Console.WriteLine("Copying GLFW delegates took {0} milliseconds.", sw.ElapsedMilliseconds);
+#endif
         }
 
 #pragma warning disable 0649

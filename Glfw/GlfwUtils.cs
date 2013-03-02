@@ -22,6 +22,10 @@ namespace Pencil.Gaming {
             public delegate void Resize(int width,int height);
 
             public static void LoadGLFunctions() {
+#if DEBUG
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+#endif
                 FieldInfo[] fields = typeof(Gl.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
                 foreach (FieldInfo field in fields) {
                     IntPtr procAddress = Glfw.GetProcAddress(field.Name);
@@ -36,6 +40,10 @@ namespace Pencil.Gaming {
                         }
                     }
                 }
+#if DEBUG
+                sw.Stop();
+                Console.WriteLine("Copying OpenGL delegates took {0} milliseconds.", sw.ElapsedMilliseconds);
+#endif
             }
 
             // TODO: Add proper implementation through events

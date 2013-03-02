@@ -72,7 +72,7 @@ Functionality and stability
 | Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
 | --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
 | Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
-| Linux 32-bit   | 304 stable*     | 304 stable*       | 304 stable*     | Stable    |
+| Linux 32-bit   | Stable          | Stable            | **Broken**      | Stable    |
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
 | Windows 32-bit | Unknown         | Unknown           | Stable          | Stable    |
-\* 310 doesn't work
+| Mac OS X       | Stable          | Stable            | Stable          | Stable    |

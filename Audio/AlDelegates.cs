@@ -1,10 +1,15 @@
 using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming.Audio {
     public static class AlDelegates {
         static AlDelegates() {
+#if DEBUG
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+#endif
             Type alInterop = Environment.Is64BitProcess ? typeof(Al64) : typeof(Al32);
             FieldInfo[] fields = typeof(AlDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
             foreach (FieldInfo fi in fields) {
@@ -12,6 +17,10 @@ namespace Pencil.Gaming.Audio {
                 Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
                 fi.SetValue(null, function);
             }
+#if DEBUG
+            sw.Stop();
+            Console.WriteLine("Copying OpenAL delegates took {0} milliseconds.", sw.ElapsedMilliseconds);
+#endif
         }
 
         internal delegate void Enable(int capability);

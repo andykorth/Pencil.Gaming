@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Pencil.Gaming.Audio {
     public static partial class Al {
@@ -15,6 +16,10 @@ namespace Pencil.Gaming.Audio {
             private delegate bool MakeContextCurrent(IntPtr hndl);
 
             public static void Init() {
+#if DEBUG
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+#endif
                 CloseDevice alcCloseDevice = null;
                 OpenDevice alcOpenDevice = null;
                 _IsExtensionPresent alcIsExtensionPresent = null;
@@ -61,6 +66,11 @@ namespace Pencil.Gaming.Audio {
                 }
 
                 alcMakeContextCurrent(alcContextHandle);
+
+#if DEBUG
+                sw.Stop();
+                Console.WriteLine("Initializing ALC took {0} milliseconds.", sw.ElapsedMilliseconds);
+#endif
             }
             public static void Terminate() {
                 if (Environment.Is64BitProcess) {

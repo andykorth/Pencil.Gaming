@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Pencil.Gaming.Audio {
@@ -24,6 +25,11 @@ namespace Pencil.Gaming.Audio {
                     out uint avgBytesPerSec,
                     out short bytesPerSample,
                     out short bitsPerSample) {
+
+#if DEBUG
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+#endif
 
                 byte[] sound = File.ReadAllBytes(file);
 
@@ -75,6 +81,11 @@ namespace Pencil.Gaming.Audio {
 
                 data = new byte[dataSize];
                 Array.Copy(sound, 44, data, 0, dataSize);
+
+#if DEBUG
+                sw.Stop();
+                Console.WriteLine("Loading audio file \"{0}\" took {1} milliseconds.", file, sw.ElapsedMilliseconds);
+#endif
             }
         }
     }
