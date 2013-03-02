@@ -5,11 +5,15 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Pencil.Gaming")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("A minimcalistic gaming library for C# based on OpenTK.")]
+#if DEBUG
+[assembly: AssemblyConfiguration("Release - Any CPU")]
+#else
+[assembly: AssemblyConfiguration("Debug - Any CPU")]
+#endif
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("antonie")]
+[assembly: AssemblyProduct("Pencil.Gaming")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
