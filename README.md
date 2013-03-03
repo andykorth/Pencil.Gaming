@@ -3,8 +3,19 @@ Pencil.Gaming
 
 A minimcalistic gaming library for C# based on OpenTK. It wraps OpenGL, GLFW and OpenAL.
 
-Sample usage:
+Functionality and stability
+===========================
 
+| Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
+| --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
+| Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
+| Linux 32-bit   | Stable          | Stable            | Stable          | Stable    |
+| Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
+| Windows 32-bit | Stable          | Stable            | Stable          | Stable    |
+| Mac OS X       | Stable          | Stable            | Stable          | Stable    |
+
+Sample usage
+============
 ```C#
 using Pencil.Gaming;
 using Pencil.Gaming.Audio;
@@ -21,8 +32,6 @@ class Program {
                 Glfw.OpenWindow(800, 600, 8, 8, 8, 8, 24, 0, WindowMode.Window);
                 Glfw.SetWindowTitle("Sample application");
                 Glfw.SwapInterval(false);
-
-                Glfw.Utils.LoadGLFunctions();
 
                 Glfw.SetTime(0.0);
                 do {
@@ -65,14 +74,3 @@ class Program {
     }
 }
 ```
-
-Functionality and stability
-===========================
-
-| Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
-| --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
-| Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
-| Linux 32-bit   | Stable          | Stable            | Stable          | Stable    |
-| Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
-| Windows 32-bit | Unknown         | Unknown           | Stable          | Stable    |
-| Mac OS X       | Stable          | Stable            | Stable          | Stable    |
