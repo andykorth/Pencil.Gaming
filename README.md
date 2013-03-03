@@ -72,7 +72,7 @@ Functionality and stability
 | Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
 | --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
 | Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
-| Linux 32-bit   | Stable          | Stable            | **Broken**      | Stable    |
+| Linux 32-bit   | Stable          | Stable            | Stable          | Stable    |
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
 | Windows 32-bit | Unknown         | Unknown           | Stable          | Stable    |
 | Mac OS X       | Stable          | Stable            | Stable          | Stable    |
