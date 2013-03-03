@@ -9,7 +9,7 @@ namespace Pencil.Gaming.Math {
     /// </summary>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
-    public struct Matrix4 : IEquatable<Matrix4> {
+    public struct Matrix : IEquatable<Matrix> {
         #region Fields
 
         /// <summary>
@@ -35,12 +35,12 @@ namespace Pencil.Gaming.Math {
         /// <summary>
         /// The identity matrix.
         /// </summary>
-        public static readonly Matrix4 Identity = new Matrix4(Vector4.UnitX, Vector4.UnitY, Vector4.UnitZ, Vector4.UnitW);
+        public static readonly Matrix Identity = new Matrix(Vector4.UnitX, Vector4.UnitY, Vector4.UnitZ, Vector4.UnitW);
 
         /// <summary>
         /// The zero matrix.
         /// </summary>
-        public static readonly Matrix4 Zero = new Matrix4(Vector4.Zero, Vector4.Zero, Vector4.Zero, Vector4.Zero);
+        public static readonly Matrix Zero = new Matrix(Vector4.Zero, Vector4.Zero, Vector4.Zero, Vector4.Zero);
 
         #endregion
 
@@ -53,7 +53,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="row1">Second row of the matrix.</param>
         /// <param name="row2">Third row of the matrix.</param>
         /// <param name="row3">Bottom row of the matrix.</param>
-        public Matrix4(Vector4 row0, Vector4 row1, Vector4 row2, Vector4 row3) {
+        public Matrix(Vector4 row0, Vector4 row1, Vector4 row2, Vector4 row3) {
             Row0 = row0;
             Row1 = row1;
             Row2 = row2;
@@ -79,7 +79,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="m31">Second item of the fourth row of the matrix.</param>
         /// <param name="m32">Third item of the fourth row of the matrix.</param>
         /// <param name="m33">Fourth item of the fourth row of the matrix.</param>
-        public Matrix4(
+        public Matrix(
             float m00, float m01, float m02, float m03,
             float m10, float m11, float m12, float m13,
             float m20, float m21, float m22, float m23,
@@ -290,7 +290,7 @@ namespace Pencil.Gaming.Math {
         /// Converts this instance into its inverse.
         /// </summary>
         public void Invert() {
-            this = Matrix4.Invert(this);
+            this = Matrix.Invert(this);
         }
 
         #endregion
@@ -301,7 +301,7 @@ namespace Pencil.Gaming.Math {
         /// Converts this instance into its transpose.
         /// </summary>
         public void Transpose() {
-            this = Matrix4.Transpose(this);
+            this = Matrix.Transpose(this);
         }
 
         #endregion
@@ -318,7 +318,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="axis">The axis to rotate about.</param>
         /// <param name="angle">Angle in radians to rotate counter-clockwise (looking in the direction of the given axis).</param>
         /// <param name="result">A matrix instance.</param>
-        public static void CreateFromAxisAngle(Vector3 axis, float angle, out Matrix4 result) {
+        public static void CreateFromAxisAngle(Vector3 axis, float angle, out Matrix result) {
             // normalize and create a local copy of the vector.
             axis.Normalize();
             float axisX = axis.X, axisY = axis.Y, axisZ = axis.Z;
@@ -361,8 +361,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="axis">The axis to rotate about.</param>
         /// <param name="angle">Angle in radians to rotate counter-clockwise (looking in the direction of the given axis).</param>
         /// <returns>A matrix instance.</returns>
-        public static Matrix4 CreateFromAxisAngle(Vector3 axis, float angle) {
-            Matrix4 result;
+        public static Matrix CreateFromAxisAngle(Vector3 axis, float angle) {
+            Matrix result;
             CreateFromAxisAngle(axis, angle, out result);
             return result;
         }
@@ -376,7 +376,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="q">The quaternion to rotate by.</param>
         /// <param name="result">A matrix instance.</param>
-        public static void CreateFromQuaternion(ref Quaternion q, out Matrix4 result) {
+        public static void CreateFromQuaternion(ref Quaternion q, out Matrix result) {
             Vector3 axis;
             float angle;
             q.ToAxisAngle(out axis, out angle);
@@ -388,8 +388,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="q">The quaternion to rotate by.</param>
         /// <returns>A matrix instance.</returns>
-        public static Matrix4 CreateFromQuaternion(Quaternion q) {
-            Matrix4 result;
+        public static Matrix CreateFromQuaternion(Quaternion q) {
+            Matrix result;
             CreateFromQuaternion(ref q, out result);
             return result;
         }
@@ -403,7 +403,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateRotationX(float angle, out Matrix4 result) {
+        public static void CreateRotationX(float angle, out Matrix result) {
             float cos = (float)System.Math.Cos(angle);
             float sin = (float)System.Math.Sin(angle);
 
@@ -419,8 +419,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <returns>The resulting Matrix4 instance.</returns>
-        public static Matrix4 CreateRotationX(float angle) {
-            Matrix4 result;
+        public static Matrix CreateRotationX(float angle) {
+            Matrix result;
             CreateRotationX(angle, out result);
             return result;
         }
@@ -430,7 +430,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateRotationY(float angle, out Matrix4 result) {
+        public static void CreateRotationY(float angle, out Matrix result) {
             float cos = (float)System.Math.Cos(angle);
             float sin = (float)System.Math.Sin(angle);
 
@@ -446,8 +446,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <returns>The resulting Matrix4 instance.</returns>
-        public static Matrix4 CreateRotationY(float angle) {
-            Matrix4 result;
+        public static Matrix CreateRotationY(float angle) {
+            Matrix result;
             CreateRotationY(angle, out result);
             return result;
         }
@@ -457,7 +457,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateRotationZ(float angle, out Matrix4 result) {
+        public static void CreateRotationZ(float angle, out Matrix result) {
             float cos = (float)System.Math.Cos(angle);
             float sin = (float)System.Math.Sin(angle);
 
@@ -473,8 +473,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <returns>The resulting Matrix4 instance.</returns>
-        public static Matrix4 CreateRotationZ(float angle) {
-            Matrix4 result;
+        public static Matrix CreateRotationZ(float angle) {
+            Matrix result;
             CreateRotationZ(angle, out result);
             return result;
         }
@@ -490,7 +490,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="y">Y translation.</param>
         /// <param name="z">Z translation.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateTranslation(float x, float y, float z, out Matrix4 result) {
+        public static void CreateTranslation(float x, float y, float z, out Matrix result) {
             result = Identity;
             result.Row3.X = x;
             result.Row3.Y = y;
@@ -502,7 +502,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="vector">The translation vector.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateTranslation(ref Vector3 vector, out Matrix4 result) {
+        public static void CreateTranslation(ref Vector3 vector, out Matrix result) {
             result = Identity;
             result.Row3.X = vector.X;
             result.Row3.Y = vector.Y;
@@ -516,8 +516,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="y">Y translation.</param>
         /// <param name="z">Z translation.</param>
         /// <returns>The resulting Matrix4 instance.</returns>
-        public static Matrix4 CreateTranslation(float x, float y, float z) {
-            Matrix4 result;
+        public static Matrix CreateTranslation(float x, float y, float z) {
+            Matrix result;
             CreateTranslation(x, y, z, out result);
             return result;
         }
@@ -527,8 +527,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="vector">The translation vector.</param>
         /// <returns>The resulting Matrix4 instance.</returns>
-        public static Matrix4 CreateTranslation(Vector3 vector) {
-            Matrix4 result;
+        public static Matrix CreateTranslation(Vector3 vector) {
+            Matrix result;
             CreateTranslation(vector.X, vector.Y, vector.Z, out result);
             return result;
         }
@@ -542,8 +542,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="scale">Single scale factor for the x, y, and z axes.</param>
         /// <returns>A scale matrix.</returns>
-        public static Matrix4 CreateScale(float scale) {
-            Matrix4 result;
+        public static Matrix CreateScale(float scale) {
+            Matrix result;
             CreateScale(scale, out result);
             return result;
         }
@@ -553,8 +553,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="scale">Scale factors for the x, y, and z axes.</param>
         /// <returns>A scale matrix.</returns>
-        public static Matrix4 CreateScale(Vector3 scale) {
-            Matrix4 result;
+        public static Matrix CreateScale(Vector3 scale) {
+            Matrix result;
             CreateScale(ref scale, out result);
             return result;
         }
@@ -566,8 +566,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="y">Scale factor for the y axis.</param>
         /// <param name="z">Scale factor for the z axis.</param>
         /// <returns>A scale matrix.</returns>
-        public static Matrix4 CreateScale(float x, float y, float z) {
-            Matrix4 result;
+        public static Matrix CreateScale(float x, float y, float z) {
+            Matrix result;
             CreateScale(x, y, z, out result);
             return result;
         }
@@ -577,7 +577,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="scale">Single scale factor for the x, y, and z axes.</param>
         /// <param name="result">A scale matrix.</param>
-        public static void CreateScale(float scale, out Matrix4 result) {
+        public static void CreateScale(float scale, out Matrix result) {
             result = Identity;
             result.Row0.X = scale;
             result.Row1.Y = scale;
@@ -589,7 +589,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="scale">Scale factors for the x, y, and z axes.</param>
         /// <param name="result">A scale matrix.</param>
-        public static void CreateScale(ref Vector3 scale, out Matrix4 result) {
+        public static void CreateScale(ref Vector3 scale, out Matrix result) {
             result = Identity;
             result.Row0.X = scale.X;
             result.Row1.Y = scale.Y;
@@ -603,7 +603,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="y">Scale factor for the y axis.</param>
         /// <param name="z">Scale factor for the z axis.</param>
         /// <param name="result">A scale matrix.</param>
-        public static void CreateScale(float x, float y, float z, out Matrix4 result) {
+        public static void CreateScale(float x, float y, float z, out Matrix result) {
             result = Identity;
             result.Row0.X = x;
             result.Row1.Y = y;
@@ -622,7 +622,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="zNear">The near edge of the projection volume.</param>
         /// <param name="zFar">The far edge of the projection volume.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateOrthographic(float width, float height, float zNear, float zFar, out Matrix4 result) {
+        public static void CreateOrthographic(float width, float height, float zNear, float zFar, out Matrix result) {
             CreateOrthographicOffCenter(-width / 2, width / 2, -height / 2, height / 2, zNear, zFar, out result);
         }
 
@@ -634,8 +634,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="zNear">The near edge of the projection volume.</param>
         /// <param name="zFar">The far edge of the projection volume.</param>
         /// <rereturns>The resulting Matrix4 instance.</rereturns>
-        public static Matrix4 CreateOrthographic(float width, float height, float zNear, float zFar) {
-            Matrix4 result;
+        public static Matrix CreateOrthographic(float width, float height, float zNear, float zFar) {
+            Matrix result;
             CreateOrthographicOffCenter(-width / 2, width / 2, -height / 2, height / 2, zNear, zFar, out result);
             return result;
         }
@@ -654,7 +654,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="zNear">The near edge of the projection volume.</param>
         /// <param name="zFar">The far edge of the projection volume.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
-        public static void CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNear, float zFar, out Matrix4 result) {
+        public static void CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNear, float zFar, out Matrix result) {
             result = Identity;
 
             float invRL = 1.0f / (right - left);
@@ -680,8 +680,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="zNear">The near edge of the projection volume.</param>
         /// <param name="zFar">The far edge of the projection volume.</param>
         /// <returns>The resulting Matrix4 instance.</returns>
-        public static Matrix4 CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNear, float zFar) {
-            Matrix4 result;
+        public static Matrix CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNear, float zFar) {
+            Matrix result;
             CreateOrthographicOffCenter(left, right, bottom, top, zNear, zFar, out result);
             return result;
         }
@@ -708,7 +708,7 @@ namespace Pencil.Gaming.Math {
         /// <item>zNear is larger than zFar</item>
         /// </list>
         /// </exception>
-        public static void CreatePerspectiveFieldOfView(float fovy, float aspect, float zNear, float zFar, out Matrix4 result) {
+        public static void CreatePerspectiveFieldOfView(float fovy, float aspect, float zNear, float zFar, out Matrix result) {
             if (fovy <= 0 || fovy > System.Math.PI)
                 throw new ArgumentOutOfRangeException("fovy");
             if (aspect <= 0)
@@ -744,8 +744,8 @@ namespace Pencil.Gaming.Math {
         /// <item>zNear is larger than zFar</item>
         /// </list>
         /// </exception>
-        public static Matrix4 CreatePerspectiveFieldOfView(float fovy, float aspect, float zNear, float zFar) {
-            Matrix4 result;
+        public static Matrix CreatePerspectiveFieldOfView(float fovy, float aspect, float zNear, float zFar) {
+            Matrix result;
             CreatePerspectiveFieldOfView(fovy, aspect, zNear, zFar, out result);
             return result;
         }
@@ -772,7 +772,7 @@ namespace Pencil.Gaming.Math {
         /// <item>zNear is larger than zFar</item>
         /// </list>
         /// </exception>
-        public static void CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float zNear, float zFar, out Matrix4 result) {
+        public static void CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float zNear, float zFar, out Matrix result) {
             if (zNear <= 0)
                 throw new ArgumentOutOfRangeException("zNear");
             if (zFar <= 0)
@@ -823,8 +823,8 @@ namespace Pencil.Gaming.Math {
         /// <item>zNear is larger than zFar</item>
         /// </list>
         /// </exception>
-        public static Matrix4 CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float zNear, float zFar) {
-            Matrix4 result;
+        public static Matrix CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float zNear, float zFar) {
+            Matrix result;
             CreatePerspectiveOffCenter(left, right, bottom, top, zNear, zFar, out result);
             return result;
         }
@@ -840,12 +840,12 @@ namespace Pencil.Gaming.Math {
         /// <param name="target">Target position in world space</param>
         /// <param name="up">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
         /// <returns>A Matrix4 that transforms world space to camera space</returns>
-        public static Matrix4 LookAt(Vector3 eye, Vector3 target, Vector3 up) {
+        public static Matrix LookAt(Vector3 eye, Vector3 target, Vector3 up) {
             Vector3 z = Vector3.Normalize(eye - target);
             Vector3 x = Vector3.Normalize(Vector3.Cross(up, z));
             Vector3 y = Vector3.Normalize(Vector3.Cross(z, x));
 
-            Matrix4 result;
+            Matrix result;
 
             result.Row0.X = x.X;
             result.Row0.Y = y.X;
@@ -880,7 +880,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="upY">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
         /// <param name="upZ">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
         /// <returns>A Matrix4 that transforms world space to camera space</returns>
-        public static Matrix4 LookAt(float eyeX, float eyeY, float eyeZ, float targetX, float targetY, float targetZ, float upX, float upY, float upZ) {
+        public static Matrix LookAt(float eyeX, float eyeY, float eyeZ, float targetX, float targetY, float targetZ, float upX, float upY, float upZ) {
             return LookAt(new Vector3(eyeX, eyeY, eyeZ), new Vector3(targetX, targetY, targetZ), new Vector3(upX, upY, upZ));
         }
 
@@ -894,8 +894,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
         /// <returns>A new instance that is the result of the multiplication.</returns>
-        public static Matrix4 Mult(Matrix4 left, Matrix4 right) {
-            Matrix4 result;
+        public static Matrix Mult(Matrix left, Matrix right) {
+            Matrix result;
             Mult(ref left, ref right, out result);
             return result;
         }
@@ -906,7 +906,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
         /// <param name="result">A new instance that is the result of the multiplication.</param>
-        public static void Mult(ref Matrix4 left, ref Matrix4 right, out Matrix4 result) {
+        public static void Mult(ref Matrix left, ref Matrix right, out Matrix result) {
             float lM11 = left.Row0.X, lM12 = left.Row0.Y, lM13 = left.Row0.Z, lM14 = left.Row0.W,
             lM21 = left.Row1.X, lM22 = left.Row1.Y, lM23 = left.Row1.Z, lM24 = left.Row1.W,
             lM31 = left.Row2.X, lM32 = left.Row2.Y, lM33 = left.Row2.Z, lM34 = left.Row2.W,
@@ -944,7 +944,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="mat">The matrix to invert</param>
         /// <param name="result">The inverse of the given matrix if it has one, or the input if it is singular</param>
         /// <exception cref="InvalidOperationException">Thrown if the Matrix4 is singular.</exception>
-        public static void Invert(ref Matrix4 mat, out Matrix4 result) {
+        public static void Invert(ref Matrix mat, out Matrix result) {
             int[] colIdx = { 0, 0, 0, 0 };
             int[] rowIdx = { 0, 0, 0, 0 };
             int[] pivotIdx = { -1, -1, -1, -1 };
@@ -1049,8 +1049,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="mat">The matrix to invert</param>
         /// <returns>The inverse of the given matrix if it has one, or the input if it is singular</returns>
         /// <exception cref="InvalidOperationException">Thrown if the Matrix4 is singular.</exception>
-        public static Matrix4 Invert(Matrix4 mat) {
-            Matrix4 result;
+        public static Matrix Invert(Matrix mat) {
+            Matrix result;
             Invert(ref mat, out result);
             return result;
         }
@@ -1064,8 +1064,8 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="mat">The matrix to transpose</param>
         /// <returns>The transpose of the given matrix</returns>
-        public static Matrix4 Transpose(Matrix4 mat) {
-            return new Matrix4(mat.Column0, mat.Column1, mat.Column2, mat.Column3);
+        public static Matrix Transpose(Matrix mat) {
+            return new Matrix(mat.Column0, mat.Column1, mat.Column2, mat.Column3);
         }
 
 
@@ -1074,7 +1074,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="mat">The matrix to transpose</param>
         /// <param name="result">The result of the calculation</param>
-        public static void Transpose(ref Matrix4 mat, out Matrix4 result) {
+        public static void Transpose(ref Matrix mat, out Matrix result) {
             result.Row0 = mat.Column0;
             result.Row1 = mat.Column1;
             result.Row2 = mat.Column2;
@@ -1093,8 +1093,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">left-hand operand</param>
         /// <param name="right">right-hand operand</param>
         /// <returns>A new Matrix4 which holds the result of the multiplication</returns>
-        public static Matrix4 operator *(Matrix4 left, Matrix4 right) {
-            return Matrix4.Mult(left, right);
+        public static Matrix operator *(Matrix left, Matrix right) {
+            return Matrix.Mult(left, right);
         }
 
         /// <summary>
@@ -1103,7 +1103,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Matrix4 left, Matrix4 right) {
+        public static bool operator ==(Matrix left, Matrix right) {
             return left.Equals(right);
         }
 
@@ -1113,7 +1113,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
-        public static bool operator !=(Matrix4 left, Matrix4 right) {
+        public static bool operator !=(Matrix left, Matrix right) {
             return !left.Equals(right);
         }
 
@@ -1153,10 +1153,10 @@ namespace Pencil.Gaming.Math {
         /// <param name="obj">The object to compare tresult.</param>
         /// <returns>True if the instances are equal; false otherwise.</returns>
         public override bool Equals(object obj) {
-            if (!(obj is Matrix4))
+            if (!(obj is Matrix))
                 return false;
 
-            return this.Equals((Matrix4)obj);
+            return this.Equals((Matrix)obj);
         }
 
         #endregion
@@ -1170,7 +1170,7 @@ namespace Pencil.Gaming.Math {
         /// <summary>Indicates whether the current matrix is equal to another matrix.</summary>
         /// <param name="other">An matrix to compare with this matrix.</param>
         /// <returns>true if the current matrix is equal to the matrix parameter; otherwise, false.</returns>
-        public bool Equals(Matrix4 other) {
+        public bool Equals(Matrix other) {
             return
                 Row0 == other.Row0 &&
                 Row1 == other.Row1 &&

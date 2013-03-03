@@ -189,7 +189,7 @@ namespace Pencil.Gaming.Graphics {
             Gl.Translate(trans.X, trans.Y, trans.Z);
         }
 
-        public static void MultMatrix(ref Matrix4 mat) {
+        public static void MultMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
                     Gl.MultMatrix((Single*)m_ptr);
@@ -197,7 +197,7 @@ namespace Pencil.Gaming.Graphics {
             }
         }
 
-        public static void LoadMatrix(ref Matrix4 mat) {
+        public static void LoadMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
                     Gl.LoadMatrix((Single*)m_ptr);
@@ -205,7 +205,7 @@ namespace Pencil.Gaming.Graphics {
             }
         }
 
-        public static void LoadTransposeMatrix(ref Matrix4 mat) {
+        public static void LoadTransposeMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
                     Gl.LoadTransposeMatrix((Single*)m_ptr);
@@ -213,7 +213,7 @@ namespace Pencil.Gaming.Graphics {
             }
         }
 
-        public static void MultTransposeMatrix(ref Matrix4 mat) {
+        public static void MultTransposeMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
                     Gl.MultTransposeMatrix((Single*)m_ptr);
@@ -257,7 +257,7 @@ namespace Pencil.Gaming.Graphics {
             Gl.Uniform4(location, quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
         }
 
-        public static void UniformMatrix4(int location, bool transpose, ref Matrix4 matrix) {
+        public static void UniformMatrix4(int location, bool transpose, ref Matrix matrix) {
             unsafe {
                 fixed (float* matrix_ptr = &matrix.Row0.X) {
                     Gl.UniformMatrix4(location, 1, transpose, matrix_ptr);
@@ -838,9 +838,9 @@ namespace Pencil.Gaming.Graphics {
             }
         }
 
-        public static void GetFloat(GetPName pname, out Matrix4 matrix) {
+        public static void GetFloat(GetPName pname, out Matrix matrix) {
             unsafe {
-                fixed (Matrix4* ptr = &matrix)
+                fixed (Matrix* ptr = &matrix)
                     GetFloat(pname, (float*)ptr);
             }
         }

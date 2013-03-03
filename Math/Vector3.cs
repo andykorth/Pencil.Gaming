@@ -684,7 +684,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <returns>The transformed vector</returns>
-        public static Vector3 TransformVector(Vector3 vec, Matrix4 mat) {
+        public static Vector3 TransformVector(Vector3 vec, Matrix mat) {
             Vector3 v;
             v.X = Vector3.Dot(vec, new Vector3(mat.Column0));
             v.Y = Vector3.Dot(vec, new Vector3(mat.Column1));
@@ -698,7 +698,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <param name="result">The transformed vector</param>
-        public static void TransformVector(ref Vector3 vec, ref Matrix4 mat, out Vector3 result) {
+        public static void TransformVector(ref Vector3 vec, ref Matrix mat, out Vector3 result) {
             result.X = vec.X * mat.Row0.X +
                 vec.Y * mat.Row1.X +
                 vec.Z * mat.Row2.X;
@@ -720,7 +720,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="norm">The normal to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <returns>The transformed normal</returns>
-        public static Vector3 TransformNormal(Vector3 norm, Matrix4 mat) {
+        public static Vector3 TransformNormal(Vector3 norm, Matrix mat) {
             mat.Invert();
             return TransformNormalInverse(norm, mat);
         }
@@ -733,8 +733,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="norm">The normal to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <param name="result">The transformed normal</param>
-        public static void TransformNormal(ref Vector3 norm, ref Matrix4 mat, out Vector3 result) {
-            Matrix4 Inverse = Matrix4.Invert(mat);
+        public static void TransformNormal(ref Vector3 norm, ref Matrix mat, out Vector3 result) {
+            Matrix Inverse = Matrix.Invert(mat);
             Vector3.TransformNormalInverse(ref norm, ref Inverse, out result);
         }
 
@@ -746,7 +746,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="norm">The normal to transform</param>
         /// <param name="invMat">The inverse of the desired transformation</param>
         /// <returns>The transformed normal</returns>
-        public static Vector3 TransformNormalInverse(Vector3 norm, Matrix4 invMat) {
+        public static Vector3 TransformNormalInverse(Vector3 norm, Matrix invMat) {
             Vector3 n;
             n.X = Vector3.Dot(norm, new Vector3(invMat.Row0));
             n.Y = Vector3.Dot(norm, new Vector3(invMat.Row1));
@@ -762,7 +762,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="norm">The normal to transform</param>
         /// <param name="invMat">The inverse of the desired transformation</param>
         /// <param name="result">The transformed normal</param>
-        public static void TransformNormalInverse(ref Vector3 norm, ref Matrix4 invMat, out Vector3 result) {
+        public static void TransformNormalInverse(ref Vector3 norm, ref Matrix invMat, out Vector3 result) {
             result.X = norm.X * invMat.Row0.X +
                 norm.Y * invMat.Row0.Y +
                 norm.Z * invMat.Row0.Z;
@@ -780,7 +780,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="pos">The position to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <returns>The transformed position</returns>
-        public static Vector3 TransformPosition(Vector3 pos, Matrix4 mat) {
+        public static Vector3 TransformPosition(Vector3 pos, Matrix mat) {
             Vector3 p;
             p.X = Vector3.Dot(pos, new Vector3(mat.Column0)) + mat.Row3.X;
             p.Y = Vector3.Dot(pos, new Vector3(mat.Column1)) + mat.Row3.Y;
@@ -792,7 +792,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="pos">The position to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <param name="result">The transformed position</param>
-        public static void TransformPosition(ref Vector3 pos, ref Matrix4 mat, out Vector3 result) {
+        public static void TransformPosition(ref Vector3 pos, ref Matrix mat, out Vector3 result) {
             result.X = pos.X * mat.Row0.X +
                 pos.Y * mat.Row1.X +
                 pos.Z * mat.Row2.X +
@@ -813,7 +813,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <returns>The transformed vector</returns>
-        public static Vector3 Transform(Vector3 vec, Matrix4 mat) {
+        public static Vector3 Transform(Vector3 vec, Matrix mat) {
             Vector3 result;
             Transform(ref vec, ref mat, out result);
             return result;
@@ -823,7 +823,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <param name="result">The transformed vector</param>
-        public static void Transform(ref Vector3 vec, ref Matrix4 mat, out Vector3 result) {
+        public static void Transform(ref Vector3 vec, ref Matrix mat, out Vector3 result) {
             Vector4 v4 = new Vector4(vec.X, vec.Y, vec.Z, 1.0f);
             Vector4.Transform(ref v4, ref mat, out v4);
             result = v4.Xyz;
@@ -863,7 +863,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <returns>The transformed vector</returns>
-        public static Vector3 TransformPerspective(Vector3 vec, Matrix4 mat) {
+        public static Vector3 TransformPerspective(Vector3 vec, Matrix mat) {
             Vector3 result;
             TransformPerspective(ref vec, ref mat, out result);
             return result;
@@ -873,7 +873,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <param name="result">The transformed vector</param>
-        public static void TransformPerspective(ref Vector3 vec, ref Matrix4 mat, out Vector3 result) {
+        public static void TransformPerspective(ref Vector3 vec, ref Matrix mat, out Vector3 result) {
             Vector4 v = new Vector4(vec, 1);
             Vector4.Transform(ref v, ref mat, out v);
             result.X = v.X / v.W;

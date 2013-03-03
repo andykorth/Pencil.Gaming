@@ -761,7 +761,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <returns>The transformed vector</returns>
-        public static Vector4 Transform(Vector4 vec, Matrix4 mat) {
+        public static Vector4 Transform(Vector4 vec, Matrix mat) {
             Vector4 result;
             Transform(ref vec, ref mat, out result);
             return result;
@@ -771,7 +771,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="vec">The vector to transform</param>
         /// <param name="mat">The desired transformation</param>
         /// <param name="result">The transformed vector</param>
-        public static void Transform(ref Vector4 vec, ref Matrix4 mat, out Vector4 result) {
+        public static void Transform(ref Vector4 vec, ref Matrix mat, out Vector4 result) {
             result = new Vector4(
                 vec.X * mat.Row0.X + vec.Y * mat.Row1.X + vec.Z * mat.Row2.X + vec.W * mat.Row3.X,
                 vec.X * mat.Row0.Y + vec.Y * mat.Row1.Y + vec.Z * mat.Row2.Y + vec.W * mat.Row3.Y,
