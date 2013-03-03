@@ -182,17 +182,15 @@ namespace Pencil.Gaming.Math {
         public static double InverseSqrtFast(double x) {
             return InverseSqrtFast((float)x);
             // TODO: The following code is wrong. Fix it, to improve precision.
-#if false
-            unsafe
-            {
-                double xhalf = 0.5f * x;
-                int i = *(int*)&x;              // Read bits as integer.
-                i = 0x5f375a86 - (i >> 1);      // Make an initial guess for Newton-Raphson approximation
-                x = *(float*)&i;                // Convert bits back to float
-                x = x * (1.5f - xhalf * x * x); // Perform left single Newton-Raphson step.
-                return x;
-            }
-#endif
+//            unsafe
+//            {
+//                double xhalf = 0.5f * x;
+//                int i = *(int*)&x;              // Read bits as integer.
+//                i = 0x5f375a86 - (i >> 1);      // Make an initial guess for Newton-Raphson approximation
+//                x = *(float*)&i;                // Convert bits back to float
+//                x = x * (1.5f - xhalf * x * x); // Perform left single Newton-Raphson step.
+//                return x;
+//            }
         }
 
         #endregion
@@ -204,7 +202,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="degrees">An angle in degrees</param>
         /// <returns>The angle expressed in radians</returns>
-        public static float DegreesToRadians(float degrees) {
+        public static float ToRadians(float degrees) {
             const float degToRad = (float)System.Math.PI / 180.0f;
             return degrees * degToRad;
         }
@@ -214,7 +212,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="radians">An angle in radians</param>
         /// <returns>The angle expressed in degrees</returns>
-        public static float RadiansToDegrees(float radians) {
+        public static float ToDegrees(float radians) {
             const float radToDeg = 180.0f / (float)System.Math.PI;
             return radians * radToDeg;
         }
@@ -224,7 +222,7 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="degrees">An angle in degrees</param>
         /// <returns>The angle expressed in radians</returns>
-        public static double DegreesToRadians(double degrees) {
+        public static double ToRadians(double degrees) {
             const double degToRad = System.Math.PI / 180.0;
             return degrees * degToRad;
         }
@@ -234,35 +232,9 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         /// <param name="radians">An angle in radians</param>
         /// <returns>The angle expressed in degrees</returns>
-        public static double RadiansToDegrees(double radians) {
+        public static double ToDegrees(double radians) {
             const double radToDeg = 180.0 / System.Math.PI;
             return radians * radToDeg;
-        }
-
-        #endregion
-
-        #region Swap
-
-        /// <summary>
-        /// Swaps two double values.
-        /// </summary>
-        /// <param name="a">The first value.</param>
-        /// <param name="b">The second value.</param>
-        public static void Swap(ref double a, ref double b) {
-            double temp = a;
-            a = b;
-            b = temp;
-        }
-
-        /// <summary>
-        /// Swaps two float values.
-        /// </summary>
-        /// <param name="a">The first value.</param>
-        /// <param name="b">The second value.</param>
-        public static void Swap(ref float a, ref float b) {
-            float temp = a;
-            a = b;
-            b = temp;
         }
 
         #endregion
