@@ -23,31 +23,6 @@ namespace Pencil.Gaming {
 
             public delegate void Resize(int width,int height);
 
-            public static void LoadGLFunctions() {
-#if DEBUG
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-#endif
-                FieldInfo[] fields = typeof(Gl.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-                foreach (FieldInfo field in fields) {
-                    IntPtr procAddress = Glfw.GetProcAddress(field.Name);
-                    if (procAddress != IntPtr.Zero) {
-                        Delegate function = Marshal.GetDelegateForFunctionPointer(procAddress, field.FieldType);
-                        field.SetValue(null, function);
-                    } else {
-                        MethodInfo minfo = typeof(GlCore).GetMethod(field.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-                        if (minfo != null) {
-                            Delegate function = Delegate.CreateDelegate(field.FieldType, minfo);
-                            field.SetValue(null, function);
-                        }
-                    }
-                }
-#if DEBUG
-                sw.Stop();
-                Console.WriteLine("Copying OpenGL delegates took {0} milliseconds.", sw.ElapsedMilliseconds);
-#endif
-            }
-
             // TODO: Add proper implementation through events
             public static bool HasWindowSizeChanged(out int width, out int height) {
                 Glfw.GetWindowSize(out width, out height);
