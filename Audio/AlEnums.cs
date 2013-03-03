@@ -1,3 +1,5 @@
+// License: ../LICENSE.TXT
+
 using System;
 
 namespace Pencil.Gaming.Audio {

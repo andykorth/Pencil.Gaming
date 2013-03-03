@@ -1,10 +1,4 @@
-#region --- License ---
-/* Copyright (c) 2006-2008 the OpenTK team.
- * See license.txt for license info
- * 
- * Contributions by Andy Gill.
- */
-#endregion
+// License: ../LICENSE.TXT
 
 #region --- Using Directives ---
 

@@ -1,3 +1,5 @@
+// License: ../LICENSE.TXT
+
 using System;
 using System.Runtime.InteropServices;
 using Pencil.Gaming.Graphics;

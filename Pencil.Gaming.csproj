@@ -121,5 +121,6 @@
     <None Include="natives32\libglfw.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="LICENSE.TXT" />
   </ItemGroup>
 </Project>

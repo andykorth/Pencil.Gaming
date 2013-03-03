@@ -1,3 +1,5 @@
+// License: LICENSE.TXT
+
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
