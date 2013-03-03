@@ -11,27 +11,75 @@ namespace Pencil.Gaming.Audio {
                 out AlFormat format,
                 out uint sampleRate) {
 
+                LoadWav(File.ReadAllBytes(file), out data, out format, out sampleRate);
+            }
+
+            public static unsafe void LoadWavExt(
+                string file, 
+                out byte[] data,
+                out uint chunkSize,
+                out AlFormat format,
+                out uint sampleRate,
+                out uint avgBytesPerSec,
+                out short bytesPerSample,
+                out short bitsPerSample) {
+
+                LoadWavExt(File.ReadAllBytes(file), out data, out chunkSize, out format, out sampleRate, out avgBytesPerSec, out bytesPerSample, out bitsPerSample);
+            }
+        
+            public static void LoadWav(
+                Stream file,
+                out byte[] data,
+                out AlFormat format,
+                out uint sampleRate) {
+
+                using (MemoryStream ms = new MemoryStream()) {
+                    file.CopyTo(ms);
+                    LoadWav(ms.ToArray(), out data, out format, out sampleRate);
+                }
+            }
+
+            public static void LoadWavExt(
+                Stream file,
+                out byte[] data,
+                out uint chunkSize,
+                out AlFormat format,
+                out uint sampleRate,
+                out uint avgBytesPerSec,
+                out short bytesPerSample,
+                out short bitsPerSample) {
+
+                using (MemoryStream ms = new MemoryStream()) {
+                    file.CopyTo(ms);
+                    LoadWavExt(ms.ToArray(), out data, out chunkSize, out format, out sampleRate, out avgBytesPerSec, out bytesPerSample, out bitsPerSample);
+                }
+            }
+
+            public static void LoadWav(
+                byte[] file,
+                out byte[] data,
+                out AlFormat format,
+                out uint sampleRate) {
+
                 uint dummyui;
                 short dummys;
                 LoadWavExt(file, out data, out dummyui, out format, out sampleRate, out dummyui, out dummys, out dummys);
             }
 
-            public static unsafe void LoadWavExt(
-                    string file, 
-                    out byte[] data,
-                    out uint chunkSize,
-                    out AlFormat format,
-                    out uint sampleRate,
-                    out uint avgBytesPerSec,
-                    out short bytesPerSample,
-                    out short bitsPerSample) {
+            public static void LoadWavExt(
+                byte[] sound,
+                out byte[] data,
+                out uint chunkSize,
+                out AlFormat format,
+                out uint sampleRate,
+                out uint avgBytesPerSec,
+                out short bytesPerSample,
+                out short bitsPerSample) {
 
 #if DEBUG
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
 #endif
-
-                byte[] sound = File.ReadAllBytes(file);
 
                 short channels;
 
@@ -84,7 +132,7 @@ namespace Pencil.Gaming.Audio {
 
 #if DEBUG
                 sw.Stop();
-                Console.WriteLine("Loading audio file \"{0}\" took {1} milliseconds.", file, sw.ElapsedMilliseconds);
+                Console.WriteLine("Loading audio file took {0} milliseconds.", sw.ElapsedMilliseconds);
 #endif
             }
         }
