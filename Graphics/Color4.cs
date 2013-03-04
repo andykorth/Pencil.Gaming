@@ -64,10 +64,10 @@ namespace Pencil.Gaming.Graphics {
         /// <param name="b">The blue component of the new Color4 structure.</param>
         /// <param name="a">The alpha component of the new Color4 structure.</param>
         public Color4(byte r, byte g, byte b, byte a) {
-            R = r / (float)Byte.MaxValue;
-            G = g / (float)Byte.MaxValue;
-            B = b / (float)Byte.MaxValue;
-            A = a / (float)Byte.MaxValue;
+            R = r / (float) Byte.MaxValue;
+            G = g / (float) Byte.MaxValue;
+            B = b / (float) Byte.MaxValue;
+            A = a / (float) Byte.MaxValue;
         }
 
         #endregion
@@ -81,12 +81,12 @@ namespace Pencil.Gaming.Graphics {
         /// <remarks>This method is intended only for compatibility with System.Drawing. It compresses the color into 8 bits per channel, which means color information is lost.</remarks>
         public int ToArgb() {
             uint value =
-                (uint)(A * Byte.MaxValue) << 24 |
-                (uint)(R * Byte.MaxValue) << 16 |
-                (uint)(G * Byte.MaxValue) << 8 |
-                (uint)(B * Byte.MaxValue);
+                (uint) (A * Byte.MaxValue) << 24 |
+                (uint) (R * Byte.MaxValue) << 16 |
+                (uint) (G * Byte.MaxValue) << 8 |
+                (uint) (B * Byte.MaxValue);
 
-            return unchecked((int)value);
+            return unchecked((int) value);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pencil.Gaming.Graphics {
             if (!(obj is Color4))
                 return false;
 
-            return Equals((Color4)obj);
+            return Equals((Color4) obj);
         }
 
         /// <summary>

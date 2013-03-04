@@ -3,6 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
+
 namespace Pencil.Gaming.Math {
     /// <summary>Represents a 4D vector using four single-precision floating-point numbers.</summary>
     /// <remarks>
@@ -186,7 +187,7 @@ namespace Pencil.Gaming.Math {
         /// <seealso cref="LengthSquared"/>
         public float Length {
             get {
-                return (float)System.Math.Sqrt(X * X + Y * Y + Z * Z + W * W);
+                return (float) System.Math.Sqrt(X * X + Y * Y + Z * Z + W * W);
             }
         }
 
@@ -1782,7 +1783,7 @@ namespace Pencil.Gaming.Math {
         /// <returns>A pointer to the first element of v.</returns>
         public static explicit operator IntPtr(Vector4 v) {
             unsafe {
-                return (IntPtr)(&v.X);
+                return (IntPtr) (&v.X);
             }
         }
 
@@ -1826,7 +1827,7 @@ namespace Pencil.Gaming.Math {
             if (!(obj is Vector4))
                 return false;
 
-            return this.Equals((Vector4)obj);
+            return this.Equals((Vector4) obj);
         }
 
         #endregion

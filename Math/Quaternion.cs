@@ -104,8 +104,8 @@ namespace Pencil.Gaming.Math {
 
             Vector4 result = new Vector4();
 
-            result.W = 2.0f * (float)System.Math.Acos(q.W); // angle
-            float den = (float)System.Math.Sqrt(1.0 - q.W * q.W);
+            result.W = 2.0f * (float) System.Math.Acos(q.W); // angle
+            float den = (float) System.Math.Sqrt(1.0 - q.W * q.W);
             if (den > 0.0001f) {
                 result.Xyz = q.Xyz / den;
             } else {
@@ -127,7 +127,7 @@ namespace Pencil.Gaming.Math {
         /// <seealso cref="LengthSquared"/>
         public float Length {
             get {
-                return (float)System.Math.Sqrt(W * W + Xyz.LengthSquared);
+                return (float) System.Math.Sqrt(W * W + Xyz.LengthSquared);
             }
         }
 
@@ -380,8 +380,8 @@ namespace Pencil.Gaming.Math {
 
             angle *= 0.5f;
             axis.Normalize();
-            result.Xyz = axis * (float)System.Math.Sin(angle);
-            result.W = (float)System.Math.Cos(angle);
+            result.Xyz = axis * (float) System.Math.Sin(angle);
+            result.W = (float) System.Math.Cos(angle);
 
             return Normalize(result);
         }
@@ -424,11 +424,11 @@ namespace Pencil.Gaming.Math {
             float blendB;
             if (cosHalfAngle < 0.99f) {
                 // do proper slerp for big angles
-                float halfAngle = (float)System.Math.Acos(cosHalfAngle);
-                float sinHalfAngle = (float)System.Math.Sin(halfAngle);
+                float halfAngle = (float) System.Math.Acos(cosHalfAngle);
+                float sinHalfAngle = (float) System.Math.Sin(halfAngle);
                 float oneOverSinHalfAngle = 1.0f / sinHalfAngle;
-                blendA = (float)System.Math.Sin(halfAngle * (1.0f - blend)) * oneOverSinHalfAngle;
-                blendB = (float)System.Math.Sin(halfAngle * blend) * oneOverSinHalfAngle;
+                blendA = (float) System.Math.Sin(halfAngle * (1.0f - blend)) * oneOverSinHalfAngle;
+                blendB = (float) System.Math.Sin(halfAngle * blend) * oneOverSinHalfAngle;
             } else {
                 // do lerp if angle is really small.
                 blendA = 1.0f - blend;
@@ -550,7 +550,7 @@ namespace Pencil.Gaming.Math {
         public override bool Equals(object other) {
             if (other is Quaternion == false)
                 return false;
-            return this == (Quaternion)other;
+            return this == (Quaternion) other;
         }
 
         #endregion

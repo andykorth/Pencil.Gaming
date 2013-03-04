@@ -324,8 +324,8 @@ namespace Pencil.Gaming.Math {
             float axisX = axis.X, axisY = axis.Y, axisZ = axis.Z;
 
             // calculate angles
-            float cos = (float)System.Math.Cos(-angle);
-            float sin = (float)System.Math.Sin(-angle);
+            float cos = (float) System.Math.Cos(-angle);
+            float sin = (float) System.Math.Sin(-angle);
             float t = 1.0f - cos;
 
             // do the conversion math once
@@ -404,8 +404,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
         public static void CreateRotationX(float angle, out Matrix result) {
-            float cos = (float)System.Math.Cos(angle);
-            float sin = (float)System.Math.Sin(angle);
+            float cos = (float) System.Math.Cos(angle);
+            float sin = (float) System.Math.Sin(angle);
 
             result = Identity;
             result.Row1.Y = cos;
@@ -431,8 +431,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
         public static void CreateRotationY(float angle, out Matrix result) {
-            float cos = (float)System.Math.Cos(angle);
-            float sin = (float)System.Math.Sin(angle);
+            float cos = (float) System.Math.Cos(angle);
+            float sin = (float) System.Math.Sin(angle);
 
             result = Identity;
             result.Row0.X = cos;
@@ -458,8 +458,8 @@ namespace Pencil.Gaming.Math {
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
         public static void CreateRotationZ(float angle, out Matrix result) {
-            float cos = (float)System.Math.Cos(angle);
-            float sin = (float)System.Math.Sin(angle);
+            float cos = (float) System.Math.Cos(angle);
+            float sin = (float) System.Math.Sin(angle);
 
             result = Identity;
             result.Row0.X = cos;
@@ -718,7 +718,7 @@ namespace Pencil.Gaming.Math {
             if (zFar <= 0)
                 throw new ArgumentOutOfRangeException("zFar");
             
-            float yMax = zNear * (float)System.Math.Tan(0.5f * fovy);
+            float yMax = zNear * (float) System.Math.Tan(0.5f * fovy);
             float yMin = -yMax;
             float xMin = yMin * aspect;
             float xMax = yMax * aspect;
@@ -1156,7 +1156,7 @@ namespace Pencil.Gaming.Math {
             if (!(obj is Matrix))
                 return false;
 
-            return this.Equals((Matrix)obj);
+            return this.Equals((Matrix) obj);
         }
 
         #endregion

@@ -75,7 +75,7 @@ namespace Pencil.Gaming.Math {
         public static long NextPowerOfTwo(long n) {
             if (n < 0)
                 throw new ArgumentOutOfRangeException("n", "Must be positive.");
-            return (long)System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
+            return (long) System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double) n, 2)));
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pencil.Gaming.Math {
         public static int NextPowerOfTwo(int n) {
             if (n < 0)
                 throw new ArgumentOutOfRangeException("n", "Must be positive.");
-            return (int)System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
+            return (int) System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double) n, 2)));
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Pencil.Gaming.Math {
         public static float NextPowerOfTwo(float n) {
             if (n < 0)
                 throw new ArgumentOutOfRangeException("n", "Must be positive.");
-            return (float)System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
+            return (float) System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double) n, 2)));
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Pencil.Gaming.Math {
         public static double NextPowerOfTwo(double n) {
             if (n < 0)
                 throw new ArgumentOutOfRangeException("n", "Must be positive.");
-            return System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
+            return System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double) n, 2)));
         }
 
         #endregion
@@ -160,9 +160,9 @@ namespace Pencil.Gaming.Math {
         public static float InverseSqrtFast(float x) {
             unsafe {
                 float xhalf = 0.5f * x;
-                int i = *(int*)&x;              // Read bits as integer.
+                int i = *(int*) &x;              // Read bits as integer.
                 i = 0x5f375a86 - (i >> 1);      // Make an initial guess for Newton-Raphson approximation
-                x = *(float*)&i;                // Convert bits back to float
+                x = *(float*) &i;                // Convert bits back to float
                 x = x * (1.5f - xhalf * x * x); // Perform left single Newton-Raphson step.
                 return x;
             }
@@ -180,7 +180,7 @@ namespace Pencil.Gaming.Math {
         /// http://www.beyond3d.com/content/articles/8/
         /// </remarks>
         public static double InverseSqrtFast(double x) {
-            return InverseSqrtFast((float)x);
+            return InverseSqrtFast((float) x);
             // TODO: The following code is wrong. Fix it, to improve precision.
 //            unsafe
 //            {
@@ -203,7 +203,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="degrees">An angle in degrees</param>
         /// <returns>The angle expressed in radians</returns>
         public static float ToRadians(float degrees) {
-            const float degToRad = (float)System.Math.PI / 180.0f;
+            const float degToRad = (float) System.Math.PI / 180.0f;
             return degrees * degToRad;
         }
 
@@ -213,7 +213,7 @@ namespace Pencil.Gaming.Math {
         /// <param name="radians">An angle in radians</param>
         /// <returns>The angle expressed in degrees</returns>
         public static float ToDegrees(float radians) {
-            const float radToDeg = 180.0f / (float)System.Math.PI;
+            const float radToDeg = 180.0f / (float) System.Math.PI;
             return radians * radToDeg;
         }
 

@@ -97,26 +97,26 @@ namespace Pencil.Gaming.Audio {
                     throw new Exception("Invalid file format.");
                 }
                 ptrOffset = 16;
-                chunkSize = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
+                chunkSize = ((uint) sound[3 + ptrOffset] << 24) | ((uint) sound[2 + ptrOffset] << 16) | ((uint) sound[1 + ptrOffset] << 8) | ((uint) sound[ptrOffset]);
                 //ptrOffset = 20;
                 //formatType = ((short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset])));
                 ptrOffset = 22;
-                channels = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
+                channels = (short) (((short) sound[1 + ptrOffset] << 8) | ((short) sound[0 + ptrOffset]));
                 ptrOffset = 24;
-                sampleRate = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
+                sampleRate = ((uint) sound[3 + ptrOffset] << 24) | ((uint) sound[2 + ptrOffset] << 16) | ((uint) sound[1 + ptrOffset] << 8) | ((uint) sound[ptrOffset]);
                 ptrOffset = 28;
-                avgBytesPerSec = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
+                avgBytesPerSec = ((uint) sound[3 + ptrOffset] << 24) | ((uint) sound[2 + ptrOffset] << 16) | ((uint) sound[1 + ptrOffset] << 8) | ((uint) sound[ptrOffset]);
                 ptrOffset = 32;
-                bytesPerSample = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
+                bytesPerSample = (short) (((short) sound[1 + ptrOffset] << 8) | ((short) sound[0 + ptrOffset]));
                 ptrOffset = 34;
-                bitsPerSample = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
+                bitsPerSample = (short) (((short) sound[1 + ptrOffset] << 8) | ((short) sound[0 + ptrOffset]));
                 if (sound[36] != 'd' || sound[37] != 'a' || sound[38] != 't' || sound[39] != 'a') {
                     throw new Exception("Invalid file format.");
                 }
                 ptrOffset = 40;
-                int dataSize = ((int)sound[3 + ptrOffset] << 24) | ((int)sound[2 + ptrOffset] << 16) | ((int)sound[1 + ptrOffset] << 8) | ((int)sound[ptrOffset]);
+                int dataSize = ((int) sound[3 + ptrOffset] << 24) | ((int) sound[2 + ptrOffset] << 16) | ((int) sound[1 + ptrOffset] << 8) | ((int) sound[ptrOffset]);
 
-                format = (AlFormat)0;
+                format = (AlFormat) 0;
                 if (bitsPerSample == 8) {
                     if (channels == 1)
                         format = AlFormat.Mono8;

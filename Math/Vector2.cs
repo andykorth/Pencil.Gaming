@@ -81,7 +81,7 @@ namespace Pencil.Gaming.Math {
         /// <seealso cref="LengthSquared"/>
         public float Length {
             get {
-                return (float)System.Math.Sqrt(X * X + Y * Y);
+                return (float) System.Math.Sqrt(X * X + Y * Y);
             }
         }
 
@@ -815,7 +815,7 @@ namespace Pencil.Gaming.Math {
             if (!(obj is Vector2))
                 return false;
 
-            return this.Equals((Vector2)obj);
+            return this.Equals((Vector2) obj);
         }
 
         #endregion

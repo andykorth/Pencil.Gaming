@@ -3,6 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
+
 namespace Pencil.Gaming.Math {
     /// <summary>
     /// Represents a 3D vector using three single-precision floating-point numbers.
@@ -125,7 +126,7 @@ namespace Pencil.Gaming.Math {
         /// <seealso cref="LengthSquared"/>
         public float Length {
             get {
-                return (float)System.Math.Sqrt(X * X + Y * Y + Z * Z);
+                return (float) System.Math.Sqrt(X * X + Y * Y + Z * Z);
             }
         }
 
@@ -893,7 +894,7 @@ namespace Pencil.Gaming.Math {
         /// <returns>Angle (in radians) between the vectors.</returns>
         /// <remarks>Note that the returned angle is never bigger than the constant Pi.</remarks>
         public static float CalculateAngle(Vector3 first, Vector3 second) {
-            return (float)System.Math.Acos((Vector3.Dot(first, second)) / (first.Length * second.Length));
+            return (float) System.Math.Acos((Vector3.Dot(first, second)) / (first.Length * second.Length));
         }
 
         /// <summary>Calculates the angle (in radians) between two vectors.</summary>
@@ -904,7 +905,7 @@ namespace Pencil.Gaming.Math {
         public static void CalculateAngle(ref Vector3 first, ref Vector3 second, out float result) {
             float temp;
             Vector3.Dot(ref first, ref second, out temp);
-            result = (float)System.Math.Acos(temp / (first.Length * second.Length));
+            result = (float) System.Math.Acos(temp / (first.Length * second.Length));
         }
 
         #endregion
@@ -1200,7 +1201,7 @@ namespace Pencil.Gaming.Math {
             if (!(obj is Vector3))
                 return false;
 
-            return this.Equals((Vector3)obj);
+            return this.Equals((Vector3) obj);
         }
 
         #endregion
