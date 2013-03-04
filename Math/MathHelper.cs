@@ -9,8 +9,6 @@ namespace Pencil.Gaming.Math {
     /// Contains common mathematical functions and constants.
     /// </summary>
     public static class MathHelper {
-        #region Fields
-
         /// <summary>
         /// Defines the value of Pi as a <see cref="System.Single"/>.
         /// </summary>
@@ -61,11 +59,6 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         public const float Log2E = 1.442695041f;
 
-        #endregion
-
-        #region Public Members
-
-        #region NextPowerOfTwo
 
         /// <summary>
         /// Returns the next power of two that is larger than the specified number.
@@ -111,10 +104,6 @@ namespace Pencil.Gaming.Math {
             return System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double) n, 2)));
         }
 
-        #endregion
-
-        #region Factorial
-
         /// <summary>Calculates the factorial of a given natural number.
         /// </summary>
         /// <param name="n">The number.</param>
@@ -128,10 +117,6 @@ namespace Pencil.Gaming.Math {
             return result;
         }
 
-        #endregion
-
-        #region BinomialCoefficient
-
         /// <summary>
         /// Calculates the binomial coefficient <paramref name="n"/> above <paramref name="k"/>.
         /// </summary>
@@ -141,10 +126,6 @@ namespace Pencil.Gaming.Math {
         public static long BinomialCoefficient(int n, int k) {
             return Factorial(n) / (Factorial(k) * Factorial(n - k));
         }
-
-        #endregion
-
-        #region InverseSqrtFast
 
         /// <summary>
         /// Returns an approximation of the inverse square root of left number.
@@ -193,10 +174,6 @@ namespace Pencil.Gaming.Math {
 //            }
         }
 
-        #endregion
-
-        #region DegreesToRadians
-
         /// <summary>
         /// Convert degrees to radians
         /// </summary>
@@ -236,9 +213,5 @@ namespace Pencil.Gaming.Math {
             const double radToDeg = 180.0 / System.Math.PI;
             return radians * radToDeg;
         }
-
-        #endregion
-
-        #endregion
     }
 }

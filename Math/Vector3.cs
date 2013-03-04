@@ -14,8 +14,6 @@ namespace Pencil.Gaming.Math {
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector3 : IEquatable<Vector3> {
-        #region Fields
-
         /// <summary>
         /// The X component of the Vector3.
         /// </summary>
@@ -31,9 +29,35 @@ namespace Pencil.Gaming.Math {
         /// </summary>
         public float Z;
 
-        #endregion
+        /// <summary>
+        /// Defines a unit-length Vector3 that points towards the X-axis.
+        /// </summary>
+        public static readonly Vector3 UnitX = new Vector3(1, 0, 0);
 
-        #region Constructors
+        /// <summary>
+        /// Defines a unit-length Vector3 that points towards the Y-axis.
+        /// </summary>
+        public static readonly Vector3 UnitY = new Vector3(0, 1, 0);
+
+        /// <summary>
+        /// /// Defines a unit-length Vector3 that points towards the Z-axis.
+        /// </summary>
+        public static readonly Vector3 UnitZ = new Vector3(0, 0, 1);
+
+        /// <summary>
+        /// Defines a zero-length Vector3.
+        /// </summary>
+        public static readonly Vector3 Zero = new Vector3(0, 0, 0);
+
+        /// <summary>
+        /// Defines an instance with all components set to 1.
+        /// </summary>
+        public static readonly Vector3 One = new Vector3(1, 1, 1);
+
+        /// <summary>
+        /// Defines the size of the Vector3 struct in bytes.
+        /// </summary>
+        public const int SizeInBytes = sizeof(float) * 3;
 
         /// <summary>
         /// Constructs a new instance.
@@ -87,10 +111,6 @@ namespace Pencil.Gaming.Math {
             Z = v.Z;
         }
 
-        #endregion
-
-        #region Public Members
-
 
         /// <summary>
         /// Gets or sets the value at the index of the Vector.
@@ -115,24 +135,14 @@ namespace Pencil.Gaming.Math {
             }
         }
 
-        #region Instance
-
-        #region public float Length
-
         /// <summary>
         /// Gets the length (magnitude) of the vector.
         /// </summary>
         /// <see cref="LengthFast"/>
         /// <seealso cref="LengthSquared"/>
         public float Length {
-            get {
-                return (float) System.Math.Sqrt(X * X + Y * Y + Z * Z);
-            }
+            get { return (float) System.Math.Sqrt(X * X + Y * Y + Z * Z); }
         }
-
-        #endregion
-
-        #region public float LengthFast
 
         /// <summary>
         /// Gets an approximation of the vector length (magnitude).
@@ -144,14 +154,8 @@ namespace Pencil.Gaming.Math {
         /// <see cref="Length"/>
         /// <seealso cref="LengthSquared"/>
         public float LengthFast {
-            get {
-                return 1.0f / MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z);
-            }
+            get { return 1.0f / MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z); }
         }
-
-        #endregion
-
-        #region public float LengthSquared
 
         /// <summary>
         /// Gets the square of the vector length (magnitude).
@@ -163,14 +167,8 @@ namespace Pencil.Gaming.Math {
         /// <see cref="Length"/>
         /// <seealso cref="LengthFast"/>
         public float LengthSquared {
-            get {
-                return X * X + Y * Y + Z * Z;
-            }
+            get { return X * X + Y * Y + Z * Z; }
         }
-
-        #endregion
-
-        #region public void Normalize()
 
         /// <summary>
         /// Scales the Vector3 to unit length.
@@ -182,10 +180,6 @@ namespace Pencil.Gaming.Math {
             Z *= scale;
         }
 
-        #endregion
-
-        #region public void NormalizeFast()
-
         /// <summary>
         /// Scales the Vector3 to approximately unit length.
         /// </summary>
@@ -195,50 +189,6 @@ namespace Pencil.Gaming.Math {
             Y *= scale;
             Z *= scale;
         }
-
-        #endregion
-
-        #endregion
-
-        #region Static
-
-        #region Fields
-
-        /// <summary>
-        /// Defines a unit-length Vector3 that points towards the X-axis.
-        /// </summary>
-        public static readonly Vector3 UnitX = new Vector3(1, 0, 0);
-
-        /// <summary>
-        /// Defines a unit-length Vector3 that points towards the Y-axis.
-        /// </summary>
-        public static readonly Vector3 UnitY = new Vector3(0, 1, 0);
-
-        /// <summary>
-        /// /// Defines a unit-length Vector3 that points towards the Z-axis.
-        /// </summary>
-        public static readonly Vector3 UnitZ = new Vector3(0, 0, 1);
-
-        /// <summary>
-        /// Defines a zero-length Vector3.
-        /// </summary>
-        public static readonly Vector3 Zero = new Vector3(0, 0, 0);
-
-        /// <summary>
-        /// Defines an instance with all components set to 1.
-        /// </summary>
-        public static readonly Vector3 One = new Vector3(1, 1, 1);
-
-        /// <summary>
-        /// Defines the size of the Vector3 struct in bytes.
-        /// </summary>
-        public static readonly int SizeInBytes = Marshal.SizeOf(new Vector3());
-
-        #endregion
-
-        #endregion
-
-        #region Add
 
         /// <summary>
         /// Adds two vectors.
@@ -261,10 +211,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         }
 
-        #endregion
-
-        #region Subtract
-
         /// <summary>
         /// Subtract one Vector from another
         /// </summary>
@@ -285,10 +231,6 @@ namespace Pencil.Gaming.Math {
         public static void Subtract(ref Vector3 a, ref Vector3 b, out Vector3 result) {
             result = new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         }
-
-        #endregion
-
-        #region Multiply
 
         /// <summary>
         /// Multiplies a vector by a scalar.
@@ -332,10 +274,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector3(vector.X * scale.X, vector.Y * scale.Y, vector.Z * scale.Z);
         }
 
-        #endregion
-
-        #region Divide
-
         /// <summary>
         /// Divides a vector by a scalar.
         /// </summary>
@@ -378,10 +316,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector3(vector.X / scale.X, vector.Y / scale.Y, vector.Z / scale.Z);
         }
 
-        #endregion
-
-        #region ComponentMin
-
         /// <summary>
         /// Calculate the component-wise minimum of two vectors
         /// </summary>
@@ -406,10 +340,6 @@ namespace Pencil.Gaming.Math {
             result.Y = a.Y < b.Y ? a.Y : b.Y;
             result.Z = a.Z < b.Z ? a.Z : b.Z;
         }
-
-        #endregion
-
-        #region ComponentMax
 
         /// <summary>
         /// Calculate the component-wise maximum of two vectors
@@ -436,10 +366,6 @@ namespace Pencil.Gaming.Math {
             result.Z = a.Z > b.Z ? a.Z : b.Z;
         }
 
-        #endregion
-
-        #region Min
-
         /// <summary>
         /// Returns the Vector3 with the minimum magnitude
         /// </summary>
@@ -450,10 +376,6 @@ namespace Pencil.Gaming.Math {
             return left.LengthSquared < right.LengthSquared ? left : right;
         }
 
-        #endregion
-
-        #region Max
-
         /// <summary>
         /// Returns the Vector3 with the minimum magnitude
         /// </summary>
@@ -463,10 +385,6 @@ namespace Pencil.Gaming.Math {
         public static Vector3 Max(Vector3 left, Vector3 right) {
             return left.LengthSquared >= right.LengthSquared ? left : right;
         }
-
-        #endregion
-
-        #region Clamp
 
         /// <summary>
         /// Clamp a vector to the given minimum and maximum vectors
@@ -495,10 +413,6 @@ namespace Pencil.Gaming.Math {
             result.Z = vec.Z < min.Z ? min.Z : vec.Z > max.Z ? max.Z : vec.Z;
         }
 
-        #endregion
-
-        #region Normalize
-
         /// <summary>
         /// Scale a vector to unit length
         /// </summary>
@@ -523,10 +437,6 @@ namespace Pencil.Gaming.Math {
             result.Y = vec.Y * scale;
             result.Z = vec.Z * scale;
         }
-
-        #endregion
-
-        #region NormalizeFast
 
         /// <summary>
         /// Scale a vector to approximately unit length
@@ -553,10 +463,6 @@ namespace Pencil.Gaming.Math {
             result.Z = vec.Z * scale;
         }
 
-        #endregion
-
-        #region Dot
-
         /// <summary>
         /// Calculate the dot (scalar) product of two vectors
         /// </summary>
@@ -576,10 +482,6 @@ namespace Pencil.Gaming.Math {
         public static void Dot(ref Vector3 left, ref Vector3 right, out float result) {
             result = left.X * right.X + left.Y * right.Y + left.Z * right.Z;
         }
-
-        #endregion
-
-        #region Cross
 
         /// <summary>
         /// Caclulate the cross (vector) product of two vectors
@@ -605,10 +507,6 @@ namespace Pencil.Gaming.Math {
                 left.Z * right.X - left.X * right.Z,
                 left.X * right.Y - left.Y * right.X);
         }
-
-        #endregion
-
-        #region Lerp
 
         /// <summary>
         /// Returns a new Vector that is the linear blend of the 2 given Vectors
@@ -636,10 +534,6 @@ namespace Pencil.Gaming.Math {
             result.Y = blend * (b.Y - a.Y) + a.Y;
             result.Z = blend * (b.Z - a.Z) + a.Z;
         }
-
-        #endregion
-
-        #region Barycentric
 
         /// <summary>
         /// Interpolate 3 Vectors using Barycentric coordinates
@@ -674,10 +568,6 @@ namespace Pencil.Gaming.Math {
             Multiply(ref temp, v, out temp);
             Add(ref result, ref temp, out result);
         }
-
-        #endregion
-
-        #region Transform
 
         /// <summary>Transform a direction vector by the given Matrix
         /// Assumes the matrix has a bottom row of (0,0,0,1), that is the translation part is ignored.
@@ -882,10 +772,6 @@ namespace Pencil.Gaming.Math {
             result.Z = v.Z / v.W;
         }
 
-        #endregion
-
-        #region CalculateAngle
-
         /// <summary>
         /// Calculates the angle (in radians) between two vectors.
         /// </summary>
@@ -907,14 +793,6 @@ namespace Pencil.Gaming.Math {
             Vector3.Dot(ref first, ref second, out temp);
             result = (float) System.Math.Acos(temp / (first.Length * second.Length));
         }
-
-        #endregion
-
-        #endregion
-
-        #region Swizzle
-
-        #region 2-component
 
         /// <summary>
         /// Gets or sets an OpenTK.Vector2 with the X and Y components of this instance.
@@ -988,10 +866,6 @@ namespace Pencil.Gaming.Math {
             }
         }
 
-        #endregion
-
-        #region 3-component
-
         /// <summary>
         /// Gets or sets an OpenTK.Vector3 with the X, Z, and Y components of this instance.
         /// </summary>
@@ -1056,12 +930,6 @@ namespace Pencil.Gaming.Math {
                 X = value.Z;
             }
         }
-
-        #endregion
-
-        #endregion
-
-        #region Operators
 
         /// <summary>
         /// Adds two instances.
@@ -1161,12 +1029,6 @@ namespace Pencil.Gaming.Math {
             return !left.Equals(right);
         }
 
-        #endregion
-
-        #region Overrides
-
-        #region public override string ToString()
-
         internal static string listSeparator = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
         /// <summary>
         /// Returns a System.String that represents the current Vector3.
@@ -1176,10 +1038,6 @@ namespace Pencil.Gaming.Math {
             return String.Format("({0}{3} {1}{3} {2})", X, Y, Z, listSeparator);
         }
 
-        #endregion
-
-        #region public override int GetHashCode()
-
         /// <summary>
         /// Returns the hashcode for this instance.
         /// </summary>
@@ -1187,10 +1045,6 @@ namespace Pencil.Gaming.Math {
         public override int GetHashCode() {
             return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
         }
-
-        #endregion
-
-        #region public override bool Equals(object obj)
 
         /// <summary>
         /// Indicates whether this instance and a specified object are equal.
@@ -1204,12 +1058,6 @@ namespace Pencil.Gaming.Math {
             return this.Equals((Vector3) obj);
         }
 
-        #endregion
-
-        #endregion
-
-        #region IEquatable<Vector3> Members
-
         /// <summary>Indicates whether the current vector is equal to another vector.</summary>
         /// <param name="other">A vector to compare with this vector.</param>
         /// <returns>true if the current vector is equal to the vector parameter; otherwise, false.</returns>
@@ -1219,7 +1067,5 @@ namespace Pencil.Gaming.Math {
                 Y == other.Y &&
                 Z == other.Z;
         }
-
-        #endregion
     }
 }

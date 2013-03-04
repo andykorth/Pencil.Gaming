@@ -12,14 +12,13 @@ namespace Pencil.Gaming.Math {
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     public struct Quaternion : IEquatable<Quaternion> {
-        #region Fields
+        private Vector3 xyz;
+        private float w;
 
-        Vector3 xyz;
-        float w;
-
-        #endregion
-
-        #region Constructors
+        /// <summary>
+        /// Defines the identity quaternion.
+        /// </summary>
+        public static Quaternion Identity = new Quaternion(0, 0, 0, 1);
 
         /// <summary>
         /// Construct a new Quaternion from vector and w components
@@ -41,12 +40,6 @@ namespace Pencil.Gaming.Math {
         public Quaternion(float x, float y, float z, float w)
             : this(new Vector3(x, y, z), w) {
         }
-
-        #endregion
-
-        #region Public Members
-
-        #region Properties
 
         /// <summary>
         /// Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
@@ -75,12 +68,6 @@ namespace Pencil.Gaming.Math {
         /// Gets or sets the W component of this instance.
         /// </summary>
         public float W { get { return w; } set { w = value; } }
-
-        #endregion
-
-        #region Instance
-
-        #region ToAxisAngle
 
         /// <summary>
         /// Convert the current quaternion to axis angle representation
@@ -117,10 +104,6 @@ namespace Pencil.Gaming.Math {
             return result;
         }
 
-        #endregion
-
-        #region public float Length
-
         /// <summary>
         /// Gets the length (magnitude) of the quaternion.
         /// </summary>
@@ -131,10 +114,6 @@ namespace Pencil.Gaming.Math {
             }
         }
 
-        #endregion
-
-        #region public float LengthSquared
-
         /// <summary>
         /// Gets the square of the quaternion length (magnitude).
         /// </summary>
@@ -143,10 +122,6 @@ namespace Pencil.Gaming.Math {
                 return W * W + Xyz.LengthSquared;
             }
         }
-
-        #endregion
-
-        #region public void Normalize()
 
         /// <summary>
         /// Scales the Quaternion to unit length.
@@ -157,33 +132,12 @@ namespace Pencil.Gaming.Math {
             W *= scale;
         }
 
-        #endregion
-
-        #region public void Conjugate()
-
         /// <summary>
         /// Convert this quaternion to its conjugate
         /// </summary>
         public void Conjugate() {
             Xyz = -Xyz;
         }
-
-        #endregion
-
-        #endregion
-
-        #region Static
-
-        #region Fields
-
-        /// <summary>
-        /// Defines the identity quaternion.
-        /// </summary>
-        public static Quaternion Identity = new Quaternion(0, 0, 0, 1);
-
-        #endregion
-
-        #region Add
 
         /// <summary>
         /// Add two quaternions
@@ -209,10 +163,6 @@ namespace Pencil.Gaming.Math {
                 left.W + right.W);
         }
 
-        #endregion
-
-        #region Sub
-
         /// <summary>
         /// Subtracts two instances.
         /// </summary>
@@ -236,10 +186,6 @@ namespace Pencil.Gaming.Math {
                 left.Xyz - right.Xyz,
                 left.W - right.W);
         }
-
-        #endregion
-
-        #region Mult
 
         /// <summary>
         /// Multiplies two instances.
@@ -285,10 +231,6 @@ namespace Pencil.Gaming.Math {
             return new Quaternion(quaternion.X * scale, quaternion.Y * scale, quaternion.Z * scale, quaternion.W * scale);
         }
 
-        #endregion
-
-        #region Conjugate
-
         /// <summary>
         /// Get the conjugate of the given quaternion
         /// </summary>
@@ -306,10 +248,6 @@ namespace Pencil.Gaming.Math {
         public static void Conjugate(ref Quaternion q, out Quaternion result) {
             result = new Quaternion(-q.Xyz, q.W);
         }
-
-        #endregion
-
-        #region Invert
 
         /// <summary>
         /// Get the inverse of the given quaternion
@@ -337,10 +275,6 @@ namespace Pencil.Gaming.Math {
             }
         }
 
-        #endregion
-
-        #region Normalize
-
         /// <summary>
         /// Scale the given quaternion to unit length
         /// </summary>
@@ -362,10 +296,6 @@ namespace Pencil.Gaming.Math {
             result = new Quaternion(q.Xyz * scale, q.W * scale);
         }
 
-        #endregion
-
-        #region FromAxisAngle
-
         /// <summary>
         /// Build a quaternion from the given axis and angle
         /// </summary>
@@ -385,10 +315,6 @@ namespace Pencil.Gaming.Math {
 
             return Normalize(result);
         }
-
-        #endregion
-
-        #region Slerp
 
         /// <summary>
         /// Do Spherical linear interpolation between two quaternions 
@@ -441,12 +367,6 @@ namespace Pencil.Gaming.Math {
             else
                 return Identity;
         }
-
-        #endregion
-
-        #endregion
-
-        #region Operators
 
         /// <summary>
         /// Adds two instances.
@@ -524,12 +444,6 @@ namespace Pencil.Gaming.Math {
             return !left.Equals(right);
         }
 
-        #endregion
-
-        #region Overrides
-
-        #region public override string ToString()
-
         /// <summary>
         /// Returns a System.String that represents the current Quaternion.
         /// </summary>
@@ -537,10 +451,6 @@ namespace Pencil.Gaming.Math {
         public override string ToString() {
             return String.Format("V: {0}, W: {1}", Xyz, W);
         }
-
-        #endregion
-
-        #region public override bool Equals (object o)
 
         /// <summary>
         /// Compares this object instance to another object for equality. 
@@ -553,10 +463,6 @@ namespace Pencil.Gaming.Math {
             return this == (Quaternion) other;
         }
 
-        #endregion
-
-        #region public override int GetHashCode ()
-
         /// <summary>
         /// Provides the hash code for this object. 
         /// </summary>
@@ -564,14 +470,6 @@ namespace Pencil.Gaming.Math {
         public override int GetHashCode() {
             return Xyz.GetHashCode() ^ W.GetHashCode();
         }
-
-        #endregion
-
-        #endregion
-
-        #endregion
-
-        #region IEquatable<Quaternion> Members
 
         /// <summary>
         /// Compares this Quaternion instance to another Quaternion for equality. 
@@ -581,7 +479,5 @@ namespace Pencil.Gaming.Math {
         public bool Equals(Quaternion other) {
             return Xyz == other.Xyz && W == other.W;
         }
-
-        #endregion
     }
 }

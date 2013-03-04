@@ -12,8 +12,6 @@ namespace Pencil.Gaming.Math {
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector2 : IEquatable<Vector2> {
-        #region Fields
-
         /// <summary>
         /// The X component of the Vector2.
         /// </summary>
@@ -23,165 +21,6 @@ namespace Pencil.Gaming.Math {
         /// The Y component of the Vector2.
         /// </summary>
         public float Y;
-
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Constructs a new instance.
-        /// </summary>
-        /// <param name="value">The value that will initialize this instance.</param>
-        public Vector2(float value) {
-            X = value;
-            Y = value;
-        }
-
-        /// <summary>
-        /// Constructs a new Vector2.
-        /// </summary>
-        /// <param name="x">The x coordinate of the net Vector2.</param>
-        /// <param name="y">The y coordinate of the net Vector2.</param>
-        public Vector2(float x, float y) {
-            X = x;
-            Y = y;
-        }
-
-        #endregion
-
-        #region Public Members
-
-        /// <summary>
-        /// Gets or sets the value at the index of the Vector.
-        /// </summary>
-        public float this[int index] {
-            get {
-                if (index == 0)
-                    return X;
-                else if (index == 1)
-                    return Y;
-                throw new IndexOutOfRangeException("You tried to access this vector at index: " + index);
-            } set {
-                if (index == 0)
-                    X = value;
-                else if (index == 1)
-                    Y = value;
-                throw new IndexOutOfRangeException("You tried to set this vector at index: " + index);
-            }
-        }
-
-        #region Instance
-
-        #region public float Length
-
-        /// <summary>
-        /// Gets the length (magnitude) of the vector.
-        /// </summary>
-        /// <see cref="LengthFast"/>
-        /// <seealso cref="LengthSquared"/>
-        public float Length {
-            get {
-                return (float) System.Math.Sqrt(X * X + Y * Y);
-            }
-        }
-
-        #endregion
-
-        #region public float LengthFast
-
-        /// <summary>
-        /// Gets an approximation of the vector length (magnitude).
-        /// </summary>
-        /// <remarks>
-        /// This property uses an approximation of the square root function to calculate vector magnitude, with
-        /// an upper error bound of 0.001.
-        /// </remarks>
-        /// <see cref="Length"/>
-        /// <seealso cref="LengthSquared"/>
-        public float LengthFast {
-            get {
-                return 1.0f / MathHelper.InverseSqrtFast(X * X + Y * Y);
-            }
-        }
-
-        #endregion
-
-        #region public float LengthSquared
-
-        /// <summary>
-        /// Gets the square of the vector length (magnitude).
-        /// </summary>
-        /// <remarks>
-        /// This property avoids the costly square root operation required by the Length property. This makes it more suitable
-        /// for comparisons.
-        /// </remarks>
-        /// <see cref="Length"/>
-        /// <seealso cref="LengthFast"/>
-        public float LengthSquared {
-            get {
-                return X * X + Y * Y;
-            }
-        }
-
-        #endregion
-
-        #region public Vector2 PerpendicularRight
-
-        /// <summary>
-        /// Gets the perpendicular vector on the right side of this vector.
-        /// </summary>
-        public Vector2 PerpendicularRight {
-            get {
-                return new Vector2(Y, -X);
-            }
-        }
-
-        #endregion
-
-        #region public Vector2 PerpendicularLeft
-
-        /// <summary>
-        /// Gets the perpendicular vector on the left side of this vector.
-        /// </summary>
-        public Vector2 PerpendicularLeft {
-            get {
-                return new Vector2(-Y, X);
-            }
-        }
-
-        #endregion
-
-        #region public void Normalize()
-
-        /// <summary>
-        /// Scales the Vector2 to unit length.
-        /// </summary>
-        public void Normalize() {
-            float scale = 1.0f / this.Length;
-            X *= scale;
-            Y *= scale;
-        }
-
-        #endregion
-
-        #region public void NormalizeFast()
-
-        /// <summary>
-        /// Scales the Vector2 to approximately unit length.
-        /// </summary>
-        public void NormalizeFast() {
-            float scale = MathHelper.InverseSqrtFast(X * X + Y * Y);
-            X *= scale;
-            Y *= scale;
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Static
-
-        #region Fields
 
         /// <summary>
         /// Defines a unit-length Vector2 that points towards the X-axis.
@@ -206,11 +45,112 @@ namespace Pencil.Gaming.Math {
         /// <summary>
         /// Defines the size of the Vector2 struct in bytes.
         /// </summary>
-        public static readonly int SizeInBytes = Marshal.SizeOf(new Vector2());
+        public const int SizeInBytes = sizeof(float) * 2;
 
-        #endregion
+        /// <summary>
+        /// Constructs a new instance.
+        /// </summary>
+        /// <param name="value">The value that will initialize this instance.</param>
+        public Vector2(float value) {
+            X = value;
+            Y = value;
+        }
 
-        #region Add
+        /// <summary>
+        /// Constructs a new Vector2.
+        /// </summary>
+        /// <param name="x">The x coordinate of the net Vector2.</param>
+        /// <param name="y">The y coordinate of the net Vector2.</param>
+        public Vector2(float x, float y) {
+            X = x;
+            Y = y;
+        }
+
+        /// <summary>
+        /// Gets or sets the value at the index of the Vector.
+        /// </summary>
+        public float this[int index] {
+            get {
+                if (index == 0)
+                    return X;
+                else if (index == 1)
+                    return Y;
+                throw new IndexOutOfRangeException("You tried to access this vector at index: " + index);
+            } set {
+                if (index == 0)
+                    X = value;
+                else if (index == 1)
+                    Y = value;
+                throw new IndexOutOfRangeException("You tried to set this vector at index: " + index);
+            }
+        }
+
+        /// <summary>
+        /// Gets the length (magnitude) of the vector.
+        /// </summary>
+        /// <see cref="LengthFast"/>
+        /// <seealso cref="LengthSquared"/>
+        public float Length {
+            get { return (float) System.Math.Sqrt(X * X + Y * Y); }
+        }
+
+        /// <summary>
+        /// Gets an approximation of the vector length (magnitude).
+        /// </summary>
+        /// <remarks>
+        /// This property uses an approximation of the square root function to calculate vector magnitude, with
+        /// an upper error bound of 0.001.
+        /// </remarks>
+        /// <see cref="Length"/>
+        /// <seealso cref="LengthSquared"/>
+        public float LengthFast {
+            get { return 1.0f / MathHelper.InverseSqrtFast(X * X + Y * Y); }
+        }
+
+        /// <summary>
+        /// Gets the square of the vector length (magnitude).
+        /// </summary>
+        /// <remarks>
+        /// This property avoids the costly square root operation required by the Length property. This makes it more suitable
+        /// for comparisons.
+        /// </remarks>
+        /// <see cref="Length"/>
+        /// <seealso cref="LengthFast"/>
+        public float LengthSquared {
+            get { return X * X + Y * Y; }
+        }
+
+        /// <summary>
+        /// Gets the perpendicular vector on the right side of this vector.
+        /// </summary>
+        public Vector2 PerpendicularRight {
+            get { return new Vector2(Y, -X); }
+        }
+
+        /// <summary>
+        /// Gets the perpendicular vector on the left side of this vector.
+        /// </summary>
+        public Vector2 PerpendicularLeft {
+            get { return new Vector2(-Y, X); }
+        }
+
+        /// <summary>
+        /// Scales the Vector2 to unit length.
+        /// </summary>
+        public void Normalize() {
+            float scale = 1.0f / this.Length;
+            X *= scale;
+            Y *= scale;
+        }
+
+        /// <summary>
+        /// Scales the Vector2 to approximately unit length.
+        /// </summary>
+        public void NormalizeFast() {
+            float scale = MathHelper.InverseSqrtFast(X * X + Y * Y);
+            X *= scale;
+            Y *= scale;
+        }
 
         /// <summary>
         /// Adds two vectors.
@@ -233,10 +173,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector2(a.X + b.X, a.Y + b.Y);
         }
 
-        #endregion
-
-        #region Subtract
-
         /// <summary>
         /// Subtract one Vector from another
         /// </summary>
@@ -257,10 +193,6 @@ namespace Pencil.Gaming.Math {
         public static void Subtract(ref Vector2 a, ref Vector2 b, out Vector2 result) {
             result = new Vector2(a.X - b.X, a.Y - b.Y);
         }
-
-        #endregion
-
-        #region Multiply
 
         /// <summary>
         /// Multiplies a vector by a scalar.
@@ -304,10 +236,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector2(vector.X * scale.X, vector.Y * scale.Y);
         }
 
-        #endregion
-
-        #region Divide
-
         /// <summary>
         /// Divides a vector by a scalar.
         /// </summary>
@@ -350,10 +278,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector2(vector.X / scale.X, vector.Y / scale.Y);
         }
 
-        #endregion
-
-        #region ComponentMin
-
         /// <summary>
         /// Calculate the component-wise minimum of two vectors
         /// </summary>
@@ -376,10 +300,6 @@ namespace Pencil.Gaming.Math {
             result.X = a.X < b.X ? a.X : b.X;
             result.Y = a.Y < b.Y ? a.Y : b.Y;
         }
-
-        #endregion
-
-        #region ComponentMax
 
         /// <summary>
         /// Calculate the component-wise maximum of two vectors
@@ -404,10 +324,6 @@ namespace Pencil.Gaming.Math {
             result.Y = a.Y > b.Y ? a.Y : b.Y;
         }
 
-        #endregion
-
-        #region Min
-
         /// <summary>
         /// Returns the Vector3 with the minimum magnitude
         /// </summary>
@@ -418,10 +334,6 @@ namespace Pencil.Gaming.Math {
             return left.LengthSquared < right.LengthSquared ? left : right;
         }
 
-        #endregion
-
-        #region Max
-
         /// <summary>
         /// Returns the Vector3 with the minimum magnitude
         /// </summary>
@@ -431,10 +343,6 @@ namespace Pencil.Gaming.Math {
         public static Vector2 Max(Vector2 left, Vector2 right) {
             return left.LengthSquared >= right.LengthSquared ? left : right;
         }
-
-        #endregion
-
-        #region Clamp
 
         /// <summary>
         /// Clamp a vector to the given minimum and maximum vectors
@@ -461,10 +369,6 @@ namespace Pencil.Gaming.Math {
             result.Y = vec.Y < min.Y ? min.Y : vec.Y > max.Y ? max.Y : vec.Y;
         }
 
-        #endregion
-
-        #region Normalize
-
         /// <summary>
         /// Scale a vector to unit length
         /// </summary>
@@ -487,10 +391,6 @@ namespace Pencil.Gaming.Math {
             result.X = vec.X * scale;
             result.Y = vec.Y * scale;
         }
-
-        #endregion
-
-        #region NormalizeFast
 
         /// <summary>
         /// Scale a vector to approximately unit length
@@ -515,10 +415,6 @@ namespace Pencil.Gaming.Math {
             result.Y = vec.Y * scale;
         }
 
-        #endregion
-
-        #region Dot
-
         /// <summary>
         /// Calculate the dot (scalar) product of two vectors
         /// </summary>
@@ -539,10 +435,6 @@ namespace Pencil.Gaming.Math {
             result = left.X * right.X + left.Y * right.Y;
         }
 
-        #endregion
-
-        #region PerpDot
-
         /// <summary>
         /// Calculate the perpendicular dot (scalar) product of two vectors
         /// </summary>
@@ -562,10 +454,6 @@ namespace Pencil.Gaming.Math {
         public static void PerpDot(ref Vector2 left, ref Vector2 right, out float result) {
             result = left.X * right.Y - left.Y * right.X;
         }
-
-        #endregion
-
-        #region Lerp
 
         /// <summary>
         /// Returns a new Vector that is the linear blend of the 2 given Vectors
@@ -591,10 +479,6 @@ namespace Pencil.Gaming.Math {
             result.X = blend * (b.X - a.X) + a.X;
             result.Y = blend * (b.Y - a.Y) + a.Y;
         }
-
-        #endregion
-
-        #region Barycentric
 
         /// <summary>
         /// Interpolate 3 Vectors using Barycentric coordinates
@@ -630,10 +514,6 @@ namespace Pencil.Gaming.Math {
             Add(ref result, ref temp, out result);
         }
 
-        #endregion
-
-        #region Transform
-
         /// <summary>
         /// Transforms a vector by a quaternion rotation.
         /// </summary>
@@ -661,12 +541,6 @@ namespace Pencil.Gaming.Math {
             result = new Vector2(v.X, v.Y);
         }
 
-        #endregion
-
-        #endregion
-
-        #region Swizzle
-
         /// <summary>
         /// Gets or sets an OpenTK.Vector2 with the Y and X components of this instance.
         /// </summary>
@@ -678,10 +552,6 @@ namespace Pencil.Gaming.Math {
                 X = value.Y;
             }
         }
-
-        #endregion
-
-        #region Operators
 
         /// <summary>
         /// Adds the specified instances.
@@ -775,12 +645,6 @@ namespace Pencil.Gaming.Math {
             return !left.Equals(right);
         }
 
-        #endregion
-
-        #region Overrides
-
-        #region public override string ToString()
-
         internal static string listSeparator = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
         /// <summary>
         /// Returns a System.String that represents the current Vector2.
@@ -790,10 +654,6 @@ namespace Pencil.Gaming.Math {
             return String.Format("({0}{2} {1})", X, Y, listSeparator);
         }
 
-        #endregion
-
-        #region public override int GetHashCode()
-
         /// <summary>
         /// Returns the hashcode for this instance.
         /// </summary>
@@ -801,10 +661,6 @@ namespace Pencil.Gaming.Math {
         public override int GetHashCode() {
             return X.GetHashCode() ^ Y.GetHashCode();
         }
-
-        #endregion
-
-        #region public override bool Equals(object obj)
 
         /// <summary>
         /// Indicates whether this instance and a specified object are equal.
@@ -818,14 +674,6 @@ namespace Pencil.Gaming.Math {
             return this.Equals((Vector2) obj);
         }
 
-        #endregion
-
-        #endregion
-
-        #endregion
-
-        #region IEquatable<Vector2> Members
-
         /// <summary>Indicates whether the current vector is equal to another vector.</summary>
         /// <param name="other">A vector to compare with this vector.</param>
         /// <returns>true if the current vector is equal to the vector parameter; otherwise, false.</returns>
@@ -834,7 +682,5 @@ namespace Pencil.Gaming.Math {
                 X == other.X &&
                 Y == other.Y;
         }
-
-        #endregion
     }
 }
