@@ -1,7 +1,7 @@
 Pencil.Gaming
 =============
-
-A minimcalistic gaming library for C# based on OpenTK. It wraps OpenGL, GLFW and OpenAL.
+Pencil.Gaming is a gaming library for C#, providing support for OpenGL, GLFW and OpenAL. It's a stable, cross-platform, open-source (some prefer the term "free") alternative to libraries like XNA, which has pretty much died now, OpenTK, which hasn't been updated for about a year, and SharpDX, which is not cross-platform. A feature that Pencil.Gaming has over most other C# gaming libraries, is that users **do not need to install any redistributables!** 
+The OpenGL implementation is based on the OpenTK source code.
 
 Functionality and stability
 ===========================
@@ -16,6 +16,9 @@ Functionality and stability
 
 Sample usage (OpenGL & GLFW)
 ============================
+Pencil.Gaming differs from OpenTK, mainly in that it uses GLFW as it's windowing system, whereas OpenTK implements its own windowing system, making it pretty buggy. For more information on the GLFW windowing library, you can visit www.glfw.org.
+Here is an example covering the basics of GLFW (although it doesn't show input).
+
 ```C#
 using Pencil.Gaming;
 using Pencil.Gaming.Audio;
@@ -75,6 +78,7 @@ class Program {
 
 Sample usage (OpenAL)
 =====================
+Apart from implementing GLFW, Pencil.Gaming also has a few utilities to make your life bearable. On of the more notable of these is the `Al.Utils.BufferFromWav` utility, which is able to load wave files into an OpenAL buffer.
 
 ```C#
 uint buffer = Al.Utils.BufferFromWav("MyWaveFile.wav");
