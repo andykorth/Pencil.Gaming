@@ -12,7 +12,7 @@ namespace Pencil.Gaming.Audio {
 
             private delegate bool CloseDevice(IntPtr hndl);
             private delegate IntPtr OpenDevice(string str);
-            private delegate bool _IsExtensionPresent(IntPtr hndl,string extnsn);
+            private delegate bool IsExtensionPresent(IntPtr hndl,string extnsn);
             private delegate void GetIntegerv(IntPtr hndl,int @int,int count,int[] @out);
             private delegate IntPtr CreateContext(IntPtr hndl,int[] attribs);
             private delegate bool MakeContextCurrent(IntPtr hndl);
@@ -24,7 +24,7 @@ namespace Pencil.Gaming.Audio {
 #endif
                 CloseDevice alcCloseDevice = null;
                 OpenDevice alcOpenDevice = null;
-                _IsExtensionPresent alcIsExtensionPresent = null;
+                IsExtensionPresent alcIsExtensionPresent = null;
                 GetIntegerv alcGetIntegerv = null;
                 CreateContext alcCreateContext = null;
                 MakeContextCurrent alcMakeContextCurrent = null;
