@@ -13,7 +13,9 @@ namespace Pencil.Gaming {
             sw.Start();
 #endif
             Type glfwInterop = Environment.Is64BitProcess ? typeof(Glfw64) : typeof(Glfw32);
+#if DEBUG
             Console.WriteLine("GLFW interop: {0}", glfwInterop.Name);
+#endif
             FieldInfo[] fields = typeof(GlfwDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
             foreach (FieldInfo fi in fields) {
                 MethodInfo mi = glfwInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);

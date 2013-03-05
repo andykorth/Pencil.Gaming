@@ -33,10 +33,10 @@ namespace Pencil.Gaming {
             Glfw.Utils.depthBitsBackup = depthbits;
             Glfw.Utils.stencilBitsBackup = stencilbits;
             Glfw.Utils.isFullscreen = (mode == WindowMode.FullScreen);
-            return GlfwDelegates.glfwOpenWindow(width, height, redbits, greenbits, bluebits, alphabits, depthbits, stencilbits, (int)mode);
+            return GlfwDelegates.glfwOpenWindow(width, height, redbits, greenbits, bluebits, alphabits, depthbits, stencilbits, (int) mode);
         }
         public static void OpenWindowHint(OpenWindowHint target, int hint) {
-            GlfwDelegates.glfwOpenWindowHint((int)target, hint);
+            GlfwDelegates.glfwOpenWindowHint((int) target, hint);
         }
         public static void CloseWindow() {
             GlfwDelegates.glfwCloseWindow();
@@ -66,7 +66,7 @@ namespace Pencil.Gaming {
             GlfwDelegates.glfwSwapInterval(interval ? 1 : 0);
         }
         public static int GetWindowParam(WindowParam param) {
-            return GlfwDelegates.glfwGetWindowParam((int)param);
+            return GlfwDelegates.glfwGetWindowParam((int) param);
         }
 //        public static void SetWindowSizeCallback(/*windowsizefun*/IntPtr cbfun) {
 //            GlfwDelegates.glfwSetWindowSizeCallback(cbfun);
@@ -92,13 +92,13 @@ namespace Pencil.Gaming {
             GlfwDelegates.glfwWaitEvents();
         }
         public static bool GetKey(Key key) {
-            return GlfwDelegates.glfwGetKey((int)key) == 1;
+            return GlfwDelegates.glfwGetKey((int) key) == 1;
         }
         public static bool GetKey(char key) {
-            return GlfwDelegates.glfwGetKey((int)key) == 1;
+            return GlfwDelegates.glfwGetKey((int) key) == 1;
         }
         public static int GetMouseButton(MouseButton button) {
-            return GlfwDelegates.glfwGetMouseButton((int)button);
+            return GlfwDelegates.glfwGetMouseButton((int) button);
         }
         public static void GetMousePos(out int xpos, out int ypos) {
             GlfwDelegates.glfwGetMousePos(out xpos, out ypos);
@@ -130,13 +130,13 @@ namespace Pencil.Gaming {
 //        }
 
         public static int GetJoystickParam(Joystick joy, int param) {
-            return GlfwDelegates.glfwGetJoystickParam((int)joy, param);
+            return GlfwDelegates.glfwGetJoystickParam((int) joy, param);
         }
         public static int GetJoystickPos(Joystick joy, float[] pos, int numaxes) {
-            return GlfwDelegates.glfwGetJoystickPos((int)joy, pos, numaxes);
+            return GlfwDelegates.glfwGetJoystickPos((int) joy, pos, numaxes);
         }
         public static int GetJoystickButtons(Joystick joy, byte[] buttons, int numbuttons) {
-            return GlfwDelegates.glfwGetJoystickButtons((int)joy, buttons, numbuttons);
+            return GlfwDelegates.glfwGetJoystickButtons((int) joy, buttons, numbuttons);
         }
 
         public static double GetTime() {
@@ -213,29 +213,29 @@ namespace Pencil.Gaming {
         }
 
         public static void Enable(GlfwEnableCap token) {
-            GlfwDelegates.glfwEnable((int)token);
+            GlfwDelegates.glfwEnable((int) token);
         }
         public static void Disable(GlfwEnableCap token) {
-            GlfwDelegates.glfwDisable((int)token);
+            GlfwDelegates.glfwDisable((int) token);
         }
 
         public static int ReadImage(string name, out GlfwImage img, ReadImageModes flags) {
-            return GlfwDelegates.glfwReadImage(name, out img, (int)flags);
+            return GlfwDelegates.glfwReadImage(name, out img, (int) flags);
         }
         public static int ReadMemoryImage(IntPtr data, long size, ref GlfwImage img, ReadImageModes flags) {
-            return GlfwDelegates.glfwReadMemoryImage(data, size, ref img, (int)flags);
+            return GlfwDelegates.glfwReadMemoryImage(data, size, ref img, (int) flags);
         }
         public static void FreeImage(ref GlfwImage img) {
             GlfwDelegates.glfwFreeImage(ref img);
         }
         public static int LoadTexture2D(string name, ReadImageModes flags) {
-            return GlfwDelegates.glfwLoadTexture2D(name, (int)flags);
+            return GlfwDelegates.glfwLoadTexture2D(name, (int) flags);
         }
         public static int LoadMemoryTexture2D(IntPtr data, long size, ReadImageModes flags) {
-            return GlfwDelegates.glfwLoadMemoryTexture2D(data, size, (int)flags);
+            return GlfwDelegates.glfwLoadMemoryTexture2D(data, size, (int) flags);
         }
         public static int LoadTextureImage2D(ref GlfwImage img, ReadImageModes flags) {
-            return GlfwDelegates.glfwLoadTextureImage2D(ref img, (int)flags);
+            return GlfwDelegates.glfwLoadTextureImage2D(ref img, (int) flags);
         }
     }
 }
