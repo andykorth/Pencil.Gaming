@@ -17,7 +17,7 @@ namespace Pencil.Gaming.Audio {
             private delegate IntPtr CreateContext(IntPtr hndl,int[] attribs);
             private delegate bool MakeContextCurrent(IntPtr hndl);
 
-            public static void Init() {
+            internal static void Init() {
 #if DEBUG
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
@@ -81,6 +81,10 @@ namespace Pencil.Gaming.Audio {
                     Alc32.alcCloseDevice(alcDeviceHandle);
                 }
             }
+        }
+
+        static Al() {
+            Alc.Init();
         }
 
         public static void Enable(AlCapability capability) {
