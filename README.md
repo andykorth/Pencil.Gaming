@@ -72,3 +72,24 @@ class Program {
     }
 }
 ```
+
+Sample usage (OpenAL)
+=====================
+
+```C#
+uint buffer = Al.Utils.BufferFromWav("MyWaveFile.wav");
+uint source;
+Al.GenSources(1, out source);
+
+Al.Source(source, AlSourcei.Buffer, (int) buffer);
+Al.Source(source, AlSourceb.Looping, true);
+
+Al.SourcePlay(source);
+
+// ...
+// ...
+
+// When cleaning up:
+Al.DeleteSources(1, ref source);
+Al.DeleteBuffers(1, ref buffer);
+```

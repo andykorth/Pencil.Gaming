@@ -137,6 +137,34 @@ namespace Pencil.Gaming.Audio {
                 Console.WriteLine("Loading audio file took {0} milliseconds.", sw.ElapsedMilliseconds);
 #endif
             }
+        
+            public static uint BufferFromWav(string file) {
+                return BufferFromWav(File.ReadAllBytes(file));
+            }
+
+            public static uint BufferFromWav(Stream file) {
+                using (MemoryStream ms = new MemoryStream()) {
+                    file.CopyTo(ms);
+                    return BufferFromWav(ms.ToArray());
+                }
+            }
+
+            public static unsafe uint BufferFromWav(byte[] wave) {
+                uint result;
+                Al.GenBuffers(1, out result);
+
+                byte[] data;
+                AlFormat format;
+                uint sampleRate;
+                Al.Utils.LoadWav(wave, out data, out format, out sampleRate);
+
+                fixed (byte * dataPtr = &data[0]) {
+                    IntPtr dataIntPtr = new IntPtr(dataPtr);
+                    Al.BufferData(result, format, dataIntPtr, data.Length, (int) sampleRate);
+                }
+
+                return result;
+            }
         }
     }
 }
