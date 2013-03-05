@@ -88,8 +88,6 @@ namespace Pencil.Gaming {
         internal static extern double glfwGetTime();
         [DllImport(Glfw32.lib)]
         internal static extern void glfwSetTime(double time);
-        [DllImport(Glfw32.lib)]
-        internal static extern void glfwSleep(double time);
 
         [DllImport(Glfw32.lib)]
         internal static extern int glfwExtensionSupported([MarshalAs(UnmanagedType.LPStr)] string extension);
@@ -97,35 +95,6 @@ namespace Pencil.Gaming {
         internal static extern IntPtr glfwGetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procname);
         [DllImport(Glfw32.lib)]
         internal static extern void glfwGetGLVersion(out int major, out int minor, out int rev);
-
-        //[DllImport(Glfw32.lib)]
-        //internal static extern /*GLFWthread*/IntPtr glfwCreateThread(/*GLFWthreadfun*/IntPtr fun, IntPtr arg);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwDestroyThread(/*GLFWthread*/IntPtr ID);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern int glfwWaitThread(/*GLFWthread*/IntPtr ID, int waitmode);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern /*GLFWthread*/IntPtr glfwGetThreadID();
-        //[DllImport(Glfw32.lib)]
-        //internal static extern /*GLFWmutex*/IntPtr glfwCreateMutex();
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwDestroyMutex(/*GLFWmutex*/IntPtr mutex);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwLockMutex(/*GLFWmutex*/IntPtr mutex);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwUnlockMutex(/*GLFWmutex*/IntPtr mutex);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern /*GLFWcond*/IntPtr glfwCreateCond();
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwDestroyCond(/*GLFWcond*/IntPtr cond);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwWaitCond(/*GLFWcond*/IntPtr cond, /*GLFWmutex*/IntPtr mutex, double timeout);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSignalCond(/*GLFWcond*/IntPtr cond);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwBroadcastCond(/*GLFWcond*/IntPtr cond);
-        [DllImport(Glfw32.lib)]
-        internal static extern int glfwGetNumberOfProcessors();
 
         [DllImport(Glfw32.lib)]
         internal static extern void glfwEnable(int token);

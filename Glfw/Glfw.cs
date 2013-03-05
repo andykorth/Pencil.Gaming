@@ -146,11 +146,6 @@ namespace Pencil.Gaming {
             GlfwDelegates.glfwSetTime(time);
         }
 
-        // Couldn't you just use Thread.Sleep()?
-        public static void Sleep(double time) {
-            GlfwDelegates.glfwSleep(time);
-        }
-
         public static int ExtensionSupported(string extension) {
             return GlfwDelegates.glfwExtensionSupported(extension);
         }
@@ -159,57 +154,6 @@ namespace Pencil.Gaming {
         }
         public static void GetGLVersion(out int major, out int minor, out int rev) {
             GlfwDelegates.glfwGetGLVersion(out major, out minor, out rev);
-        }
-
-        #region Threadin
-        // What?
-        // This is C# ladies and gentlemen, no need for 3rd party threading libraries!!!
-
-
-//        public static /*thread*/IntPtr CreateThread(/*threadfun*/IntPtr fun, IntPtr arg) {
-//            return GlfwDelegates.glfwCreateThread(fun, arg);
-//        }
-//        public static void DestroyThread(/*thread*/IntPtr ID) {
-//            GlfwDelegates.glfwDestroyThread(ID);
-//        }
-//        public static int WaitThread(/*thread*/IntPtr ID, int waitmode) {
-//            return GlfwDelegates.glfwWaitThread(ID, waitmode);
-//        }
-//        public static /*thread*/IntPtr GetThreadID() {
-//            return GlfwDelegates.glfwGetThreadID();
-//        }
-//        public static /*mutex*/IntPtr CreateMutex() {
-//            return GlfwDelegates.glfwCreateMutex();
-//        }
-//        public static void DestroyMutex(/*mutex*/IntPtr mutex) {
-//            GlfwDelegates.glfwDestroyMutex(mutex);
-//        }
-//        public static void LockMutex(/*mutex*/IntPtr mutex) {
-//            GlfwDelegates.glfwLockMutex(mutex);
-//        }
-//        public static void UnlockMutex(/*mutex*/IntPtr mutex) {
-//            GlfwDelegates.glfwUnlockMutex(mutex);
-//        }
-//        public static /*cond*/IntPtr CreateCond() {
-//            return GlfwDelegates.glfwCreateCond();
-//        }
-//        public static void DestroyCond(/*cond*/IntPtr cond) {
-//            GlfwDelegates.glfwDestroyCond(cond);
-//        }
-//        public static void WaitCond(/*cond*/IntPtr cond, /*mutex*/IntPtr mutex, double timeout) {
-//            GlfwDelegates.glfwWaitCond(cond, mutex, timeout);
-//        }
-//        public static void SignalCond(/*cond*/IntPtr cond) {
-//            GlfwDelegates.glfwSignalCond(cond);
-//        }
-//        public static void BroadcastCond(/*cond*/IntPtr cond) {
-//            GlfwDelegates.glfwBroadcastCond(cond);
-//        }
-
-        #endregion
-
-        public static int GetNumberOfProcessors() {
-            return GlfwDelegates.glfwGetNumberOfProcessors();
         }
 
         public static void Enable(GlfwEnableCap token) {

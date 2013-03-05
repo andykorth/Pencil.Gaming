@@ -95,8 +95,6 @@ namespace Pencil.Gaming {
         internal static GetTime glfwGetTime;
         internal delegate void SetTime(double time);
         internal static SetTime glfwSetTime;
-        internal delegate void Sleep(double time);
-        internal static Sleep glfwSleep;
 
         internal delegate int ExtensionSupported([MarshalAs(UnmanagedType.LPStr)] string extension);
         internal static ExtensionSupported glfwExtensionSupported;
@@ -104,9 +102,6 @@ namespace Pencil.Gaming {
         internal static GetProcAddress glfwGetProcAddress;
         internal delegate void GetGLVersion(out int major,out int minor,out int rev);
         internal static GetGLVersion glfwGetGLVersion;
-
-        internal delegate int GetNumberOfProcessors();
-        internal static GetNumberOfProcessors glfwGetNumberOfProcessors;
 
         internal delegate void Enable(int token);
         internal static Enable glfwEnable;
