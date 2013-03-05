@@ -14,8 +14,8 @@ Functionality and stability
 | Windows 32-bit | Stable          | Stable            | Stable          | Stable    |
 | Mac OS X       | Stable          | Stable            | Stable          | Stable    |
 
-Sample usage
-============
+Sample usage (OpenGL & GLFW)
+============================
 ```C#
 using Pencil.Gaming;
 using Pencil.Gaming.Audio;
@@ -26,7 +26,6 @@ class Program {
     private static void Main(string[] args) {
         try {
             Glfw.Init();
-            Al.Alc.Init();
             
             try {
                 Glfw.OpenWindow(800, 600, 8, 8, 8, 8, 24, 0, WindowMode.Window);
@@ -69,7 +68,6 @@ class Program {
             }
         } finally {
             Glfw.Terminate();
-            Al.Alc.Terminate();
         }
     }
 }
