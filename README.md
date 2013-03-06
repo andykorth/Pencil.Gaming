@@ -28,6 +28,15 @@ using Pencil.Gaming.Graphics;
 using Pencil.Gaming.Math;
 
 class Program {
+    private static void Resize(int width, int height) {
+        Gl.Viewport(0, 0, width, height);
+
+        Gl.MatrixMode(MatrixMode.Projection);
+        Gl.LoadIdentity();
+        Gl.Ortho(0.0, 1.0, 1.0, 0.0, 0.0, 1.0);
+        Gl.MatrixMode(MatrixMode.Modelview);
+    }
+
     private static void Main(string[] args) {
         try {
             Glfw.Init();
@@ -37,21 +46,12 @@ class Program {
                 Glfw.SetWindowTitle("Sample application");
                 Glfw.SwapInterval(false);
 
+                Glfw.SetWindowSizeCallback(Resize);
+
                 Glfw.SetTime(0.0);
                 do {
                     float deltaTime = (float) Glfw.GetTime();
                     Glfw.SetTime(0.0);
-
-                    int width, height;
-                    if (Glfw.Utils.HasWindowSizeChanged(out width, out height)) {
-                        Gl.Viewport(0, 0, width, height);
-
-                        Gl.MatrixMode(MatrixMode.Projection);
-                        Gl.LoadIdentity();
-                        Gl.Ortho(0.0, 1.0, 1.0, 0.0, 0.0, 1.0);
-                        Gl.MatrixMode(MatrixMode.Modelview);
-                    }
-
                     
                     Gl.ClearColor(Color4.White);
                     Gl.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
