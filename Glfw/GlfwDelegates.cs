@@ -61,6 +61,12 @@ namespace Pencil.Gaming {
         internal static SwapInterval glfwSwapInterval;
         internal delegate int GetWindowParam(int param);
         internal static GetWindowParam glfwGetWindowParam;
+        internal delegate void SetWindowSizeCallback(GlfwWindowSizeFun cbfun);
+        internal static SetWindowSizeCallback glfwSetWindowSizeCallback;
+        internal delegate void SetWindowCloseCallback(GlfwWindowCloseFun cbfun);
+        internal static SetWindowCloseCallback glfwSetWindowCloseCallback;
+        internal delegate void SetWindowRefreshCallback(GlfwWindowRefreshFun cbfun);
+        internal static SetWindowRefreshCallback glfwSetWindowRefreshCallback;
 
         internal delegate int GetVideoModes([MarshalAs(UnmanagedType.LPArray)] GlfwVidMode[] list,int maxcount);
         internal static GetVideoModes glfwGetVideoModes;
@@ -83,6 +89,16 @@ namespace Pencil.Gaming {
         internal static GetMouseWheel glfwGetMouseWheel;
         internal delegate void SetMouseWheel(int pos);
         internal static SetMouseWheel glfwSetMouseWheel;
+        internal delegate void SetKeyCallback(GlfwKeyFun cbfun);
+        internal static SetKeyCallback glfwSetKeyCallback;
+        internal delegate void SetCharCallback(GlfwCharFun cbfun);
+        internal static SetCharCallback glfwSetCharCallback;
+        internal delegate void SetMouseButtonCallback(GlfwMouseButtonFun cbfun);
+        internal static SetMouseButtonCallback glfwSetMouseButtonCallback;
+        internal delegate void SetMousePosCallback(GlfwMousePosFun cbfun);
+        internal static SetMousePosCallback glfwSetMousePosCallback;
+        internal delegate void SetMouseWheelCallback(GlfwMouseWheelFun cbfun);
+        internal static SetMouseWheelCallback glfwSetMouseWheelCallback;
 
         internal delegate int GetJoystickParam(int joy,int param);
         internal static GetJoystickParam glfwGetJoystickParam;

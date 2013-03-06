@@ -20,15 +20,12 @@ namespace Pencil.Gaming.Graphics {
             sw.Start();
 #endif
             FieldInfo[] fields = typeof(Gl.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-            bool isWindows = (Environment.OSVersion.Platform != PlatformID.Unix && Environment.OSVersion.Platform != PlatformID.MacOSX);
             foreach (FieldInfo field in fields) {
                 IntPtr procAddress = Glfw.GetProcAddress(field.Name);
                 if (procAddress != IntPtr.Zero) {
                     Delegate function = Marshal.GetDelegateForFunctionPointer(procAddress, field.FieldType);
                     field.SetValue(null, function);
-                } else if (isWindows) {
-                    // This is necessary for windows
-                    // wglGetProcAddress doesn't load core functions
+                } else {
                     MethodInfo minfo = typeof(GlCore).GetMethod(field.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
                     if (minfo != null) {
                         Delegate function = Delegate.CreateDelegate(field.FieldType, minfo);

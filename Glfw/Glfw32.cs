@@ -38,12 +38,12 @@ namespace Pencil.Gaming {
         internal static extern void glfwSwapInterval(int interval);
         [DllImport(Glfw32.lib)]
         internal static extern int glfwGetWindowParam(int param);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetWindowSizeCallback(/*GLFWwindowsizefun*/IntPtr cbfun);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetWindowCloseCallback(/*GLFWwindowclosefun*/IntPtr cbfun);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetWindowRefreshCallback(/*GLFWwindowrefreshfun*/IntPtr cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetWindowSizeCallback(GlfwWindowSizeFun cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetWindowCloseCallback(GlfwWindowCloseFun cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetWindowRefreshCallback(GlfwWindowRefreshFun cbfun);
 
         [DllImport(Glfw32.lib)]
         internal static extern int glfwGetVideoModes([MarshalAs(UnmanagedType.LPArray)] GlfwVidMode[] list, int maxcount);
@@ -66,16 +66,16 @@ namespace Pencil.Gaming {
         internal static extern int glfwGetMouseWheel();
         [DllImport(Glfw32.lib)]
         internal static extern void glfwSetMouseWheel(int pos);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetKeyCallback(/*GLFWkeyfun*/IntPtr cbfun);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetCharCallback(/*GLFWcharfun*/IntPtr cbfun);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetMouseButtonCallback(/*GLFWmousebuttonfun*/IntPtr cbfun);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetMousePosCallback(/*GLFWmouseposfun*/IntPtr cbfun);
-        //[DllImport(Glfw32.lib)]
-        //internal static extern void glfwSetMouseWheelCallback(/*GLFWmousewheelfun*/IntPtr cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetKeyCallback(GlfwKeyFun cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetCharCallback(GlfwCharFun cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetMouseButtonCallback(GlfwMouseButtonFun cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetMousePosCallback(GlfwMousePosFun cbfun);
+        [DllImport(Glfw32.lib)]
+        internal static extern void glfwSetMouseWheelCallback(GlfwMouseWheelFun cbfun);
 
         [DllImport(Glfw32.lib)]
         internal static extern int glfwGetJoystickParam(int joy, int param);
