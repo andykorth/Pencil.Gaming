@@ -67,7 +67,7 @@ class Program {
 
                     Glfw.SwapBuffers();
                     Glfw.PollEvents();
-                } while (Glfw.GetWindowParam(WindowParam.Opened) == Glfw.True);
+                } while (Glfw.GetWindowParam(WindowParam.Opened) != 0);
             } finally {
                 Glfw.CloseWindow();
             }
