@@ -17,7 +17,7 @@ Functionality and stability
 
 Sample usage (OpenGL & GLFW)
 ============================
-Pencil.Gaming differs from OpenTK, mainly in that it uses GLFW as it's windowing system, whereas OpenTK implements its own windowing system, making it pretty buggy. For more information on the GLFW windowing library, you can visit www.glfw.org.
+Pencil.Gaming differs from OpenTK, mainly in that it uses GLFW as its windowing system, whereas OpenTK implements its own windowing system, making it pretty buggy. For more information on the GLFW windowing library, you can visit www.glfw.org.
 
 Here is an example covering the basics of GLFW (although it doesn't show input).
 
