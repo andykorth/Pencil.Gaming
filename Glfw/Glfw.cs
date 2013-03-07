@@ -6,9 +6,7 @@ using Pencil.Gaming.Graphics;
 
 namespace Pencil.Gaming {
     public static partial class Glfw {
-        public const double Infinity = 100000.0;
-        public const int True = 1;
-        public const int False = 0;
+
         public const int VersionMajor = 2;
         public const int VersionMinor = 7;
         public const int VersionRevision = 2;

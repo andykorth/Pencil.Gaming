@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Pencil.Gaming")]
-[assembly: AssemblyDescription("A minimcalistic gaming library for C# based on OpenTK.")]
+[assembly: AssemblyDescription("A minimalistic gaming library for C# based on OpenTK.")]
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug - Any CPU")]
 #else
