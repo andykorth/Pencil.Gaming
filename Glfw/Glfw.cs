@@ -6,8 +6,8 @@ using Pencil.Gaming.Graphics;
 
 namespace Pencil.Gaming {
     public static partial class Glfw {
-        public static int Init() {
-            return GlfwDelegates.glfwInit();
+        public static bool Init() {
+            return GlfwDelegates.glfwInit() == 1;
         }
         public static void Terminate() {
             GlfwDelegates.glfwTerminate();
