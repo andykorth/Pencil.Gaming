@@ -6,11 +6,6 @@ using Pencil.Gaming.Graphics;
 
 namespace Pencil.Gaming {
     public static partial class Glfw {
-
-        public const int VersionMajor = 2;
-        public const int VersionMinor = 7;
-        public const int VersionRevision = 2;
-
         public static int Init() {
             return GlfwDelegates.glfwInit();
         }
@@ -95,8 +90,8 @@ namespace Pencil.Gaming {
         public static bool GetKey(char key) {
             return GlfwDelegates.glfwGetKey((int)key) == 1;
         }
-        public static int GetMouseButton(MouseButton button) {
-            return GlfwDelegates.glfwGetMouseButton((int)button);
+        public static bool GetMouseButton(MouseButton button) {
+            return GlfwDelegates.glfwGetMouseButton((int)button) == 1;
         }
         public static void GetMousePos(out int xpos, out int ypos) {
             GlfwDelegates.glfwGetMousePos(out xpos, out ypos);
