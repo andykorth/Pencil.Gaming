@@ -46,7 +46,6 @@
     <Compile Include="Math\Vector3.cs" />
     <Compile Include="Math\Vector4.cs" />
     <Compile Include="Graphics\Color4.cs" />
-    <Compile Include="Graphics\GLEnums.cs" />
     <Compile Include="Graphics\Gl.cs" />
     <Compile Include="Graphics\GlDelegates.cs" />
     <Compile Include="Graphics\GlHelper.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Audio\AlUtils.cs" />
     <Compile Include="Math\Matrix.cs" />
     <Compile Include="Glfw\GlfwDelegateTypes.cs" />
+    <Compile Include="Graphics\GlEnums.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
