@@ -4,6 +4,11 @@ Pencil.Gaming is a gaming library for C#, providing support for OpenGL, GLFW and
 
 The OpenGL implementation is based on the OpenTK source code.
 
+A quick overview of the samples:
+- [https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-opengl--glfw] (OpenGL/GLFW)
+- [https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-openal] (OpenAL utilities)
+- [https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-gl-utils] (OpenGL utilities)
+
 Functionality and stability
 ===========================
 
@@ -98,4 +103,25 @@ Al.SourcePlay(source);
 // When cleaning up:
 Al.DeleteSources(1, ref source);
 Al.DeleteBuffers(1, ref buffer);
+```
+
+Sample Usage (Gl.Utils)
+=======================
+`Gl.Utils` is another utility class provided by Pencil.Gaming. It provides support for cross-platform texture loading, and **will** feature a model loading utility (obj files only).
+
+This is how you use the image loading utility:
+```C#
+int image = Gl.Utils.LoadImage("myfile.png"); // Works with multiple file formats
+Gl.BindTexture(TextureTarget.Texture2D, image);
+
+Gl.Begin(BeginMode.TriangleStrip);
+  Gl.TexCoord2(0f, 1f);
+  Gl.Vertex2(0.1f, 0.9f);
+  Gl.TexCoord2(0f, 0f);
+  Gl.Vertex2(0.1f, 0.1f);
+  Gl.TexCoord2(1f, 1f);
+  Gl.Vertex2(0.9f, 0.9f);
+  Gl.TexCoord2(1f, 0f);
+  Gl.Vertex2(0.9f, 0.1f);
+Gl.End();
 ```
