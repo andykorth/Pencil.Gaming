@@ -118,5 +118,6 @@
     <None Include="natives64\libglfw.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="callvirt_to_call.sh" />
   </ItemGroup>
 </Project>
