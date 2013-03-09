@@ -7,7 +7,7 @@ The OpenGL implementation is based on the OpenTK source code.
 A quick overview of the samples:
 - [OpenGL/GLFW] (https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-opengl--glfw)
 - [OpenAL utilities] (https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-openal)
-- [OpenGL utilities] (https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-gl-utils)
+- [OpenGL utilities] (https://github.com/antonijn/Pencil.Gaming-GLFW2#sample-usage-glutils)
 
 Functionality and stability
 ===========================
