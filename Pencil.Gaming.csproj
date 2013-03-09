@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Math\Matrix.cs" />
     <Compile Include="Glfw\GlfwDelegateTypes.cs" />
     <Compile Include="Graphics\GlEnums.cs" />
+    <Compile Include="Graphics\GlUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
