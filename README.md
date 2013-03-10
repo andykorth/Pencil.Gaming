@@ -11,7 +11,8 @@ A quick overview of the samples:
 
 Functionality and stability
 ===========================
-
+GLFW2
+-----
 | Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
 | --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
 | Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
@@ -20,68 +21,19 @@ Functionality and stability
 | Windows 32-bit | Stable          | Stable            | Stable          | Stable    |
 | Mac OS X       | Stable          | Stable            | Stable          | Stable    |
 
+GLFW3
+-----
+| Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
+| --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
+| Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
+| Linux 32-bit   | Stable          | Stable            | Not Implemented | Stable    |
+| Windows 64-bit | Stable          | Stable            | Not Implemented | Stable    |
+| Windows 32-bit | Stable          | Stable            | Not Implemented | Stable    |
+| Mac OS X       | Stable          | Stable            | Not Implemented | Stable    |
+
 Sample usage (OpenGL & GLFW)
 ============================
-Pencil.Gaming differs from OpenTK, mainly in that it uses GLFW as its windowing system, whereas OpenTK implements its own windowing system, making it pretty buggy. For more information on the GLFW windowing library, you can visit www.glfw.org.
-
-Here is an example covering the basics of GLFW (although it doesn't show input).
-
-```C#
-using Pencil.Gaming;
-using Pencil.Gaming.Audio;
-using Pencil.Gaming.Graphics;
-using Pencil.Gaming.Math;
-
-class Program {
-    private static void Resize(int width, int height) {
-        Gl.Viewport(0, 0, width, height);
-
-        Gl.MatrixMode(MatrixMode.Projection);
-        Gl.LoadIdentity();
-        Gl.Ortho(0.0, 1.0, 1.0, 0.0, 0.0, 1.0);
-        Gl.MatrixMode(MatrixMode.Modelview);
-    }
-
-    private static void Main(string[] args) {
-        try {
-            Glfw.Init();
-            
-            try {
-                Glfw.OpenWindow(800, 600, 8, 8, 8, 8, 24, 0, WindowMode.Window);
-                Glfw.SetWindowTitle("Sample application");
-                Glfw.SwapInterval(false);
-
-                Glfw.SetWindowSizeCallback(Resize);
-
-                Glfw.SetTime(0.0);
-                do {
-                    float deltaTime = (float) Glfw.GetTime();
-                    Glfw.SetTime(0.0);
-                    
-                    Gl.ClearColor(Color4.White);
-                    Gl.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-                    Gl.Begin(BeginMode.Triangles);
-                      Gl.Color4(Color4.Red);
-                      Gl.Vertex2(0.1f, 0.1f);
-                      Gl.Color4(Color4.Green);
-                      Gl.Vertex2(0.1f, 0.9f);
-                      Gl.Color4(Color4.Blue);
-                      Gl.Vertex2(0.9f, 0.9f);
-                    Gl.End();
-
-                    Glfw.SwapBuffers();
-                    Glfw.PollEvents();
-                } while (Glfw.GetWindowParam(WindowParam.Opened) != 0);
-            } finally {
-                Glfw.CloseWindow();
-            }
-        } finally {
-            Glfw.Terminate();
-        }
-    }
-}
-```
+This section has been removed. Please refer to the [wiki] (https://github.com/antonijn/Pencil.Gaming/wiki) for GLFW2/3 examples.
 
 Sample usage (OpenAL)
 =====================
