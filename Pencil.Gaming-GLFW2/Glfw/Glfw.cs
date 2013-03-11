@@ -61,13 +61,19 @@ namespace Pencil.Gaming {
         public static int GetWindowParam(WindowParam param) {
             return GlfwDelegates.glfwGetWindowParam((int)param);
         }
+        private static GlfwWindowSizeFun windowSizeFun;
         public static void SetWindowSizeCallback(GlfwWindowSizeFun cbfun) {
+            windowSizeFun = cbfun;
             GlfwDelegates.glfwSetWindowSizeCallback(cbfun);
         }
+        private static GlfwWindowCloseFun windowCloseFun;
         public static void SetWindowCloseCallback(GlfwWindowCloseFun cbfun) {
+            windowCloseFun = cbfun;
             GlfwDelegates.glfwSetWindowCloseCallback(cbfun);
         }
+        private static GlfwWindowRefreshFun windowRefreshFun;
         public static void SetWindowRefreshCallback(GlfwWindowRefreshFun cbfun) {
+            windowRefreshFun = cbfun;
             GlfwDelegates.glfwSetWindowRefreshCallback(cbfun);
         }
 
@@ -106,19 +112,29 @@ namespace Pencil.Gaming {
         public static void SetMouseWheel(int pos) {
             GlfwDelegates.glfwSetMouseWheel(pos);
         }
+        private static GlfwKeyFun keyFun;
         public static void SetKeyCallback(GlfwKeyFun cbfun) {
+            keyFun = cbfun;
             GlfwDelegates.glfwSetKeyCallback(cbfun);
         }
+        private static GlfwCharFun charFun;
         public static void SetCharCallback(GlfwCharFun cbfun) {
+            charFun = cbfun;
             GlfwDelegates.glfwSetCharCallback(cbfun);
         }
+        private static GlfwMouseButtonFun mouseButtonFun;
         public static void SetMouseButtonCallback(GlfwMouseButtonFun cbfun) {
+            mouseButtonFun = cbfun;
             GlfwDelegates.glfwSetMouseButtonCallback(cbfun);
         }
+        private static GlfwMousePosFun mousePosFun;
         public static void SetMousePosCallback(GlfwMousePosFun cbfun) {
+            mousePosFun = cbfun;
             GlfwDelegates.glfwSetMousePosCallback(cbfun);
         }
+        private static GlfwMouseWheelFun mouseWheelFun;
         public static void SetMouseWheelCallback(GlfwMouseWheelFun cbfun) {
+            mouseWheelFun = cbfun;
             GlfwDelegates.glfwSetMouseWheelCallback(cbfun);
         }
 
