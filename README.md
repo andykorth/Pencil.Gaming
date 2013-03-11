@@ -25,9 +25,9 @@ GLFW3
 | Platform       | OpenGL core     | OpenGL extensions | GLFW            | OpenAL    |
 | --------------:|:---------------:|:-----------------:|:---------------:|:---------:|
 | Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
-| Linux 32-bit   | Stable          | Stable            | Not Implemented | Stable    |
-| Windows 64-bit | Stable          | Stable            | Not Implemented | Stable    |
-| Windows 32-bit | Stable          | Stable            | Not Implemented | Stable    |
+| Linux 32-bit   | Stable          | Stable            | **Broken**      | Stable    |
+| Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
+| Windows 32-bit | Stable          | Stable            | Untested        | Stable    |
 | Mac OS X       | Stable          | Stable            | Not Implemented | Stable    |
 
 Sample usage (OpenGL & GLFW)

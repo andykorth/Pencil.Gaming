@@ -1,11 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW3/Glfw/Glfw.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW3/Pencil.Gaming.dll.config">
     <Files>
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw.cs" Line="33" Column="10" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/GlfwDelegates.cs" Line="133" Column="59" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw64.cs" Line="11" Column="83" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw32.cs" Line="71" Column="81" />
+      <File FileName="Pencil.Gaming-GLFW3/Pencil.Gaming.dll.config" Line="3" Column="79" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

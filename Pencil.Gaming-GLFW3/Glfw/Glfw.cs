@@ -120,22 +120,34 @@ namespace Pencil.Gaming {
         public static IntPtr GetWindowUserPointer(GlfwWindowPtr window) {
             return GlfwDelegates.glfwGetWindowUserPointer(window);
         }
+        private static GlfwWindowPosFun windowPosFun;
         public static void SetWindowPosCallback(GlfwWindowPtr window, GlfwWindowPosFun cbfun) {
+            windowPosFun = cbfun;
             GlfwDelegates.glfwSetWindowPosCallback(window, cbfun);
         }
+        private static GlfwWindowSizeFun windowSizeFun;
         public static void SetWindowSizeCallback(GlfwWindowPtr window, GlfwWindowSizeFun cbfun) {
+            windowSizeFun = cbfun;
             GlfwDelegates.glfwSetWindowSizeCallback(window, cbfun);
         }
+        private static GlfwWindowCloseFun windowCloseFun;
         public static void SetWindowCloseCallback(GlfwWindowPtr window, GlfwWindowCloseFun cbfun) {
+            windowCloseFun = cbfun;
             GlfwDelegates.glfwSetWindowCloseCallback(window, cbfun);
         }
+        private static GlfwWindowRefreshFun windowRefreshFun;
         public static void SetWindowRefreshCallback(GlfwWindowPtr window, GlfwWindowRefreshFun cbfun) {
+            windowRefreshFun = cbfun;
             GlfwDelegates.glfwSetWindowRefreshCallback(window, cbfun);
         }
+        private static GlfwWindowFocusFun windowFocusFun;
         public static void SetWindowFocusCallback(GlfwWindowPtr window, GlfwWindowFocusFun cbfun) {
+            windowFocusFun = cbfun;
             GlfwDelegates.glfwSetWindowFocusCallback(window, cbfun);
         }
+        private static GlfwWindowIconifyFun windowIconifyFun;
         public static void SetWindowIconifyCallback(GlfwWindowPtr window, GlfwWindowIconifyFun cbfun) {
+            windowIconifyFun = cbfun;
             GlfwDelegates.glfwSetWindowIconifyCallback(window, cbfun);
         }
         public static void PollEvents() {
@@ -162,22 +174,34 @@ namespace Pencil.Gaming {
         public static void SetCursorPos(GlfwWindowPtr window, int xpos, int ypos) {
             GlfwDelegates.glfwSetCursorPos(window, xpos, ypos);
         }
+        private static GlfwKeyFun keyFun;
         public static void SetKeyCallback(GlfwWindowPtr window, GlfwKeyFun cbfun) {
+            keyFun = cbfun;
             GlfwDelegates.glfwSetKeyCallback(window, cbfun);
         }
+        private static GlfwCharFun charFun;
         public static void SetCharCallback(GlfwWindowPtr window, GlfwCharFun cbfun) {
+            charFun = cbfun;
             GlfwDelegates.glfwSetCharCallback(window, cbfun);
         }
+        private static GlfwMouseButtonFun mouseButtonFun;
         public static void SetMouseButtonCallback(GlfwWindowPtr window, GlfwMouseButtonFun cbfun) {
+            mouseButtonFun = cbfun;
             GlfwDelegates.glfwSetMouseButtonCallback(window, cbfun);
         }
+        private static GlfwCursorPosFun cursorPosFun;
         public static void SetCursorPosCallback(GlfwWindowPtr window, GlfwCursorPosFun cbfun) {
+            cursorPosFun = cbfun;
             GlfwDelegates.glfwSetCursorPosCallback(window, cbfun);
         }
+        private static GlfwCursorEnterFun cursorEnterFun;
         public static void SetCursorEnterCallback(GlfwWindowPtr window, GlfwCursorEnterFun cbfun) {
+            cursorEnterFun = cbfun;
             GlfwDelegates.glfwSetCursorEnterCallback(window, cbfun);
         }
+        private static GlfwScrollFun scrollFun;
         public static void SetScrollCallback(GlfwWindowPtr window, GlfwScrollFun cbfun) {
+            scrollFun = cbfun;
             GlfwDelegates.glfwSetScrollCallback(window, cbfun);
         }
         public static int GetJoystickParam(Joystick joy, JoystickParam param) {
@@ -224,4 +248,3 @@ namespace Pencil.Gaming {
         }
     }
 }
-
