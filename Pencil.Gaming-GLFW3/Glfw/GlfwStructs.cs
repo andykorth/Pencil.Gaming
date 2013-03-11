@@ -53,12 +53,12 @@ namespace Pencil.Gaming {
     [StructLayout(LayoutKind.Explicit)]
     public struct GlfwWindowPtr {
         private GlfwWindowPtr(IntPtr ptr) {
-            innter_ptr = ptr;
+            inner_ptr = ptr;
         }
 
         [FieldOffsetAttribute(0)]
         private IntPtr
-            innter_ptr;
+            inner_ptr;
 
         public readonly static GlfwWindowPtr Null = new GlfwWindowPtr(IntPtr.Zero);
     }

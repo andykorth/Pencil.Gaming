@@ -38,8 +38,8 @@ namespace Pencil.Gaming {
         [DllImport("natives32/glfw.dll")] 
         internal static extern void glfwDefaultWindowHints();
         [DllImport("natives32/glfw.dll")] 
-        internal static extern void glfwWindowHint(int target, int hint);
-        [DllImport("natives32/glfw.dll")] 
+        internal static extern void glfwWindowHint(WindowHint target, int hint);
+        [DllImport("natives32/glfw.dll", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true, EntryPoint = "glfwCreateWindow")] 
         internal static extern GlfwWindowPtr glfwCreateWindow(int width, int height, [MarshalAs(UnmanagedType.LPStr)] string title, GlfwMonitorPtr monitor, GlfwWindowPtr share);
         [DllImport("natives32/glfw.dll")] 
         internal static extern void glfwDestroyWindow(GlfwWindowPtr window);

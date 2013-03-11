@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../Pencil.Gaming/Test/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW3/Glfw/Glfw.cs">
     <Files>
-      <File FileName="../Pencil.Gaming/Test/Main.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/GlfwDelegates.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw64.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw32.cs" Line="1" Column="1" />
+      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw.cs" Line="33" Column="10" />
+      <File FileName="Pencil.Gaming-GLFW3/Glfw/GlfwDelegates.cs" Line="133" Column="59" />
+      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw64.cs" Line="11" Column="83" />
+      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw32.cs" Line="71" Column="81" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
