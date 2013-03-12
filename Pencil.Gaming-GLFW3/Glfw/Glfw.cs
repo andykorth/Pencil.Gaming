@@ -17,7 +17,8 @@ namespace Pencil.Gaming {
         public static void SetErrorCallback(GlfwErrorFun cbfun) {
             GlfwDelegates.glfwSetErrorCallback(cbfun);
         }
-        public static unsafe GlfwMonitorPtr[] GetMonitors(out int count) {
+        public static unsafe GlfwMonitorPtr[] GetMonitors() {
+            int count;
             GlfwMonitorPtr * array = GlfwDelegates.glfwGetMonitors(out count);
             GlfwMonitorPtr[] result = new GlfwMonitorPtr[count];
             for (int i = 0; i < count; ++i) {
@@ -40,7 +41,8 @@ namespace Pencil.Gaming {
         public static void SetMonitorCallback(GlfwMonitorFun cbfun) {
             GlfwDelegates.glfwSetMonitorCallback(cbfun);
         }
-        public static GlfwVidMode[] GetVideoModes(GlfwMonitorPtr monitor, out int count) {
+        public static GlfwVidMode[] GetVideoModes(GlfwMonitorPtr monitor) {
+            int count;
             GlfwVidMode * array = GlfwDelegates.glfwGetVideoModes(monitor, out count);
             GlfwVidMode[] result = new GlfwVidMode[count];
             for (int i = 0; i < count; ++i) {
