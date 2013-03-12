@@ -75,6 +75,7 @@
     <Compile Include="Glfw\GlfwDelegateTypes.cs" />
     <Compile Include="Graphics\GlEnums.cs" />
     <Compile Include="Graphics\GlUtils.cs" />
+    <Compile Include="Graphics\GlLoadException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
