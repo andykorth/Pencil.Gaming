@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Pencil.Gaming.Math {
+namespace Pencil.Gaming.MathUtils {
     /// <summary>
     /// Represents a 4x4 Matrix
     /// </summary>

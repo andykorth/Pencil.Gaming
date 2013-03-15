@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace Pencil.Gaming.Math {
+namespace Pencil.Gaming.MathUtils {
     /// <summary>
     /// Represents a Quaternion.
     /// </summary>

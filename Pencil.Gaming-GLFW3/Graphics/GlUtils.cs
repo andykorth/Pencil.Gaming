@@ -5,7 +5,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
-using Pencil.Gaming.Math;
+using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
     public enum OptimizationLevel {

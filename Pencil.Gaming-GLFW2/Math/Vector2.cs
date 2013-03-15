@@ -4,7 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
-namespace Pencil.Gaming.Math {
+namespace Pencil.Gaming.MathUtils {
     /// <summary>Represents a 2D vector using two single-precision floating-point numbers.</summary>
     /// <remarks>
     /// The Vector2 structure is suitable for interoperation with unmanaged code requiring two consecutive floats.

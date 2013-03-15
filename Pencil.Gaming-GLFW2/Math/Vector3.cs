@@ -4,7 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
-namespace Pencil.Gaming.Math {
+namespace Pencil.Gaming.MathUtils {
     /// <summary>
     /// Represents a 3D vector using three single-precision floating-point numbers.
     /// </summary>
