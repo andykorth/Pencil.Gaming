@@ -74,6 +74,7 @@
     <Compile Include="Glfw\GlfwDelegates.cs" />
     <Compile Include="Glfw\Glfw.cs" />
     <Compile Include="Graphics\GlLoadException.cs" />
+    <Compile Include="Graphics\AssetLoadException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="callvirt_to_call.sh" />

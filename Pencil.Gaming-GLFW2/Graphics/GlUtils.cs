@@ -255,7 +255,7 @@ namespace Pencil.Gaming.Graphics {
                     result = new Vector4(float.Parse(elements[0]), float.Parse(elements[1]), float.Parse(elements[2]), float.Parse(elements[3]));
                     break;
                 default:
-                    throw new Exception("Failed to load object: vertices can only have 3 or 4 elements");
+                    throw new AssetLoadException("model", "vertices can only have 3 or 4 elements");
                 }
 
                 vertices.Add(result);
@@ -266,7 +266,7 @@ namespace Pencil.Gaming.Graphics {
                 string elementsString = line.Substring(3);
                 string[] elements = elementsString.Split(' ');
                 if (elements.Length != 3) {
-                    throw new Exception("Failed to load object: normals must define 3 elements");
+                    throw new AssetLoadException("model", "normals must define 3 elements");
                 }
 
                 result = Vector3.Normalize(new Vector3(float.Parse(elements[0]), float.Parse(elements[1]), float.Parse(elements[2])));
@@ -280,7 +280,7 @@ namespace Pencil.Gaming.Graphics {
                 if (elements.Length == 3) {
                     Console.WriteLine("WARNING: Object file specifies third texture coordinate, ignored");
                 } else if (elements.Length != 2) {
-                    throw new Exception("Failed to load object: texture coordinates must define either 3 or 4 elements");
+                    throw new AssetLoadException("model", "texture coordinates must define either 3 or 4 elements");
                 }
 
                 result = new Vector2(float.Parse(elements[0]), float.Parse(elements[1]));
@@ -317,7 +317,7 @@ namespace Pencil.Gaming.Graphics {
                     result.TexCoord = int.Parse(vertexTCoordNormal[1]);
                     result.Normal = int.Parse(vertexTCoordNormal[2]);
                 } else {
-                    throw new Exception("Failed to load object: texture face element declaration incorrect");
+                    throw new AssetLoadException("model", "texture face element declaration incorrect");
                 }
 
                 return result;
