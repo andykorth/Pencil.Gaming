@@ -72,13 +72,13 @@ int numberOfIndices;
 ```C#
 Gl.Enable(EnapleCap.DepthTest);
 
-List<Vector4> vertices;
-List<Vector3> normals;
-List<Vector2> texCoords;
-List<int> indices;
+Vector4[] vertices;
+Vector3[] normals;
+Vector2[] texCoords;
+int[] indices;
 Gl.Utils.LoadModel("model.obj", out vertices, out normals, out texCoords, out indices, false);
 
-numberOfIndices = indices.Count;
+numberOfIndices = indices.Length;
 
 Gl.GenBuffers(1, out modelVbo);
 Gl.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
@@ -87,7 +87,7 @@ Gl.BindBuffer(BufferTarget.ArrayBuffer, 0);
 
 Gl.GenBuffers(1, out indexVbo);
 Gl.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
-Gl.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Count * sizeof(int)), indices.ToArray(), BufferUsageHint.StaticDraw);
+Gl.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(int)), indices, BufferUsageHint.StaticDraw);
 Gl.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 ```
 

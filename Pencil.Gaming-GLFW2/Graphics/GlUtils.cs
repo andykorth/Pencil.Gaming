@@ -114,24 +114,29 @@ namespace Pencil.Gaming.Graphics {
                 }
             }
 
-            public static void LoadModel(string path, out List<Vector4> verticesOut, out List<Vector3> normalsOut, out List<Vector2> tCoordsOut, out List<int> indicesOut) {
+            public static void LoadModel(string path, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut) {
                 LoadModel(path, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, true);
             }
 
-            public static void LoadModel(string path, out List<Vector4> verticesOut, out List<Vector3> normalsOut, out List<Vector2> tCoordsOut, out List<int> indicesOut, bool optimize) {
+            public static void LoadModel(string path, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut, bool optimize) {
                 using (Stream str = File.OpenRead(path)) {
                     LoadModel(str, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, optimize);
                 }
             }
 
-            public static void LoadModel(Stream file, out List<Vector4> verticesOut, out List<Vector3> normalsOut, out List<Vector2> tCoordsOut, out List<int> indicesOut) {
+            public static void LoadModel(Stream file, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut) {
                 LoadModel(file, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, true);
             }
 
-            public static void LoadModel(Stream file, out List<Vector4> verticesOut, out List<Vector3> normalsOut, out List<Vector2> tCoordsOut, out List<int> indicesOut, bool optimize) {
+            public static void LoadModel(Stream file, out Vector4[] verticesOutArr, out Vector3[] normalsOutArr, out Vector2[] tCoordsOutArr, out int[] indicesOutArr, bool optimize) {
                 List<Vector4> vertices = new List<Vector4>(1024);
                 List<Vector3> normals = new List<Vector3>(1024);
                 List<Vector2> tCoords = new List<Vector2>(1024);
+
+                List<Vector4> verticesOut;
+                List<Vector3> normalsOut;
+                List<Vector2> tCoordsOut;
+                List<int> indicesOut;
 
                 using (StreamReader sread = new StreamReader(file)) {
                     List<Face> faces = new List<Face>(1024);
@@ -158,6 +163,19 @@ namespace Pencil.Gaming.Graphics {
                     Console.WriteLine("Optimizing/expanding model vertices took: {0} milliseconds", sw.ElapsedMilliseconds);
 #endif
                 }
+
+#if DEBUG
+                Stopwatch swatch = new Stopwatch();
+                swatch.Start();
+#endif
+                verticesOutArr = verticesOut.ToArray();
+                normalsOutArr = normalsOut.ToArray();
+                tCoordsOutArr = tCoordsOut.ToArray();
+                indicesOutArr = indicesOut.ToArray();
+#if DEBUG
+                swatch.Stop();
+                Console.WriteLine("Converting model lists to arrays took: {0} milliseconds", swatch.ElapsedMilliseconds);
+#endif
             }
 
             private static List<VertexIndices> VIndicesFromFaces(List<Face> faces) {
