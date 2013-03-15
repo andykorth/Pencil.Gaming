@@ -8,12 +8,6 @@ using System.Diagnostics;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
-    public enum OptimizationLevel {
-        None,
-        Linear,
-        Full,
-    }
-
     public static partial class Gl {
         public static class Utils {
             public static int LoadImage(string path) {
@@ -148,7 +142,7 @@ namespace Pencil.Gaming.Graphics {
 #endif
                     string line;
                     while ((line = sread.ReadLine()) != null) {
-                        ReadObjLine(line, vertices, normals, tCoords, faces);
+                        ParseObjLine(line, vertices, normals, tCoords, faces);
                     }
 #if DEBUG
                     sw.Stop();
@@ -229,7 +223,8 @@ namespace Pencil.Gaming.Graphics {
                 }
             }
 
-            private static void ReadVElement(string line, List<Vector4> vertices) {
+
+            private static void ParseVElement(string line, List<Vector4> vertices) {
                 Vector4 result = Vector4.Zero;
 
                 string verticesString = line.Substring(2);
@@ -247,8 +242,7 @@ namespace Pencil.Gaming.Graphics {
 
                 vertices.Add(result);
             }
-
-            private static void ReadVNElement(string line, List<Vector3> normals) {
+            private static void ParseVNElement(string line, List<Vector3> normals) {
                 Vector3 result = Vector3.Zero;
 
                 string elementsString = line.Substring(3);
@@ -260,8 +254,7 @@ namespace Pencil.Gaming.Graphics {
                 result = Vector3.Normalize(new Vector3(float.Parse(elements[0]), float.Parse(elements[1]), float.Parse(elements[2])));
                 normals.Add(result);
             }
-
-            private static void ReadVTElement(string line, List<Vector2> tCoords) {
+            private static void ParseVTElement(string line, List<Vector2> tCoords) {
                 Vector2 result = Vector2.Zero;
 
                 string elementsString = line.Substring(3);
@@ -275,8 +268,20 @@ namespace Pencil.Gaming.Graphics {
                 result = new Vector2(float.Parse(elements[0]), float.Parse(elements[1]));
                 tCoords.Add(result);
             }
+            private static void ParseFElement(string line, List<Face> faces) {
+                Face result = new Face();
 
-            private static VertexIndices ReadVertexIndices(string element) {
+                string elementsString = line.Substring(2);
+                string[] elements = elementsString.Split(' ');
+                List<VertexIndices> vIndices = new List<VertexIndices>(elements.Length);
+                foreach (string element in elements) {
+                    vIndices.Add(ParseVertexIndices(element));
+                }
+
+                result.Vertices = vIndices;
+                faces.Add(result);
+            }
+            private static VertexIndices ParseVertexIndices(string element) {
                 int count = element.Count(x => (x == '/'));
                 VertexIndices result = new VertexIndices();
 
@@ -299,30 +304,15 @@ namespace Pencil.Gaming.Graphics {
 
                 return result;
             }
-
-            private static void ReadFElement(string line, List<Face> faces) {
-                Face result = new Face();
-
-                string elementsString = line.Substring(2);
-                string[] elements = elementsString.Split(' ');
-                List<VertexIndices> vIndices = new List<VertexIndices>(elements.Length);
-                foreach (string element in elements) {
-                    vIndices.Add(ReadVertexIndices(element));
-                }
-
-                result.Vertices = vIndices;
-                faces.Add(result);
-            }
-
-            private static void ReadObjLine(string line, List<Vector4> vertices, List<Vector3> normals, List<Vector2> tCoords, List<Face> faces) {
+            private static void ParseObjLine(string line, List<Vector4> vertices, List<Vector3> normals, List<Vector2> tCoords, List<Face> faces) {
                 if (line.StartsWith("v ")) {
-                    ReadVElement(line, vertices);
+                    ParseVElement(line, vertices);
                 } else if (line.StartsWith("vn ")) {
-                    ReadVNElement(line, normals);
+                    ParseVNElement(line, normals);
                 } else if (line.StartsWith("vt ")) {
-                    ReadVTElement(line, tCoords);
+                    ParseVTElement(line, tCoords);
                 } else if (line.StartsWith("f ")) {
-                    ReadFElement(line, faces);
+                    ParseFElement(line, faces);
                 } else if (!line.StartsWith("#")) {
                     
                 }

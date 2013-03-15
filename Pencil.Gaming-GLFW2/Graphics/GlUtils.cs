@@ -8,12 +8,6 @@ using System.Diagnostics;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
-    public enum OptimizationLevel {
-        None,
-        Linear,
-        Full,
-    }
-
     public static partial class Gl {
         public static class Utils {
             public static int LoadImage(string path) {

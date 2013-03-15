@@ -34,9 +34,89 @@ Sample usage (OpenGL & GLFW)
 ============================
 This section has been removed. Please refer to the [wiki] (https://github.com/antonijn/Pencil.Gaming/wiki) for GLFW2/3 examples.
 
+Sample Usage (Gl.Utils)
+=======================
+Apart from implementing GLFW, Pencil.Gaming also has a few utilities to make your life bearable. `Gl.Utils` is one of these utility classes provided by Pencil.Gaming. It provides support for cross-platform texture loading, and features a model loading utility (obj files only).
+
+Image loading utility
+---------------------
+```C#
+int image = Gl.Utils.LoadImage("myfile.png"); // Works with multiple file formats
+Gl.BindTexture(TextureTarget.Texture2D, image);
+
+Gl.Begin(BeginMode.TriangleStrip);
+  Gl.TexCoord2(0f, 1f);
+  Gl.Vertex2(0.1f, 0.9f);
+  Gl.TexCoord2(0f, 0f);
+  Gl.Vertex2(0.1f, 0.1f);
+  Gl.TexCoord2(1f, 1f);
+  Gl.Vertex2(0.9f, 0.9f);
+  Gl.TexCoord2(1f, 0f);
+  Gl.Vertex2(0.9f, 0.1f);
+Gl.End();
+
+Gl.DeleteTextures(1, ref image);
+```
+
+Object loading utility
+----------------------
+
+#### Fields
+```C#
+int modelVbo;
+int indexVbo;
+int numberOfIndices;
+```
+
+#### During program initialization
+```C#
+Gl.Enable(EnapleCap.DepthTest);
+
+List<Vector4> vertices;
+List<Vector3> normals;
+List<Vector2> texCoords;
+List<int> indices;
+Gl.Utils.LoadModel("model.obj", out vertices, out normals, out texCoords, out indices, false);
+
+numberOfIndices = indices.Count;
+
+Gl.GenBuffers(1, out modelVbo);
+Gl.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
+Gl.BufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * 4 * sizeof(float)), vertices, BufferUsageHint.StaticDraw);
+Gl.BindBuffer(BufferTarget.ArrayBuffer, 0);
+
+Gl.GenBuffers(1, out indexVbo);
+Gl.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
+Gl.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Count * sizeof(int)), indices.ToArray(), BufferUsageHint.StaticDraw);
+Gl.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+```
+
+#### In the draw function
+```C#
+// NOTE: This uses legacy OpenGL, just to fit in the readme...
+Gl.EnableClientState(ArrayCap.VertexArray);
+
+Gl.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
+Gl.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
+
+Gl.VertexPointer(4, VertexPointerType.Float, 4 * sizeof(float), 0);
+Gl.DrawElements(BeginMode.Triangles, numberOfIndices, DrawElementsType.UnsignedInt, 0);
+
+Gl.BindBuffer(BufferTarget.ArrayBuffer, 0);
+Gl.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+
+Gl.DisableClientState(ArrayCap.VertexArray);
+```
+
+#### During cleanup
+```C#
+Gl.DeleteBuffers(1, ref modelVbo);
+Gl.DeleteBuffers(1, ref indexVbo);
+```
+
 Sample usage (OpenAL)
 =====================
-Apart from implementing GLFW, Pencil.Gaming also has a few utilities to make your life bearable. On of the more notable of these is the `Al.Utils.BufferFromWav` utility, which is able to load wave files into an OpenAL buffer.
+Another utility is the `Al.Utils.BufferFromWav` utility, which is able to load wave files into an OpenAL buffer.
 
 ```C#
 uint buffer = Al.Utils.BufferFromWav("MyWaveFile.wav");
@@ -54,25 +134,4 @@ Al.SourcePlay(source);
 // When cleaning up:
 Al.DeleteSources(1, ref source);
 Al.DeleteBuffers(1, ref buffer);
-```
-
-Sample Usage (Gl.Utils)
-=======================
-`Gl.Utils` is another utility class provided by Pencil.Gaming. It provides support for cross-platform texture loading, and **will** feature a model loading utility (obj files only).
-
-This is how you use the image loading utility:
-```C#
-int image = Gl.Utils.LoadImage("myfile.png"); // Works with multiple file formats
-Gl.BindTexture(TextureTarget.Texture2D, image);
-
-Gl.Begin(BeginMode.TriangleStrip);
-  Gl.TexCoord2(0f, 1f);
-  Gl.Vertex2(0.1f, 0.9f);
-  Gl.TexCoord2(0f, 0f);
-  Gl.Vertex2(0.1f, 0.1f);
-  Gl.TexCoord2(1f, 1f);
-  Gl.Vertex2(0.9f, 0.9f);
-  Gl.TexCoord2(1f, 0f);
-  Gl.Vertex2(0.9f, 0.1f);
-Gl.End();
 ```
