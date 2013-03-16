@@ -10,6 +10,8 @@ using Pencil.Gaming.MathUtils;
 namespace Pencil.Gaming.Graphics {
     public static partial class Gl {
         public static class Utils {
+            #region Image Loading
+
             public static int LoadImage(string path) {
                 using (Bitmap bmp = new Bitmap(path)) {
                     return LoadImage(bmp);
@@ -73,6 +75,10 @@ namespace Pencil.Gaming.Graphics {
                 return result;
             }
 
+            #endregion
+
+            #region Wavefront Model Loading
+
             internal struct VertexIndices {
                 public int Vertex;
                 public int? TexCoord;
@@ -129,6 +135,8 @@ namespace Pencil.Gaming.Graphics {
             }
 
             public static void LoadModel(Stream file, out Vector4[] verticesOutArr, out Vector3[] normalsOutArr, out Vector2[] tCoordsOutArr, out int[] indicesOutArr, bool optimize) {
+
+
                 List<Vector4> vertices = new List<Vector4>(1024);
                 List<Vector3> normals = new List<Vector3>(1024);
                 List<Vector2> tCoords = new List<Vector2>(1024);
@@ -335,6 +343,7 @@ namespace Pencil.Gaming.Graphics {
                     
                 }
             }
+#endregion
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Pencil.Gaming.MathUtils {
     /// </summary>
     public static class MathHelper {
         /// <summary>
-        /// Defines the value of Pi as a <see cref="System.Single"/>.
+        /// Defines the value of tau divided by two as a <see cref="System.Single"/>.
         /// </summary>
         public const float Pi = 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930382f;
 
@@ -35,9 +35,34 @@ namespace Pencil.Gaming.MathUtils {
         public const float PiOver6 = Pi / 6;
 
         /// <summary>
-        /// Defines the value of Pi multiplied by two as a <see cref="System.Single"/>.
+        /// Defines the value of tau as a <see cref="System.Single"/>.
         /// </summary>
-        public const float TwoPi = 2 * Pi;
+        public const float Tau = 2 * Pi;
+
+        /// <summary>
+        /// Defines the value of tau divided by two as a <see cref="System.Single"/>.
+        /// </summary>
+        public const float TauOver2 = Pi;
+
+        /// <summary>
+        /// Defines the value of tau divided by four as a <see cref="System.Single"/>.
+        /// </summary>
+        public const float TauOver4 = Tau / 4f;
+
+        /// <summary>
+        /// Defines the value of tau divided by six as a <see cref="System.Single"/>.
+        /// </summary>
+        public const float TauOver6 = Tau / 6f;
+       
+        /// <summary>
+        /// Defines the value of tau divided by eight as a <see cref="System.Single"/>.
+        /// </summary>
+        public const float TauOver8 = Tau / 8f;
+
+        /// <summary>
+        /// Defines the value of tau divided by twelve as a <see cref="System.Single"/>.
+        /// </summary>
+        public const float TauOver12 = Tau / 12f;
 
         /// <summary>
         /// Defines the value of Pi multiplied by 3 and divided by two as a <see cref="System.Single"/>.
@@ -180,7 +205,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="degrees">An angle in degrees</param>
         /// <returns>The angle expressed in radians</returns>
         public static float ToRadians(float degrees) {
-            const float degToRad = (float)System.Math.PI / 180.0f;
+            const float degToRad = (float)Tau / 360.0f;
             return degrees * degToRad;
         }
 
@@ -190,7 +215,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="radians">An angle in radians</param>
         /// <returns>The angle expressed in degrees</returns>
         public static float ToDegrees(float radians) {
-            const float radToDeg = 180.0f / (float)System.Math.PI;
+            const float radToDeg = 360.0f / (float)Tau;
             return radians * radToDeg;
         }
 
