@@ -58,7 +58,7 @@ Gl.End();
 Gl.DeleteTextures(1, ref image);
 ```
 
-Object loading utility
+Model loading utility
 ----------------------
 
 #### Fields
