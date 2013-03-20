@@ -138,8 +138,8 @@ namespace Pencil.Gaming {
             GlfwDelegates.glfwSetMouseWheelCallback(cbfun);
         }
 
-        public static int GetJoystickParam(Joystick joy, int param) {
-            return GlfwDelegates.glfwGetJoystickParam((int)joy, param);
+        public static int GetJoystickParam(Joystick joy, JoystickParam param) {
+            return GlfwDelegates.glfwGetJoystickParam((int)joy, (int)param);
         }
         public static int GetJoystickPos(Joystick joy, float[] pos, int numaxes) {
             return GlfwDelegates.glfwGetJoystickPos((int)joy, pos, numaxes);
