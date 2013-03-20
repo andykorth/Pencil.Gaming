@@ -1,8 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW2/Graphics/GlUtils.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW3/Glfw/Glfw.cs">
     <Files>
-      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlUtils.cs" Line="105" Column="17" />
+      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlUtils.cs" Line="102" Column="55" />
+      <File FileName="Pencil.Gaming-GLFW2/Glfw/GlfwEnum.cs" Line="162" Column="20" />
+      <File FileName="Pencil.Gaming-GLFW2/Glfw/Glfw.cs" Line="151" Column="41" />
+      <File FileName="Pencil.Gaming-GLFW3/Glfw/Glfw.cs" Line="202" Column="69" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
