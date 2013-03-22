@@ -65,6 +65,7 @@ namespace Pencil.Gaming.Graphics {
 //            Gl.Color4(color.R, color.G, color.B, color.A);
 //        }
 
+#if USE_GL_COMPAT
         public static void Color3(Vector3 color) {
             Gl.Color3(color.X, color.Y, color.Z);
         }
@@ -76,6 +77,7 @@ namespace Pencil.Gaming.Graphics {
         public static void Color4(Color4 color) {
             Gl.Color4(color.R, color.G, color.B, color.A);
         }
+#endif
 
         #endregion
 
@@ -105,38 +107,43 @@ namespace Pencil.Gaming.Graphics {
 
         #region public static void Material() overloads
 
+#if USE_GL_COMPAT
         public static void Material(MaterialFace face, MaterialParameter pname, Vector4 @params) {
             unsafe {
-                Material(face, pname, (float*) &@params.X);
+                Material(face, pname, (float*)&@params.X);
             }
         }
 
         public static void Material(MaterialFace face, MaterialParameter pname, Color4 @params) {
             unsafe {
-                Gl.Material(face, pname, (float*) &@params);
+                Gl.Material(face, pname, (float*)&@params);
             }
         }
+#endif
 
         #endregion
 
         #region public static void Light() overloads
 
+#if USE_GL_COMPAT
         public static void Light(LightName name, LightParameter pname, Vector4 @params) {
             unsafe {
-                Gl.Light(name, pname, (float*) &@params.X);
+                Gl.Light(name, pname, (float*)&@params.X);
             }
         }
 
         public static void Light(LightName name, LightParameter pname, Color4 @params) {
             unsafe {
-                Gl.Light(name, pname, (float*) &@params);
+                Gl.Light(name, pname, (float*)&@params);
             }
         }
+#endif
 
         #endregion
 
         #region Normal|RasterPos|Vertex|TexCoord|Rotate|Scale|Translate|*Matrix
 
+#if USE_GL_COMPAT
         public static void Normal3(Vector3 normal) {
             Gl.Normal3(normal.X, normal.Y, normal.Z);
         }
@@ -178,7 +185,7 @@ namespace Pencil.Gaming.Graphics {
         }
 
         public static void Rotate(Single angle, Vector3 axis) {
-            Gl.Rotate((Single) angle, axis.X, axis.Y, axis.Z);
+            Gl.Rotate((Single)angle, axis.X, axis.Y, axis.Z);
         }
 
         public static void Scale(Vector3 scale) {
@@ -192,7 +199,7 @@ namespace Pencil.Gaming.Graphics {
         public static void MultMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
-                    Gl.MultMatrix((Single*) m_ptr);
+                    Gl.MultMatrix((Single*)m_ptr);
                 }
             }
         }
@@ -200,7 +207,7 @@ namespace Pencil.Gaming.Graphics {
         public static void LoadMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
-                    Gl.LoadMatrix((Single*) m_ptr);
+                    Gl.LoadMatrix((Single*)m_ptr);
                 }
             }
         }
@@ -208,7 +215,7 @@ namespace Pencil.Gaming.Graphics {
         public static void LoadTransposeMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
-                    Gl.LoadTransposeMatrix((Single*) m_ptr);
+                    Gl.LoadTransposeMatrix((Single*)m_ptr);
                 }
             }
         }
@@ -216,10 +223,11 @@ namespace Pencil.Gaming.Graphics {
         public static void MultTransposeMatrix(ref Matrix mat) {
             unsafe {
                 fixed (Single* m_ptr = &mat.Row0.X) {
-                    Gl.MultTransposeMatrix((Single*) m_ptr);
+                    Gl.MultTransposeMatrix((Single*)m_ptr);
                 }
             }
         }
+#endif
 
         #endregion
 
@@ -326,7 +334,7 @@ namespace Pencil.Gaming.Graphics {
         public static void ShaderSource(Int32 shader, System.String @string) {
             unsafe {
                 int length = @string.Length;
-                Gl.ShaderSource((UInt32) shader, 1, new string[] { @string }, &length);
+                Gl.ShaderSource((UInt32)shader, 1, new string[] { @string }, &length);
             }
         }
 
@@ -353,7 +361,7 @@ namespace Pencil.Gaming.Graphics {
                     return;
                 }
                 StringBuilder sb = new StringBuilder(length * 2);
-                Gl.GetShaderInfoLog((UInt32) shader, sb.Capacity, &length, sb);
+                Gl.GetShaderInfoLog((UInt32)shader, sb.Capacity, &length, sb);
                 info = sb.ToString();
             }
         }
@@ -381,7 +389,7 @@ namespace Pencil.Gaming.Graphics {
                     return;
                 }
                 StringBuilder sb = new StringBuilder(length * 2);
-                Gl.GetProgramInfoLog((UInt32) program, sb.Capacity, &length, sb);
+                Gl.GetProgramInfoLog((UInt32)program, sb.Capacity, &length, sb);
                 info = sb.ToString();
             }
         }
@@ -400,7 +408,7 @@ namespace Pencil.Gaming.Graphics {
         /// denoting the origin of the Point Sprite.
         /// </param>
         public static void PointParameter(PointSpriteCoordOriginParameter param) {
-            Gl.PointParameter(PointParameterName.PointSpriteCoordOrigin, (int) param);
+            Gl.PointParameter(PointParameterName.PointSpriteCoordOrigin, (int)param);
         }
 
         #endregion
@@ -431,6 +439,7 @@ namespace Pencil.Gaming.Graphics {
             Gl.VertexAttrib4(index, v.X, v.Y, v.Z, v.W);
         }
 
+#if USE_GL_COMPAT
         public static void MultiTexCoord2(TextureUnit target, ref Vector2 v) {
             Gl.MultiTexCoord2(target, v.X, v.Y);
         }
@@ -442,6 +451,7 @@ namespace Pencil.Gaming.Graphics {
         public static void MultiTexCoord4(TextureUnit target, ref Vector4 v) {
             Gl.MultiTexCoord4(target, v.X, v.Y, v.Z, v.W);
         }
+#endif
 
         #endregion
 
@@ -773,36 +783,39 @@ namespace Pencil.Gaming.Graphics {
 
         #region [Vertex|Normal|Index|Color|FogCoord|VertexAttrib]Pointer
 
+#if USE_GL_COMPAT
         public static void VertexPointer(int size, VertexPointerType type, int stride, int offset) {
-            VertexPointer(size, type, stride, (IntPtr) offset);
+            VertexPointer(size, type, stride, (IntPtr)offset);
         }
 
         public static void NormalPointer(NormalPointerType type, int stride, int offset) {
-            NormalPointer(type, stride, (IntPtr) offset);
+            NormalPointer(type, stride, (IntPtr)offset);
         }
 
         public static void IndexPointer(IndexPointerType type, int stride, int offset) {
-            IndexPointer(type, stride, (IntPtr) offset);
+            IndexPointer(type, stride, (IntPtr)offset);
         }
 
         public static void ColorPointer(int size, ColorPointerType type, int stride, int offset) {
-            ColorPointer(size, type, stride, (IntPtr) offset);
+            ColorPointer(size, type, stride, (IntPtr)offset);
         }
 
         public static void FogCoordPointer(FogPointerType type, int stride, int offset) {
-            FogCoordPointer(type, stride, (IntPtr) offset);
+            FogCoordPointer(type, stride, (IntPtr)offset);
         }
 
         public static void EdgeFlagPointer(int stride, int offset) {
-            EdgeFlagPointer(stride, (IntPtr) offset);
+            EdgeFlagPointer(stride, (IntPtr)offset);
         }
 
         public static void TexCoordPointer(int size, TexCoordPointerType type, int stride, int offset) {
-            TexCoordPointer(size, type, stride, (IntPtr) offset);
+            TexCoordPointer(size, type, stride, (IntPtr)offset);
         }
 
+#endif
+
         public static void VertexAttribPointer(int index, int size, VertexAttribPointerType type, bool normalized, int stride, int offset) {
-            VertexAttribPointer(index, size, type, normalized, stride, (IntPtr) offset);
+            VertexAttribPointer(index, size, type, normalized, stride, (IntPtr)offset);
         }
 
         #endregion
@@ -820,28 +833,28 @@ namespace Pencil.Gaming.Graphics {
         public static void GetFloat(GetPName pname, out Vector2 vector) {
             unsafe {
                 fixed (Vector2* ptr = &vector)
-                    GetFloat(pname, (float*) ptr);
+                    GetFloat(pname, (float*)ptr);
             }
         }
 
         public static void GetFloat(GetPName pname, out Vector3 vector) {
             unsafe {
                 fixed (Vector3* ptr = &vector)
-                    GetFloat(pname, (float*) ptr);
+                    GetFloat(pname, (float*)ptr);
             }
         }
 
         public static void GetFloat(GetPName pname, out Vector4 vector) {
             unsafe {
                 fixed (Vector4* ptr = &vector)
-                    GetFloat(pname, (float*) ptr);
+                    GetFloat(pname, (float*)ptr);
             }
         }
 
         public static void GetFloat(GetPName pname, out Matrix matrix) {
             unsafe {
                 fixed (Matrix* ptr = &matrix)
-                    GetFloat(pname, (float*) ptr);
+                    GetFloat(pname, (float*)ptr);
             }
         }
 
@@ -882,11 +895,13 @@ namespace Pencil.Gaming.Graphics {
 //            }
 //        }
 
+#if USE_GL_COMPAT
         public static void TexEnv(TextureEnvTarget target, TextureEnvParameter pname, Color4 color) {
             unsafe {
                 TexEnv(target, pname, &color.R);
             }
         }
+#endif
 
         #endregion
 
@@ -897,12 +912,4 @@ namespace Pencil.Gaming.Graphics {
 
         #endregion
     }
-
-    public delegate void DebugProcAmd(int id,
-        AmdDebugOutput category,AmdDebugOutput severity,
-        IntPtr length,string message,IntPtr userParam);
-
-    public delegate void DebugProcArb(int id,
-        ArbDebugOutput category,ArbDebugOutput severity,
-        IntPtr length,string message,IntPtr userParam);
 }
