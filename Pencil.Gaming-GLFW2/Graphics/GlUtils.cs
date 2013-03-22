@@ -79,6 +79,9 @@ namespace Pencil.Gaming.Graphics {
 
             #region Wavefront Model Loading
 
+            #pragma warning disable 0661
+            #pragma warning disable 0659
+
             internal struct VertexIndices {
                 public int Vertex;
                 public int? TexCoord;
@@ -111,6 +114,9 @@ namespace Pencil.Gaming.Graphics {
                     return !(@this == other);
                 }
             }
+
+            #pragma warning restore 0661
+            #pragma warning restore 0659
 
             internal struct Face {
                 public List<VertexIndices> Vertices;

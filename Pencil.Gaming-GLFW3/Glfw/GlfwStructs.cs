@@ -37,6 +37,8 @@ namespace Pencil.Gaming {
             Blue;
     }
 
+    #pragma warning disable 0414
+
     [StructLayout(LayoutKind.Explicit)]
     public struct GlfwMonitorPtr {
         private GlfwMonitorPtr(IntPtr ptr) {
@@ -62,5 +64,7 @@ namespace Pencil.Gaming {
 
         public readonly static GlfwWindowPtr Null = new GlfwWindowPtr(IntPtr.Zero);
     }
+
+    #pragma warning restore 0414
 }
 

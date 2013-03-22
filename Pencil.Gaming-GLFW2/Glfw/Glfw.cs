@@ -6,6 +6,8 @@ using Pencil.Gaming.Graphics;
 
 namespace Pencil.Gaming {
     public static partial class Glfw {
+        #pragma warning disable 0414
+
         public static bool Init() {
             return GlfwDelegates.glfwInit() == 1;
         }
@@ -190,6 +192,8 @@ namespace Pencil.Gaming {
         public static int LoadTextureImage2D(ref GlfwImage img, ReadImageModes flags) {
             return GlfwDelegates.glfwLoadTextureImage2D(ref img, (int)flags);
         }
+
+        #pragma warning restore 0414
     }
 }
 

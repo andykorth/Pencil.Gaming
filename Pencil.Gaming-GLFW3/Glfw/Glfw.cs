@@ -2,6 +2,8 @@ using System;
 
 namespace Pencil.Gaming {
     public static unsafe class Glfw {
+        #pragma warning disable 0414
+
         public static bool Init() {
             return GlfwDelegates.glfwInit() == 1;
         }
@@ -248,5 +250,7 @@ namespace Pencil.Gaming {
         public static IntPtr GetProcAddress(string procname) {
             return GlfwDelegates.glfwGetProcAddress(procname);
         }
+
+        #pragma warning restore 0414
     }
 }
