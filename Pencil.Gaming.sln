@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pencil.Gaming", "Pencil.Gaming-GLFW2\Pencil.Gaming.csproj", "{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pencil.Gaming", "Pencil.Gaming\Pencil.Gaming.csproj", "{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,7 +41,7 @@ Global
 		{CD8E4574-D6B4-45B4-AF4E-33C0D0920095}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Pencil.Gaming-GLFW2\Pencil.Gaming.csproj
+		StartupItem = Pencil.Gaming\Pencil.Gaming.csproj
 		version = 
 	EndGlobalSection
 EndGlobal

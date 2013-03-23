@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug - Compatibility - GLFW3" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW2/Graphics/GlEnums.cs">
     <Files>
-      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlEnums.cs" Line="1998" Column="6" />
+      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlEnums.cs" Line="1770" Column="38" />
+      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlDelegates.cs" Line="120" Column="15" />
+      <File FileName="Pencil.Gaming-GLFW2/Graphics/Gl.cs" Line="923" Column="32" />
+      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlHelper.cs" Line="914" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
