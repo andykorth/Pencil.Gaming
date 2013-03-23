@@ -41,15 +41,6 @@ namespace Pencil.Gaming {
         }
 
         public static int OpenWindow(int width, int height, int redbits, int greenbits, int bluebits, int alphabits, int depthbits, int stencilbits, WindowMode mode) {
-            Glfw.Utils.widthBackup = width;
-            Glfw.Utils.heightBackup = height;
-            Glfw.Utils.redBitsBackup = redbits;
-            Glfw.Utils.greenBitsBackup = greenbits;
-            Glfw.Utils.blueBitsBackup = bluebits;
-            Glfw.Utils.alphaBitsBackup = alphabits;
-            Glfw.Utils.depthBitsBackup = depthbits;
-            Glfw.Utils.stencilBitsBackup = stencilbits;
-            Glfw.Utils.isFullscreen = (mode == WindowMode.FullScreen);
             return GlfwDelegates.glfwOpenWindow(width, height, redbits, greenbits, bluebits, alphabits, depthbits, stencilbits, (int)mode);
         }
         public static void OpenWindowHint(OpenWindowHint target, int hint) {
