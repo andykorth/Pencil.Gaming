@@ -1,4 +1,25 @@
-// License: ../LICENSE.TXT
+#region License
+// Copyright (c) 2013 Antonie Blom
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do
+// so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+#endregion
 
 using System;
 using System.Runtime.InteropServices;
@@ -324,8 +345,8 @@ namespace Pencil.Gaming.MathUtils {
             float axisX = axis.X, axisY = axis.Y, axisZ = axis.Z;
 
             // calculate angles
-            float cos = (float) System.Math.Cos(-angle);
-            float sin = (float) System.Math.Sin(-angle);
+            float cos = (float)System.Math.Cos(-angle);
+            float sin = (float)System.Math.Sin(-angle);
             float t = 1.0f - cos;
 
             // do the conversion math once
@@ -404,8 +425,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
         public static void CreateRotationX(float angle, out Matrix result) {
-            float cos = (float) System.Math.Cos(angle);
-            float sin = (float) System.Math.Sin(angle);
+            float cos = (float)System.Math.Cos(angle);
+            float sin = (float)System.Math.Sin(angle);
 
             result = Identity;
             result.Row1.Y = cos;
@@ -431,8 +452,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
         public static void CreateRotationY(float angle, out Matrix result) {
-            float cos = (float) System.Math.Cos(angle);
-            float sin = (float) System.Math.Sin(angle);
+            float cos = (float)System.Math.Cos(angle);
+            float sin = (float)System.Math.Sin(angle);
 
             result = Identity;
             result.Row0.X = cos;
@@ -458,8 +479,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix4 instance.</param>
         public static void CreateRotationZ(float angle, out Matrix result) {
-            float cos = (float) System.Math.Cos(angle);
-            float sin = (float) System.Math.Sin(angle);
+            float cos = (float)System.Math.Cos(angle);
+            float sin = (float)System.Math.Sin(angle);
 
             result = Identity;
             result.Row0.X = cos;
@@ -718,7 +739,7 @@ namespace Pencil.Gaming.MathUtils {
             if (zFar <= 0)
                 throw new ArgumentOutOfRangeException("zFar");
             
-            float yMax = zNear * (float) System.Math.Tan(0.5f * fovy);
+            float yMax = zNear * (float)System.Math.Tan(0.5f * fovy);
             float yMin = -yMax;
             float xMin = yMin * aspect;
             float xMax = yMax * aspect;
@@ -1156,7 +1177,7 @@ namespace Pencil.Gaming.MathUtils {
             if (!(obj is Matrix))
                 return false;
 
-            return this.Equals((Matrix) obj);
+            return this.Equals((Matrix)obj);
         }
 
         #endregion

@@ -1,4 +1,25 @@
-﻿// License: ../LICENSE.TXT
+﻿#region License
+// Copyright (c) 2013 Antonie Blom
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do
+// so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+#endregion
 
 #define MINIMAL
 
@@ -64,10 +85,10 @@ namespace Pencil.Gaming.Graphics {
         /// <param name="b">The blue component of the new Color4 structure.</param>
         /// <param name="a">The alpha component of the new Color4 structure.</param>
         public Color4(byte r, byte g, byte b, byte a) {
-            R = r / (float) Byte.MaxValue;
-            G = g / (float) Byte.MaxValue;
-            B = b / (float) Byte.MaxValue;
-            A = a / (float) Byte.MaxValue;
+            R = r / (float)Byte.MaxValue;
+            G = g / (float)Byte.MaxValue;
+            B = b / (float)Byte.MaxValue;
+            A = a / (float)Byte.MaxValue;
         }
 
         #endregion
@@ -81,12 +102,12 @@ namespace Pencil.Gaming.Graphics {
         /// <remarks>This method is intended only for compatibility with System.Drawing. It compresses the color into 8 bits per channel, which means color information is lost.</remarks>
         public int ToArgb() {
             uint value =
-                (uint) (A * Byte.MaxValue) << 24 |
-                (uint) (R * Byte.MaxValue) << 16 |
-                (uint) (G * Byte.MaxValue) << 8 |
-                (uint) (B * Byte.MaxValue);
+                (uint)(A * Byte.MaxValue) << 24 |
+                (uint)(R * Byte.MaxValue) << 16 |
+                (uint)(G * Byte.MaxValue) << 8 |
+                (uint)(B * Byte.MaxValue);
 
-            return unchecked((int) value);
+            return unchecked((int)value);
         }
 
         /// <summary>
@@ -140,7 +161,7 @@ namespace Pencil.Gaming.Graphics {
             if (!(obj is Color4))
                 return false;
 
-            return Equals((Color4) obj);
+            return Equals((Color4)obj);
         }
 
         /// <summary>

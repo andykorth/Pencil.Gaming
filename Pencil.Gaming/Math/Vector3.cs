@@ -1,4 +1,25 @@
-// License: ../LICENSE.TXT
+#region License
+// Copyright (c) 2013 Antonie Blom
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do
+// so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+#endregion
 
 using System;
 using System.Runtime.InteropServices;
@@ -141,7 +162,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <see cref="LengthFast"/>
         /// <seealso cref="LengthSquared"/>
         public float Length {
-            get { return (float) System.Math.Sqrt(X * X + Y * Y + Z * Z); }
+            get { return (float)System.Math.Sqrt(X * X + Y * Y + Z * Z); }
         }
 
         /// <summary>
@@ -780,7 +801,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <returns>Angle (in radians) between the vectors.</returns>
         /// <remarks>Note that the returned angle is never bigger than the constant Pi.</remarks>
         public static float CalculateAngle(Vector3 first, Vector3 second) {
-            return (float) System.Math.Acos((Vector3.Dot(first, second)) / (first.Length * second.Length));
+            return (float)System.Math.Acos((Vector3.Dot(first, second)) / (first.Length * second.Length));
         }
 
         /// <summary>Calculates the angle (in radians) between two vectors.</summary>
@@ -791,7 +812,7 @@ namespace Pencil.Gaming.MathUtils {
         public static void CalculateAngle(ref Vector3 first, ref Vector3 second, out float result) {
             float temp;
             Vector3.Dot(ref first, ref second, out temp);
-            result = (float) System.Math.Acos(temp / (first.Length * second.Length));
+            result = (float)System.Math.Acos(temp / (first.Length * second.Length));
         }
 
         /// <summary>
@@ -1055,7 +1076,7 @@ namespace Pencil.Gaming.MathUtils {
             if (!(obj is Vector3))
                 return false;
 
-            return this.Equals((Vector3) obj);
+            return this.Equals((Vector3)obj);
         }
 
         /// <summary>Indicates whether the current vector is equal to another vector.</summary>

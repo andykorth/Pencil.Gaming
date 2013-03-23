@@ -1,4 +1,25 @@
-// License: ../LICENSE.TXT
+#region License
+// Copyright (c) 2013 Antonie Blom
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do
+// so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+#endregion
 
 using System;
 using System.Runtime.InteropServices;
@@ -91,8 +112,8 @@ namespace Pencil.Gaming.MathUtils {
 
             Vector4 result = new Vector4();
 
-            result.W = 2.0f * (float) System.Math.Acos(q.W); // angle
-            float den = (float) System.Math.Sqrt(1.0 - q.W * q.W);
+            result.W = 2.0f * (float)System.Math.Acos(q.W); // angle
+            float den = (float)System.Math.Sqrt(1.0 - q.W * q.W);
             if (den > 0.0001f) {
                 result.Xyz = q.Xyz / den;
             } else {
@@ -110,7 +131,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <seealso cref="LengthSquared"/>
         public float Length {
             get {
-                return (float) System.Math.Sqrt(W * W + Xyz.LengthSquared);
+                return (float)System.Math.Sqrt(W * W + Xyz.LengthSquared);
             }
         }
 
@@ -310,8 +331,8 @@ namespace Pencil.Gaming.MathUtils {
 
             angle *= 0.5f;
             axis.Normalize();
-            result.Xyz = axis * (float) System.Math.Sin(angle);
-            result.W = (float) System.Math.Cos(angle);
+            result.Xyz = axis * (float)System.Math.Sin(angle);
+            result.W = (float)System.Math.Cos(angle);
 
             return Normalize(result);
         }
@@ -350,11 +371,11 @@ namespace Pencil.Gaming.MathUtils {
             float blendB;
             if (cosHalfAngle < 0.99f) {
                 // do proper slerp for big angles
-                float halfAngle = (float) System.Math.Acos(cosHalfAngle);
-                float sinHalfAngle = (float) System.Math.Sin(halfAngle);
+                float halfAngle = (float)System.Math.Acos(cosHalfAngle);
+                float sinHalfAngle = (float)System.Math.Sin(halfAngle);
                 float oneOverSinHalfAngle = 1.0f / sinHalfAngle;
-                blendA = (float) System.Math.Sin(halfAngle * (1.0f - blend)) * oneOverSinHalfAngle;
-                blendB = (float) System.Math.Sin(halfAngle * blend) * oneOverSinHalfAngle;
+                blendA = (float)System.Math.Sin(halfAngle * (1.0f - blend)) * oneOverSinHalfAngle;
+                blendB = (float)System.Math.Sin(halfAngle * blend) * oneOverSinHalfAngle;
             } else {
                 // do lerp if angle is really small.
                 blendA = 1.0f - blend;
@@ -460,7 +481,7 @@ namespace Pencil.Gaming.MathUtils {
         public override bool Equals(object other) {
             if (other is Quaternion == false)
                 return false;
-            return this == (Quaternion) other;
+            return this == (Quaternion)other;
         }
 
         /// <summary>

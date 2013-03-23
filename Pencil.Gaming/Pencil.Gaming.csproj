@@ -131,7 +131,6 @@
     <Compile Include="Glfw\Glfw2DelegateTypes.cs" />
     <Compile Include="Glfw\Glfw2Enum.cs" />
     <Compile Include="Glfw\Glfw2Structs.cs" />
-    <Compile Include="Glfw\Glfw2Utils.cs" />
     <Compile Include="Glfw\Glfw3Delegates.cs" />
     <Compile Include="Glfw\Glfw3DelegateTypes.cs" />
     <Compile Include="Glfw\Glfw3Enum.cs" />
