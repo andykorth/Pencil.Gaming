@@ -1,12 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming-GLFW2/Graphics/GlEnums.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Glfw/Glfw2Delegates.cs">
     <Files>
-      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlEnums.cs" Line="1770" Column="38" />
-      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlDelegates.cs" Line="120" Column="15" />
-      <File FileName="Pencil.Gaming-GLFW2/Graphics/Gl.cs" Line="923" Column="32" />
-      <File FileName="Pencil.Gaming-GLFW2/Graphics/GlHelper.cs" Line="914" Column="6" />
+      <File FileName="Pencil.Gaming/Graphics/GlEnums.cs" Line="171" Column="6" />
+      <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="345" Column="18" />
+      <File FileName="Pencil.Gaming/Audio/AlDelegates.cs" Line="37" Column="48" />
+      <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="192" Column="21" />
+      <File FileName="Pencil.Gaming/Audio/Al.cs" Line="99" Column="38" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw3Delegates.cs" Line="38" Column="50" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw2Delegates.cs" Line="30" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Pencil.Gaming" expanded="True">
+            <Node name="Glfw" expanded="True">
+              <Node name="Glfw2Delegates.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

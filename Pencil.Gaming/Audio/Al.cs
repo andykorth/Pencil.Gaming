@@ -50,7 +50,7 @@ namespace Pencil.Gaming.Audio {
                 CreateContext alcCreateContext = null;
                 MakeContextCurrent alcMakeContextCurrent = null;
 
-                if (Environment.Is64BitProcess) {
+                if (IntPtr.Size == 8) {
                     alcCloseDevice = Alc64.alcCloseDevice;
                     alcOpenDevice = Alc64.alcOpenDevice;
                     alcIsExtensionPresent = Alc64.alcIsExtensionPresent;
@@ -96,7 +96,7 @@ namespace Pencil.Gaming.Audio {
 #endif
             }
             public static void Terminate() {
-                if (Environment.Is64BitProcess) {
+                if (IntPtr.Size == 8) {
                     Alc64.alcCloseDevice(alcDeviceHandle);
                 } else {
                     Alc32.alcCloseDevice(alcDeviceHandle);

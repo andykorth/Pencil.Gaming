@@ -824,12 +824,6 @@ namespace Pencil.Gaming.Graphics {
             internal unsafe delegate void GetHistogramParameteriv(Pencil.Gaming.Graphics.HistogramTarget target,Pencil.Gaming.Graphics.GetHistogramParameterPName pname,[OutAttribute] Int32* @params);
             internal unsafe static GetHistogramParameteriv glGetHistogramParameteriv;
             [SuppressUnmanagedCodeSecurity()]
-            internal unsafe delegate void GetImageTransformParameterfvHP(Pencil.Gaming.Graphics.HpImageTransform target,Pencil.Gaming.Graphics.HpImageTransform pname,[OutAttribute] Single* @params);
-            internal unsafe static GetImageTransformParameterfvHP glGetImageTransformParameterfvHP;
-            [SuppressUnmanagedCodeSecurity()]
-            internal unsafe delegate void GetImageTransformParameterivHP(Pencil.Gaming.Graphics.HpImageTransform target,Pencil.Gaming.Graphics.HpImageTransform pname,[OutAttribute] Int32* @params);
-            internal unsafe static GetImageTransformParameterivHP glGetImageTransformParameterivHP;
-            [SuppressUnmanagedCodeSecurity()]
             internal unsafe delegate void GetInteger64i_v(Pencil.Gaming.Graphics.GetIndexedPName target,UInt32 index,[OutAttribute] Int64* data);
             internal unsafe static GetInteger64i_v glGetInteger64i_v;
             [SuppressUnmanagedCodeSecurity()]
@@ -1058,23 +1052,8 @@ namespace Pencil.Gaming.Graphics {
             internal delegate void Hint(Pencil.Gaming.Graphics.HintTarget target,Pencil.Gaming.Graphics.HintMode mode);
             internal static Hint glHint;
             [SuppressUnmanagedCodeSecurity()]
-            internal delegate void HintPGI(Pencil.Gaming.Graphics.PgiMiscHints target,Int32 mode);
-            internal static HintPGI glHintPGI;
-            [SuppressUnmanagedCodeSecurity()]
             internal delegate void Histogram(Pencil.Gaming.Graphics.HistogramTarget target,Int32 width,Pencil.Gaming.Graphics.PixelInternalFormat internalformat,bool sink);
             internal static Histogram glHistogram;
-            [SuppressUnmanagedCodeSecurity()]
-            internal delegate void ImageTransformParameterfHP(Pencil.Gaming.Graphics.HpImageTransform target,Pencil.Gaming.Graphics.HpImageTransform pname,Single param);
-            internal static ImageTransformParameterfHP glImageTransformParameterfHP;
-            [SuppressUnmanagedCodeSecurity()]
-            internal unsafe delegate void ImageTransformParameterfvHP(Pencil.Gaming.Graphics.HpImageTransform target,Pencil.Gaming.Graphics.HpImageTransform pname,Single* @params);
-            internal unsafe static ImageTransformParameterfvHP glImageTransformParameterfvHP;
-            [SuppressUnmanagedCodeSecurity()]
-            internal delegate void ImageTransformParameteriHP(Pencil.Gaming.Graphics.HpImageTransform target,Pencil.Gaming.Graphics.HpImageTransform pname,Int32 param);
-            internal static ImageTransformParameteriHP glImageTransformParameteriHP;
-            [SuppressUnmanagedCodeSecurity()]
-            internal unsafe delegate void ImageTransformParameterivHP(Pencil.Gaming.Graphics.HpImageTransform target,Pencil.Gaming.Graphics.HpImageTransform pname,Int32* @params);
-            internal unsafe static ImageTransformParameterivHP glImageTransformParameterivHP;
             [SuppressUnmanagedCodeSecurity()]
             internal delegate void Indexd(Double c);
             internal static Indexd glIndexd;
@@ -1955,7 +1934,7 @@ namespace Pencil.Gaming.Graphics {
             internal delegate void StencilFunc(Pencil.Gaming.Graphics.StencilFunction func,Int32 @ref,UInt32 mask);
             internal static StencilFunc glStencilFunc;
             [SuppressUnmanagedCodeSecurity()]
-            internal delegate void StencilFuncSeparate(Pencil.Gaming.Graphics.Version20 face,Pencil.Gaming.Graphics.StencilFunction func,Int32 @ref,UInt32 mask);
+            internal delegate void StencilFuncSeparate(Pencil.Gaming.Graphics.StencilFace face,Pencil.Gaming.Graphics.StencilFunction func,Int32 @ref,UInt32 mask);
             internal static StencilFuncSeparate glStencilFuncSeparate;
             [SuppressUnmanagedCodeSecurity()]
             internal delegate void StencilMask(UInt32 mask);

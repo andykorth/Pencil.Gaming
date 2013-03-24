@@ -337,7 +337,12 @@ namespace Pencil.Gaming.Graphics {
                 faces.Add(result);
             }
             private static VertexIndices ParseVertexIndices(string element) {
-                int count = element.Count(x => (x == '/'));
+                int count = 0;
+                foreach (char ch in element) {
+                    if (ch == '/') {
+                        ++count;
+                    }
+                }
                 VertexIndices result = new VertexIndices();
 
                 if (element.Contains("//")) {

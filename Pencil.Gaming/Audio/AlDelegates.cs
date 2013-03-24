@@ -34,7 +34,7 @@ namespace Pencil.Gaming.Audio {
             Stopwatch sw = new Stopwatch();
             sw.Start();
 #endif
-            Type alInterop = Environment.Is64BitProcess ? typeof(Al64) : typeof(Al32);
+            Type alInterop = (IntPtr.Size == 8) ? typeof(Al64) : typeof(Al32);
             FieldInfo[] fields = typeof(AlDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
             foreach (FieldInfo fi in fields) {
                 MethodInfo mi = alInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);

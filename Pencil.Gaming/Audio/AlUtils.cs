@@ -57,7 +57,15 @@ namespace Pencil.Gaming.Audio {
                 out uint sampleRate) {
 
                 using (MemoryStream ms = new MemoryStream()) {
-                    file.CopyTo(ms);
+                    if (!file.CanRead) {
+                        throw new NotSupportedException("This stream does not support reading");
+                    }
+                    byte[] buffer = new byte[16 * 1024];
+                    int nread;
+                    while ((nread = file.Read(buffer, 0, 16 * 1024)) != 0) {
+                        ms.Write(buffer, 0, nread);
+                    }
+
                     LoadWav(ms.ToArray(), out data, out format, out sampleRate);
                 }
             }
@@ -173,7 +181,15 @@ namespace Pencil.Gaming.Audio {
 
             public static uint BufferFromWav(Stream file) {
                 using (MemoryStream ms = new MemoryStream()) {
-                    file.CopyTo(ms);
+                    if (!file.CanRead) {
+                        throw new NotSupportedException("This stream does not support reading");
+                    }
+                    byte[] buffer = new byte[16 * 1024];
+                    int nread;
+                    while ((nread = file.Read(buffer, 0, 16 * 1024)) != 0) {
+                        ms.Write(buffer, 0, nread);
+                    }
+
                     return BufferFromWav(ms.ToArray());
                 }
             }

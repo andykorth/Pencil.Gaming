@@ -35,7 +35,7 @@ namespace Pencil.Gaming {
             Stopwatch sw = new Stopwatch();
             sw.Start();
 #endif
-            Type glfwInterop = Environment.Is64BitProcess ? typeof(Glfw64) : typeof(Glfw32);
+            Type glfwInterop = (IntPtr.Size == 8) ? typeof(Glfw64) : typeof(Glfw32);
 #if DEBUG
             Console.WriteLine("GLFW interop: {0}", glfwInterop.Name);
 #endif
@@ -53,75 +53,144 @@ namespace Pencil.Gaming {
 
 #pragma warning disable 0649
 
-        [SuppressUnmanagedCodeSecurity] internal delegate int Init();
-        [SuppressUnmanagedCodeSecurity] internal delegate void Terminate();
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetVersion(out int major,out int minor,out int rev);
-        [SuppressUnmanagedCodeSecurity] internal delegate sbyte * GetVersionString();
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetErrorCallback(GlfwErrorFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwMonitorPtr * GetMonitors(out int count);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwMonitorPtr GetPrimaryMonitor();
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetMonitorPos(GlfwMonitorPtr monitor,out int xpos,out int ypos);
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetMonitorPhysicalSize(GlfwMonitorPtr monitor,out int width,out int height);
-        [SuppressUnmanagedCodeSecurity] internal delegate sbyte * GetMonitorName(GlfwMonitorPtr monitor);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetMonitorCallback(GlfwMonitorFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwVidMode * GetVideoModes(GlfwMonitorPtr monitor,out int count);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwVidMode GetVideoMode(GlfwMonitorPtr monitor);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetGamma(GlfwMonitorPtr monitor,float gamma);
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetGammaRamp(GlfwMonitorPtr monitor,out GlfwGammaRamp ramp);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetGammaRamp(GlfwMonitorPtr monitor,ref GlfwGammaRamp ramp);
-        [SuppressUnmanagedCodeSecurity] internal delegate void DefaultWindowHints();
-        [SuppressUnmanagedCodeSecurity] internal delegate void WindowHint(Pencil.Gaming.WindowHint target,int hint);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwWindowPtr CreateWindow(int width,int height,[MarshalAs(UnmanagedType.LPStr)] string title,GlfwMonitorPtr monitor,GlfwWindowPtr share);
-        [SuppressUnmanagedCodeSecurity] internal delegate void DestroyWindow(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate int WindowShouldClose(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowShouldClose(GlfwWindowPtr window,int value);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowTitle(GlfwWindowPtr window,[MarshalAs(UnmanagedType.LPStr)] string title);
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetWindowPos(GlfwWindowPtr window,out int xpos,out int ypos);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowPos(GlfwWindowPtr window,int xpos,int ypos);
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetWindowSize(GlfwWindowPtr window,out int width,out int height);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowSize(GlfwWindowPtr window,int width,int height);
-        [SuppressUnmanagedCodeSecurity] internal delegate void IconifyWindow(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate void RestoreWindow(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate void ShowWindow(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate void HideWindow(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwMonitorPtr GetWindowMonitor(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetWindowParam(GlfwWindowPtr window,int param);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowUserPointer(GlfwWindowPtr window,IntPtr pointer);
-        [SuppressUnmanagedCodeSecurity] internal delegate IntPtr GetWindowUserPointer(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowPosCallback(GlfwWindowPtr window,GlfwWindowPosFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowSizeCallback(GlfwWindowPtr window,GlfwWindowSizeFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowCloseCallback(GlfwWindowPtr window,GlfwWindowCloseFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowRefreshCallback(GlfwWindowPtr window,GlfwWindowRefreshFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowFocusCallback(GlfwWindowPtr window,GlfwWindowFocusFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetWindowIconifyCallback(GlfwWindowPtr window,GlfwWindowIconifyFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void PollEvents();
-        [SuppressUnmanagedCodeSecurity] internal delegate void WaitEvents();
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetInputMode(GlfwWindowPtr window,InputMode mode);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetInputMode(GlfwWindowPtr window,InputMode mode,CursorMode value);
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetKey(GlfwWindowPtr window,Key key);
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetMouseButton(GlfwWindowPtr window,MouseButton button);
-        [SuppressUnmanagedCodeSecurity] internal delegate void GetCursorPos(GlfwWindowPtr window,out int xpos,out int ypos);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetCursorPos(GlfwWindowPtr window,int xpos,int ypos);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetKeyCallback(GlfwWindowPtr window,GlfwKeyFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetCharCallback(GlfwWindowPtr window,GlfwCharFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetMouseButtonCallback(GlfwWindowPtr window,GlfwMouseButtonFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetCursorPosCallback(GlfwWindowPtr window,GlfwCursorPosFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetCursorEnterCallback(GlfwWindowPtr window,GlfwCursorEnterFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetScrollCallback(GlfwWindowPtr window,GlfwScrollFun cbfun);
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetJoystickParam(Joystick joy,JoystickParam param);
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetJoystickAxes(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] float[] axes,int numaxes);
-        [SuppressUnmanagedCodeSecurity] internal delegate int GetJoystickButtons(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] byte[] buttons,int numbuttons);
-        [SuppressUnmanagedCodeSecurity] internal delegate sbyte * GetJoystickName(Joystick joy);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetClipboardString(GlfwWindowPtr window,[MarshalAs(UnmanagedType.LPStr)] string @string);
-        [SuppressUnmanagedCodeSecurity] internal delegate sbyte * GetClipboardString(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate double GetTime();
-        [SuppressUnmanagedCodeSecurity] internal delegate void SetTime(double time);
-        [SuppressUnmanagedCodeSecurity] internal delegate void MakeContextCurrent(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate GlfwWindowPtr GetCurrentContext();
-        [SuppressUnmanagedCodeSecurity] internal delegate void SwapBuffers(GlfwWindowPtr window);
-        [SuppressUnmanagedCodeSecurity] internal delegate void SwapInterval(int interval);
-        [SuppressUnmanagedCodeSecurity] internal delegate int ExtensionSupported([MarshalAs(UnmanagedType.LPStr)] string extension);
-        [SuppressUnmanagedCodeSecurity] internal delegate IntPtr GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procname);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int Init();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void Terminate();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetVersion(out int major,out int minor,out int rev);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate sbyte * GetVersionString();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetErrorCallback(GlfwErrorFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwMonitorPtr * GetMonitors(out int count);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwMonitorPtr GetPrimaryMonitor();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetMonitorPos(GlfwMonitorPtr monitor,out int xpos,out int ypos);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetMonitorPhysicalSize(GlfwMonitorPtr monitor,out int width,out int height);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate sbyte * GetMonitorName(GlfwMonitorPtr monitor);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetMonitorCallback(GlfwMonitorFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwVidMode * GetVideoModes(GlfwMonitorPtr monitor,out int count);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwVidMode GetVideoMode(GlfwMonitorPtr monitor);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetGamma(GlfwMonitorPtr monitor,float gamma);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetGammaRamp(GlfwMonitorPtr monitor,out GlfwGammaRamp ramp);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetGammaRamp(GlfwMonitorPtr monitor,ref GlfwGammaRamp ramp);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void DefaultWindowHints();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void WindowHint(Pencil.Gaming.WindowHint target,int hint);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwWindowPtr CreateWindow(int width,int height,[MarshalAs(UnmanagedType.LPStr)] string title,GlfwMonitorPtr monitor,GlfwWindowPtr share);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void DestroyWindow(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int WindowShouldClose(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowShouldClose(GlfwWindowPtr window,int value);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowTitle(GlfwWindowPtr window,[MarshalAs(UnmanagedType.LPStr)] string title);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetWindowPos(GlfwWindowPtr window,out int xpos,out int ypos);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowPos(GlfwWindowPtr window,int xpos,int ypos);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetWindowSize(GlfwWindowPtr window,out int width,out int height);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowSize(GlfwWindowPtr window,int width,int height);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void IconifyWindow(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void RestoreWindow(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void ShowWindow(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void HideWindow(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwMonitorPtr GetWindowMonitor(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetWindowParam(GlfwWindowPtr window,int param);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowUserPointer(GlfwWindowPtr window,IntPtr pointer);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate IntPtr GetWindowUserPointer(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowPosCallback(GlfwWindowPtr window,GlfwWindowPosFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowSizeCallback(GlfwWindowPtr window,GlfwWindowSizeFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowCloseCallback(GlfwWindowPtr window,GlfwWindowCloseFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowRefreshCallback(GlfwWindowPtr window,GlfwWindowRefreshFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowFocusCallback(GlfwWindowPtr window,GlfwWindowFocusFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetWindowIconifyCallback(GlfwWindowPtr window,GlfwWindowIconifyFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void PollEvents();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void WaitEvents();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetInputMode(GlfwWindowPtr window,InputMode mode);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetInputMode(GlfwWindowPtr window,InputMode mode,CursorMode value);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetKey(GlfwWindowPtr window,Key key);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetMouseButton(GlfwWindowPtr window,MouseButton button);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void GetCursorPos(GlfwWindowPtr window,out int xpos,out int ypos);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetCursorPos(GlfwWindowPtr window,int xpos,int ypos);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetKeyCallback(GlfwWindowPtr window,GlfwKeyFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetCharCallback(GlfwWindowPtr window,GlfwCharFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetMouseButtonCallback(GlfwWindowPtr window,GlfwMouseButtonFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetCursorPosCallback(GlfwWindowPtr window,GlfwCursorPosFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetCursorEnterCallback(GlfwWindowPtr window,GlfwCursorEnterFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetScrollCallback(GlfwWindowPtr window,GlfwScrollFun cbfun);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetJoystickParam(Joystick joy,JoystickParam param);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetJoystickAxes(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] float[] axes,int numaxes);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int GetJoystickButtons(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] byte[] buttons,int numbuttons);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate sbyte * GetJoystickName(Joystick joy);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetClipboardString(GlfwWindowPtr window,[MarshalAs(UnmanagedType.LPStr)] string @string);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate sbyte * GetClipboardString(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate double GetTime();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SetTime(double time);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void MakeContextCurrent(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate GlfwWindowPtr GetCurrentContext();
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SwapBuffers(GlfwWindowPtr window);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate void SwapInterval(int interval);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate int ExtensionSupported([MarshalAs(UnmanagedType.LPStr)] string extension);
+        [SuppressUnmanagedCodeSecurity]
+        internal delegate IntPtr GetProcAddress([MarshalAs(UnmanagedType.LPStr)] string procname);
 
         internal static Init glfwInit;
         internal static Terminate glfwTerminate;

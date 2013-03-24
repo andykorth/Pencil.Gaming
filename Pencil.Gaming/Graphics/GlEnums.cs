@@ -1543,9 +1543,9 @@ namespace Pencil.Gaming.Graphics {
         FogCoordArray = ((int)0x8457)        ,
         SecondaryColorArray = ((int)0x845E)        ,
     }
-    public enum AssemblyProgramFormatArb : int {
+    /*public enum AssemblyProgramFormatArb : int {
         ProgramFormatAsciiArb = ((int)0x8875)        ,
-    }
+    }*/
     public enum AssemblyProgramParameterArb : int {
         ProgramBinaryRetrievableHint = ((int)0x8257)        ,
         ProgramSeparable = ((int)0x8258)        ,
@@ -1591,14 +1591,14 @@ namespace Pencil.Gaming.Graphics {
         GeometryInputType = ((int)0x8917)        ,
         GeometryOutputType = ((int)0x8918)        ,
     }
-    public enum AssemblyProgramStringParameterArb : int {
+    /*public enum AssemblyProgramStringParameterArb : int {
         ProgramString = ((int)0x8628)        ,
     }
     public enum AssemblyProgramTargetArb : int {
         VertexProgram = ((int)0x8620)        ,
         FragmentProgram = ((int)0x8804)        ,
         GeometryProgramNv = ((int)0x8C26)        ,
-    }
+    }*/
     [Flags]
     public enum AttribMask : int {
         CurrentBit = ((int)0x00000001)        ,
@@ -1655,7 +1655,7 @@ namespace Pencil.Gaming.Graphics {
         FuncSubtract = ((int)0x800A)        ,
         FuncReverseSubtract = ((int)0x800B)        ,
     }
-    public enum BlendEquationModeExt : int {
+    /*public enum BlendEquationModeExt : int {
         LogicOp = ((int)0x0BF1)        ,
         FuncAddExt = ((int)0x8006)        ,
         MinExt = ((int)0x8007)        ,
@@ -1664,7 +1664,7 @@ namespace Pencil.Gaming.Graphics {
         FuncReverseSubtractExt = ((int)0x800B)        ,
         AlphaMinSgix = ((int)0x8320)        ,
         AlphaMaxSgix = ((int)0x8321)        ,
-    }
+    }*/
     public enum BlendingFactorDest : int {
         Zero = ((int)0)        ,
         SrcColor = ((int)0x0300)        ,
@@ -1714,20 +1714,16 @@ namespace Pencil.Gaming.Graphics {
         Nearest = ((int)0x2600)        ,
         Linear = ((int)0x2601)        ,
     }
-    public enum Boolean : int {
-        False = ((int)0)        ,
-        True = ((int)1)        ,
-    }
     public enum BufferAccess : int {
         ReadOnly = ((int)0x88B8)        ,
         WriteOnly = ((int)0x88B9)        ,
         ReadWrite = ((int)0x88BA)        ,
     }
-    public enum BufferAccessArb : int {
+    /*public enum BufferAccessArb : int {
         ReadOnly = ((int)0x88B8)        ,
         WriteOnly = ((int)0x88B9)        ,
         ReadWrite = ((int)0x88BA)        ,
-    }
+    }*/
     
     [Flags]
     public enum BufferAccessMask : int {
@@ -1748,18 +1744,18 @@ namespace Pencil.Gaming.Graphics {
         BufferAccess = ((int)0x88BB)        ,
         BufferMapped = ((int)0x88BC)        ,
     }
-    public enum BufferParameterNameArb : int {
+    /*public enum BufferParameterNameArb : int {
         BufferSize = ((int)0x8764)        ,
         BufferUsage = ((int)0x8765)        ,
         BufferAccess = ((int)0x88BB)        ,
         BufferMapped = ((int)0x88BC)        ,
-    }
+    }*/
     public enum BufferPointer : int {
         BufferMapPointer = ((int)0x88BD)        ,
     }
-    public enum BufferPointerNameArb : int {
+    /*public enum BufferPointerNameArb : int {
         BufferMapPointer = ((int)0x88BD)        ,
-    }
+    }*/
     public enum BufferTarget : int {
         ArrayBuffer = ((int)0x8892)        ,
         ElementArrayBuffer = ((int)0x8893)        ,
@@ -1772,7 +1768,7 @@ namespace Pencil.Gaming.Graphics {
         CopyWriteBuffer = ((int)0x8F37)        ,
         DrawIndirectBuffer = ((int)0x8F3F)        ,
     }
-    public enum BufferTargetArb : int {
+    /*public enum BufferTargetArb : int {
         ArrayBuffer = ((int)0x8892)        ,
         ElementArrayBuffer = ((int)0x8893)        ,
         TextureBuffer = ((int)0x8C2A)        ,
@@ -1787,7 +1783,7 @@ namespace Pencil.Gaming.Graphics {
         DynamicDraw = ((int)0x88E8)        ,
         DynamicRead = ((int)0x88E9)        ,
         DynamicCopy = ((int)0x88EA)        ,
-    }
+    }*/
     public enum BufferUsageHint : int {
         StreamDraw = ((int)0x88E0)        ,
         StreamRead = ((int)0x88E1)        ,
@@ -2167,7 +2163,7 @@ namespace Pencil.Gaming.Graphics {
         TableTooLargeExt = ((int)0x8031)        ,
         TextureTooLargeExt = ((int)0x8065)        ,
     }
-    public enum Ext422Pixels : int {
+    /*public enum Ext422Pixels : int {
         Gl422Ext = ((int)0x80CC)        ,
         Gl422RevExt = ((int)0x80CD)        ,
         Gl422AverageExt = ((int)0x80CE)        ,
@@ -3218,7 +3214,7 @@ namespace Pencil.Gaming.Graphics {
     }
     public enum ExtX11SyncObject : int {
         SyncX11FenceExt = ((int)0x90E1)        ,
-    }
+    }*/
     public enum FeedBackToken : int {
         PassThroughToken = ((int)0x0700)        ,
         PointToken = ((int)0x0701)        ,
@@ -3236,7 +3232,7 @@ namespace Pencil.Gaming.Graphics {
         Gl3DColorTexture = ((int)0x0603)        ,
         Gl4DColorTexture = ((int)0x0604)        ,
     }
-    [Flags]
+    /*[Flags]
     public enum FfdMaskSgix : int {
         TextureDeformationBitSgix = ((int)0x00000001)        ,
         GeometryDeformationBitSgix = ((int)0x00000002)        ,
@@ -3244,7 +3240,7 @@ namespace Pencil.Gaming.Graphics {
     public enum FfdTargetSgix : int {
         GeometryDeformationSgix = ((int)0x8194)        ,
         TextureDeformationSgix = ((int)0x8195)        ,
-    }
+    }*/
     public enum FogMode : int {
         Exp = ((int)0x0800)        ,
         Exp2 = ((int)0x0801)        ,
@@ -4196,7 +4192,7 @@ namespace Pencil.Gaming.Graphics {
         TextureSamples = ((int)0x9106)        ,
         TextureFixedSampleLocations = ((int)0x9107)        ,
     }
-    public enum Gl3DfxMultisample : int {
+    /*public enum Gl3DfxMultisample : int {
         MultisampleBit3Dfx = ((int)0x20000000)        ,
         Multisample3Dfx = ((int)0x86B2)        ,
         SampleBuffers3Dfx = ((int)0x86B3)        ,
@@ -4207,7 +4203,7 @@ namespace Pencil.Gaming.Graphics {
     public enum Gl3DfxTextureCompressionFxt1 : int {
         CompressedRgbFxt13Dfx = ((int)0x86B0)        ,
         CompressedRgbaFxt13Dfx = ((int)0x86B1)        ,
-    }
+    }*/
     public enum GremedyFrameTerminator : int {
     }
     public enum GremedyStringMarker : int {
@@ -4241,7 +4237,7 @@ namespace Pencil.Gaming.Graphics {
         HistogramExt = ((int)0x8024)        ,
         ProxyHistogramExt = ((int)0x8025)        ,
     }
-    public enum HpConvolutionBorderModes : int {
+    /*public enum HpConvolutionBorderModes : int {
         IgnoreBorderHp = ((int)0x8150)        ,
         ConstantBorderHp = ((int)0x8151)        ,
         ReplicateBorderHp = ((int)0x8153)        ,
@@ -4272,8 +4268,8 @@ namespace Pencil.Gaming.Graphics {
         TextureLightingModeHp = ((int)0x8167)        ,
         TexturePostSpecularHp = ((int)0x8168)        ,
         TexturePreSpecularHp = ((int)0x8169)        ,
-    }
-    public enum IbmCullVertex : int {
+    }*/
+    /*public enum IbmCullVertex : int {
         CullVertexIbm = ((int)103050)        ,
     }
     public enum IbmMultimodeDrawArrays : int {
@@ -4301,7 +4297,7 @@ namespace Pencil.Gaming.Graphics {
         EdgeFlagArrayListStrideIbm = ((int)103085)        ,
         FogCoordinateArrayListStrideIbm = ((int)103086)        ,
         SecondaryColorArrayListStrideIbm = ((int)103087)        ,
-    }
+    }*/
     public enum ImgMultisampledRenderToTexture : int {
         RenderbufferSamplesImg = ((int)0x9133)        ,
         FramebufferIncompleteMultisampleImg = ((int)0x9134)        ,
@@ -4471,7 +4467,8 @@ namespace Pencil.Gaming.Graphics {
         Texture = ((int)0x1702)        ,
         Color = ((int)0x1800)        ,
     }
-    public enum MesaProgramDebug : int {
+
+    /*public enum MesaProgramDebug : int {
         FragmentProgramPositionMesa = ((int)0x8BB0)        ,
         FragmentProgramCallbackMesa = ((int)0x8BB1)        ,
         FragmentProgramCallbackFuncMesa = ((int)0x8BB2)        ,
@@ -4513,7 +4510,8 @@ namespace Pencil.Gaming.Graphics {
         UnsignedShort88Mesa = ((int)0x85BA)        ,
         UnsignedShort88RevMesa = ((int)0x85BB)        ,
         YcbcrMesa = ((int)0x8757)        ,
-    }
+    }*/
+
     public enum MeshMode1 : int {
         Point = ((int)0x1B00)        ,
         Line = ((int)0x1B01)        ,
@@ -4539,7 +4537,7 @@ namespace Pencil.Gaming.Graphics {
         UnsignedInt2101010Rev = ((int)0x8368)        ,
         Int2101010Rev = ((int)0x8D9F)        ,
     }
-    public enum NvBlendSquare : int {
+    /*public enum NvBlendSquare : int {
     }
     public enum NvConditionalRender : int {
         QueryWaitNv = ((int)0x8E13)        ,
@@ -5361,8 +5359,8 @@ namespace Pencil.Gaming.Graphics {
         VideoCaptureFieldUpperHeightNv = ((int)0x903A)        ,
         VideoCaptureFieldLowerHeightNv = ((int)0x903B)        ,
         VideoCaptureSurfaceOriginNv = ((int)0x903C)        ,
-    }
-    public enum OesBlendEquationSeparate : int {
+    }*/
+    /*public enum OesBlendEquationSeparate : int {
         BlendEquationRgbOes = ((int)0x8009)        ,
         BlendEquationAlphaOes = ((int)0x883D)        ,
     }
@@ -5598,8 +5596,8 @@ namespace Pencil.Gaming.Graphics {
     public enum OesVertexType1010102 : int {
         UnsignedInt1010102Oes = ((int)0x8DF6)        ,
         Int1010102Oes = ((int)0x8DF7)        ,
-    }
-    public enum OmlInterlace : int {
+    }*/
+    /*public enum OmlInterlace : int {
         InterlaceOml = ((int)0x8980)        ,
         InterlaceReadOml = ((int)0x8981)        ,
     }
@@ -5614,7 +5612,7 @@ namespace Pencil.Gaming.Graphics {
     public enum OmlSubsample : int {
         FormatSubsample2424Oml = ((int)0x8982)        ,
         FormatSubsample244244Oml = ((int)0x8983)        ,
-    }
+    }*/
     public enum PackedPointerType : int {
         UnsignedInt2101010Rev = ((int)0x8368)        ,
         Int2101010Rev = ((int)0x8D9F)        ,
@@ -5626,7 +5624,7 @@ namespace Pencil.Gaming.Graphics {
     public enum PatchParameterInt : int {
         PatchVertices = ((int)0x8E72)        ,
     }
-    public enum PgiMiscHints : int {
+    /*public enum PgiMiscHints : int {
         PreferDoublebufferHintPgi = ((int)0x1A1F8)        ,
         ConserveMemoryHintPgi = ((int)0x1A1FD)        ,
         ReclaimMemoryHintPgi = ((int)0x1A1FE)        ,
@@ -5671,7 +5669,7 @@ namespace Pencil.Gaming.Graphics {
         Texcoord2BitPgi = ((int)0x20000000)        ,
         Texcoord3BitPgi = ((int)0x40000000)        ,
         Texcoord4BitPgi = unchecked((int)0x80000000)        ,
-    }
+    }*/
     public enum PixelCopyType : int {
         Color = ((int)0x1800)        ,
         Depth = ((int)0x1801)        ,
@@ -5925,10 +5923,10 @@ namespace Pencil.Gaming.Graphics {
         PixelTexGenAlphaLsSgix = ((int)0x8189)        ,
         PixelTexGenAlphaMsSgix = ((int)0x818A)        ,
     }
-    public enum PixelTexGenParameterNameSgis : int {
+    /*public enum PixelTexGenParameterNameSgis : int {
         PixelFragmentRgbSourceSgis = ((int)0x8354)        ,
         PixelFragmentAlphaSourceSgis = ((int)0x8355)        ,
-    }
+    }*/
     public enum PixelTransferParameter : int {
         MapColor = ((int)0x0D10)        ,
         MapStencil = ((int)0x0D11)        ,
@@ -6242,7 +6240,7 @@ namespace Pencil.Gaming.Graphics {
         ScreenCoordinatesRend = ((int)0x8490)        ,
         InvertedScreenWRend = ((int)0x8491)        ,
     }
-    public enum S3S3tc : int {
+    /*public enum S3S3tc : int {
         RgbS3tc = ((int)0x83A0)        ,
         Rgb4S3tc = ((int)0x83A1)        ,
         RgbaS3tc = ((int)0x83A2)        ,
@@ -6256,7 +6254,7 @@ namespace Pencil.Gaming.Graphics {
         Gl4Pass1Sgis = ((int)0x80A5)        ,
         Gl4Pass2Sgis = ((int)0x80A6)        ,
         Gl4Pass3Sgis = ((int)0x80A7)        ,
-    }
+    }*/
     public enum SamplerParameter : int {
         TextureBorderColor = ((int)0x1004)        ,
         TextureMagFilter = ((int)0x2800)        ,
@@ -6274,7 +6272,7 @@ namespace Pencil.Gaming.Graphics {
     public enum SeparableTarget : int {
         Separable2D = ((int)0x8012)        ,
     }
-    public enum SeparableTargetExt : int {
+    /*public enum SeparableTargetExt : int {
         Separable2DExt = ((int)0x8012)        ,
     }
     public enum SgiColorMatrix : int {
@@ -6666,7 +6664,7 @@ namespace Pencil.Gaming.Graphics {
         PixelSubsample4444Sgix = ((int)0x85A2)        ,
         PixelSubsample2424Sgix = ((int)0x85A3)        ,
         PixelSubsample4242Sgix = ((int)0x85A4)        ,
-    }
+    }*/
     public enum ShaderParameter : int {
         ShaderType = ((int)0x8B4F)        ,
         DeleteStatus = ((int)0x8B80)        ,
@@ -6760,7 +6758,7 @@ namespace Pencil.Gaming.Graphics {
         Extensions = ((int)0x1F03)        ,
         ShadingLanguageVersion = ((int)0x8B8C)        ,
     }
-    public enum SunConvolutionBorderModes : int {
+    /*public enum SunConvolutionBorderModes : int {
         WrapBorderSun = ((int)0x81D4)        ,
     }
     public enum SunGlobalAlpha : int {
@@ -6818,7 +6816,7 @@ namespace Pencil.Gaming.Graphics {
         R1uiT2fV3fSun = ((int)0x85C9)        ,
         R1uiT2fN3fV3fSun = ((int)0x85CA)        ,
         R1uiT2fC4fN3fV3fSun = ((int)0x85CB)        ,
-    }
+    }*/
     public enum TexCoordPointerType : int {
         Short = ((int)0x1402)        ,
         Int = ((int)0x1404)        ,
@@ -7147,7 +7145,7 @@ namespace Pencil.Gaming.Graphics {
     public enum TransformFeedbackTarget : int {
         TransformFeedback = ((int)0x8E22)        ,
     }
-    public enum Version11 : int {
+    /*public enum Version11 : int {
         False = ((int)0)        ,
         NoError = ((int)0)        ,
         None = ((int)0)        ,
@@ -8588,7 +8586,7 @@ namespace Pencil.Gaming.Graphics {
         TextureSwizzleA = ((int)0x8E45)        ,
         TextureSwizzleRgba = ((int)0x8E46)        ,
         Rgb10A2ui = ((int)0x906F)        ,
-    }
+    }*/
     public enum Version40 : int {
         Patches = ((int)0x000E)        ,
         UniformBlockReferencedByTessControlShader = ((int)0x84F0)        ,
@@ -8668,7 +8666,7 @@ namespace Pencil.Gaming.Graphics {
         IntSamplerCubeMapArray = ((int)0x900E)        ,
         UnsignedIntSamplerCubeMapArray = ((int)0x900F)        ,
     }
-    public enum Version41 : int {
+    /*public enum Version41 : int {
         VertexShaderBit = ((int)0x00000001)        ,
         FragmentShaderBit = ((int)0x00000002)        ,
         GeometryShaderBit = ((int)0x00000004)        ,
@@ -8702,7 +8700,7 @@ namespace Pencil.Gaming.Graphics {
         MaxVaryingVectors = ((int)0x8DFC)        ,
         MaxFragmentUniformVectors = ((int)0x8DFD)        ,
         AllShaderBits = unchecked((int)0xFFFFFFFF)        ,
-    }
+    }*/
     public enum VertexAttribDPointerType : int {
         Double = ((int)0x140A)        ,
     }

@@ -35,7 +35,7 @@ namespace Pencil.Gaming {
             Stopwatch sw = new Stopwatch();
             sw.Start();
 #endif
-            Type glfwInterop = Environment.Is64BitProcess ? typeof(Glfw64) : typeof(Glfw32);
+            Type glfwInterop = (IntPtr.Size == 8) ? typeof(Glfw64) : typeof(Glfw32);
 #if DEBUG
             Console.WriteLine("GLFW interop: {0}", glfwInterop.Name);
 #endif
