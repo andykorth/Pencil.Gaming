@@ -135,6 +135,7 @@
     <Compile Include="Glfw\Glfw3DelegateTypes.cs" />
     <Compile Include="Glfw\Glfw3Enum.cs" />
     <Compile Include="Glfw\Glfw3Structs.cs" />
+    <Compile Include="Audio\AlcManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

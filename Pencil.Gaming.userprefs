@@ -1,22 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Glfw/Glfw2Delegates.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Compatibility - GLFW3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Audio/AlcManager.cs">
     <Files>
       <File FileName="Pencil.Gaming/Graphics/GlEnums.cs" Line="171" Column="6" />
       <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="345" Column="18" />
       <File FileName="Pencil.Gaming/Audio/AlDelegates.cs" Line="37" Column="48" />
       <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="192" Column="21" />
-      <File FileName="Pencil.Gaming/Audio/Al.cs" Line="99" Column="38" />
+      <File FileName="Pencil.Gaming/Audio/Al.cs" Line="37" Column="11" />
       <File FileName="Pencil.Gaming/Glfw/Glfw3Delegates.cs" Line="38" Column="50" />
       <File FileName="Pencil.Gaming/Glfw/Glfw2Delegates.cs" Line="30" Column="1" />
+      <File FileName="Pencil.Gaming/Audio/AlcManager.cs" Line="57" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="Pencil.Gaming" expanded="True">
-            <Node name="Glfw" expanded="True">
-              <Node name="Glfw2Delegates.cs" selected="True" />
-            </Node>
+            <Node name="References" expanded="True" />
+            <Node name="Audio" expanded="True" />
           </Node>
         </State>
       </Pad>
