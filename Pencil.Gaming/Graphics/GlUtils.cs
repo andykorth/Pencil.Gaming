@@ -23,7 +23,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -31,6 +30,8 @@ using System.Diagnostics;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
+    public delegate T[] TArrayFromRetrievedData<T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
+
     public static partial class Gl {
         public static class Utils {
             #region Image Loading
@@ -40,29 +41,24 @@ namespace Pencil.Gaming.Graphics {
                     return LoadImage(bmp);
                 }
             }
-
             public static int LoadImage(string path, TextureMinFilter tmin, TextureMagFilter tmag) {
                 using (Bitmap bmp = new Bitmap(path)) {
                     return LoadImage(bmp, tmin, tmag);
                 }
             }
-
             public static int LoadImage(Stream file) {
                 using (Bitmap bmp = new Bitmap(file)) {
                     return LoadImage(bmp);
                 }
             }
-
             public static int LoadImage(Stream file, TextureMinFilter tmin, TextureMagFilter tmag) {
                 using (Bitmap bmp = new Bitmap(file)) {
                     return LoadImage(bmp, tmin, tmag);
                 }
             }
-
             public static int LoadImage(Bitmap bmp) {
                 return LoadImage(bmp, TextureMinFilter.Nearest, TextureMagFilter.Nearest);
             }
-
             public static int LoadImage(Bitmap bmp, TextureMinFilter tmin, TextureMagFilter tmag) {
                 BitmapData bmpData = bmp.LockBits(
                     new Rectangle(Point.Empty, bmp.Size), 
@@ -102,70 +98,111 @@ namespace Pencil.Gaming.Graphics {
 
             #region Wavefront Model Loading
 
-            #pragma warning disable 0661
-            #pragma warning disable 0659
-
-            internal struct VertexIndices {
-                public int Vertex;
-                public int? TexCoord;
-                public int? Normal;
-                public int FinalIndex;
-
-                public VertexIndices(VertexIndices previous, int finalIndex) {
-                    Vertex = previous.Vertex;
-                    TexCoord = previous.TexCoord;
-                    Normal = previous.Normal;
-                    FinalIndex = finalIndex;
+            public static float[] FloatArrayFromVerticesNormalsInterleaved(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
+                float[] final = new float[vertices.Length * 4 + normals.Length * 3];
+                for (int i = 0; i < final.Length; i += 7) {
+                    Vector4 vertex = vertices[i / 7];
+                    Vector3 normal = normals[i / 7];
+                    final[i] = vertex.X;
+                    final[i + 1] = vertex.Y;
+                    final[i + 2] = vertex.Z;
+                    final[i + 3] = vertex.W;
+                    final[i + 4] = normal.X;
+                    final[i + 5] = normal.Y;
+                    final[i + 6] = normal.Z;
                 }
-
-                public VertexIndices(int vertex, int? texCoord, int? normal) {
-                    Vertex = vertex;
-                    TexCoord = texCoord;
-                    Normal = normal;
-                    FinalIndex = -1;
-                }
-
-                public override bool Equals(object obj) {
-                    return (this == (VertexIndices)obj);
-                }
-
-                public static bool operator ==(VertexIndices @this, VertexIndices other) {
-                    return (@this.Normal == other.Normal && @this.TexCoord == other.TexCoord && @this.Vertex == other.Vertex);
-                }
-
-                public static bool operator !=(VertexIndices @this, VertexIndices other) {
-                    return !(@this == other);
-                }
+                return final;
             }
-
-            #pragma warning restore 0661
-            #pragma warning restore 0659
-
-            internal struct Face {
-                public List<VertexIndices> Vertices;
-
-                public Face(List<VertexIndices> vertices) {
-                    Vertices = vertices;
+            public static float[] FloatArrayFromVerticesNormalsTexCoordsInterleaved(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
+                float[] final = new float[vertices.Length * 4 + normals.Length * 3 + texCoords.Length * 2];
+                for (int i = 0; i < final.Length; i += 9) {
+                    Vector4 vertex = vertices[i / 9];
+                    Vector3 normal = normals[i / 9];
+                    Vector2 texCoord = texCoords[i / 9];
+                    final[i] = vertex.X;
+                    final[i + 1] = vertex.Y;
+                    final[i + 2] = vertex.Z;
+                    final[i + 3] = vertex.W;
+                    final[i + 4] = normal.X;
+                    final[i + 5] = normal.Y;
+                    final[i + 6] = normal.Z;
+                    final[i + 7] = texCoord.X;
+                    final[i + 8] = texCoord.Y;
                 }
+                return final;
+            }
+            public static float[] FloatArrayFromVerticesNormals(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
+                float[] final = new float[vertices.Length * 4 + normals.Length * 3];
+                for (int i = 0; i < vertices.Length * 4; i += 4) {
+                    Vector4 vertex = vertices[i / 3];
+                    final[i] = vertex.X;
+                    final[i + 1] = vertex.Y;
+                    final[i + 2] = vertex.Z;
+                    final[i + 3] = vertex.W;
+                }
+                for (int i = vertices.Length * 4; i < final.Length; i += 3) {
+                    Vector3 normal = normals[i];
+                    final[i] = normal.X;
+                    final[i + 1] = normal.Y;
+                    final[i + 2] = normal.Z;
+                }
+                return final;
+            }
+            public static float[] FloatArrayFromVerticesNormalsTexCoords(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
+                float[] final = new float[vertices.Length * 4 + normals.Length * 3 + texCoords.Length * 2];
+                for (int i = 0; i < vertices.Length * 4; i += 4) {
+                    Vector4 vertex = vertices[i / 3];
+                    final[i] = vertex.X;
+                    final[i + 1] = vertex.Y;
+                    final[i + 2] = vertex.Z;
+                    final[i + 3] = vertex.W;
+                }
+                for (int i = vertices.Length * 4; i < vertices.Length * 4 + normals.Length * 3; i += 3) {
+                    Vector3 normal = normals[i];
+                    final[i] = normal.X;
+                    final[i + 1] = normal.Y;
+                    final[i + 2] = normal.Z;
+                }
+                for (int i = vertices.Length * 4 + normals.Length * 3; i < final.Length; i += 2) {
+                    Vector2 texCoord = texCoords[i];
+                    final[i] = texCoord.X;
+                    final[i + 1] = texCoord.Y;
+                }
+                return final;
             }
 
             public static void LoadModel(string path, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut) {
                 LoadModel(path, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, true);
             }
-
             public static void LoadModel(string path, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut, bool optimize) {
                 using (Stream str = File.OpenRead(path)) {
                     LoadModel(str, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, optimize);
                 }
             }
-
             public static void LoadModel(Stream file, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut) {
                 LoadModel(file, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, true);
             }
-
+            public static void LoadModel<T>(string path, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func) {
+                using (Stream str = File.OpenRead(path)) {
+                    LoadModel<T>(str, out indicesOutArr, out outArr, func, true);
+                }
+            }
+            public static void LoadModel<T>(string path, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func, bool optimize) {
+                using (Stream str = File.OpenRead(path)) {
+                    LoadModel<T>(str, out indicesOutArr, out outArr, func, optimize);
+                }
+            }
+            public static void LoadModel<T>(Stream file, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func) {
+                LoadModel<T>(file, out indicesOutArr, out outArr, func, true);
+            }
+            public static void LoadModel<T>(Stream file, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func, bool optimize) {
+                Vector4[] vertices;
+                Vector3[] normals;
+                Vector2[] texCoords;
+                Gl.Utils.LoadModel(file, out vertices, out normals, out texCoords, out indicesOutArr, optimize);
+                outArr = func(vertices, normals, texCoords);
+            }
             public static void LoadModel(Stream file, out Vector4[] verticesOutArr, out Vector3[] normalsOutArr, out Vector2[] tCoordsOutArr, out int[] indicesOutArr, bool optimize) {
-
-
                 List<Vector4> vertices = new List<Vector4>(1024);
                 List<Vector3> normals = new List<Vector3>(1024);
                 List<Vector2> tCoords = new List<Vector2>(1024);
@@ -213,6 +250,53 @@ namespace Pencil.Gaming.Graphics {
                 swatch.Stop();
                 Console.WriteLine("Converting model lists to arrays took: {0} milliseconds", swatch.ElapsedMilliseconds);
 #endif
+            }
+
+            #pragma warning disable 0661
+            #pragma warning disable 0659
+
+            internal struct VertexIndices {
+                public int Vertex;
+                public int? TexCoord;
+                public int? Normal;
+                public int FinalIndex;
+
+                public VertexIndices(VertexIndices previous, int finalIndex) {
+                    Vertex = previous.Vertex;
+                    TexCoord = previous.TexCoord;
+                    Normal = previous.Normal;
+                    FinalIndex = finalIndex;
+                }
+
+                public VertexIndices(int vertex, int? texCoord, int? normal) {
+                    Vertex = vertex;
+                    TexCoord = texCoord;
+                    Normal = normal;
+                    FinalIndex = -1;
+                }
+
+                public override bool Equals(object obj) {
+                    return (this == (VertexIndices)obj);
+                }
+
+                public static bool operator ==(VertexIndices @this, VertexIndices other) {
+                    return (@this.Normal == other.Normal && @this.TexCoord == other.TexCoord && @this.Vertex == other.Vertex);
+                }
+
+                public static bool operator !=(VertexIndices @this, VertexIndices other) {
+                    return !(@this == other);
+                }
+            }
+
+            #pragma warning restore 0661
+            #pragma warning restore 0659
+
+            internal struct Face {
+                public List<VertexIndices> Vertices;
+
+                public Face(List<VertexIndices> vertices) {
+                    Vertices = vertices;
+                }
             }
 
             private static List<VertexIndices> VIndicesFromFaces(List<Face> faces) {
