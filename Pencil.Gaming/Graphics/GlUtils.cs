@@ -30,7 +30,7 @@ using System.Diagnostics;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
-    public delegate T[] TArrayFromRetrievedData<T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
+    public delegate T[] TArrayFromRetrievedData<out T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
 
     public static partial class Gl {
         public static class Utils {
