@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Graphics/GlUtils.cs">
     <Files>
       <File FileName="Pencil.Gaming/Graphics/GlEnums.cs" Line="171" Column="6" />
-      <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="134" Column="124" />
+      <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="23" Column="1" />
       <File FileName="Pencil.Gaming/Audio/AlDelegates.cs" Line="37" Column="48" />
       <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="178" Column="56" />
       <File FileName="Pencil.Gaming/Audio/Al.cs" Line="42" Column="11" />
@@ -14,9 +14,8 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True">
-            <Node name="Audio" expanded="True" />
-            <Node name="Glfw" expanded="True" />
+          <Node name="Pencil.Gaming" expanded="True" selected="True">
+            <Node name="natives64-glfw3" expanded="True" />
           </Node>
         </State>
       </Pad>

@@ -24,6 +24,14 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Compatibility - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -34,6 +42,14 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Core - GLFW2|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +59,14 @@
     <DefineConstants>DEBUG; USE_GL_CORE; USE_GLFW2;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Core - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -51,6 +75,14 @@
     <DefineConstants>USE_GL_CORE; USE_GLFW2;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Compatibility - GLFW3|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +94,14 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Compatibility - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -72,6 +112,14 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Core - GLFW3|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,6 +129,14 @@
     <DefineConstants>DEBUG; USE_GL_CORE; USE_GLFW3;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Core - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -89,6 +145,14 @@
     <DefineConstants>USE_GL_CORE; USE_GLFW3;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -143,45 +207,77 @@
     <Folder Include="Graphics\" />
     <Folder Include="Glfw\" />
     <Folder Include="Audio\" />
-    <Folder Include="natives64\" />
-    <Folder Include="natives32\" />
+    <Folder Include="natives32-glfw2\" />
+    <Folder Include="natives64-glfw2\" />
+    <Folder Include="natives32-glfw3\" />
+    <Folder Include="natives64-glfw3\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pencil.Gaming.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives64\glfw.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives64\libopenal.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32\glfw.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32\libopenal.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32\openal32.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32\wrap_oal.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives64\wrap_oal.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives64\openal32.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32\libglfw.dylib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32\libglfw.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="LICENSE.TXT" />
-    <None Include="natives64\libglfw.so">
+    <None Include="natives32-glfw2\openal32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw2\wrap_oal.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw2\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw2\glfw.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw2\libglfw.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw2\libglfw.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw2\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw2\wrap_oal.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw2\openal32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw2\libglfw.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw2\glfw2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw3\glfw.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw3\GLFW_LINUX_BROKEN.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw3\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw3\openal32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives32-glfw3\wrap_oal.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw3\glfw.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw3\libglfw.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw3\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw3\openal32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw3\wrap_oal.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
