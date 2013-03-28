@@ -1,21 +1,24 @@
-﻿<Properties>
+﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Graphics/GlUtils.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Scripting/LuaL.cs">
     <Files>
-      <File FileName="Pencil.Gaming/Graphics/GlEnums.cs" Line="171" Column="6" />
-      <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="23" Column="1" />
-      <File FileName="Pencil.Gaming/Audio/AlDelegates.cs" Line="37" Column="48" />
-      <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="178" Column="56" />
-      <File FileName="Pencil.Gaming/Audio/Al.cs" Line="42" Column="11" />
-      <File FileName="Pencil.Gaming/Glfw/Glfw3Delegates.cs" Line="38" Column="50" />
-      <File FileName="Pencil.Gaming/Glfw/Glfw2Delegates.cs" Line="30" Column="1" />
-      <File FileName="Pencil.Gaming/Audio/AlcManager.cs" Line="38" Column="26" />
+      <File FileName="Pencil.Gaming/Scripting/LuaL64.cs" Line="50" Column="159" />
+      <File FileName="Pencil.Gaming/Scripting/LuaL32.cs" Line="50" Column="158" />
+      <File FileName="Pencil.Gaming/Scripting/LuaStructs.cs" Line="59" Column="10" />
+      <File FileName="Pencil.Gaming/Scripting/LuaLDelegates.cs" Line="73" Column="145" />
+      <File FileName="Pencil.Gaming/Scripting/LuaDelegates.cs" Line="278" Column="39" />
+      <File FileName="Pencil.Gaming/Scripting/LuaL.cs" Line="132" Column="44" />
+      <File FileName="Pencil.Gaming/Scripting/Lua.cs" Line="120" Column="62" />
+      <File FileName="Pencil.Gaming/Scripting/LuaMacroFunctions.cs" Line="17" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True" selected="True">
-            <Node name="natives64-glfw3" expanded="True" />
+          <Node name="Pencil.Gaming" expanded="True">
+            <Node name="Glfw" expanded="True" />
+            <Node name="Scripting" expanded="True">
+              <Node name="LuaL.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
