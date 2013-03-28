@@ -1,6 +1,6 @@
 Pencil.Gaming
 =============
-Pencil.Gaming is a gaming library for C#, providing support for OpenGL, GLFW and OpenAL. It's a stable, cross-platform, open-source (some prefer the term "free") alternative to libraries like XNA, which has pretty much died now, OpenTK, which hasn't been updated for about a year, and SharpDX, which is not cross-platform. A feature that Pencil.Gaming has over most other C# gaming libraries, is that users **do not need to install any redistributables!** 
+Pencil.Gaming is a gaming library for C#, providing support for OpenGL, GLFW, OpenAL and Lua. It's a stable, cross-platform, open-source (some prefer the term "free") alternative to libraries like XNA, which has pretty much died now, OpenTK, which hasn't been updated for about a year, and SharpDX, which is not cross-platform. A feature that Pencil.Gaming has over most other C# gaming libraries, is that users **do not need to install any redistributables!** 
 
 The OpenGL implementation is based on the OpenTK source code.
 
@@ -113,6 +113,14 @@ Gl.DisableClientState(ArrayCap.VertexArray);
 Gl.DeleteBuffers(1, ref modelVbo);
 Gl.DeleteBuffers(1, ref indexVbo);
 ```
+
+Lua
+===
+Lua is a light-weight scripting language, perfectly suitable for use in game development.
+
+Pencil.Gaming provides support for Lua, using the default C# `PascalCased` identifiers, making it integrate seamlessly with other C# code.
+
+Whereas a C-api function call might be `lua_pcall(L, 0, LUA_MULTRET, 0)`, the Pencil.Gaming C# API call would be `Lua.PCall(L, 0, Lua.MultRet, 0)`.
 
 Sample usage (OpenAL)
 =====================
