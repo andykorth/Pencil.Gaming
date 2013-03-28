@@ -30,6 +30,7 @@ namespace Pencil.Gaming.Scripting {
 
 
         public static LuaStatePtr NewState(LuaAlloc f, IntPtr ud) {
+            System.GC.KeepAlive(f);
             return LuaDelegates.lua_newstate(f, ud);
         }
         public static void Close(LuaStatePtr l) {
@@ -39,6 +40,7 @@ namespace Pencil.Gaming.Scripting {
             return LuaDelegates.lua_newthread(l);
         }
         public static LuaCFunction AtPanic(LuaStatePtr l, LuaCFunction panicf) {
+            System.GC.KeepAlive(panicf);
             return LuaDelegates.lua_atpanic(l, panicf);
         }
         public static double[] Version(LuaStatePtr l) {
@@ -89,8 +91,8 @@ namespace Pencil.Gaming.Scripting {
         public static BasicType Type(LuaStatePtr l, int idx) {
             return (BasicType)LuaDelegates.lua_type(l, idx);
         }
-        public static string TypeName(LuaStatePtr l, int tp) {
-            return LuaDelegates.lua_typename(l, tp);
+        public static string TypeName(LuaStatePtr l, BasicType tp) {
+            return LuaDelegates.lua_typename(l, (int)tp);
         }
         public static double ToNumberx(LuaStatePtr l, int idx, out bool isnum) {
             int * i = stackalloc int[1];
@@ -115,7 +117,12 @@ namespace Pencil.Gaming.Scripting {
         }
         public static string ToLString(LuaStatePtr l, int idx, out int len) {
             fixed(int * i = &len) {
-                return LuaDelegates.lua_tolstring(l, idx, i);
+                sbyte * ptr = LuaDelegates.lua_tolstring(l, idx, i);
+                char[] arr = new char[*i];
+                for (int j = 0; j < *i; ++j) {
+                    arr[j] = (char)ptr[j];
+                }
+                return new string(arr);
             }
         }
         public static int RawLen(LuaStatePtr l, int idx) {
@@ -158,6 +165,7 @@ namespace Pencil.Gaming.Scripting {
             return new string(LuaDelegates.lua_pushlstring(l, s, s.Length));
         }
         public static void PushCClosure(LuaStatePtr l, LuaCFunction fn, int n) {
+            System.GC.KeepAlive(fn);
             LuaDelegates.lua_pushcclosure(l, fn, n);
         }
         public static void PushBoolean(LuaStatePtr l, bool b) {
@@ -226,6 +234,7 @@ namespace Pencil.Gaming.Scripting {
             LuaDelegates.lua_setuservalue(l, idx);
         }
         public static void Callk(LuaStatePtr l, int nargs, int nresults, int ctx, LuaCFunction k) {
+            System.GC.KeepAlive(k);
             LuaDelegates.lua_callk(l, nargs, nresults, ctx, k);
         }
         public static int GetCtx(LuaStatePtr l, out int ctx) {
@@ -235,6 +244,7 @@ namespace Pencil.Gaming.Scripting {
             return result;
         }
         public static int PCallk(LuaStatePtr l, int nargs, int nresults, int errfunc, int ctx, LuaCFunction k) {
+            System.GC.KeepAlive(k);
             return LuaDelegates.lua_pcallk(l, nargs, nresults, errfunc, ctx, k);
         }
         public static int Load(LuaStatePtr l, LuaReader reader, IntPtr dt, string chunkname, string mode) {
@@ -244,6 +254,7 @@ namespace Pencil.Gaming.Scripting {
             return LuaDelegates.lua_dump(l, writer, data);
         }
         public static int Yieldk(LuaStatePtr l, int nresults, int ctx, LuaCFunction k) {
+            System.GC.KeepAlive(k);
             return LuaDelegates.lua_yieldk(l, nresults, ctx, k);
         }
         public static int Resume(LuaStatePtr l, LuaStatePtr from, int narg) {
@@ -271,6 +282,7 @@ namespace Pencil.Gaming.Scripting {
             return LuaDelegates.lua_getallocf(l, out ud);
         }
         public static void SetAllocf(LuaStatePtr l, LuaAlloc f, IntPtr ud) {
+            System.GC.KeepAlive(f);
             LuaDelegates.lua_setallocf(l, f, ud);
         }
         public static int GetStack(LuaStatePtr l, int level, LuaDebugPtr ar) {

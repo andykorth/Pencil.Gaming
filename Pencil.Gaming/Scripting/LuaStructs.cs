@@ -61,6 +61,19 @@ namespace Pencil.Gaming.Scripting {
         public static readonly LuaDebugPtr Null = new LuaDebugPtr(IntPtr.Zero);
     }
 
+    [StructLayout(LayoutKind.Explicit)]
+    public struct LuaBufferPtr {
+        internal LuaBufferPtr(IntPtr iptr) {
+            inner_Ptr = iptr;
+        }
+
+        [FieldOffsetAttribute(0)]
+        private IntPtr
+            inner_Ptr;
+
+        public static readonly LuaBufferPtr Null = new LuaBufferPtr(IntPtr.Zero);
+    }
+
     #pragma warning restore 0169
     #pragma warning restore 0414
 }

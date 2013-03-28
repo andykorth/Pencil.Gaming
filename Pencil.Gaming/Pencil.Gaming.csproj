@@ -208,6 +208,11 @@
     <Compile Include="Scripting\LuaEnums.cs" />
     <Compile Include="Scripting\Lua.cs" />
     <Compile Include="Scripting\LuaMacroFunctions.cs" />
+    <Compile Include="Scripting\LuaL64.cs" />
+    <Compile Include="Scripting\LuaL32.cs" />
+    <Compile Include="Scripting\LuaLDelegates.cs" />
+    <Compile Include="Scripting\LuaL.cs" />
+    <Compile Include="Scripting\LuaLMacroFunctions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -287,6 +292,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="natives64-glfw2\glfw.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw2\liblua.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64-glfw3\liblua.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

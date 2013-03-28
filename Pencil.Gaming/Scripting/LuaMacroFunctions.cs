@@ -10,8 +10,8 @@ namespace Pencil.Gaming.Scripting {
             Lua.Callk(l, n, r, 0, null);
         }
 
-        public static void PCall(LuaStatePtr l, int n, int r, int f) {
-            Lua.PCallk(l, n, r, f, 0, null);
+        public static int PCall(LuaStatePtr l, int n, int r, int f) {
+            return Lua.PCallk(l, n, r, f, 0, null);
         }
 
         public static double ToNumber(LuaStatePtr l, int i) {
@@ -77,6 +77,10 @@ namespace Pencil.Gaming.Scripting {
 
         public static void PushGlobalTable(LuaStatePtr l) {
             Lua.RawGeti(l, Lua.RegistryIndex, Lua.RIdxGlobals);
+        }
+
+        public static string ToString(LuaStatePtr l, int i) {
+            return new string(LuaDelegates.lua_tolstring(l, i, null));
         }
     }
 }

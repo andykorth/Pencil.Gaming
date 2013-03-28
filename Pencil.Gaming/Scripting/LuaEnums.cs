@@ -9,6 +9,7 @@ namespace Pencil.Gaming.Scripting {
         ErrMem,
         ErrGCMM,
         ErrErr,
+        ErrFile,
     }
 
     public enum BasicType {

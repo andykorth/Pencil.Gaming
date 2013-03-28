@@ -56,7 +56,7 @@ namespace Pencil.Gaming.Scripting {
         [DllImport("natives32/lua.dll"), SuppressUnmanagedCodeSecurity]
         internal static extern int lua_toboolean(LuaStatePtr l, int idx);
         [DllImport("natives32/lua.dll"), SuppressUnmanagedCodeSecurity]
-        internal static extern string lua_tolstring(LuaStatePtr l, int idx, int * len);
+        internal static extern sbyte * lua_tolstring(LuaStatePtr l, int idx, int * len);
         [DllImport("natives32/lua.dll"), SuppressUnmanagedCodeSecurity]
         internal static extern int lua_rawlen(LuaStatePtr l, int idx);
         [DllImport("natives32/lua.dll"), SuppressUnmanagedCodeSecurity]

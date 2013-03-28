@@ -15,11 +15,16 @@ namespace Pencil.Gaming.Scripting {
 #if DEBUG
             Console.WriteLine("Lua interop: {0}", luaInterop.Name);
 #endif
+
             FieldInfo[] fields = typeof(LuaDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
             foreach (FieldInfo fi in fields) {
-                MethodInfo mi = luaInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-                Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
-                fi.SetValue(null, function);
+                try {
+                    MethodInfo mi = luaInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                    Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
+                    fi.SetValue(null, function);
+                } catch {
+                    Console.WriteLine(fi.Name);
+                }
             }
 #if DEBUG
             sw.Stop();
@@ -79,7 +84,7 @@ namespace Pencil.Gaming.Scripting {
         [SuppressUnmanagedCodeSecurity]
         internal delegate int toboolean(LuaStatePtr l,int idx);
         [SuppressUnmanagedCodeSecurity]
-        internal delegate string tolstring(LuaStatePtr l,int idx,int * len);
+        internal delegate sbyte *tolstring(LuaStatePtr l,int idx,int * len);
         [SuppressUnmanagedCodeSecurity]
         internal delegate int rawlen(LuaStatePtr l,int idx);
         [SuppressUnmanagedCodeSecurity]
