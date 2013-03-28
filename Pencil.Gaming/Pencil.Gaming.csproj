@@ -200,6 +200,14 @@
     <Compile Include="Glfw\Glfw3Enum.cs" />
     <Compile Include="Glfw\Glfw3Structs.cs" />
     <Compile Include="Audio\AlcManager.cs" />
+    <Compile Include="Scripting\Lua64.cs" />
+    <Compile Include="Scripting\LuaDelegateTypes.cs" />
+    <Compile Include="Scripting\LuaStructs.cs" />
+    <Compile Include="Scripting\LuaDelegates.cs" />
+    <Compile Include="Scripting\Lua32.cs" />
+    <Compile Include="Scripting\LuaEnums.cs" />
+    <Compile Include="Scripting\Lua.cs" />
+    <Compile Include="Scripting\LuaMacroFunctions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -211,6 +219,7 @@
     <Folder Include="natives64-glfw2\" />
     <Folder Include="natives32-glfw3\" />
     <Folder Include="natives64-glfw3\" />
+    <Folder Include="Scripting\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pencil.Gaming.dll.config">
