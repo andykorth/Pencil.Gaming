@@ -13,6 +13,8 @@ Global
 		Release - Compatibility - GLFW3|Any CPU = Release - Compatibility - GLFW3|Any CPU
 		Debug - Core - GLFW3|Any CPU = Debug - Core - GLFW3|Any CPU
 		Release - Core - GLFW3|Any CPU = Release - Core - GLFW3|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug - Compatibility - GLFW2|Any CPU.ActiveCfg = Debug - Compatibility - GLFW2|Any CPU

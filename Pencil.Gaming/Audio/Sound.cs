@@ -4,13 +4,12 @@ using Pencil.Gaming.Audio;
 
 namespace Pencil.Gaming.Audio {
     public class Sound : IDisposable {
-        protected int BufferHandle = -1;
-        protected int SourceHandle = -1;
+        protected uint BufferHandle;
+        protected uint SourceHandle;
         private float lengthSeconds;
 
         public Sound(string file) {
             Load(File.ReadAllBytes(file));
-            Al.GenSources(1, out SourceHandle);
         }
 
         public Sound(Stream file) {
@@ -26,7 +25,6 @@ namespace Pencil.Gaming.Audio {
 
                 Load(ms.ToArray());
             }
-            Al.GenSources(1, out SourceHandle);
         }
 
         private unsafe void Load(byte[] wave) {
@@ -44,6 +42,10 @@ namespace Pencil.Gaming.Audio {
                 IntPtr dataIntPtr = new IntPtr(dataPtr);
                 Al.BufferData(BufferHandle, format, dataIntPtr, data.Length, (int)sampleRate);
             }
+
+            Al.GenSources(1, out SourceHandle);
+            Al.Source(SourceHandle, AlSourcei.Buffer, (int)BufferHandle);
+            Al.Source(SourceHandle, AlSourceb.Looping, false);
         }
 
         public void Play() {

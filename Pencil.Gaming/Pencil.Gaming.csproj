@@ -214,6 +214,7 @@
     <Compile Include="Scripting\LuaL.cs" />
     <Compile Include="Scripting\LuaLMacroFunctions.cs" />
     <Compile Include="Audio\Sound.cs" />
+    <Compile Include="Audio\Listener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,25 +1,18 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Scripting/LuaL.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming.Objective.Audio/Sound.cs">
     <Files>
-      <File FileName="Pencil.Gaming/Scripting/LuaL64.cs" Line="50" Column="159" />
-      <File FileName="Pencil.Gaming/Scripting/LuaL32.cs" Line="50" Column="158" />
-      <File FileName="Pencil.Gaming/Scripting/LuaStructs.cs" Line="59" Column="10" />
-      <File FileName="Pencil.Gaming/Scripting/LuaLDelegates.cs" Line="73" Column="145" />
-      <File FileName="Pencil.Gaming/Scripting/LuaDelegates.cs" Line="278" Column="39" />
-      <File FileName="Pencil.Gaming/Scripting/LuaL.cs" Line="132" Column="44" />
-      <File FileName="Pencil.Gaming/Scripting/Lua.cs" Line="120" Column="62" />
-      <File FileName="Pencil.Gaming/Scripting/LuaMacroFunctions.cs" Line="17" Column="62" />
+      <File FileName="Pencil.Gaming.Objective.Audio/Sound.cs" Line="30" Column="55" />
+      <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="199" Column="17" />
+      <File FileName="../../.cache/.fr-8CXeUk/Audio/Sound.cs" Line="80" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Pencil.Gaming" expanded="True">
-            <Node name="Glfw" expanded="True" />
-            <Node name="Scripting" expanded="True">
-              <Node name="LuaL.cs" selected="True" />
-            </Node>
+            <Node name="Audio" expanded="True" />
           </Node>
+          <Node name="Pencil.Gaming.Objective.Audio" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
