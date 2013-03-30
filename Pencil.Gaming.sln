@@ -22,21 +22,15 @@ Global
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Compatibility - GLFW2|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Compatibility - GLFW2|Any CPU.Build.0 = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Compatibility - GLFW3|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Compatibility - GLFW3|Any CPU.Build.0 = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Core - GLFW2|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Core - GLFW2|Any CPU.Build.0 = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Core - GLFW3|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug - Core - GLFW3|Any CPU.Build.0 = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Compatibility - GLFW2|Any CPU.ActiveCfg = Release|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Compatibility - GLFW2|Any CPU.Build.0 = Release|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Compatibility - GLFW3|Any CPU.ActiveCfg = Release|Any CPU
-		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Compatibility - GLFW3|Any CPU.Build.0 = Release|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Core - GLFW2|Any CPU.ActiveCfg = Release|Any CPU
-		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Core - GLFW2|Any CPU.Build.0 = Release|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Core - GLFW3|Any CPU.ActiveCfg = Release|Any CPU
-		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release - Core - GLFW3|Any CPU.Build.0 = Release|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD946614-D03B-422E-85DE-04E217B6AC9E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug - Compatibility - GLFW2|Any CPU.ActiveCfg = Debug - Compatibility - GLFW2|Any CPU
@@ -47,6 +41,8 @@ Global
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug - Core - GLFW2|Any CPU.Build.0 = Debug - Core - GLFW2|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug - Core - GLFW3|Any CPU.ActiveCfg = Debug - Core - GLFW3|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug - Core - GLFW3|Any CPU.Build.0 = Debug - Core - GLFW3|Any CPU
+		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug|Any CPU.ActiveCfg = Debug - Compatibility - GLFW2|Any CPU
+		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Debug|Any CPU.Build.0 = Debug - Compatibility - GLFW2|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release - Compatibility - GLFW2|Any CPU.ActiveCfg = Release - Compatibility - GLFW2|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release - Compatibility - GLFW2|Any CPU.Build.0 = Release - Compatibility - GLFW2|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release - Compatibility - GLFW3|Any CPU.ActiveCfg = Release - Compatibility - GLFW3|Any CPU
@@ -55,6 +51,8 @@ Global
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release - Core - GLFW2|Any CPU.Build.0 = Release - Core - GLFW2|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release - Core - GLFW3|Any CPU.ActiveCfg = Release - Core - GLFW3|Any CPU
 		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release - Core - GLFW3|Any CPU.Build.0 = Release - Core - GLFW3|Any CPU
+		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release|Any CPU.ActiveCfg = Release - Compatibility - GLFW2|Any CPU
+		{DDB6DB6D-E5DE-4BDB-8AC8-26DF800E9FF0}.Release|Any CPU.Build.0 = Release - Compatibility - GLFW2|Any CPU
 		{C0578425-57C1-4833-9F59-87DA67F0D954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0578425-57C1-4833-9F59-87DA67F0D954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0578425-57C1-4833-9F59-87DA67F0D954}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,7 +63,7 @@ Global
 		{CD8E4574-D6B4-45B4-AF4E-33C0D0920095}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Pencil.Gaming\Pencil.Gaming.csproj
+		StartupItem = Pencil.Quick2D\Pencil.Quick2D.csproj
 		version = 
 	EndGlobalSection
 EndGlobal

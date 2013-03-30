@@ -1,20 +1,20 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Compatibility - GLFW2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Quick2D/Game.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Graphics/Gl.cs">
     <Files>
-      <File FileName="Pencil.Quick2D/Game.cs" Line="67" Column="10" />
-      <File FileName="Pencil.Quick2D/Graphics.cs" Line="23" Column="55" />
+      <File FileName="Pencil.Quick2D/Game.cs" Line="66" Column="53" />
+      <File FileName="Pencil.Quick2D/Graphics.cs" Line="23" Column="44" />
       <File FileName="Pencil.Quick2D/Camera.cs" Line="55" Column="10" />
       <File FileName="Pencil.Quick2D/DirectModeGraphics.cs" Line="1" Column="14" />
       <File FileName="Pencil.Quick2D/Sprite.cs" Line="34" Column="40" />
       <File FileName="Pencil.Quick2D/CameraFollower.cs" Line="7" Column="20" />
+      <File FileName="Pencil.Gaming/Math/MathHelper.cs" Line="194" Column="26" />
+      <File FileName="Pencil.Gaming/Graphics/Gl.cs" Line="48" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Pencil.Quick2D" expanded="True">
-            <Node name="References" expanded="True" />
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="Pencil.Gaming" expanded="True" />
         </State>
       </Pad>
     </Pads>

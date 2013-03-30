@@ -36,11 +36,13 @@ namespace Pencil.Quick2D {
         }
         public abstract void DrawImage(Image img, Rectangle posSize, Rectangle texArea);
         public void DrawString(Font font, string text, Vector2 position) {
-            int currentY = (int)position.X;
-            int currentX = (int)position.Y;
+            int currentY = (int)position.Y;
+            int currentX = (int)position.X;
             foreach (char ch in text) {
                 if (ch == '\n') {
                     currentY += font.LineHeight;
+                    currentX = (int)position.X;
+                    continue;
                 }
                 if (ch == ' ') {
                     currentX += font.WhitespaceWidth;

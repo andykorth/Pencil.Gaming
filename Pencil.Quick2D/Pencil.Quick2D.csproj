@@ -9,24 +9,35 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Pencil.Quick2D</RootNamespace>
     <AssemblyName>Pencil.Quick2D</AssemblyName>
+    <ReleaseVersion />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r natives32-glfw3" />
+        <Command type="AfterBuild" command="rm -r natives64-glfw3" />
+        <Command type="AfterBuild" command="mv natives32-glfw2 natives32" />
+        <Command type="AfterBuild" command="mv natives64-glfw2 natives64" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r natives32-glfw3" />
+        <Command type="AfterBuild" command="rm -r natives64-glfw3" />
+        <Command type="AfterBuild" command="mv natives32-glfw2 natives32" />
+        <Command type="AfterBuild" command="mv natives64-glfw2 natives64" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

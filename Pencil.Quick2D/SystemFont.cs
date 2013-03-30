@@ -57,7 +57,6 @@ namespace Pencil.Quick2D {
                         }
                     }
 
-                    bmp.Save("HELLO.PNG");
                     Image = new Image(bmp);
                 }
             }
