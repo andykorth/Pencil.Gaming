@@ -28,7 +28,7 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Pencil.Gaming")]
-[assembly: AssemblyDescription("A minimalistic gaming library for C# based on OpenTK.")]
+[assembly: AssemblyDescription("A minimalistic gaming library for C# based on ")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Pencil.Gaming")]
 [assembly: AssemblyCopyright("")]

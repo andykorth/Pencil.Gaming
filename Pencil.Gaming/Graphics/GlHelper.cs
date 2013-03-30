@@ -895,12 +895,12 @@ namespace Pencil.Gaming.Graphics {
 //            Gl.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
 //        }
 #if NO_SYSDRAWING
-        public static void Viewport(OpenTK.Point location, OpenTK.Size size)
+        public static void Viewport(Point location, Size size)
         {
             GL.Viewport(location.X, location.Y, size.Width, size.Height);
         }
 
-        public static void Viewport(OpenTK.Rectangle rectangle)
+        public static void Viewport(Rectangle rectangle)
         {
             GL.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
         }

@@ -41,9 +41,14 @@ namespace Pencil.Gaming.Graphics {
                     return LoadImage(bmp);
                 }
             }
-            public static int LoadImage(string path, TextureMinFilter tmin, TextureMagFilter tmag) {
+            public static int LoadImage(string path, bool square) {
                 using (Bitmap bmp = new Bitmap(path)) {
-                    return LoadImage(bmp, tmin, tmag);
+                    return LoadImage(bmp, square);
+                }
+            }
+            public static int LoadImage(string path, bool square, TextureMinFilter tmin, TextureMagFilter tmag) {
+                using (Bitmap bmp = new Bitmap(path)) {
+                    return LoadImage(bmp, square, tmin, tmag);
                 }
             }
             public static int LoadImage(Stream file) {
@@ -51,29 +56,39 @@ namespace Pencil.Gaming.Graphics {
                     return LoadImage(bmp);
                 }
             }
-            public static int LoadImage(Stream file, TextureMinFilter tmin, TextureMagFilter tmag) {
+            public static int LoadImage(Stream file, bool square) {
                 using (Bitmap bmp = new Bitmap(file)) {
-                    return LoadImage(bmp, tmin, tmag);
+                    return LoadImage(bmp, square);
+                }
+            }
+            public static int LoadImage(Stream file, bool square, TextureMinFilter tmin, TextureMagFilter tmag) {
+                using (Bitmap bmp = new Bitmap(file)) {
+                    return LoadImage(bmp, square, tmin, tmag);
                 }
             }
             public static int LoadImage(Bitmap bmp) {
-                return LoadImage(bmp, TextureMinFilter.Nearest, TextureMagFilter.Nearest);
+                return LoadImage(bmp, true, TextureMinFilter.Nearest, TextureMagFilter.Nearest);
             }
-            public static int LoadImage(Bitmap bmp, TextureMinFilter tmin, TextureMagFilter tmag) {
+            public static int LoadImage(Bitmap bmp, bool square) {
+                return LoadImage(bmp, square, TextureMinFilter.Nearest, TextureMagFilter.Nearest);
+            }
+            public static int LoadImage(Bitmap bmp, bool square, TextureMinFilter tmin, TextureMagFilter tmag) {
                 BitmapData bmpData = bmp.LockBits(
-                    new Rectangle(Point.Empty, bmp.Size), 
+                    new System.Drawing.Rectangle(Point.Empty, bmp.Size), 
                     ImageLockMode.ReadOnly, 
                     System.Drawing.Imaging.PixelFormat.Format32bppArgb
                 );
                 
                 int result;
-
+                TextureTarget target = (square ? TextureTarget.Texture2D : TextureTarget.TextureRectangle);
 
                 try {
                     Gl.GenTextures(1, out result);
-                    Gl.BindTexture(TextureTarget.Texture2D, result);
+                    Gl.BindTexture(target, result);
+                    Gl.TexParameter(target, TextureParameterName.TextureMagFilter, (int)tmag);
+                    Gl.TexParameter(target, TextureParameterName.TextureMinFilter, (int)tmin);
                     Gl.TexImage2D(
-                        TextureTarget.Texture2D, 
+                        target, 
                         0, 
                         PixelInternalFormat.Rgba,
                         bmp.Width,
@@ -83,12 +98,9 @@ namespace Pencil.Gaming.Graphics {
                         PixelType.UnsignedByte,
                         bmpData.Scan0
                     );
-                    Gl.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)tmag);
-                    Gl.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)tmin);
-                    Gl.BindTexture(TextureTarget.Texture2D, 0);
+                    Gl.BindTexture(target, 0);
                 } finally {
                     bmp.UnlockBits(bmpData);
-                    
                 }
 
                 return result;

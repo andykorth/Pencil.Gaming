@@ -63,7 +63,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
+        /// Gets or sets an Vector3 with the X, Y and Z components of this instance.
         /// </summary>
         public Vector3 Xyz { get { return xyz; } set { xyz = value; } }
 

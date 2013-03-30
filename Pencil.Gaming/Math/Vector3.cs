@@ -826,7 +826,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the X and Y components of this instance.
+        /// Gets or sets an Vector2 with the X and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2 Xy {
@@ -838,7 +838,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the X and Z components of this instance.
+        /// Gets or sets an Vector2 with the X and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2 Xz {
@@ -850,7 +850,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Y and X components of this instance.
+        /// Gets or sets an Vector2 with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2 Yx {
@@ -862,7 +862,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Y and Z components of this instance.
+        /// Gets or sets an Vector2 with the Y and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2 Yz {
@@ -874,7 +874,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Z and X components of this instance.
+        /// Gets or sets an Vector2 with the Z and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2 Zx {
@@ -886,7 +886,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Z and Y components of this instance.
+        /// Gets or sets an Vector2 with the Z and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2 Zy {
@@ -898,7 +898,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, Z, and Y components of this instance.
+        /// Gets or sets an Vector3 with the X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3 Xzy {
@@ -911,7 +911,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, X, and Z components of this instance.
+        /// Gets or sets an Vector3 with the Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3 Yxz {
@@ -924,7 +924,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, Z, and X components of this instance.
+        /// Gets or sets an Vector3 with the Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3 Yzx {
@@ -937,7 +937,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, X, and Y components of this instance.
+        /// Gets or sets an Vector3 with the Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3 Zxy {
@@ -950,7 +950,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, Y, and X components of this instance.
+        /// Gets or sets an Vector3 with the Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3 Zyx {

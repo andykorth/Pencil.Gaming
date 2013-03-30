@@ -413,7 +413,7 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2i with the Y and X components of this instance.
+        /// Gets or sets an Vector2i with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Yx {
