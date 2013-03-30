@@ -1,16 +1,16 @@
 #region License
 // Copyright (c) 2013 Antonie Blom
-//
+// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights to
 // use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 // the Software, and to permit persons to whom the Software is furnished to do
 // so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 // OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -26,73 +26,73 @@ using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
 namespace Pencil.Gaming.MathUtils {
-    /// <summary>Represents a 4D vector using four single-precision floating-point numbers.</summary>
+    /// <summary>Represents a 4D vector using four single-precision inting-point numbers.</summary>
     /// <remarks>
-    /// The Vector4 structure is suitable for interoperation with unmanaged code requiring four consecutive floats.
+    /// The Vector4i structure is suitable for interoperation with unmanaged code requiring four consecutive ints.
     /// </remarks>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector4 : IEquatable<Vector4> {
+    public struct Vector4i : IEquatable<Vector4i> {
         /// <summary>
-        /// The X component of the Vector4.
+        /// The X component of the Vector4i.
         /// </summary>
-        public float X;
+        public int X;
 
         /// <summary>
-        /// The Y component of the Vector4.
+        /// The Y component of the Vector4i.
         /// </summary>
-        public float Y;
+        public int Y;
 
         /// <summary>
-        /// The Z component of the Vector4.
+        /// The Z component of the Vector4i.
         /// </summary>
-        public float Z;
+        public int Z;
 
         /// <summary>
-        /// The W component of the Vector4.
+        /// The W component of the Vector4i.
         /// </summary>
-        public float W;
+        public int W;
 
         /// <summary>
-        /// Defines a unit-length Vector4 that points towards the X-axis.
+        /// Defines a unit-length Vector4i that points towards the X-axis.
         /// </summary>
-        public static readonly Vector4 UnitX = new Vector4(1, 0, 0, 0);
+        public static readonly Vector4i UnitX = new Vector4i(1, 0, 0, 0);
 
         /// <summary>
-        /// Defines a unit-length Vector4 that points towards the Y-axis.
+        /// Defines a unit-length Vector4i that points towards the Y-axis.
         /// </summary>
-        public static readonly Vector4 UnitY = new Vector4(0, 1, 0, 0);
+        public static readonly Vector4i UnitY = new Vector4i(0, 1, 0, 0);
 
         /// <summary>
-        /// Defines a unit-length Vector4 that points towards the Z-axis.
+        /// Defines a unit-length Vector4i that points towards the Z-axis.
         /// </summary>
-        public static readonly Vector4 UnitZ = new Vector4(0, 0, 1, 0);
+        public static readonly Vector4i UnitZ = new Vector4i(0, 0, 1, 0);
 
         /// <summary>
-        /// Defines a unit-length Vector4 that points towards the W-axis.
+        /// Defines a unit-length Vector4i that points towards the W-axis.
         /// </summary>
-        public static readonly Vector4 UnitW = new Vector4(0, 0, 0, 1);
+        public static readonly Vector4i UnitW = new Vector4i(0, 0, 0, 1);
 
         /// <summary>
-        /// Defines a zero-length Vector4.
+        /// Defines a zero-length Vector4i.
         /// </summary>
-        public static readonly Vector4 Zero = new Vector4(0, 0, 0, 0);
+        public static readonly Vector4i Zero = new Vector4i(0, 0, 0, 0);
 
         /// <summary>
         /// Defines an instance with all components set to 1.
         /// </summary>
-        public static readonly Vector4 One = new Vector4(1, 1, 1, 1);
+        public static readonly Vector4i One = new Vector4i(1, 1, 1, 1);
 
         /// <summary>
-        /// Defines the size of the Vector4 struct in bytes.
+        /// Defines the size of the Vector4i struct in bytes.
         /// </summary>
-        public const int SizeInBytes = sizeof(float) * 4;
+        public const int SizeInBytes = sizeof(int) * 4;
 
         /// <summary>
         /// Constructs a new instance.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
-        public Vector4(float value) {
+        public Vector4i(int value) {
             X = value;
             Y = value;
             Z = value;
@@ -100,13 +100,13 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Constructs a new Vector4.
+        /// Constructs a new Vector4i.
         /// </summary>
-        /// <param name="x">The x component of the Vector4.</param>
-        /// <param name="y">The y component of the Vector4.</param>
-        /// <param name="z">The z component of the Vector4.</param>
-        /// <param name="w">The w component of the Vector4.</param>
-        public Vector4(float x, float y, float z, float w) {
+        /// <param name="x">The x component of the Vector4i.</param>
+        /// <param name="y">The y component of the Vector4i.</param>
+        /// <param name="z">The z component of the Vector4i.</param>
+        /// <param name="w">The w component of the Vector4i.</param>
+        public Vector4i(int x, int y, int z, int w) {
             X = x;
             Y = y;
             Z = z;
@@ -114,59 +114,35 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Constructs a new Vector4 from the given Vector2.
-        /// </summary>
-        /// <param name="v">The Vector2 to copy components from.</param>
-        public Vector4(Vector2 v) {
-            X = v.X;
-            Y = v.Y;
-            Z = 0.0f;
-            W = 0.0f;
-        }
-
-        /// <summary>
-        /// Constructs a new Vector4 from the given Vector2.i
+        /// Constructs a new Vector4i from the given Vector2i.
         /// </summary>
         /// <param name="v">The Vector2i to copy components from.</param>
-        public Vector4(Vector2i v) {
+        public Vector4i(Vector2i v) {
             X = v.X;
             Y = v.Y;
-            Z = 0.0f;
-            W = 0.0f;
+            Z = 0;
+            W = 0;
         }
 
         /// <summary>
-        /// Constructs a new Vector4 from the given Vector3i.
+        /// Constructs a new Vector4i from the given Vector3i.
         /// The w component is initialized to 0.
         /// </summary>
         /// <param name="v">The Vector3i to copy components from.</param>
-        /// <remarks><seealso cref="Vector4(Vector3, float)"/></remarks>
-        public Vector4(Vector3i v) {
+        /// <remarks><seealso cref="Vector4i(Vector3i, int)"/></remarks>
+        public Vector4i(Vector3i v) {
             X = v.X;
             Y = v.Y;
             Z = v.Z;
-            W = 0.0f;
+            W = 0;
         }
 
         /// <summary>
-        /// Constructs a new Vector4 from the given Vector3.
-        /// The w component is initialized to 0.
+        /// Constructs a new Vector4i from the specified Vector3i and w component.
         /// </summary>
-        /// <param name="v">The Vector3 to copy components from.</param>
-        /// <remarks><seealso cref="Vector4(Vector3, float)"/></remarks>
-        public Vector4(Vector3 v) {
-            X = v.X;
-            Y = v.Y;
-            Z = v.Z;
-            W = 0.0f;
-        }
-
-        /// <summary>
-        /// Constructs a new Vector4 from the specified Vector3i and w component.
-        /// </summary>
-        /// <param name="v">The Vector3 to copy components from.</param>
-        /// <param name="w">The w component of the new Vector4.</param>
-        public Vector4(Vector3i v, float w) {
+        /// <param name="v">The Vector3i to copy components from.</param>
+        /// <param name="w">The w component of the new Vector4i.</param>
+        public Vector4i(Vector3i v, int w) {
             X = v.X;
             Y = v.Y;
             Z = v.Z;
@@ -174,33 +150,10 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Constructs a new Vector4 from the specified Vector3 and w component.
-        /// </summary>
-        /// <param name="v">The Vector3 to copy components from.</param>
-        /// <param name="w">The w component of the new Vector4.</param>
-        public Vector4(Vector3 v, float w) {
-            X = v.X;
-            Y = v.Y;
-            Z = v.Z;
-            W = w;
-        }
-
-        /// <summary>
-        /// Constructs a new Vector4 from the given Vector4.
-        /// </summary>
-        /// <param name="v">The Vector4 to copy components from.</param>
-        public Vector4(Vector4 v) {
-            X = v.X;
-            Y = v.Y;
-            Z = v.Z;
-            W = v.W;
-        }
-
-        /// <summary>
-        /// Constructs a new Vector4 from the given Vector4i.
+        /// Constructs a new Vector4i from the given Vector4i.
         /// </summary>
         /// <param name="v">The Vector4i to copy components from.</param>
-        public Vector4(Vector4i v) {
+        public Vector4i(Vector4i v) {
             X = v.X;
             Y = v.Y;
             Z = v.Z;
@@ -210,7 +163,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <summary>
         /// Gets or sets the value at the index of the Vector.
         /// </summary>
-        public float this[int index] {
+        public int this[int index] {
             get {
                 if (index == 0)
                     return X;
@@ -265,32 +218,10 @@ namespace Pencil.Gaming.MathUtils {
         /// </remarks>
         /// <see cref="Length"/>
         /// <seealso cref="LengthFast"/>
-        public float LengthSquared {
+        public int LengthSquared {
             get {
                 return X * X + Y * Y + Z * Z + W * W;
             }
-        }
-
-        /// <summary>
-        /// Scales the Vector4 to unit length.
-        /// </summary>
-        public void Normalize() {
-            float scale = 1.0f / this.Length;
-            X *= scale;
-            Y *= scale;
-            Z *= scale;
-            W *= scale;
-        }
-
-        /// <summary>
-        /// Scales the Vector4 to approximately unit length.
-        /// </summary>
-        public void NormalizeFast() {
-            float scale = MathHelper.InverseSqrtFast(X * X + Y * Y + Z * Z + W * W);
-            X *= scale;
-            Y *= scale;
-            Z *= scale;
-            W *= scale;
         }
 
         /// <summary>
@@ -299,7 +230,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <returns>Result of subtraction</returns>
-        public static Vector4 Sub(Vector4 a, Vector4 b) {
+        public static Vector4i Sub(Vector4i a, Vector4i b) {
             a.X -= b.X;
             a.Y -= b.Y;
             a.Z -= b.Z;
@@ -313,7 +244,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <param name="result">Result of subtraction</param>
-        public static void Sub(ref Vector4 a, ref Vector4 b, out Vector4 result) {
+        public static void Sub(ref Vector4i a, ref Vector4i b, out Vector4i result) {
             result.X = a.X - b.X;
             result.Y = a.Y - b.Y;
             result.Z = a.Z - b.Z;
@@ -326,7 +257,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">Vector operand</param>
         /// <param name="f">Scalar operand</param>
         /// <returns>Result of the multiplication</returns>
-        public static Vector4 Mult(Vector4 a, float f) {
+        public static Vector4i Mult(Vector4i a, int f) {
             a.X *= f;
             a.Y *= f;
             a.Z *= f;
@@ -340,7 +271,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">Vector operand</param>
         /// <param name="f">Scalar operand</param>
         /// <param name="result">Result of the multiplication</param>
-        public static void Mult(ref Vector4 a, float f, out Vector4 result) {
+        public static void Mult(ref Vector4i a, int f, out Vector4i result) {
             result.X = a.X * f;
             result.Y = a.Y * f;
             result.Z = a.Z * f;
@@ -353,12 +284,11 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">Vector operand</param>
         /// <param name="f">Scalar operand</param>
         /// <returns>Result of the division</returns>
-        public static Vector4 Div(Vector4 a, float f) {
-            float mult = 1.0f / f;
-            a.X *= mult;
-            a.Y *= mult;
-            a.Z *= mult;
-            a.W *= mult;
+        public static Vector4i Div(Vector4i a, int f) {
+            a.X /= f;
+            a.Y /= f;
+            a.Z /= f;
+            a.W /= f;
             return a;
         }
 
@@ -368,12 +298,11 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">Vector operand</param>
         /// <param name="f">Scalar operand</param>
         /// <param name="result">Result of the division</param>
-        public static void Div(ref Vector4 a, float f, out Vector4 result) {
-            float mult = 1.0f / f;
-            result.X = a.X * mult;
-            result.Y = a.Y * mult;
-            result.Z = a.Z * mult;
-            result.W = a.W * mult;
+        public static void Div(ref Vector4i a, int f, out Vector4i result) {
+            result.X = a.X / f;
+            result.Y = a.Y / f;
+            result.Z = a.Z / f;
+            result.W = a.W / f;
         }
 
         /// <summary>
@@ -382,7 +311,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
         /// <returns>Result of operation.</returns>
-        public static Vector4 Add(Vector4 a, Vector4 b) {
+        public static Vector4i Add(Vector4i a, Vector4i b) {
             Add(ref a, ref b, out a);
             return a;
         }
@@ -393,8 +322,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
         /// <param name="result">Result of operation.</param>
-        public static void Add(ref Vector4 a, ref Vector4 b, out Vector4 result) {
-            result = new Vector4(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
+        public static void Add(ref Vector4i a, ref Vector4i b, out Vector4i result) {
+            result = new Vector4i(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
         }
 
         /// <summary>
@@ -403,7 +332,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <returns>Result of subtraction</returns>
-        public static Vector4 Subtract(Vector4 a, Vector4 b) {
+        public static Vector4i Subtract(Vector4i a, Vector4i b) {
             Subtract(ref a, ref b, out a);
             return a;
         }
@@ -414,8 +343,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <param name="result">Result of subtraction</param>
-        public static void Subtract(ref Vector4 a, ref Vector4 b, out Vector4 result) {
-            result = new Vector4(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
+        public static void Subtract(ref Vector4i a, ref Vector4i b, out Vector4i result) {
+            result = new Vector4i(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
         }
 
         /// <summary>
@@ -424,7 +353,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <returns>Result of the operation.</returns>
-        public static Vector4 Multiply(Vector4 vector, float scale) {
+        public static Vector4i Multiply(Vector4i vector, int scale) {
             Multiply(ref vector, scale, out vector);
             return vector;
         }
@@ -435,8 +364,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <param name="result">Result of the operation.</param>
-        public static void Multiply(ref Vector4 vector, float scale, out Vector4 result) {
-            result = new Vector4(vector.X * scale, vector.Y * scale, vector.Z * scale, vector.W * scale);
+        public static void Multiply(ref Vector4i vector, int scale, out Vector4i result) {
+            result = new Vector4i(vector.X * scale, vector.Y * scale, vector.Z * scale, vector.W * scale);
         }
 
         /// <summary>
@@ -445,7 +374,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <returns>Result of the operation.</returns>
-        public static Vector4 Multiply(Vector4 vector, Vector4 scale) {
+        public static Vector4i Multiply(Vector4i vector, Vector4i scale) {
             Multiply(ref vector, ref scale, out vector);
             return vector;
         }
@@ -456,8 +385,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <param name="result">Result of the operation.</param>
-        public static void Multiply(ref Vector4 vector, ref Vector4 scale, out Vector4 result) {
-            result = new Vector4(vector.X * scale.X, vector.Y * scale.Y, vector.Z * scale.Z, vector.W * scale.W);
+        public static void Multiply(ref Vector4i vector, ref Vector4i scale, out Vector4i result) {
+            result = new Vector4i(vector.X * scale.X, vector.Y * scale.Y, vector.Z * scale.Z, vector.W * scale.W);
         }
 
         /// <summary>
@@ -466,7 +395,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <returns>Result of the operation.</returns>
-        public static Vector4 Divide(Vector4 vector, float scale) {
+        public static Vector4i Divide(Vector4i vector, int scale) {
             Divide(ref vector, scale, out vector);
             return vector;
         }
@@ -477,7 +406,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <param name="result">Result of the operation.</param>
-        public static void Divide(ref Vector4 vector, float scale, out Vector4 result) {
+        public static void Divide(ref Vector4i vector, int scale, out Vector4i result) {
             Multiply(ref vector, 1 / scale, out result);
         }
 
@@ -487,7 +416,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <returns>Result of the operation.</returns>
-        public static Vector4 Divide(Vector4 vector, Vector4 scale) {
+        public static Vector4i Divide(Vector4i vector, Vector4i scale) {
             Divide(ref vector, ref scale, out vector);
             return vector;
         }
@@ -498,8 +427,8 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
         /// <param name="result">Result of the operation.</param>
-        public static void Divide(ref Vector4 vector, ref Vector4 scale, out Vector4 result) {
-            result = new Vector4(vector.X / scale.X, vector.Y / scale.Y, vector.Z / scale.Z, vector.W / scale.W);
+        public static void Divide(ref Vector4i vector, ref Vector4i scale, out Vector4i result) {
+            result = new Vector4i(vector.X / scale.X, vector.Y / scale.Y, vector.Z / scale.Z, vector.W / scale.W);
         }
 
         /// <summary>
@@ -508,7 +437,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <returns>The component-wise minimum</returns>
-        public static Vector4 Min(Vector4 a, Vector4 b) {
+        public static Vector4i Min(Vector4i a, Vector4i b) {
             a.X = a.X < b.X ? a.X : b.X;
             a.Y = a.Y < b.Y ? a.Y : b.Y;
             a.Z = a.Z < b.Z ? a.Z : b.Z;
@@ -522,7 +451,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <param name="result">The component-wise minimum</param>
-        public static void Min(ref Vector4 a, ref Vector4 b, out Vector4 result) {
+        public static void Min(ref Vector4i a, ref Vector4i b, out Vector4i result) {
             result.X = a.X < b.X ? a.X : b.X;
             result.Y = a.Y < b.Y ? a.Y : b.Y;
             result.Z = a.Z < b.Z ? a.Z : b.Z;
@@ -535,7 +464,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <returns>The component-wise maximum</returns>
-        public static Vector4 Max(Vector4 a, Vector4 b) {
+        public static Vector4i Max(Vector4i a, Vector4i b) {
             a.X = a.X > b.X ? a.X : b.X;
             a.Y = a.Y > b.Y ? a.Y : b.Y;
             a.Z = a.Z > b.Z ? a.Z : b.Z;
@@ -549,7 +478,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
         /// <param name="result">The component-wise maximum</param>
-        public static void Max(ref Vector4 a, ref Vector4 b, out Vector4 result) {
+        public static void Max(ref Vector4i a, ref Vector4i b, out Vector4i result) {
             result.X = a.X > b.X ? a.X : b.X;
             result.Y = a.Y > b.Y ? a.Y : b.Y;
             result.Z = a.Z > b.Z ? a.Z : b.Z;
@@ -563,7 +492,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="min">Minimum vector</param>
         /// <param name="max">Maximum vector</param>
         /// <returns>The clamped vector</returns>
-        public static Vector4 Clamp(Vector4 vec, Vector4 min, Vector4 max) {
+        public static Vector4i Clamp(Vector4i vec, Vector4i min, Vector4i max) {
             vec.X = vec.X < min.X ? min.X : vec.X > max.X ? max.X : vec.X;
             vec.Y = vec.Y < min.Y ? min.Y : vec.Y > max.Y ? max.Y : vec.Y;
             vec.Z = vec.X < min.Z ? min.Z : vec.Z > max.Z ? max.Z : vec.Z;
@@ -578,65 +507,11 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="min">Minimum vector</param>
         /// <param name="max">Maximum vector</param>
         /// <param name="result">The clamped vector</param>
-        public static void Clamp(ref Vector4 vec, ref Vector4 min, ref Vector4 max, out Vector4 result) {
+        public static void Clamp(ref Vector4i vec, ref Vector4i min, ref Vector4i max, out Vector4i result) {
             result.X = vec.X < min.X ? min.X : vec.X > max.X ? max.X : vec.X;
             result.Y = vec.Y < min.Y ? min.Y : vec.Y > max.Y ? max.Y : vec.Y;
             result.Z = vec.X < min.Z ? min.Z : vec.Z > max.Z ? max.Z : vec.Z;
             result.W = vec.Y < min.W ? min.W : vec.W > max.W ? max.W : vec.W;
-        }
-
-        /// <summary>
-        /// Scale a vector to unit length
-        /// </summary>
-        /// <param name="vec">The input vector</param>
-        /// <returns>The normalized vector</returns>
-        public static Vector4 Normalize(Vector4 vec) {
-            float scale = 1.0f / vec.Length;
-            vec.X *= scale;
-            vec.Y *= scale;
-            vec.Z *= scale;
-            vec.W *= scale;
-            return vec;
-        }
-
-        /// <summary>
-        /// Scale a vector to unit length
-        /// </summary>
-        /// <param name="vec">The input vector</param>
-        /// <param name="result">The normalized vector</param>
-        public static void Normalize(ref Vector4 vec, out Vector4 result) {
-            float scale = 1.0f / vec.Length;
-            result.X = vec.X * scale;
-            result.Y = vec.Y * scale;
-            result.Z = vec.Z * scale;
-            result.W = vec.W * scale;
-        }
-
-        /// <summary>
-        /// Scale a vector to approximately unit length
-        /// </summary>
-        /// <param name="vec">The input vector</param>
-        /// <returns>The normalized vector</returns>
-        public static Vector4 NormalizeFast(Vector4 vec) {
-            float scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z + vec.W * vec.W);
-            vec.X *= scale;
-            vec.Y *= scale;
-            vec.Z *= scale;
-            vec.W *= scale;
-            return vec;
-        }
-
-        /// <summary>
-        /// Scale a vector to approximately unit length
-        /// </summary>
-        /// <param name="vec">The input vector</param>
-        /// <param name="result">The normalized vector</param>
-        public static void NormalizeFast(ref Vector4 vec, out Vector4 result) {
-            float scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y + vec.Z * vec.Z + vec.W * vec.W);
-            result.X = vec.X * scale;
-            result.Y = vec.Y * scale;
-            result.Z = vec.Z * scale;
-            result.W = vec.W * scale;
         }
 
         /// <summary>
@@ -645,7 +520,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="left">First operand</param>
         /// <param name="right">Second operand</param>
         /// <returns>The dot product of the two inputs</returns>
-        public static float Dot(Vector4 left, Vector4 right) {
+        public static int Dot(Vector4i left, Vector4i right) {
             return left.X * right.X + left.Y * right.Y + left.Z * right.Z + left.W * right.W;
         }
 
@@ -655,128 +530,16 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="left">First operand</param>
         /// <param name="right">Second operand</param>
         /// <param name="result">The dot product of the two inputs</param>
-        public static void Dot(ref Vector4 left, ref Vector4 right, out float result) {
+        public static void Dot(ref Vector4i left, ref Vector4i right, out int result) {
             result = left.X * right.X + left.Y * right.Y + left.Z * right.Z + left.W * right.W;
         }
 
         /// <summary>
-        /// Returns a new Vector that is the linear blend of the 2 given Vectors
-        /// </summary>
-        /// <param name="a">First input vector</param>
-        /// <param name="b">Second input vector</param>
-        /// <param name="blend">The blend factor. a when blend=0, b when blend=1.</param>
-        /// <returns>a when blend=0, b when blend=1, and a linear combination otherwise</returns>
-        public static Vector4 Lerp(Vector4 a, Vector4 b, float blend) {
-            a.X = blend * (b.X - a.X) + a.X;
-            a.Y = blend * (b.Y - a.Y) + a.Y;
-            a.Z = blend * (b.Z - a.Z) + a.Z;
-            a.W = blend * (b.W - a.W) + a.W;
-            return a;
-        }
-
-        /// <summary>
-        /// Returns a new Vector that is the linear blend of the 2 given Vectors
-        /// </summary>
-        /// <param name="a">First input vector</param>
-        /// <param name="b">Second input vector</param>
-        /// <param name="blend">The blend factor. a when blend=0, b when blend=1.</param>
-        /// <param name="result">a when blend=0, b when blend=1, and a linear combination otherwise</param>
-        public static void Lerp(ref Vector4 a, ref Vector4 b, float blend, out Vector4 result) {
-            result.X = blend * (b.X - a.X) + a.X;
-            result.Y = blend * (b.Y - a.Y) + a.Y;
-            result.Z = blend * (b.Z - a.Z) + a.Z;
-            result.W = blend * (b.W - a.W) + a.W;
-        }
-
-        /// <summary>
-        /// Interpolate 3 Vectors using Barycentric coordinates
-        /// </summary>
-        /// <param name="a">First input Vector</param>
-        /// <param name="b">Second input Vector</param>
-        /// <param name="c">Third input Vector</param>
-        /// <param name="u">First Barycentric Coordinate</param>
-        /// <param name="v">Second Barycentric Coordinate</param>
-        /// <returns>a when u=v=0, b when u=1,v=0, c when u=0,v=1, and a linear combination of a,b,c otherwise</returns>
-        public static Vector4 BaryCentric(Vector4 a, Vector4 b, Vector4 c, float u, float v) {
-            return a + u * (b - a) + v * (c - a);
-        }
-
-        /// <summary>Interpolate 3 Vectors using Barycentric coordinates</summary>
-        /// <param name="a">First input Vector.</param>
-        /// <param name="b">Second input Vector.</param>
-        /// <param name="c">Third input Vector.</param>
-        /// <param name="u">First Barycentric Coordinate.</param>
-        /// <param name="v">Second Barycentric Coordinate.</param>
-        /// <param name="result">Output Vector. a when u=v=0, b when u=1,v=0, c when u=0,v=1, and a linear combination of a,b,c otherwise</param>
-        public static void BaryCentric(ref Vector4 a, ref Vector4 b, ref Vector4 c, float u, float v, out Vector4 result) {
-            result = a; // copy
-
-            Vector4 temp = b; // copy
-            Subtract(ref temp, ref a, out temp);
-            Multiply(ref temp, u, out temp);
-            Add(ref result, ref temp, out result);
-
-            temp = c; // copy
-            Subtract(ref temp, ref a, out temp);
-            Multiply(ref temp, v, out temp);
-            Add(ref result, ref temp, out result);
-        }
-
-        /// <summary>Transform a Vector by the given Matrix</summary>
-        /// <param name="vec">The vector to transform</param>
-        /// <param name="mat">The desired transformation</param>
-        /// <returns>The transformed vector</returns>
-        public static Vector4 Transform(Vector4 vec, Matrix mat) {
-            Vector4 result;
-            Transform(ref vec, ref mat, out result);
-            return result;
-        }
-
-        /// <summary>Transform a Vector by the given Matrix</summary>
-        /// <param name="vec">The vector to transform</param>
-        /// <param name="mat">The desired transformation</param>
-        /// <param name="result">The transformed vector</param>
-        public static void Transform(ref Vector4 vec, ref Matrix mat, out Vector4 result) {
-            result = new Vector4(
-                vec.X * mat.Row0.X + vec.Y * mat.Row1.X + vec.Z * mat.Row2.X + vec.W * mat.Row3.X,
-                vec.X * mat.Row0.Y + vec.Y * mat.Row1.Y + vec.Z * mat.Row2.Y + vec.W * mat.Row3.Y,
-                vec.X * mat.Row0.Z + vec.Y * mat.Row1.Z + vec.Z * mat.Row2.Z + vec.W * mat.Row3.Z,
-                vec.X * mat.Row0.W + vec.Y * mat.Row1.W + vec.Z * mat.Row2.W + vec.W * mat.Row3.W);
-        }
-
-        /// <summary>
-        /// Transforms a vector by a quaternion rotation.
-        /// </summary>
-        /// <param name="vec">The vector to transform.</param>
-        /// <param name="quat">The quaternion to rotate the vector by.</param>
-        /// <returns>The result of the operation.</returns>
-        public static Vector4 Transform(Vector4 vec, Quaternion quat) {
-            Vector4 result;
-            Transform(ref vec, ref quat, out result);
-            return result;
-        }
-
-        /// <summary>
-        /// Transforms a vector by a quaternion rotation.
-        /// </summary>
-        /// <param name="vec">The vector to transform.</param>
-        /// <param name="quat">The quaternion to rotate the vector by.</param>
-        /// <param name="result">The result of the operation.</param>
-        public static void Transform(ref Vector4 vec, ref Quaternion quat, out Vector4 result) {
-            Quaternion v = new Quaternion(vec.X, vec.Y, vec.Z, vec.W), i, t;
-            Quaternion.Invert(ref quat, out i);
-            Quaternion.Multiply(ref quat, ref v, out t);
-            Quaternion.Multiply(ref t, ref i, out v);
-
-            result = new Vector4(v.X, v.Y, v.Z, v.W);
-        }
-
-        /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the X and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the X and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Xy {
-            get { return new Vector2(X, Y); }
+        public Vector2i Xy {
+            get { return new Vector2i(X, Y); }
             set {
                 X = value.X;
                 Y = value.Y;
@@ -784,11 +547,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the X and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the X and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Xz {
-            get { return new Vector2(X, Z); }
+        public Vector2i Xz {
+            get { return new Vector2i(X, Z); }
             set {
                 X = value.X;
                 Z = value.Y;
@@ -796,11 +559,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the X and W components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the X and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Xw {
-            get { return new Vector2(X, W); }
+        public Vector2i Xw {
+            get { return new Vector2i(X, W); }
             set {
                 X = value.X;
                 W = value.Y;
@@ -808,11 +571,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Y and X components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Yx {
-            get { return new Vector2(Y, X); }
+        public Vector2i Yx {
+            get { return new Vector2i(Y, X); }
             set {
                 Y = value.X;
                 X = value.Y;
@@ -820,11 +583,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Y and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the Y and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Yz {
-            get { return new Vector2(Y, Z); }
+        public Vector2i Yz {
+            get { return new Vector2i(Y, Z); }
             set {
                 Y = value.X;
                 Z = value.Y;
@@ -832,11 +595,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Y and W components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the Y and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Yw {
-            get { return new Vector2(Y, W); }
+        public Vector2i Yw {
+            get { return new Vector2i(Y, W); }
             set {
                 Y = value.X;
                 W = value.Y;
@@ -844,11 +607,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Z and X components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the Z and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Zx {
-            get { return new Vector2(Z, X); }
+        public Vector2i Zx {
+            get { return new Vector2i(Z, X); }
             set {
                 Z = value.X;
                 X = value.Y;
@@ -856,11 +619,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the Z and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the Z and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Zy {
-            get { return new Vector2(Z, Y); }
+        public Vector2i Zy {
+            get { return new Vector2i(Z, Y); }
             set {
                 Z = value.X;
                 Y = value.Y;
@@ -868,11 +631,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets an OpenTK.Vector2 with the Z and W components of this instance.
+        /// Gets an OpenTK.Vector2i with the Z and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Zw {
-            get { return new Vector2(Z, W); }
+        public Vector2i Zw {
+            get { return new Vector2i(Z, W); }
             set {
                 Z = value.X;
                 W = value.Y;
@@ -880,11 +643,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the W and X components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the W and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Wx {
-            get { return new Vector2(W, X); }
+        public Vector2i Wx {
+            get { return new Vector2i(W, X); }
             set {
                 W = value.X;
                 X = value.Y;
@@ -892,11 +655,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the W and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the W and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Wy {
-            get { return new Vector2(W, Y); }
+        public Vector2i Wy {
+            get { return new Vector2i(W, Y); }
             set {
                 W = value.X;
                 Y = value.Y;
@@ -904,11 +667,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2 with the W and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector2i with the W and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector2 Wz {
-            get { return new Vector2(W, Z); }
+        public Vector2i Wz {
+            get { return new Vector2i(W, Z); }
             set {
                 W = value.X;
                 Z = value.Y;
@@ -916,11 +679,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, Y, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Xyz {
-            get { return new Vector3(X, Y, Z); }
+        public Vector3i Xyz {
+            get { return new Vector3i(X, Y, Z); }
             set {
                 X = value.X;
                 Y = value.Y;
@@ -929,11 +692,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, Y, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Xyw {
-            get { return new Vector3(X, Y, W); }
+        public Vector3i Xyw {
+            get { return new Vector3i(X, Y, W); }
             set {
                 X = value.X;
                 Y = value.Y;
@@ -942,11 +705,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, Z, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Xzy {
-            get { return new Vector3(X, Z, Y); }
+        public Vector3i Xzy {
+            get { return new Vector3i(X, Z, Y); }
             set {
                 X = value.X;
                 Z = value.Y;
@@ -955,11 +718,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, Z, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the X, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Xzw {
-            get { return new Vector3(X, Z, W); }
+        public Vector3i Xzw {
+            get { return new Vector3i(X, Z, W); }
             set {
                 X = value.X;
                 Z = value.Y;
@@ -968,11 +731,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, W, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the X, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Xwy {
-            get { return new Vector3(X, W, Y); }
+        public Vector3i Xwy {
+            get { return new Vector3i(X, W, Y); }
             set {
                 X = value.X;
                 W = value.Y;
@@ -981,11 +744,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the X, W, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the X, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Xwz {
-            get { return new Vector3(X, W, Z); }
+        public Vector3i Xwz {
+            get { return new Vector3i(X, W, Z); }
             set {
                 X = value.X;
                 W = value.Y;
@@ -994,11 +757,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, X, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Yxz {
-            get { return new Vector3(Y, X, Z); }
+        public Vector3i Yxz {
+            get { return new Vector3i(Y, X, Z); }
             set {
                 Y = value.X;
                 X = value.Y;
@@ -1007,11 +770,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, X, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Y, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Yxw {
-            get { return new Vector3(Y, X, W); }
+        public Vector3i Yxw {
+            get { return new Vector3i(Y, X, W); }
             set {
                 Y = value.X;
                 X = value.Y;
@@ -1020,11 +783,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, Z, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Yzx {
-            get { return new Vector3(Y, Z, X); }
+        public Vector3i Yzx {
+            get { return new Vector3i(Y, Z, X); }
             set {
                 Y = value.X;
                 Z = value.Y;
@@ -1033,11 +796,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, Z, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Y, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Yzw {
-            get { return new Vector3(Y, Z, W); }
+        public Vector3i Yzw {
+            get { return new Vector3i(Y, Z, W); }
             set {
                 Y = value.X;
                 Z = value.Y;
@@ -1046,11 +809,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Y, W, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Y, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Ywx {
-            get { return new Vector3(Y, W, X); }
+        public Vector3i Ywx {
+            get { return new Vector3i(Y, W, X); }
             set {
                 Y = value.X;
                 W = value.Y;
@@ -1059,11 +822,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets an OpenTK.Vector3 with the Y, W, and Z components of this instance.
+        /// Gets an OpenTK.Vector3i with the Y, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Ywz {
-            get { return new Vector3(Y, W, Z); }
+        public Vector3i Ywz {
+            get { return new Vector3i(Y, W, Z); }
             set {
                 Y = value.X;
                 W = value.Y;
@@ -1072,11 +835,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, X, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Zxy {
-            get { return new Vector3(Z, X, Y); }
+        public Vector3i Zxy {
+            get { return new Vector3i(Z, X, Y); }
             set {
                 Z = value.X;
                 X = value.Y;
@@ -1085,11 +848,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, X, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Z, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Zxw {
-            get { return new Vector3(Z, X, W); }
+        public Vector3i Zxw {
+            get { return new Vector3i(Z, X, W); }
             set {
                 Z = value.X;
                 X = value.Y;
@@ -1098,11 +861,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, Y, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Zyx {
-            get { return new Vector3(Z, Y, X); }
+        public Vector3i Zyx {
+            get { return new Vector3i(Z, Y, X); }
             set {
                 Z = value.X;
                 Y = value.Y;
@@ -1111,11 +874,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, Y, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Z, Y, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Zyw {
-            get { return new Vector3(Z, Y, W); }
+        public Vector3i Zyw {
+            get { return new Vector3i(Z, Y, W); }
             set {
                 Z = value.X;
                 Y = value.Y;
@@ -1124,11 +887,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, W, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Z, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Zwx {
-            get { return new Vector3(Z, W, X); }
+        public Vector3i Zwx {
+            get { return new Vector3i(Z, W, X); }
             set {
                 Z = value.X;
                 W = value.Y;
@@ -1137,11 +900,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the Z, W, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the Z, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Zwy {
-            get { return new Vector3(Z, W, Y); }
+        public Vector3i Zwy {
+            get { return new Vector3i(Z, W, Y); }
             set {
                 Z = value.X;
                 W = value.Y;
@@ -1150,11 +913,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the W, X, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the W, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Wxy {
-            get { return new Vector3(W, X, Y); }
+        public Vector3i Wxy {
+            get { return new Vector3i(W, X, Y); }
             set {
                 W = value.X;
                 X = value.Y;
@@ -1163,11 +926,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the W, X, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the W, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Wxz {
-            get { return new Vector3(W, X, Z); }
+        public Vector3i Wxz {
+            get { return new Vector3i(W, X, Z); }
             set {
                 W = value.X;
                 X = value.Y;
@@ -1176,11 +939,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the W, Y, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the W, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Wyx {
-            get { return new Vector3(W, Y, X); }
+        public Vector3i Wyx {
+            get { return new Vector3i(W, Y, X); }
             set {
                 W = value.X;
                 Y = value.Y;
@@ -1189,11 +952,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the W, Y, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the W, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Wyz {
-            get { return new Vector3(W, Y, Z); }
+        public Vector3i Wyz {
+            get { return new Vector3i(W, Y, Z); }
             set {
                 W = value.X;
                 Y = value.Y;
@@ -1202,11 +965,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the W, Z, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the W, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Wzx {
-            get { return new Vector3(W, Z, X); }
+        public Vector3i Wzx {
+            get { return new Vector3i(W, Z, X); }
             set {
                 W = value.X;
                 Z = value.Y;
@@ -1215,11 +978,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3 with the W, Z, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector3i with the W, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector3 Wzy {
-            get { return new Vector3(W, Z, Y); }
+        public Vector3i Wzy {
+            get { return new Vector3i(W, Z, Y); }
             set {
                 W = value.X;
                 Z = value.Y;
@@ -1228,11 +991,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the X, Y, W, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the X, Y, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Xywz {
-            get { return new Vector4(X, Y, W, Z); }
+        public Vector4i Xywz {
+            get { return new Vector4i(X, Y, W, Z); }
             set {
                 X = value.X;
                 Y = value.Y;
@@ -1242,11 +1005,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the X, Z, Y, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the X, Z, Y, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Xzyw {
-            get { return new Vector4(X, Z, Y, W); }
+        public Vector4i Xzyw {
+            get { return new Vector4i(X, Z, Y, W); }
             set {
                 X = value.X;
                 Z = value.Y;
@@ -1256,11 +1019,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the X, Z, W, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the X, Z, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Xzwy {
-            get { return new Vector4(X, Z, W, Y); }
+        public Vector4i Xzwy {
+            get { return new Vector4i(X, Z, W, Y); }
             set {
                 X = value.X;
                 Z = value.Y;
@@ -1270,11 +1033,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the X, W, Y, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the X, W, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Xwyz {
-            get { return new Vector4(X, W, Y, Z); }
+        public Vector4i Xwyz {
+            get { return new Vector4i(X, W, Y, Z); }
             set {
                 X = value.X;
                 W = value.Y;
@@ -1284,11 +1047,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the X, W, Z, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the X, W, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Xwzy {
-            get { return new Vector4(X, W, Z, Y); }
+        public Vector4i Xwzy {
+            get { return new Vector4i(X, W, Z, Y); }
             set {
                 X = value.X;
                 W = value.Y;
@@ -1298,11 +1061,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Y, X, Z, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Y, X, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Yxzw {
-            get { return new Vector4(Y, X, Z, W); }
+        public Vector4i Yxzw {
+            get { return new Vector4i(Y, X, Z, W); }
             set {
                 Y = value.X;
                 X = value.Y;
@@ -1312,11 +1075,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Y, X, W, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Y, X, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Yxwz {
-            get { return new Vector4(Y, X, W, Z); }
+        public Vector4i Yxwz {
+            get { return new Vector4i(Y, X, W, Z); }
             set {
                 Y = value.X;
                 X = value.Y;
@@ -1326,11 +1089,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets an OpenTK.Vector4 with the Y, Y, Z, and W components of this instance.
+        /// Gets an OpenTK.Vector4i with the Y, Y, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Yyzw {
-            get { return new Vector4(Y, Y, Z, W); }
+        public Vector4i Yyzw {
+            get { return new Vector4i(Y, Y, Z, W); }
             set {
                 X = value.X;
                 Y = value.Y;
@@ -1340,11 +1103,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets an OpenTK.Vector4 with the Y, Y, W, and Z components of this instance.
+        /// Gets an OpenTK.Vector4i with the Y, Y, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Yywz {
-            get { return new Vector4(Y, Y, W, Z); }
+        public Vector4i Yywz {
+            get { return new Vector4i(Y, Y, W, Z); }
             set {
                 X = value.X;
                 Y = value.Y;
@@ -1354,11 +1117,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Y, Z, X, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Y, Z, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Yzxw {
-            get { return new Vector4(Y, Z, X, W); }
+        public Vector4i Yzxw {
+            get { return new Vector4i(Y, Z, X, W); }
             set {
                 Y = value.X;
                 Z = value.Y;
@@ -1368,11 +1131,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Y, Z, W, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Y, Z, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Yzwx {
-            get { return new Vector4(Y, Z, W, X); }
+        public Vector4i Yzwx {
+            get { return new Vector4i(Y, Z, W, X); }
             set {
                 Y = value.X;
                 Z = value.Y;
@@ -1382,11 +1145,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Y, W, X, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Y, W, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Ywxz {
-            get { return new Vector4(Y, W, X, Z); }
+        public Vector4i Ywxz {
+            get { return new Vector4i(Y, W, X, Z); }
             set {
                 Y = value.X;
                 W = value.Y;
@@ -1396,11 +1159,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Y, W, Z, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Y, W, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Ywzx {
-            get { return new Vector4(Y, W, Z, X); }
+        public Vector4i Ywzx {
+            get { return new Vector4i(Y, W, Z, X); }
             set {
                 Y = value.X;
                 W = value.Y;
@@ -1410,11 +1173,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Z, X, Y, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Z, X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zxyw {
-            get { return new Vector4(Z, X, Y, W); }
+        public Vector4i Zxyw {
+            get { return new Vector4i(Z, X, Y, W); }
             set {
                 Z = value.X;
                 X = value.Y;
@@ -1424,11 +1187,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Z, X, W, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Z, X, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zxwy {
-            get { return new Vector4(Z, X, W, Y); }
+        public Vector4i Zxwy {
+            get { return new Vector4i(Z, X, W, Y); }
             set {
                 Z = value.X;
                 X = value.Y;
@@ -1438,11 +1201,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Z, Y, X, and W components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Z, Y, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zyxw {
-            get { return new Vector4(Z, Y, X, W); }
+        public Vector4i Zyxw {
+            get { return new Vector4i(Z, Y, X, W); }
             set {
                 Z = value.X;
                 Y = value.Y;
@@ -1452,11 +1215,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Z, Y, W, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Z, Y, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zywx {
-            get { return new Vector4(Z, Y, W, X); }
+        public Vector4i Zywx {
+            get { return new Vector4i(Z, Y, W, X); }
             set {
                 Z = value.X;
                 Y = value.Y;
@@ -1466,11 +1229,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Z, W, X, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Z, W, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zwxy {
-            get { return new Vector4(Z, W, X, Y); }
+        public Vector4i Zwxy {
+            get { return new Vector4i(Z, W, X, Y); }
             set {
                 Z = value.X;
                 W = value.Y;
@@ -1480,11 +1243,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the Z, W, Y, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the Z, W, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zwyx {
-            get { return new Vector4(Z, W, Y, X); }
+        public Vector4i Zwyx {
+            get { return new Vector4i(Z, W, Y, X); }
             set {
                 Z = value.X;
                 W = value.Y;
@@ -1494,11 +1257,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets an OpenTK.Vector4 with the Z, W, Z, and Y components of this instance.
+        /// Gets an OpenTK.Vector4i with the Z, W, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Zwzy {
-            get { return new Vector4(Z, W, Z, Y); }
+        public Vector4i Zwzy {
+            get { return new Vector4i(Z, W, Z, Y); }
             set {
                 X = value.X;
                 W = value.Y;
@@ -1508,11 +1271,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the W, X, Y, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the W, X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wxyz {
-            get { return new Vector4(W, X, Y, Z); }
+        public Vector4i Wxyz {
+            get { return new Vector4i(W, X, Y, Z); }
             set {
                 W = value.X;
                 X = value.Y;
@@ -1522,11 +1285,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the W, X, Z, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the W, X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wxzy {
-            get { return new Vector4(W, X, Z, Y); }
+        public Vector4i Wxzy {
+            get { return new Vector4i(W, X, Z, Y); }
             set {
                 W = value.X;
                 X = value.Y;
@@ -1536,11 +1299,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the W, Y, X, and Z components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the W, Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wyxz {
-            get { return new Vector4(W, Y, X, Z); }
+        public Vector4i Wyxz {
+            get { return new Vector4i(W, Y, X, Z); }
             set {
                 W = value.X;
                 Y = value.Y;
@@ -1550,11 +1313,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the W, Y, Z, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the W, Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wyzx {
-            get { return new Vector4(W, Y, Z, X); }
+        public Vector4i Wyzx {
+            get { return new Vector4i(W, Y, Z, X); }
             set {
                 W = value.X;
                 Y = value.Y;
@@ -1564,11 +1327,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the W, Z, X, and Y components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the W, Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wzxy {
-            get { return new Vector4(W, Z, X, Y); }
+        public Vector4i Wzxy {
+            get { return new Vector4i(W, Z, X, Y); }
             set {
                 W = value.X;
                 Z = value.Y;
@@ -1578,11 +1341,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector4 with the W, Z, Y, and X components of this instance.
+        /// Gets or sets an OpenTK.Vector4i with the W, Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wzyx {
-            get { return new Vector4(W, Z, Y, X); }
+        public Vector4i Wzyx {
+            get { return new Vector4i(W, Z, Y, X); }
             set {
                 W = value.X;
                 Z = value.Y;
@@ -1592,11 +1355,11 @@ namespace Pencil.Gaming.MathUtils {
         }
 
         /// <summary>
-        /// Gets an OpenTK.Vector4 with the W, Z, Y, and W components of this instance.
+        /// Gets an OpenTK.Vector4i with the W, Z, Y, and W components of this instance.
         /// </summary>
         [XmlIgnore]
-        public Vector4 Wzyw {
-            get { return new Vector4(W, Z, Y, W); }
+        public Vector4i Wzyw {
+            get { return new Vector4i(W, Z, Y, W); }
             set {
                 X = value.X;
                 Z = value.Y;
@@ -1611,7 +1374,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>The result of the calculation.</returns>
-        public static Vector4 operator +(Vector4 left, Vector4 right) {
+        public static Vector4i operator +(Vector4i left, Vector4i right) {
             left.X += right.X;
             left.Y += right.Y;
             left.Z += right.Z;
@@ -1625,7 +1388,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>The result of the calculation.</returns>
-        public static Vector4 operator -(Vector4 left, Vector4 right) {
+        public static Vector4i operator -(Vector4i left, Vector4i right) {
             left.X -= right.X;
             left.Y -= right.Y;
             left.Z -= right.Z;
@@ -1638,7 +1401,7 @@ namespace Pencil.Gaming.MathUtils {
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <returns>The result of the calculation.</returns>
-        public static Vector4 operator -(Vector4 vec) {
+        public static Vector4i operator -(Vector4i vec) {
             vec.X = -vec.X;
             vec.Y = -vec.Y;
             vec.Z = -vec.Z;
@@ -1652,7 +1415,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vec">The instance.</param>
         /// <param name="scale">The scalar.</param>
         /// <returns>The result of the calculation.</returns>
-        public static Vector4 operator *(Vector4 vec, float scale) {
+        public static Vector4i operator *(Vector4i vec, int scale) {
             vec.X *= scale;
             vec.Y *= scale;
             vec.Z *= scale;
@@ -1666,7 +1429,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="scale">The scalar.</param>
         /// <param name="vec">The instance.</param>
         /// <returns>The result of the calculation.</returns>
-        public static Vector4 operator *(float scale, Vector4 vec) {
+        public static Vector4i operator *(int scale, Vector4i vec) {
             vec.X *= scale;
             vec.Y *= scale;
             vec.Z *= scale;
@@ -1680,12 +1443,11 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="vec">The instance.</param>
         /// <param name="scale">The scalar.</param>
         /// <returns>The result of the calculation.</returns>
-        public static Vector4 operator /(Vector4 vec, float scale) {
-            float mult = 1.0f / scale;
-            vec.X *= mult;
-            vec.Y *= mult;
-            vec.Z *= mult;
-            vec.W *= mult;
+        public static Vector4i operator /(Vector4i vec, int scale) {
+            vec.X /= scale;
+            vec.Y /= scale;
+            vec.Z /= scale;
+            vec.W /= scale;
             return vec;
         }
 
@@ -1695,7 +1457,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector4 left, Vector4 right) {
+        public static bool operator ==(Vector4i left, Vector4i right) {
             return left.Equals(right);
         }
 
@@ -1705,7 +1467,7 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equa lright; false otherwise.</returns>
-        public static bool operator !=(Vector4 left, Vector4 right) {
+        public static bool operator !=(Vector4i left, Vector4i right) {
             return !left.Equals(right);
         }
 
@@ -1714,7 +1476,7 @@ namespace Pencil.Gaming.MathUtils {
         /// </summary>
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
-        unsafe public static explicit operator float*(Vector4 v) {
+        unsafe public static explicit operator int*(Vector4i v) {
             return &v.X;
         }
 
@@ -1723,7 +1485,7 @@ namespace Pencil.Gaming.MathUtils {
         /// </summary>
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
-        public static explicit operator IntPtr(Vector4 v) {
+        public static explicit operator IntPtr(Vector4i v) {
             unsafe {
                 return (IntPtr)(&v.X);
             }
@@ -1731,7 +1493,7 @@ namespace Pencil.Gaming.MathUtils {
 
         internal static string listSeparator = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
         /// <summary>
-        /// Returns a System.String that represents the current Vector4.
+        /// Returns a System.String that represents the current Vector4i.
         /// </summary>
         /// <returns></returns>
         public override string ToString() {
@@ -1752,16 +1514,16 @@ namespace Pencil.Gaming.MathUtils {
         /// <param name="obj">The object to compare to.</param>
         /// <returns>True if the instances are equal; false otherwise.</returns>
         public override bool Equals(object obj) {
-            if (!(obj is Vector4))
+            if (!(obj is Vector4i))
                 return false;
 
-            return this.Equals((Vector4)obj);
+            return this.Equals((Vector4i)obj);
         }
 
         /// <summary>Indicates whether the current vector is equal to another vector.</summary>
         /// <param name="other">A vector to compare with this vector.</param>
         /// <returns>true if the current vector is equal to the vector parameter; otherwise, false.</returns>
-        public bool Equals(Vector4 other) {
+        public bool Equals(Vector4i other) {
             return
                 X == other.X &&
                 Y == other.Y &&

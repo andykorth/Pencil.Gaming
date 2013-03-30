@@ -132,6 +132,16 @@ namespace Pencil.Gaming.MathUtils {
             Z = v.Z;
         }
 
+        /// <summary>
+        /// Constructs a new Vector3 from the given Vector3i.
+        /// </summary>
+        /// <param name="v">The Vector3i to copy components from.</param>
+        public Vector3(Vector3i v) {
+            X = v.X;
+            Y = v.Y;
+            Z = v.Z;
+        }
+
 
         /// <summary>
         /// Gets or sets the value at the index of the Vector.

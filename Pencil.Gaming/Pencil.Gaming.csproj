@@ -166,7 +166,6 @@
     <Compile Include="Math\Quaternion.cs" />
     <Compile Include="Math\Vector2.cs" />
     <Compile Include="Math\Vector3.cs" />
-    <Compile Include="Math\Vector4.cs" />
     <Compile Include="Graphics\Color4.cs" />
     <Compile Include="Graphics\Gl.cs" />
     <Compile Include="Graphics\GlDelegates.cs" />
@@ -215,6 +214,14 @@
     <Compile Include="Scripting\LuaLMacroFunctions.cs" />
     <Compile Include="Audio\Sound.cs" />
     <Compile Include="Audio\Listener.cs" />
+    <Compile Include="Glfw\Glfw2KeyboardState.cs" />
+    <Compile Include="Glfw\Glfw2MouseState.cs" />
+    <Compile Include="Glfw\Glfw3KeyboardState.cs" />
+    <Compile Include="Glfw\Glfw3MouseState.cs" />
+    <Compile Include="Math\Vector3i.cs" />
+    <Compile Include="Math\Vector2i.cs" />
+    <Compile Include="Math\Vector4i.cs" />
+    <Compile Include="Math\Vector4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
