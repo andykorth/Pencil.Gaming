@@ -1,21 +1,13 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Graphics/Gl.cs">
     <Files>
-      <File FileName="Pencil.Quick2D/Game.cs" Line="66" Column="53" />
-      <File FileName="Pencil.Quick2D/Graphics.cs" Line="23" Column="44" />
-      <File FileName="Pencil.Quick2D/Camera.cs" Line="55" Column="10" />
-      <File FileName="Pencil.Quick2D/DirectModeGraphics.cs" Line="1" Column="14" />
-      <File FileName="Pencil.Quick2D/Sprite.cs" Line="34" Column="40" />
-      <File FileName="Pencil.Quick2D/CameraFollower.cs" Line="7" Column="20" />
       <File FileName="Pencil.Gaming/Math/MathHelper.cs" Line="194" Column="26" />
-      <File FileName="Pencil.Gaming/Graphics/Gl.cs" Line="48" Column="17" />
+      <File FileName="Pencil.Gaming/Graphics/Gl.cs" Line="35" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="Pencil.Gaming" expanded="True" />
-        </State>
+        <State expanded="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

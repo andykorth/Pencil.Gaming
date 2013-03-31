@@ -32,7 +32,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Compatibility - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -52,7 +51,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Core - GLFW2|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,7 +69,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Core - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -89,7 +86,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Compatibility - GLFW3|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -110,7 +106,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Compatibility - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -130,7 +125,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Core - GLFW3|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -149,7 +143,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Core - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -167,7 +160,6 @@
       </CustomCommands>
     </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>none</DebugType>
