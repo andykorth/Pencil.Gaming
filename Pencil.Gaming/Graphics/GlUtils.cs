@@ -323,17 +323,16 @@ namespace Pencil.Gaming.Graphics {
 			}
 
 			private static int GetFirstFinalIndexOfDuplicate(List<VertexIndices> vIndices, int currentIndex, bool optimize) {
-				if (!optimize) {
-					return -1;
-				}
-
-				VertexIndices vertex = vIndices[currentIndex];
-				for (int i = 0; i < currentIndex; ++i) {
-					VertexIndices other = vIndices[i];
-					if (vertex == other) {
-						return other.FinalIndex;
+				if (optimize) {
+					VertexIndices vertex = vIndices[currentIndex];
+					for (int i = 0; i < currentIndex; ++i) {
+						VertexIndices other = vIndices[i];
+						if (vertex == other) {
+							return other.FinalIndex;
+						}
 					}
 				}
+				return -1;
 			}
 
 			private static void SortOutVIndices(
