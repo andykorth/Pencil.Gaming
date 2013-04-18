@@ -23,6 +23,42 @@ namespace Pencil.Gaming.MathUtils {
 			}
 		}
 
+		public int Top {
+			get {
+				return Y;
+			}
+			set {
+				Y = value;
+			}
+		}
+
+		public int Bottom {
+			get {
+				return Y + Height;
+			}
+			set {
+				Y = value - Height;
+			}
+		}
+
+		public int Right {
+			get {
+				return X + Width;
+			}
+			set {
+				X = value - Width;
+			}
+		}
+
+		public int Left {
+			get {
+				return X;
+			}
+			set {
+				X = value;
+			}
+		}
+
 		public Rectanglei(int x, int y, int width, int height) {
 			X = x;
 			Y = y;
@@ -32,6 +68,11 @@ namespace Pencil.Gaming.MathUtils {
 		public Rectanglei(Vector2i pos, int width, int height) : this(pos.X, pos.Y, width, height) {
 		}
 		public Rectanglei(Vector2i pos, Vector2i size) : this(pos, size.X, size.Y) {
+		}
+
+		public bool Intersects(Rectangle rect) {
+			return !((X >= rect.Right) || (Right <= rect.X) ||
+				(Y >= rect.Bottom) || (Bottom <= rect.Y));
 		}
 	}
 }

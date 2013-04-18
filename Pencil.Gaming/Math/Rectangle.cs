@@ -23,6 +23,42 @@ namespace Pencil.Gaming.MathUtils {
 			}
 		}
 
+		public float Top {
+			get {
+				return Y;
+			}
+			set {
+				Y = value;
+			}
+		}
+
+		public float Bottom {
+			get {
+				return Y + Height;
+			}
+			set {
+				Y = value - Height;
+			}
+		}
+
+		public float Right {
+			get {
+				return X + Width;
+			}
+			set {
+				X = value - Width;
+			}
+		}
+
+		public float Left {
+			get {
+				return X;
+			}
+			set {
+				X = value;
+			}
+		}
+
 		public Rectangle(float x, float y, float width, float height) {
 			X = x;
 			Y = y;
@@ -35,6 +71,11 @@ namespace Pencil.Gaming.MathUtils {
 		}
 
 		public Rectangle(Rectanglei rect) : this(rect.X, rect.Y, rect.Width, rect.Height) {
+		}
+
+		public bool Intersects(Rectangle rect) {
+			return !((X >= rect.Right) || (Right <= rect.X) ||
+				(Y >= rect.Bottom) || (Bottom <= rect.Y));
 		}
 	}
 }
