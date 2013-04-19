@@ -33,34 +33,72 @@ namespace Pencil.Gaming.Audio {
 		private float lengthSeconds;
 
 		public Sound(string file) {
-			Load(File.ReadAllBytes(file));
-		}
-
-		public Sound(Stream file) {
-			using (MemoryStream ms = new MemoryStream()) {
-				if (!file.CanRead) {
-					throw new NotSupportedException("This stream does not support reading");
-				}
-				byte[] buffer = new byte[16 * 1024];
-				int nread;
-				while ((nread = file.Read(buffer, 0, 16 * 1024)) != 0) {
-					ms.Write(buffer, 0, nread);
-				}
-
-				Load(ms.ToArray());
+			if (file.EndsWith("wav")) {
+				LoadWav(File.ReadAllBytes(file));
+			} else if (file.EndsWith("ogg")) {
+				LoadOgg(file);
+			} else {
+				throw new NotSupportedException("File format not supported");
 			}
 		}
 
-		private unsafe void Load(byte[] wave) {
-			Al.GenBuffers(1, out BufferHandle);
+		public Sound(Stream file, string extension) {
+			if (extension == "wav") {
+				using (MemoryStream ms = new MemoryStream()) {
+					if (!file.CanRead) {
+						throw new NotSupportedException("This stream does not support reading");
+					}
+					byte[] buffer = new byte[16 * 1024];
+					int nread;
+					while ((nread = file.Read(buffer, 0, 16 * 1024)) != 0) {
+						ms.Write(buffer, 0, nread);
+					}
 
+					LoadWav(ms.ToArray());
+						
+					throw new NotSupportedException("Audio format not supported");
+				}
+			} else if (extension == "ogg") {
+				LoadOgg(file);
+			} else {
+				throw new NotSupportedException("File format not supported: " + extension);
+			}
+		}
+
+		private void LoadWav(byte[] wave) {
 			byte[] data;
 			AlFormat format;
 			uint chunkSize, sampleRate, avgBytesPerSec;
 			short bytesPerSample, bitsPerSample;
 			Al.Utils.LoadWavExt(wave, out data, out chunkSize, out format, out sampleRate, out avgBytesPerSec, out bytesPerSample, out bitsPerSample);
 
-			lengthSeconds = data.Length / (float)avgBytesPerSec;
+			Load(data, format, sampleRate, TimeSpan.FromSeconds(data.Length / (float)avgBytesPerSec));
+		}
+
+		private void LoadOgg(string ogg) {
+			byte[] data;
+			AlFormat format;
+			uint sampleRate;
+			TimeSpan len;
+			Al.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
+
+			Load(data, format, sampleRate, len);
+		}
+
+		private void LoadOgg(Stream ogg) {
+			byte[] data;
+			AlFormat format;
+			uint sampleRate;
+			TimeSpan len;
+			Al.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
+
+			Load(data, format, sampleRate, len);
+		}
+
+		private unsafe void Load(byte[] data, AlFormat format, uint sampleRate, TimeSpan len) {
+			Al.GenBuffers(1, out BufferHandle);
+
+			lengthSeconds = (float)len.TotalSeconds;
 
 			fixed (byte * dataPtr = &data[0]) {
 				IntPtr dataIntPtr = new IntPtr(dataPtr);

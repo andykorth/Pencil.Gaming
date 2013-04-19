@@ -1,22 +1,13 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Graphics/GlUtils.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Audio/AlUtils.cs">
     <Files>
-      <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="28" Column="30" />
-      <File FileName="Pencil.Gaming/Applets/PApplet.cs" Line="12" Column="4" />
-      <File FileName="Pencil.Gaming/Applets/Browsers.cs" Line="5" Column="24" />
-      <File FileName="Pencil.Gaming/Applets/SupportedBrowsersAttribute.cs" Line="4" Column="95" />
-      <File FileName="Pencil.Gaming/Applets/AppletRequest.cs" Line="8" Column="49" />
+      <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="255" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True">
-            <Node name="Applets" expanded="True" />
-            <Node name="Graphics" expanded="True">
-              <Node name="GlUtils.cs" selected="True" />
-            </Node>
-          </Node>
+          <Node name="Pencil.Gaming" expanded="True" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
