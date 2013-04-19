@@ -55,7 +55,7 @@ namespace Pencil.Gaming.Audio {
 				int count = 0;
 				while ((count = vorbis.ReadSamples(buffer, 0, buffer.Length)) > 0) {
 					for (int i = 0; i < count; i++) {
-						int temp = (int)(32767f * buffer [i]);
+						int temp = (int)(short.MaxValue * buffer [i]);
 						if (temp > short.MaxValue) {
 							temp = short.MaxValue;
 						} else if (temp < short.MinValue) {
@@ -72,6 +72,36 @@ namespace Pencil.Gaming.Audio {
 				}
 				// TODO: Add better implementation so that there's no need for array copying
 				data = bytes.ToArray();
+			}
+
+			public static uint BufferFromOgg(string file) {
+				using (VorbisReader vorbis = new VorbisReader(file)) {
+					return BufferFromOgg(vorbis);
+				}
+			}
+
+			public static uint BufferFromOgg(Stream file) {
+				using (VorbisReader vorbis = new VorbisReader(file, false)) {
+					return BufferFromOgg(vorbis);
+				}
+			}
+
+			private unsafe static uint BufferFromOgg(VorbisReader vorbis) {
+				uint result;
+				Al.GenBuffers(1, out result);
+
+				byte[] data;
+				AlFormat format;
+				uint sampleRate;
+				TimeSpan len;
+				LoadOgg(vorbis, out data, out format, out sampleRate, out len);
+
+				fixed (byte * dataPtr = &data[0]) {
+					IntPtr dataIntPtr = new IntPtr(dataPtr);
+					Al.BufferData(result, format, dataIntPtr, data.Length, (int)sampleRate);
+				}
+
+				return result;
 			}
 
 			#endregion

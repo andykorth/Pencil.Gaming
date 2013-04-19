@@ -112,8 +112,9 @@ namespace Pencil.Gaming.MathUtils {
 		/// <param name="n">The specified number.</param>
 		/// <returns>The next power of two.</returns>
 		public static long NextPowerOfTwo(long n) {
-			if (n < 0)
+			if (n < 0) {
 				throw new ArgumentOutOfRangeException("n", "Must be positive.");
+			}
 			return (long)System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
 		}
 
@@ -123,8 +124,9 @@ namespace Pencil.Gaming.MathUtils {
 		/// <param name="n">The specified number.</param>
 		/// <returns>The next power of two.</returns>
 		public static int NextPowerOfTwo(int n) {
-			if (n < 0)
+			if (n < 0) {
 				throw new ArgumentOutOfRangeException("n", "Must be positive.");
+			}
 			return (int)System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
 		}
 
@@ -134,8 +136,9 @@ namespace Pencil.Gaming.MathUtils {
 		/// <param name="n">The specified number.</param>
 		/// <returns>The next power of two.</returns>
 		public static float NextPowerOfTwo(float n) {
-			if (n < 0)
+			if (n < 0) {
 				throw new ArgumentOutOfRangeException("n", "Must be positive.");
+			}
 			return (float)System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
 		}
 
@@ -145,8 +148,9 @@ namespace Pencil.Gaming.MathUtils {
 		/// <param name="n">The specified number.</param>
 		/// <returns>The next power of two.</returns>
 		public static double NextPowerOfTwo(double n) {
-			if (n < 0)
+			if (n < 0) {
 				throw new ArgumentOutOfRangeException("n", "Must be positive.");
+			}
 			return System.Math.Pow(2, System.Math.Ceiling(System.Math.Log((double)n, 2)));
 		}
 
@@ -157,8 +161,9 @@ namespace Pencil.Gaming.MathUtils {
 		public static long Factorial(int n) {
 			long result = 1;
 
-			for (; n > 1; n--)
+			for (; n > 1; n--) {
 				result *= n;
+			}
 
 			return result;
 		}
@@ -208,7 +213,7 @@ namespace Pencil.Gaming.MathUtils {
 		/// </remarks>
 		public static double InverseSqrtFast(double x) {
 			return InverseSqrtFast((float)x);
-			// TODO: The following code is wrong. Fix it, to improve precision.
+			// FIXME: The following code is wrong. Fix it, to improve precision.
 //			unsafe
 //			{
 //				double xhalf = 0.5f * x;

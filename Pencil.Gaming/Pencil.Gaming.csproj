@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Compatibility - GLFW2</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -12,68 +12,30 @@
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <Description>A minimalistic gaming library for C# based on OpenTK.</Description>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Compatibility - GLFW2|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug - Compatibility - GLFW2</OutputPath>
-    <DefineConstants>DEBUG; USE_GL_COMPAT; USE_GLFW2;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Compatibility - GLFW2|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release - Compatibility - GLFW2</OutputPath>
+    <OutputPath>bin\Compatibility - GLFW2</OutputPath>
     <DefineConstants>USE_GL_COMPAT; USE_GLFW2;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Core - GLFW2|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug - Core - GLFW2</OutputPath>
-    <DefineConstants>DEBUG; USE_GL_CORE; USE_GLFW2;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw3&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw2&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Core - GLFW2|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release - Core - GLFW2</OutputPath>
+    <OutputPath>bin\Core - GLFW2</OutputPath>
     <DefineConstants>USE_GL_CORE; USE_GLFW2;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -85,69 +47,29 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Compatibility - GLFW3|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug - Compatibility - GLFW3</OutputPath>
-    <DefineConstants>DEBUG; USE_GL_COMPAT; USE_GLFW3;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Compatibility - GLFW3|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release - Compatibility - GLFW3</OutputPath>
+    <OutputPath>bin\Compatibility - GLFW3</OutputPath>
     <DefineConstants>USE_GL_COMPAT; USE_GLFW3;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
+        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
+        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
+      </CustomCommands>
+    </CustomCommands>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - Core - GLFW3|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug - Core - GLFW3</OutputPath>
-    <DefineConstants>DEBUG; USE_GL_CORE; USE_GLFW3;</DefineConstants>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - Core - GLFW3|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release - Core - GLFW3</OutputPath>
+    <OutputPath>bin\Core - GLFW3</OutputPath>
     <DefineConstants>USE_GL_CORE; USE_GLFW3;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -159,23 +81,6 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>Pencil.Gaming</AssemblyName>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>Pencil.Gaming</AssemblyName>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

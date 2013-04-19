@@ -1,9 +1,6 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release - Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Audio/AlUtils.cs">
-    <Files>
-      <File FileName="Pencil.Gaming/Audio/AlUtils.cs" Line="255" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Core - GLFW3" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
