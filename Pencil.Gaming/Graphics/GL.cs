@@ -34,8 +34,8 @@ namespace Pencil.Gaming.Graphics {
 	#pragma warning disable 1573
 	#pragma warning disable 3006
 
-	public static partial class Gl {
-		static Gl() {
+	public static partial class GL {
+		static GL() {
 #if DEBUG
 			Stopwatch sw = new Stopwatch();
 			sw.Start();
@@ -47,17 +47,17 @@ namespace Pencil.Gaming.Graphics {
 #else
 			if (Glfw.GetWindowParam(WindowParam.Opened) == 0) {
 #endif
-				throw new GlLoadException();
+				throw new GLLoadException();
 			}
 
-			FieldInfo[] fields = typeof(Gl.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+			FieldInfo[] fields = typeof(GL.Delegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 			foreach (FieldInfo field in fields) {
 				IntPtr procAddress = Glfw.GetProcAddress(field.Name);
 				if (procAddress != IntPtr.Zero) {
 					Delegate function = Marshal.GetDelegateForFunctionPointer(procAddress, field.FieldType);
 					field.SetValue(null, function);
 				} else {
-					MethodInfo minfo = typeof(GlCore).GetMethod(field.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+					MethodInfo minfo = typeof(GLCore).GetMethod(field.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 					if (minfo != null) {
 						Delegate function = Delegate.CreateDelegate(field.FieldType, minfo);
 						field.SetValue(null, function);

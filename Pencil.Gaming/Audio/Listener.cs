@@ -45,11 +45,11 @@ namespace Pencil.Gaming.Audio {
 
 		public virtual void MakeCurrent() {
 			if (current != this) {
-				Al.Listener(AlListener3f.Position, Position.X, Position.Y, Position.Z);
-				Al.Listener(AlListener3f.Velocity, Velocity.X, Velocity.Y, Velocity.Z);
-				Al.Listener(AlListenerf.EfxMetersPerUnit, EfxMetersPerUnit);
-				Al.Listener(AlListenerf.Gain, Gain);
-				Al.Listener(AlListenerfv.Orientation, new float[] { Orientation.X, Orientation.Y, Orientation.Z });
+				AL.Listener(ALListener3f.Position, Position.X, Position.Y, Position.Z);
+				AL.Listener(ALListener3f.Velocity, Velocity.X, Velocity.Y, Velocity.Z);
+				AL.Listener(ALListenerf.EfxMetersPerUnit, EfxMetersPerUnit);
+				AL.Listener(ALListenerf.Gain, Gain);
+				AL.Listener(ALListenerfv.Orientation, new float[] { Orientation.X, Orientation.Y, Orientation.Z });
 				current = this;
 			}
 		}

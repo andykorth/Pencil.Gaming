@@ -32,7 +32,7 @@ using Pencil.Gaming.MathUtils;
 namespace Pencil.Gaming.Graphics {
 	public delegate T[] TArrayFromRetrievedData<out T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
 
-	public static partial class Gl {
+	public static partial class GL {
 		public static class Utils {
 			#region Image Loading
 
@@ -83,11 +83,11 @@ namespace Pencil.Gaming.Graphics {
 				TextureTarget target = (square ? TextureTarget.Texture2D : TextureTarget.TextureRectangle);
 
 				try {
-					Gl.GenTextures(1, out result);
-					Gl.BindTexture(target, result);
-					Gl.TexParameter(target, TextureParameterName.TextureMagFilter, (int)tmag);
-					Gl.TexParameter(target, TextureParameterName.TextureMinFilter, (int)tmin);
-					Gl.TexImage2D(
+					GL.GenTextures(1, out result);
+					GL.BindTexture(target, result);
+					GL.TexParameter(target, TextureParameterName.TextureMagFilter, (int)tmag);
+					GL.TexParameter(target, TextureParameterName.TextureMinFilter, (int)tmin);
+					GL.TexImage2D(
 						target, 
 						0, 
 						PixelInternalFormat.Rgba,
@@ -98,7 +98,7 @@ namespace Pencil.Gaming.Graphics {
 						PixelType.UnsignedByte,
 						bmpData.Scan0
 					);
-					Gl.BindTexture(target, 0);
+					GL.BindTexture(target, 0);
 				} finally {
 					bmp.UnlockBits(bmpData);
 				}
@@ -211,7 +211,7 @@ namespace Pencil.Gaming.Graphics {
 				Vector4[] vertices;
 				Vector3[] normals;
 				Vector2[] texCoords;
-				Gl.Utils.LoadModel(file, out vertices, out normals, out texCoords, out indicesOutArr, optimize);
+				GL.Utils.LoadModel(file, out vertices, out normals, out texCoords, out indicesOutArr, optimize);
 				outArr = func(vertices, normals, texCoords);
 			}
 			public static void LoadModel(Stream file, out Vector4[] verticesOutArr, out Vector3[] normalsOutArr, out Vector2[] tCoordsOutArr, out int[] indicesOutArr, bool optimize) {

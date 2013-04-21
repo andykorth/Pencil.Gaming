@@ -65,7 +65,7 @@ namespace Pencil.Gaming.Graphics {
 	/// </para>
 	/// </remarks>
 	/// <see href="http://opengl.org/registry/"/>
-	public static partial class Gl {
+	public static partial class GL {
 		#region --- GL Overloads ---
 
 #pragma warning disable 3019
@@ -79,24 +79,24 @@ namespace Pencil.Gaming.Graphics {
 		#region public static void Color[34]() overloads
 
 //		public static void Color3(Color color) {
-//			Gl.Color3(color.R, color.G, color.B);
+//			GL.Color3(color.R, color.G, color.B);
 //		}
 //
 //		public static void Color4(Color color) {
-//			Gl.Color4(color.R, color.G, color.B, color.A);
+//			GL.Color4(color.R, color.G, color.B, color.A);
 //		}
 
 #if USE_GL_COMPAT
 		public static void Color3(Vector3 color) {
-			Gl.Color3(color.X, color.Y, color.Z);
+			GL.Color3(color.X, color.Y, color.Z);
 		}
 
 		public static void Color4(Vector4 color) {
-			Gl.Color4(color.X, color.Y, color.Z, color.W);
+			GL.Color4(color.X, color.Y, color.Z, color.W);
 		}
 
 		public static void Color4(Color4 color) {
-			Gl.Color4(color.R, color.G, color.B, color.A);
+			GL.Color4(color.R, color.G, color.B, color.A);
 		}
 #endif
 
@@ -105,11 +105,11 @@ namespace Pencil.Gaming.Graphics {
 		#region public static void ClearColor() overloads
 
 //		public static void ClearColor(Color color) {
-//			Gl.ClearColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
+//			GL.ClearColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
 //		}
 
 		public static void ClearColor(Color4 color) {
-			Gl.ClearColor(color.R, color.G, color.B, color.A);
+			GL.ClearColor(color.R, color.G, color.B, color.A);
 		}
 
 		#endregion
@@ -117,11 +117,11 @@ namespace Pencil.Gaming.Graphics {
 		#region public static void BlendColor() overloads
 
 //		public static void BlendColor(Color color) {
-//			Gl.BlendColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
+//			GL.BlendColor(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
 //		}
 
 		public static void BlendColor(Color4 color) {
-			Gl.BlendColor(color.R, color.G, color.B, color.A);
+			GL.BlendColor(color.R, color.G, color.B, color.A);
 		}
 
 		#endregion
@@ -137,7 +137,7 @@ namespace Pencil.Gaming.Graphics {
 
 		public static void Material(MaterialFace face, MaterialParameter pname, Color4 @params) {
 			unsafe {
-				Gl.Material(face, pname, (float*)&@params);
+				GL.Material(face, pname, (float*)&@params);
 			}
 		}
 #endif
@@ -149,13 +149,13 @@ namespace Pencil.Gaming.Graphics {
 #if USE_GL_COMPAT
 		public static void Light(LightName name, LightParameter pname, Vector4 @params) {
 			unsafe {
-				Gl.Light(name, pname, (float*)&@params.X);
+				GL.Light(name, pname, (float*)&@params.X);
 			}
 		}
 
 		public static void Light(LightName name, LightParameter pname, Color4 @params) {
 			unsafe {
-				Gl.Light(name, pname, (float*)&@params);
+				GL.Light(name, pname, (float*)&@params);
 			}
 		}
 #endif
@@ -166,61 +166,61 @@ namespace Pencil.Gaming.Graphics {
 
 #if USE_GL_COMPAT
 		public static void Normal3(Vector3 normal) {
-			Gl.Normal3(normal.X, normal.Y, normal.Z);
+			GL.Normal3(normal.X, normal.Y, normal.Z);
 		}
 
 		public static void RasterPos2(Vector2 pos) {
-			Gl.RasterPos2(pos.X, pos.Y);
+			GL.RasterPos2(pos.X, pos.Y);
 		}
 
 		public static void RasterPos3(Vector3 pos) {
-			Gl.RasterPos3(pos.X, pos.Y, pos.Z);
+			GL.RasterPos3(pos.X, pos.Y, pos.Z);
 		}
 
 		public static void RasterPos4(Vector4 pos) {
-			Gl.RasterPos4(pos.X, pos.Y, pos.Z, pos.W);
+			GL.RasterPos4(pos.X, pos.Y, pos.Z, pos.W);
 		}
 
 		public static void Vertex2(Vector2 v) {
-			Gl.Vertex2(v.X, v.Y);
+			GL.Vertex2(v.X, v.Y);
 		}
 
 		public static void Vertex3(Vector3 v) {
-			Gl.Vertex3(v.X, v.Y, v.Z);
+			GL.Vertex3(v.X, v.Y, v.Z);
 		}
 
 		public static void Vertex4(Vector4 v) {
-			Gl.Vertex4(v.X, v.Y, v.Z, v.W);
+			GL.Vertex4(v.X, v.Y, v.Z, v.W);
 		}
 
 		public static void TexCoord2(Vector2 v) {
-			Gl.TexCoord2(v.X, v.Y);
+			GL.TexCoord2(v.X, v.Y);
 		}
 
 		public static void TexCoord3(Vector3 v) {
-			Gl.TexCoord3(v.X, v.Y, v.Z);
+			GL.TexCoord3(v.X, v.Y, v.Z);
 		}
 
 		public static void TexCoord4(Vector4 v) {
-			Gl.TexCoord4(v.X, v.Y, v.Z, v.W);
+			GL.TexCoord4(v.X, v.Y, v.Z, v.W);
 		}
 
 		public static void Rotate(Single angle, Vector3 axis) {
-			Gl.Rotate((Single)angle, axis.X, axis.Y, axis.Z);
+			GL.Rotate((Single)angle, axis.X, axis.Y, axis.Z);
 		}
 
 		public static void Scale(Vector3 scale) {
-			Gl.Scale(scale.X, scale.Y, scale.Z);
+			GL.Scale(scale.X, scale.Y, scale.Z);
 		}
 
 		public static void Translate(Vector3 trans) {
-			Gl.Translate(trans.X, trans.Y, trans.Z);
+			GL.Translate(trans.X, trans.Y, trans.Z);
 		}
 
 		public static void MultMatrix(ref Matrix mat) {
 			unsafe {
 				fixed (Single* m_ptr = &mat.Row0.X) {
-					Gl.MultMatrix((Single*)m_ptr);
+					GL.MultMatrix((Single*)m_ptr);
 				}
 			}
 		}
@@ -228,7 +228,7 @@ namespace Pencil.Gaming.Graphics {
 		public static void LoadMatrix(ref Matrix mat) {
 			unsafe {
 				fixed (Single* m_ptr = &mat.Row0.X) {
-					Gl.LoadMatrix((Single*)m_ptr);
+					GL.LoadMatrix((Single*)m_ptr);
 				}
 			}
 		}
@@ -236,7 +236,7 @@ namespace Pencil.Gaming.Graphics {
 		public static void LoadTransposeMatrix(ref Matrix mat) {
 			unsafe {
 				fixed (Single* m_ptr = &mat.Row0.X) {
-					Gl.LoadTransposeMatrix((Single*)m_ptr);
+					GL.LoadTransposeMatrix((Single*)m_ptr);
 				}
 			}
 		}
@@ -244,7 +244,7 @@ namespace Pencil.Gaming.Graphics {
 		public static void MultTransposeMatrix(ref Matrix mat) {
 			unsafe {
 				fixed (Single* m_ptr = &mat.Row0.X) {
-					Gl.MultTransposeMatrix((Single*)m_ptr);
+					GL.MultTransposeMatrix((Single*)m_ptr);
 				}
 			}
 		}
@@ -255,41 +255,41 @@ namespace Pencil.Gaming.Graphics {
 		#region Uniform
 
 		public static void Uniform2(int location, ref Vector2 vector) {
-			Gl.Uniform2(location, vector.X, vector.Y);
+			GL.Uniform2(location, vector.X, vector.Y);
 		}
 
 		public static void Uniform3(int location, ref Vector3 vector) {
-			Gl.Uniform3(location, vector.X, vector.Y, vector.Z);
+			GL.Uniform3(location, vector.X, vector.Y, vector.Z);
 		}
 
 		public static void Uniform4(int location, ref Vector4 vector) {
-			Gl.Uniform4(location, vector.X, vector.Y, vector.Z, vector.W);
+			GL.Uniform4(location, vector.X, vector.Y, vector.Z, vector.W);
 		}
 
 		public static void Uniform2(int location, Vector2 vector) {
-			Gl.Uniform2(location, vector.X, vector.Y);
+			GL.Uniform2(location, vector.X, vector.Y);
 		}
 
 		public static void Uniform3(int location, Vector3 vector) {
-			Gl.Uniform3(location, vector.X, vector.Y, vector.Z);
+			GL.Uniform3(location, vector.X, vector.Y, vector.Z);
 		}
 
 		public static void Uniform4(int location, Vector4 vector) {
-			Gl.Uniform4(location, vector.X, vector.Y, vector.Z, vector.W);
+			GL.Uniform4(location, vector.X, vector.Y, vector.Z, vector.W);
 		}
 
 		public static void Uniform4(int location, Color4 color) {
-			Gl.Uniform4(location, color.R, color.G, color.B, color.A);
+			GL.Uniform4(location, color.R, color.G, color.B, color.A);
 		}
 
 		public static void Uniform4(int location, Quaternion quaternion) {
-			Gl.Uniform4(location, quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
+			GL.Uniform4(location, quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
 		}
 
 		public static void UniformMatrix4(int location, bool transpose, ref Matrix matrix) {
 			unsafe {
 				fixed (float* matrix_ptr = &matrix.Row0.X) {
-					Gl.UniformMatrix4(location, 1, transpose, matrix_ptr);
+					GL.UniformMatrix4(location, 1, transpose, matrix_ptr);
 				}
 			}
 		}
@@ -355,7 +355,7 @@ namespace Pencil.Gaming.Graphics {
 		public static void ShaderSource(Int32 shader, System.String @string) {
 			unsafe {
 				int length = @string.Length;
-				Gl.ShaderSource((UInt32)shader, 1, new string[] { @string }, &length);
+				GL.ShaderSource((UInt32)shader, 1, new string[] { @string }, &length);
 			}
 		}
 
@@ -376,13 +376,13 @@ namespace Pencil.Gaming.Graphics {
 		public static void GetShaderInfoLog(Int32 shader, out string info) {
 			unsafe {
 				int length;
-				Gl.GetShader(shader, ShaderParameter.InfoLogLength, out length);
+				GL.GetShader(shader, ShaderParameter.InfoLogLength, out length);
 				if (length == 0) {
 					info = String.Empty;
 					return;
 				}
 				StringBuilder sb = new StringBuilder(length * 2);
-				Gl.GetShaderInfoLog((UInt32)shader, sb.Capacity, &length, sb);
+				GL.GetShaderInfoLog((UInt32)shader, sb.Capacity, &length, sb);
 				info = sb.ToString();
 			}
 		}
@@ -404,13 +404,13 @@ namespace Pencil.Gaming.Graphics {
 		public static void GetProgramInfoLog(Int32 program, out string info) {
 			unsafe {
 				int length;
-				Gl.GetProgram(program, Pencil.Gaming.Graphics.ProgramParameter.InfoLogLength, out length);
+				GL.GetProgram(program, Pencil.Gaming.Graphics.ProgramParameter.InfoLogLength, out length);
 				if (length == 0) {
 					info = String.Empty;
 					return;
 				}
 				StringBuilder sb = new StringBuilder(length * 2);
-				Gl.GetProgramInfoLog((UInt32)program, sb.Capacity, &length, sb);
+				GL.GetProgramInfoLog((UInt32)program, sb.Capacity, &length, sb);
 				info = sb.ToString();
 			}
 		}
@@ -429,7 +429,7 @@ namespace Pencil.Gaming.Graphics {
 		/// denoting the origin of the Point Sprite.
 		/// </param>
 		public static void PointParameter(PointSpriteCoordOriginParameter param) {
-			Gl.PointParameter(PointParameterName.PointSpriteCoordOrigin, (int)param);
+			GL.PointParameter(PointParameterName.PointSpriteCoordOrigin, (int)param);
 		}
 
 		#endregion
@@ -437,40 +437,40 @@ namespace Pencil.Gaming.Graphics {
 		#region VertexAttrib|MultiTexCoord
 
 		public static void VertexAttrib2(Int32 index, ref Vector2 v) {
-			Gl.VertexAttrib2(index, v.X, v.Y);
+			GL.VertexAttrib2(index, v.X, v.Y);
 		}
 
 		public static void VertexAttrib3(Int32 index, ref Vector3 v) {
-			Gl.VertexAttrib3(index, v.X, v.Y, v.Z);
+			GL.VertexAttrib3(index, v.X, v.Y, v.Z);
 		}
 
 		public static void VertexAttrib4(Int32 index, ref Vector4 v) {
-			Gl.VertexAttrib4(index, v.X, v.Y, v.Z, v.W);
+			GL.VertexAttrib4(index, v.X, v.Y, v.Z, v.W);
 		}
 
 		public static void VertexAttrib2(Int32 index, Vector2 v) {
-			Gl.VertexAttrib2(index, v.X, v.Y);
+			GL.VertexAttrib2(index, v.X, v.Y);
 		}
 
 		public static void VertexAttrib3(Int32 index, Vector3 v) {
-			Gl.VertexAttrib3(index, v.X, v.Y, v.Z);
+			GL.VertexAttrib3(index, v.X, v.Y, v.Z);
 		}
 
 		public static void VertexAttrib4(Int32 index, Vector4 v) {
-			Gl.VertexAttrib4(index, v.X, v.Y, v.Z, v.W);
+			GL.VertexAttrib4(index, v.X, v.Y, v.Z, v.W);
 		}
 
 #if USE_GL_COMPAT
 		public static void MultiTexCoord2(TextureUnit target, ref Vector2 v) {
-			Gl.MultiTexCoord2(target, v.X, v.Y);
+			GL.MultiTexCoord2(target, v.X, v.Y);
 		}
 
 		public static void MultiTexCoord3(TextureUnit target, ref Vector3 v) {
-			Gl.MultiTexCoord3(target, v.X, v.Y, v.Z);
+			GL.MultiTexCoord3(target, v.X, v.Y, v.Z);
 		}
 
 		public static void MultiTexCoord4(TextureUnit target, ref Vector4 v) {
-			Gl.MultiTexCoord4(target, v.X, v.Y, v.Z, v.W);
+			GL.MultiTexCoord4(target, v.X, v.Y, v.Z, v.W);
 		}
 #endif
 
@@ -479,19 +479,19 @@ namespace Pencil.Gaming.Graphics {
 		#region Rect
 
 //		public static void Rect(RectangleF rect) {
-//			Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//			GL.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 //		}
 //
 //		public static void Rect(Rectangle rect) {
-//			Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//			GL.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 //		}
 //
 //		public static void Rect(ref RectangleF rect) {
-//			Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//			GL.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 //		}
 //
 //		public static void Rect(ref Rectangle rect) {
-//			Gl.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+//			GL.Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 //		}
 
 		#endregion
@@ -884,15 +884,15 @@ namespace Pencil.Gaming.Graphics {
 		#region Viewport
 
 //		public static void Viewport(Size size) {
-//			Gl.Viewport(0, 0, size.Width, size.Height);
+//			GL.Viewport(0, 0, size.Width, size.Height);
 //		}
 //
 //		public static void Viewport(Point location, Size size) {
-//			Gl.Viewport(location.X, location.Y, size.Width, size.Height);
+//			GL.Viewport(location.X, location.Y, size.Width, size.Height);
 //		}
 //
 //		public static void Viewport(Rectangle rectangle) {
-//			Gl.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+//			GL.Viewport(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
 //		}
 #if NO_SYSDRAWING
 		public static void Viewport(Point location, Size size)

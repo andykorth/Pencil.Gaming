@@ -67,64 +67,64 @@ namespace Pencil.Gaming.Audio {
 
 		private void LoadWav(byte[] wave) {
 			byte[] data;
-			AlFormat format;
+			ALFormat format;
 			uint chunkSize, sampleRate, avgBytesPerSec;
 			short bytesPerSample, bitsPerSample;
-			Al.Utils.LoadWavExt(wave, out data, out chunkSize, out format, out sampleRate, out avgBytesPerSec, out bytesPerSample, out bitsPerSample);
+			AL.Utils.LoadWavExt(wave, out data, out chunkSize, out format, out sampleRate, out avgBytesPerSec, out bytesPerSample, out bitsPerSample);
 
 			Load(data, format, sampleRate, TimeSpan.FromSeconds(data.Length / (float)avgBytesPerSec));
 		}
 
 		private void LoadOgg(string ogg) {
 			byte[] data;
-			AlFormat format;
+			ALFormat format;
 			uint sampleRate;
 			TimeSpan len;
-			Al.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
+			AL.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
 
 			Load(data, format, sampleRate, len);
 		}
 
 		private void LoadOgg(Stream ogg) {
 			byte[] data;
-			AlFormat format;
+			ALFormat format;
 			uint sampleRate;
 			TimeSpan len;
-			Al.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
+			AL.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
 
 			Load(data, format, sampleRate, len);
 		}
 
-		private unsafe void Load(byte[] data, AlFormat format, uint sampleRate, TimeSpan len) {
-			Al.GenBuffers(1, out BufferHandle);
+		private unsafe void Load(byte[] data, ALFormat format, uint sampleRate, TimeSpan len) {
+			AL.GenBuffers(1, out BufferHandle);
 
 			lengthSeconds = (float)len.TotalSeconds;
 
 			fixed (byte * dataPtr = &data[0]) {
 				IntPtr dataIntPtr = new IntPtr(dataPtr);
-				Al.BufferData(BufferHandle, format, dataIntPtr, data.Length, (int)sampleRate);
+				AL.BufferData(BufferHandle, format, dataIntPtr, data.Length, (int)sampleRate);
 			}
 
-			Al.GenSources(1, out SourceHandle);
-			Al.Source(SourceHandle, AlSourcei.Buffer, (int)BufferHandle);
-			Al.Source(SourceHandle, AlSourceb.Looping, false);
+			AL.GenSources(1, out SourceHandle);
+			AL.Source(SourceHandle, ALSourcei.Buffer, (int)BufferHandle);
+			AL.Source(SourceHandle, ALSourceb.Looping, false);
 		}
 
 		public void Play() {
-			Al.SourcePlay(SourceHandle);
+			AL.SourcePlay(SourceHandle);
 		}
 
 		public void Stop() {
-			Al.SourceStop(SourceHandle);
+			AL.SourceStop(SourceHandle);
 		}
 
 		public void Pause() {
-			Al.SourcePause(SourceHandle);
+			AL.SourcePause(SourceHandle);
 		}
 
 		public void Dispose() {
-			Al.DeleteBuffers(1, ref BufferHandle);
-			Al.DeleteSources(1, ref SourceHandle);
+			AL.DeleteBuffers(1, ref BufferHandle);
+			AL.DeleteSources(1, ref SourceHandle);
 		}
 
 		public TimeSpan Length {
@@ -135,281 +135,281 @@ namespace Pencil.Gaming.Audio {
 		public bool Looping { 
 			get {
 				bool result;
-				Al.GetSource(SourceHandle, AlSourceb.Looping, out result);
+				AL.GetSource(SourceHandle, ALSourceb.Looping, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourceb.Looping, value);
+				AL.Source(SourceHandle, ALSourceb.Looping, value);
 			}
 		}
 		public Vector3 Direction {
 			get {
 				Vector3 result = new Vector3();
-				Al.GetSource(SourceHandle, AlSource3f.Direction, out result.X, out result.Y, out result.Z);
+				AL.GetSource(SourceHandle, ALSource3f.Direction, out result.X, out result.Y, out result.Z);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSource3f.Direction, value.X, value.Y, value.Z);
+				AL.Source(SourceHandle, ALSource3f.Direction, value.X, value.Y, value.Z);
 			}
 		}
 		public Vector3 Position {
 			get {
 				Vector3 result = new Vector3();
-				Al.GetSource(SourceHandle, AlSource3f.Position, out result.X, out result.Y, out result.Z);
+				AL.GetSource(SourceHandle, ALSource3f.Position, out result.X, out result.Y, out result.Z);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSource3f.Position, value.X, value.Y, value.Z);
+				AL.Source(SourceHandle, ALSource3f.Position, value.X, value.Y, value.Z);
 			}
 		}
 		public Vector3 Velocity {
 			get {
 				Vector3 result = new Vector3();
-				Al.GetSource(SourceHandle, AlSource3f.Velocity, out result.X, out result.Y, out result.Z);
+				AL.GetSource(SourceHandle, ALSource3f.Velocity, out result.X, out result.Y, out result.Z);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSource3f.Velocity, value.X, value.Y, value.Z);
+				AL.Source(SourceHandle, ALSource3f.Velocity, value.X, value.Y, value.Z);
 			}
 		}
 		public Vector3i EfxAuxiliarySendFilter {
 			get {
 				Vector3i result = new Vector3i();
-				Al.GetSource(SourceHandle, AlSource3i.EfxAuxiliarySendFilter, out result.X, out result.Y, out result.Z);
+				AL.GetSource(SourceHandle, ALSource3i.EfxAuxiliarySendFilter, out result.X, out result.Y, out result.Z);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSource3i.EfxAuxiliarySendFilter, value.X, value.Y, value.Z);
+				AL.Source(SourceHandle, ALSource3i.EfxAuxiliarySendFilter, value.X, value.Y, value.Z);
 			}
 		}
 		public bool EfxAuxiliarySendFilterGainAuto {
 			get {
 				bool result;
-				Al.GetSource(SourceHandle, AlSourceb.EfxAuxiliarySendFilterGainAuto, out result);
+				AL.GetSource(SourceHandle, ALSourceb.EfxAuxiliarySendFilterGainAuto, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourceb.EfxAuxiliarySendFilterGainAuto, value);
+				AL.Source(SourceHandle, ALSourceb.EfxAuxiliarySendFilterGainAuto, value);
 			}
 		}
 		public bool EfxAuxiliarySendFilterGainHighFrequencyAuto {
 			get {
 				bool result;
-				Al.GetSource(SourceHandle, AlSourceb.EfxAuxiliarySendFilterGainAuto, out result);
+				AL.GetSource(SourceHandle, ALSourceb.EfxAuxiliarySendFilterGainAuto, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourceb.EfxAuxiliarySendFilterGainAuto, value);
+				AL.Source(SourceHandle, ALSourceb.EfxAuxiliarySendFilterGainAuto, value);
 			}
 		}
 		public bool EfxDirectFilterGainHighFrequencyAuto {
 			get {
 				bool result;
-				Al.GetSource(SourceHandle, AlSourceb.EfxDirectFilterGainHighFrequencyAuto, out result);
+				AL.GetSource(SourceHandle, ALSourceb.EfxDirectFilterGainHighFrequencyAuto, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourceb.EfxDirectFilterGainHighFrequencyAuto, value);
+				AL.Source(SourceHandle, ALSourceb.EfxDirectFilterGainHighFrequencyAuto, value);
 			}
 		}
 		public bool SourceRelative {
 			get {
 				bool result;
-				Al.GetSource(SourceHandle, AlSourceb.SourceRelative, out result);
+				AL.GetSource(SourceHandle, ALSourceb.SourceRelative, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourceb.SourceRelative, value);
+				AL.Source(SourceHandle, ALSourceb.SourceRelative, value);
 			}
 		}
 		public float ConeInnerAngle {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.ConeInnerAngle, out result);
+				AL.GetSource(SourceHandle, ALSourcef.ConeInnerAngle, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.ConeInnerAngle, value);
+				AL.Source(SourceHandle, ALSourcef.ConeInnerAngle, value);
 			}
 		}
 		public float ConeOuterAngle {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.ConeOuterAngle, out result);
+				AL.GetSource(SourceHandle, ALSourcef.ConeOuterAngle, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.ConeOuterAngle, value);
+				AL.Source(SourceHandle, ALSourcef.ConeOuterAngle, value);
 			}
 		}
 		public float ConeOuterGain {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.ConeOuterGain, out result);
+				AL.GetSource(SourceHandle, ALSourcef.ConeOuterGain, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.ConeOuterGain, value);
+				AL.Source(SourceHandle, ALSourcef.ConeOuterGain, value);
 			}
 		}
 		public float EfxAirAbsorptionFactor {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.EfxAirAbsorptionFactor, out result);
+				AL.GetSource(SourceHandle, ALSourcef.EfxAirAbsorptionFactor, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.EfxAirAbsorptionFactor, value);
+				AL.Source(SourceHandle, ALSourcef.EfxAirAbsorptionFactor, value);
 			}
 		}
 		public float EfxConeOuterGainHighFrequency {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.EfxConeOuterGainHighFrequency, out result);
+				AL.GetSource(SourceHandle, ALSourcef.EfxConeOuterGainHighFrequency, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.EfxConeOuterGainHighFrequency, value);
+				AL.Source(SourceHandle, ALSourcef.EfxConeOuterGainHighFrequency, value);
 			}
 		}
 		public float EfxRoomRolloffFactor {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.EfxRoomRolloffFactor, out result);
+				AL.GetSource(SourceHandle, ALSourcef.EfxRoomRolloffFactor, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.EfxRoomRolloffFactor, value);
+				AL.Source(SourceHandle, ALSourcef.EfxRoomRolloffFactor, value);
 			}
 		}
 		public float Gain {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.Gain, out result);
+				AL.GetSource(SourceHandle, ALSourcef.Gain, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.Gain, value);
+				AL.Source(SourceHandle, ALSourcef.Gain, value);
 			}
 		}
 		public float MaxDistance {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.MaxDistance, out result);
+				AL.GetSource(SourceHandle, ALSourcef.MaxDistance, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.MaxDistance, value);
+				AL.Source(SourceHandle, ALSourcef.MaxDistance, value);
 			}
 		}
 		public float MaxGain {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.MaxGain, out result);
+				AL.GetSource(SourceHandle, ALSourcef.MaxGain, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.MaxGain, value);
+				AL.Source(SourceHandle, ALSourcef.MaxGain, value);
 			}
 		}
 		public float MinGain {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.MinGain, out result);
+				AL.GetSource(SourceHandle, ALSourcef.MinGain, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.MinGain, value);
+				AL.Source(SourceHandle, ALSourcef.MinGain, value);
 			}
 		}
 		public float Pitch {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.Pitch, out result);
+				AL.GetSource(SourceHandle, ALSourcef.Pitch, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.Pitch, value);
+				AL.Source(SourceHandle, ALSourcef.Pitch, value);
 			}
 		}
 		public float ReferenceDistance {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.ReferenceDistance, out result);
+				AL.GetSource(SourceHandle, ALSourcef.ReferenceDistance, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.ReferenceDistance, value);
+				AL.Source(SourceHandle, ALSourcef.ReferenceDistance, value);
 			}
 		}
 		public float RolloffFactor {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.RolloffFactor, out result);
+				AL.GetSource(SourceHandle, ALSourcef.RolloffFactor, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.RolloffFactor, value);
+				AL.Source(SourceHandle, ALSourcef.RolloffFactor, value);
 			}
 		}
 		public float SecOffset {
 			get {
 				float result;
-				Al.GetSource(SourceHandle, AlSourcef.SecOffset, out result);
+				AL.GetSource(SourceHandle, ALSourcef.SecOffset, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcef.SecOffset, value);
+				AL.Source(SourceHandle, ALSourcef.SecOffset, value);
 			}
 		}
 		public int Buffer {
 			get {
 				int result;
-				Al.GetSource(SourceHandle, AlSourcei.Buffer, out result);
+				AL.GetSource(SourceHandle, ALSourcei.Buffer, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcei.Buffer, value);
+				AL.Source(SourceHandle, ALSourcei.Buffer, value);
 			}
 		}
 		public int ByteOffset {
 			get {
 				int result;
-				Al.GetSource(SourceHandle, AlSourcei.ByteOffset, out result);
+				AL.GetSource(SourceHandle, ALSourcei.ByteOffset, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcei.ByteOffset, value);
+				AL.Source(SourceHandle, ALSourcei.ByteOffset, value);
 			}
 		}
 		public int EfxDirectFilter {
 			get {
 				int result;
-				Al.GetSource(SourceHandle, AlSourcei.EfxDirectFilter, out result);
+				AL.GetSource(SourceHandle, ALSourcei.EfxDirectFilter, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcei.EfxDirectFilter, value);
+				AL.Source(SourceHandle, ALSourcei.EfxDirectFilter, value);
 			}
 		}
 		public int SampleOffset {
 			get {
 				int result;
-				Al.GetSource(SourceHandle, AlSourcei.SampleOffset, out result);
+				AL.GetSource(SourceHandle, ALSourcei.SampleOffset, out result);
 				return result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcei.SampleOffset, value);
+				AL.Source(SourceHandle, ALSourcei.SampleOffset, value);
 			}
 		}
-		public AlSourceType SourceType {
+		public ALSourceType SourceType {
 			get {
 				int result;
-				Al.GetSource(SourceHandle, AlSourcei.SourceType, out result);
-				return (AlSourceType)result;
+				AL.GetSource(SourceHandle, ALSourcei.SourceType, out result);
+				return (ALSourceType)result;
 			}
 			set {
-				Al.Source(SourceHandle, AlSourcei.SourceType, (int)value);
+				AL.Source(SourceHandle, ALSourcei.SourceType, (int)value);
 			}
 		}
 	}

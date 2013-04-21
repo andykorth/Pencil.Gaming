@@ -98,22 +98,10 @@
     <Compile Include="Math\Vector2.cs" />
     <Compile Include="Math\Vector3.cs" />
     <Compile Include="Graphics\Color4.cs" />
-    <Compile Include="Graphics\Gl.cs" />
-    <Compile Include="Graphics\GlDelegates.cs" />
-    <Compile Include="Graphics\GlHelper.cs" />
-    <Compile Include="Audio\Al32.cs" />
-    <Compile Include="Audio\Al64.cs" />
-    <Compile Include="Audio\AlDelegates.cs" />
-    <Compile Include="Audio\Al.cs" />
     <Compile Include="Audio\Alc32.cs" />
     <Compile Include="Audio\Alc64.cs" />
-    <Compile Include="Audio\AlEnums.cs" />
-    <Compile Include="Graphics\GlCore.cs" />
-    <Compile Include="Audio\AlUtils.cs" />
     <Compile Include="Math\Matrix.cs" />
     <Compile Include="Graphics\GlEnums.cs" />
-    <Compile Include="Graphics\GlUtils.cs" />
-    <Compile Include="Graphics\GlLoadException.cs" />
     <Compile Include="Graphics\AssetLoadException.cs" />
     <Compile Include="Glfw\Glfw2.cs" />
     <Compile Include="Glfw\Glfw3.cs" />
@@ -159,6 +147,18 @@
     <Compile Include="Applets\Browsers.cs" />
     <Compile Include="Applets\SupportedBrowsersAttribute.cs" />
     <Compile Include="Applets\AppletRequest.cs" />
+    <Compile Include="Audio\ALUtils.cs" />
+    <Compile Include="Audio\AL.cs" />
+    <Compile Include="Audio\ALDelegates.cs" />
+    <Compile Include="Audio\AL32.cs" />
+    <Compile Include="Audio\AL64.cs" />
+    <Compile Include="Audio\ALEnums.cs" />
+    <Compile Include="Graphics\GLHelper.cs" />
+    <Compile Include="Graphics\GLUtils.cs" />
+    <Compile Include="Graphics\GLLoadException.cs" />
+    <Compile Include="Graphics\GLCore.cs" />
+    <Compile Include="Graphics\GLDelegates.cs" />
+    <Compile Include="Graphics\GL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

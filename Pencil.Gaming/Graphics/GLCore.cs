@@ -26,7 +26,7 @@ using System.Security;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming.Graphics {
-	internal static unsafe class GlCore {
+	internal static unsafe class GLCore {
 		[DllImport("opengl32.dll"), SuppressUnmanagedCodeSecurity]
 		internal static extern void glAccum(AccumOp op, Single value);
 		[DllImport("opengl32.dll"), SuppressUnmanagedCodeSecurity]

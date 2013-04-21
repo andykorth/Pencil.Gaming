@@ -24,21 +24,21 @@
 using System;
 
 namespace Pencil.Gaming.Audio {
-	public enum AlCapability {
+	public enum ALCapability {
 		Invalid = -1,
 	}
-	public enum AlListenerf {
+	public enum ALListenerf {
 		Gain = 0x100A,
 		EfxMetersPerUnit = 0x20004,
 	}
-	public enum AlListener3f {
+	public enum ALListener3f {
 		Position = 0x1004,
 		Velocity = 0x1006,
 	}
-	public enum AlListenerfv {
+	public enum ALListenerfv {
 		Orientation = 0x100F,
 	}
-	public enum AlSourcef {
+	public enum ALSourcef {
 		ReferenceDistance = 0x1020,
 		MaxDistance = 0x1023,
 		RolloffFactor = 0x1021,
@@ -49,34 +49,34 @@ namespace Pencil.Gaming.Audio {
 		ConeInnerAngle = 0x1001,
 		ConeOuterAngle = 0x1002,
 		ConeOuterGain = 0x1022,
-		SecOffset = 0x1024, // Al_EXT_OFFSET extension.
+		SecOffset = 0x1024, // AL_EXT_OFFSET extension.
 		EfxAirAbsorptionFactor = 0x20007,
 		EfxRoomRolloffFactor = 0x20008,
 		EfxConeOuterGainHighFrequency = 0x20009,
 	}
-	public enum AlSource3f {
+	public enum ALSource3f {
 		Position = 0x1004,
 		Velocity = 0x1006,
 		Direction = 0x1005,
 	}
-	public enum AlSourceb {
+	public enum ALSourceb {
 		SourceRelative = 0x202,
 		Looping = 0x1007,
 		EfxDirectFilterGainHighFrequencyAuto = 0x2000A,
 		EfxAuxiliarySendFilterGainAuto = 0x2000B,
 		EfxAuxiliarySendFilterGainHighFrequencyAuto = 0x2000C,
 	}
-	public enum AlSourcei {
-		ByteOffset = 0x1026,  // Al_EXT_OFFSET extension.
-		SampleOffset = 0x1025, // Al_EXT_OFFSET extension.
+	public enum ALSourcei {
+		ByteOffset = 0x1026,  // AL_EXT_OFFSET extension.
+		SampleOffset = 0x1025, // AL_EXT_OFFSET extension.
 		Buffer = 0x1009,
 		SourceType = 0x1027,
 		EfxDirectFilter = 0x20005,
 	}
-	public enum AlSource3i {
+	public enum ALSource3i {
 		EfxAuxiliarySendFilter = 0x20006,
 	}
-	public enum AlGetSourcei {
+	public enum ALGetSourcei {
 		ByteOffset = 0x1026,
 		SampleOffset = 0x1025,
 		Buffer = 0x1009,
@@ -85,24 +85,24 @@ namespace Pencil.Gaming.Audio {
 		BuffersProcessed = 0x1016,
 		SourceType = 0x1027,
 	}
-	public enum AlSourceState {
+	public enum ALSourceState {
 		Initial = 0x1011,
 		Playing = 0x1012,
 		Paused = 0x1013,
 		Stopped = 0x1014,
 	}
-	public enum AlSourceType {
+	public enum ALSourceType {
 		Static = 0x1028,
 		Streaming = 0x1029,
 		Undetermined = 0x1030,
 	}
-	public enum AlFormat {
+	public enum ALFormat {
 		Mono8 = 0x1100,
 		Mono16 = 0x1101,
 		Stereo8 = 0x1102,
 		Stereo16 = 0x1103,
-		MonoAlawExt = 0x10016,
-		StereoAlawExt = 0x10017,
+		MonoALawExt = 0x10016,
+		StereoALawExt = 0x10017,
 		MonoMuLawExt = 0x10014,
 		StereoMuLawExt = 0x10015,
 		VorbisExt = 0x10003,
@@ -129,18 +129,18 @@ namespace Pencil.Gaming.Audio {
 		MultiRear32Ext = 0x1209,
 		MultiRear8Ext = 0x1207,
 	}
-	public enum AlGetBufferi {
+	public enum ALGetBufferi {
 		Frequency = 0x2001,
 		Bits = 0x2002,
 		Channels = 0x2003,
 		Size = 0x2004,
 	}
-	public enum AlBufferState {
+	public enum ALBufferState {
 		Unused = 0x2010,
 		Pending = 0x2011,
 		Processed = 0x2012,
 	}
-	public enum AlError {
+	public enum ALError {
 		NoError = 0,
 		InvalidName = 0xA001,
 		IllegalEnum = 0xA002,
@@ -150,21 +150,21 @@ namespace Pencil.Gaming.Audio {
 		InvalidOperation = 0xA004,
 		OutOfMemory = 0xA005,
 	}
-	public enum AlGetString {
+	public enum ALGetString {
 		Vendor = 0xB001,
 		Version = 0xB002,
 		Renderer = 0xB003,
 		Extensions = 0xB004,
 	}
-	public enum AlGetFloat {
+	public enum ALGetFloat {
 		DopplerFactor = 0xC000,
 		DopplerVelocity = 0xC001,
 		SpeedOfSound = 0xC003,
 	}
-	public enum AlGetInteger {
+	public enum ALGetInteger {
 		DistanceModel = 0xD000,
 	}
-	public enum AlDistanceModel {
+	public enum ALDistanceModel {
 		None = 0,
 		InverseDistance = 0xD001,
 		InverseDistanceClamped = 0xD002,

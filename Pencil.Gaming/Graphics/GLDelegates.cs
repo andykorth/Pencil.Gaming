@@ -31,7 +31,7 @@ namespace Pencil.Gaming.Graphics {
 	#pragma warning disable 3019
 	#pragma warning disable 1591
 
-	partial class Gl {
+	partial class GL {
 		internal static partial class Delegates {
 			[SuppressUnmanagedCodeSecurity()]
 			internal delegate void Accum(Pencil.Gaming.Graphics.AccumOp op,Single value);

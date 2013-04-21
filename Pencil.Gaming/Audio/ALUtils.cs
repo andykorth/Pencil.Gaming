@@ -29,25 +29,25 @@ using System.Runtime.InteropServices;
 using NVorbis;
 
 namespace Pencil.Gaming.Audio {
-	public static partial class Al {
+	public static partial class AL {
 		public static class Utils {
 			#region Ogg Loading
 
-			public static void LoadOgg(string file, out byte[] data, out AlFormat format, out uint sampleRate, out TimeSpan len) {
+			public static void LoadOgg(string file, out byte[] data, out ALFormat format, out uint sampleRate, out TimeSpan len) {
 				using (VorbisReader vorbis = new VorbisReader(file)) {
 					LoadOgg(vorbis, out data, out format, out sampleRate, out len);
 				}
 			}
 
-			public static void LoadOgg(Stream file, out byte[] data, out AlFormat format, out uint sampleRate, out TimeSpan len) {
+			public static void LoadOgg(Stream file, out byte[] data, out ALFormat format, out uint sampleRate, out TimeSpan len) {
 				using (VorbisReader vorbis = new VorbisReader(file, false)) {
 					LoadOgg(vorbis, out data, out format, out sampleRate, out len);
 				}
 			}
 
-			private static void LoadOgg(VorbisReader vorbis, out byte[] data, out AlFormat format, out uint sampleRate, out TimeSpan len) {
+			private static void LoadOgg(VorbisReader vorbis, out byte[] data, out ALFormat format, out uint sampleRate, out TimeSpan len) {
 				sampleRate = (uint)vorbis.SampleRate;
-				format = vorbis.Channels == 1 ? AlFormat.Mono16 : AlFormat.Stereo16;
+				format = vorbis.Channels == 1 ? ALFormat.Mono16 : ALFormat.Stereo16;
 				len = vorbis.TotalTime;
 
 				float[] buffer = new float[vorbis.SampleRate / 10 * vorbis.Channels];
@@ -55,7 +55,7 @@ namespace Pencil.Gaming.Audio {
 				int count = 0;
 				while ((count = vorbis.ReadSamples(buffer, 0, buffer.Length)) > 0) {
 					for (int i = 0; i < count; i++) {
-						int temp = (int)(short.MaxValue * buffer [i]);
+						int temp = (int)(short.MaxValue * buffer[i]);
 						if (temp > short.MaxValue) {
 							temp = short.MaxValue;
 						} else if (temp < short.MinValue) {
@@ -88,17 +88,17 @@ namespace Pencil.Gaming.Audio {
 
 			private unsafe static uint BufferFromOgg(VorbisReader vorbis) {
 				uint result;
-				Al.GenBuffers(1, out result);
+				AL.GenBuffers(1, out result);
 
 				byte[] data;
-				AlFormat format;
+				ALFormat format;
 				uint sampleRate;
 				TimeSpan len;
 				LoadOgg(vorbis, out data, out format, out sampleRate, out len);
 
 				fixed (byte * dataPtr = &data[0]) {
 					IntPtr dataIntPtr = new IntPtr(dataPtr);
-					Al.BufferData(result, format, dataIntPtr, data.Length, (int)sampleRate);
+					AL.BufferData(result, format, dataIntPtr, data.Length, (int)sampleRate);
 				}
 
 				return result;
@@ -111,7 +111,7 @@ namespace Pencil.Gaming.Audio {
 			public static void LoadWav(
 				string file,
 				out byte[] data,
-				out AlFormat format,
+				out ALFormat format,
 				out uint sampleRate) {
 
 				LoadWav(File.ReadAllBytes(file), out data, out format, out sampleRate);
@@ -121,7 +121,7 @@ namespace Pencil.Gaming.Audio {
 				string file, 
 				out byte[] data,
 				out uint chunkSize,
-				out AlFormat format,
+				out ALFormat format,
 				out uint sampleRate,
 				out uint avgBytesPerSec,
 				out short bytesPerSample,
@@ -133,7 +133,7 @@ namespace Pencil.Gaming.Audio {
 			public static void LoadWav(
 				Stream file,
 				out byte[] data,
-				out AlFormat format,
+				out ALFormat format,
 				out uint sampleRate) {
 
 				using (MemoryStream ms = new MemoryStream()) {
@@ -154,7 +154,7 @@ namespace Pencil.Gaming.Audio {
 				Stream file,
 				out byte[] data,
 				out uint chunkSize,
-				out AlFormat format,
+				out ALFormat format,
 				out uint sampleRate,
 				out uint avgBytesPerSec,
 				out short bytesPerSample,
@@ -177,7 +177,7 @@ namespace Pencil.Gaming.Audio {
 			public static void LoadWav(
 				byte[] file,
 				out byte[] data,
-				out AlFormat format,
+				out ALFormat format,
 				out uint sampleRate) {
 
 				uint dummyui;
@@ -189,7 +189,7 @@ namespace Pencil.Gaming.Audio {
 				byte[] sound,
 				out byte[] data,
 				out uint chunkSize,
-				out AlFormat format,
+				out ALFormat format,
 				out uint sampleRate,
 				out uint avgBytesPerSec,
 				out short bytesPerSample,
@@ -203,48 +203,48 @@ namespace Pencil.Gaming.Audio {
 				short channels;
 
 				int ptrOffset = 4;
-				if (sound [0] != 'R' || sound [1] != 'I' || sound [2] != 'F' || sound [3] != 'F') {
+				if (sound[0] != 'R' || sound[1] != 'I' || sound[2] != 'F' || sound[3] != 'F') {
 					throw new Exception("Invalid file format.");
 				}
 				//size = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
-				if (sound [8] != 'W' || sound [9] != 'A' || sound [10] != 'V' || sound [11] != 'E') {
+				if (sound[8] != 'W' || sound[9] != 'A' || sound[10] != 'V' || sound[11] != 'E') {
 					throw new Exception("Invalid file format.");
 				}
-				if (sound [12] != 'f' || sound [13] != 'm' || sound [14] != 't' || sound [15] != ' ') {
+				if (sound[12] != 'f' || sound[13] != 'm' || sound[14] != 't' || sound[15] != ' ') {
 					throw new Exception("Invalid file format.");
 				}
 				ptrOffset = 16;
-				chunkSize = ((uint)sound [3 + ptrOffset] << 24) | ((uint)sound [2 + ptrOffset] << 16) | ((uint)sound [1 + ptrOffset] << 8) | ((uint)sound [ptrOffset]);
+				chunkSize = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
 				//ptrOffset = 20;
 				//formatType = ((short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset])));
 				ptrOffset = 22;
-				channels = (short)(((short)sound [1 + ptrOffset] << 8) | ((short)sound [0 + ptrOffset]));
+				channels = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
 				ptrOffset = 24;
-				sampleRate = ((uint)sound [3 + ptrOffset] << 24) | ((uint)sound [2 + ptrOffset] << 16) | ((uint)sound [1 + ptrOffset] << 8) | ((uint)sound [ptrOffset]);
+				sampleRate = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
 				ptrOffset = 28;
-				avgBytesPerSec = ((uint)sound [3 + ptrOffset] << 24) | ((uint)sound [2 + ptrOffset] << 16) | ((uint)sound [1 + ptrOffset] << 8) | ((uint)sound [ptrOffset]);
+				avgBytesPerSec = ((uint)sound[3 + ptrOffset] << 24) | ((uint)sound[2 + ptrOffset] << 16) | ((uint)sound[1 + ptrOffset] << 8) | ((uint)sound[ptrOffset]);
 				ptrOffset = 32;
-				bytesPerSample = (short)(((short)sound [1 + ptrOffset] << 8) | ((short)sound [0 + ptrOffset]));
+				bytesPerSample = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
 				ptrOffset = 34;
-				bitsPerSample = (short)(((short)sound [1 + ptrOffset] << 8) | ((short)sound [0 + ptrOffset]));
-				if (sound [36] != 'd' || sound [37] != 'a' || sound [38] != 't' || sound [39] != 'a') {
+				bitsPerSample = (short)(((short)sound[1 + ptrOffset] << 8) | ((short)sound[0 + ptrOffset]));
+				if (sound[36] != 'd' || sound[37] != 'a' || sound[38] != 't' || sound[39] != 'a') {
 					throw new Exception("Invalid file format.");
 				}
 				ptrOffset = 40;
-				int dataSize = ((int)sound [3 + ptrOffset] << 24) | ((int)sound [2 + ptrOffset] << 16) | ((int)sound [1 + ptrOffset] << 8) | ((int)sound [ptrOffset]);
+				int dataSize = ((int)sound[3 + ptrOffset] << 24) | ((int)sound[2 + ptrOffset] << 16) | ((int)sound[1 + ptrOffset] << 8) | ((int)sound[ptrOffset]);
 
-				format = (AlFormat)0;
+				format = (ALFormat)0;
 				if (bitsPerSample == 8) {
 					if (channels == 1) {
-						format = AlFormat.Mono8;
+						format = ALFormat.Mono8;
 					} else if (channels == 2) {
-						format = AlFormat.Stereo8;
+						format = ALFormat.Stereo8;
 					}
 				} else if (bitsPerSample == 16) {
 					if (channels == 1) {
-						format = AlFormat.Mono16;
+						format = ALFormat.Mono16;
 					} else if (channels == 2) {
-						format = AlFormat.Stereo16;
+						format = ALFormat.Stereo16;
 					}
 				}
 
@@ -278,16 +278,16 @@ namespace Pencil.Gaming.Audio {
 
 			public static unsafe uint BufferFromWav(byte[] wave) {
 				uint result;
-				Al.GenBuffers(1, out result);
+				AL.GenBuffers(1, out result);
 
 				byte[] data;
-				AlFormat format;
+				ALFormat format;
 				uint sampleRate;
-				Al.Utils.LoadWav(wave, out data, out format, out sampleRate);
+				AL.Utils.LoadWav(wave, out data, out format, out sampleRate);
 
 				fixed (byte * dataPtr = &data[0]) {
 					IntPtr dataIntPtr = new IntPtr(dataPtr);
-					Al.BufferData(result, format, dataIntPtr, data.Length, (int)sampleRate);
+					AL.BufferData(result, format, dataIntPtr, data.Length, (int)sampleRate);
 				}
 
 				return result;

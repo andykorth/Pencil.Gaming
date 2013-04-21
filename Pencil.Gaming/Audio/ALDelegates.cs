@@ -28,14 +28,14 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming.Audio {
-	public static class AlDelegates {
-		static AlDelegates() {
+	public static class ALDelegates {
+		static ALDelegates() {
 #if DEBUG
 			Stopwatch sw = new Stopwatch();
 			sw.Start();
 #endif
-			Type alInterop = (IntPtr.Size == 8) ? typeof(Al64) : typeof(Al32);
-			FieldInfo[] fields = typeof(AlDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+			Type alInterop = (IntPtr.Size == 8) ? typeof(AL64) : typeof(AL32);
+			FieldInfo[] fields = typeof(ALDelegates).GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 			foreach (FieldInfo fi in fields) {
 				MethodInfo mi = alInterop.GetMethod(fi.Name, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 				Delegate function = Delegate.CreateDelegate(fi.FieldType, mi);
