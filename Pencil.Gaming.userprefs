@@ -1,17 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Graphics/GlUtils.cs">
-    <Files>
-      <File FileName="Pencil.Gaming/Graphics/GlUtils.cs" Line="440" Column="34" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True">
-            <Node name="Graphics" expanded="True">
-              <Node name="GlUtils.cs" selected="True" />
-            </Node>
-          </Node>
+          <Node name="Pencil.Gaming" expanded="True" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
