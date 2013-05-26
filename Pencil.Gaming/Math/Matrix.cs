@@ -276,27 +276,29 @@ namespace Pencil.Gaming.MathUtils {
 		/// <summary>
 		/// Gets or sets the value at a specified row and column.
 		/// </summary>
-		public float this[int rowIndex, int columnIndex] {
+		public float this [int rowIndex, int columnIndex] {
 			get {
-				if (rowIndex == 0)
-					return Row0[columnIndex];
-				else if (rowIndex == 1)
-					return Row1[columnIndex];
-				else if (rowIndex == 2)
-					return Row2[columnIndex];
-				else if (rowIndex == 3)
-					return Row3[columnIndex];
+				if (rowIndex == 0) {
+					return Row0 [columnIndex];
+				} else if (rowIndex == 1) {
+					return Row1 [columnIndex];
+				} else if (rowIndex == 2) {
+					return Row2 [columnIndex];
+				} else if (rowIndex == 3) {
+					return Row3 [columnIndex];
+				}
 				throw new IndexOutOfRangeException("You tried to access this matrix at: (" + rowIndex + ", " + columnIndex + ")");
 			}
 			set {
-				if (rowIndex == 0)
-					Row0[columnIndex] = value;
-				else if (rowIndex == 1)
-					Row1[columnIndex] = value;
-				else if (rowIndex == 2)
-					Row2[columnIndex] = value;
-				else if (rowIndex == 3)
-					Row3[columnIndex] = value;
+				if (rowIndex == 0) {
+					Row0 [columnIndex] = value;
+				} else if (rowIndex == 1) {
+					Row1 [columnIndex] = value;
+				} else if (rowIndex == 2) {
+					Row2 [columnIndex] = value;
+				} else if (rowIndex == 3) {
+					Row3 [columnIndex] = value;
+				}
 				throw new IndexOutOfRangeException("You tried to set this matrix at: (" + rowIndex + ", " + columnIndex + ")");
 			}
 		}
@@ -730,14 +732,18 @@ namespace Pencil.Gaming.MathUtils {
 		/// </list>
 		/// </exception>
 		public static void CreatePerspectiveFieldOfView(float fovy, float aspect, float zNear, float zFar, out Matrix result) {
-			if (fovy <= 0 || fovy > System.Math.PI)
+			if (fovy <= 0 || fovy > System.Math.PI) {
 				throw new ArgumentOutOfRangeException("fovy");
-			if (aspect <= 0)
+			}
+			if (aspect <= 0) {
 				throw new ArgumentOutOfRangeException("aspect");
-			if (zNear <= 0)
+			}
+			if (zNear <= 0) {
 				throw new ArgumentOutOfRangeException("zNear");
-			if (zFar <= 0)
+			}
+			if (zFar <= 0) {
 				throw new ArgumentOutOfRangeException("zFar");
+			}
 			
 			float yMax = zNear * (float)System.Math.Tan(0.5f * fovy);
 			float yMin = -yMax;
@@ -794,12 +800,15 @@ namespace Pencil.Gaming.MathUtils {
 		/// </list>
 		/// </exception>
 		public static void CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float zNear, float zFar, out Matrix result) {
-			if (zNear <= 0)
+			if (zNear <= 0) {
 				throw new ArgumentOutOfRangeException("zNear");
-			if (zFar <= 0)
+			}
+			if (zFar <= 0) {
 				throw new ArgumentOutOfRangeException("zFar");
-			if (zNear >= zFar)
+			}
+			if (zNear >= zFar) {
 				throw new ArgumentOutOfRangeException("zNear");
+			}
 			
 			float x = (2.0f * zNear) / (right - left);
 			float y = (2.0f * zNear) / (top - bottom);
@@ -981,16 +990,16 @@ namespace Pencil.Gaming.MathUtils {
 				// Find the largest pivot value
 				float maxPivot = 0.0f;
 				for (int j = 0; j < 4; j++) {
-					if (pivotIdx[j] != 0) {
+					if (pivotIdx [j] != 0) {
 						for (int k = 0; k < 4; ++k) {
-							if (pivotIdx[k] == -1) {
-								float absVal = System.Math.Abs(inverse[j, k]);
+							if (pivotIdx [k] == -1) {
+								float absVal = System.Math.Abs(inverse [j, k]);
 								if (absVal > maxPivot) {
 									maxPivot = absVal;
 									irow = j;
 									icol = k;
 								}
-							} else if (pivotIdx[k] > 0) {
+							} else if (pivotIdx [k] > 0) {
 								result = mat;
 								return;
 							}
@@ -998,21 +1007,21 @@ namespace Pencil.Gaming.MathUtils {
 					}
 				}
 
-				++(pivotIdx[icol]);
+				++(pivotIdx [icol]);
 
 				// Swap rows over so pivot is on diagonal
 				if (irow != icol) {
 					for (int k = 0; k < 4; ++k) {
-						float f = inverse[irow, k];
-						inverse[irow, k] = inverse[icol, k];
-						inverse[icol, k] = f;
+						float f = inverse [irow, k];
+						inverse [irow, k] = inverse [icol, k];
+						inverse [icol, k] = f;
 					}
 				}
 
-				rowIdx[i] = irow;
-				colIdx[i] = icol;
+				rowIdx [i] = irow;
+				colIdx [i] = icol;
 
-				float pivot = inverse[icol, icol];
+				float pivot = inverse [icol, icol];
 				// check for singular matrix
 				if (pivot == 0.0f) {
 					throw new InvalidOperationException("Matrix is singular and cannot be inverted.");
@@ -1020,48 +1029,50 @@ namespace Pencil.Gaming.MathUtils {
 
 				// Scale row so it has a unit diagonal
 				float oneOverPivot = 1.0f / pivot;
-				inverse[icol, icol] = 1.0f;
-				for (int k = 0; k < 4; ++k)
-					inverse[icol, k] *= oneOverPivot;
+				inverse [icol, icol] = 1.0f;
+				for (int k = 0; k < 4; ++k) {
+					inverse [icol, k] *= oneOverPivot;
+				}
 
 				// Do elimination of non-diagonal elements
 				for (int j = 0; j < 4; ++j) {
 					// check this isn't on the diagonal
 					if (icol != j) {
-						float f = inverse[j, icol];
-						inverse[j, icol] = 0.0f;
-						for (int k = 0; k < 4; ++k)
-							inverse[j, k] -= inverse[icol, k] * f;
+						float f = inverse [j, icol];
+						inverse [j, icol] = 0.0f;
+						for (int k = 0; k < 4; ++k) {
+							inverse [j, k] -= inverse [icol, k] * f;
+						}
 					}
 				}
 			}
 
 			for (int j = 3; j >= 0; --j) {
-				int ir = rowIdx[j];
-				int ic = colIdx[j];
+				int ir = rowIdx [j];
+				int ic = colIdx [j];
 				for (int k = 0; k < 4; ++k) {
-					float f = inverse[k, ir];
-					inverse[k, ir] = inverse[k, ic];
-					inverse[k, ic] = f;
+					float f = inverse [k, ir];
+					inverse [k, ir] = inverse [k, ic];
+					inverse [k, ic] = f;
 				}
 			}
 
-			result.Row0.X = inverse[0, 0];
-			result.Row0.Y = inverse[0, 1];
-			result.Row0.Z = inverse[0, 2];
-			result.Row0.W = inverse[0, 3];
-			result.Row1.X = inverse[1, 0];
-			result.Row1.Y = inverse[1, 1];
-			result.Row1.Z = inverse[1, 2];
-			result.Row1.W = inverse[1, 3];
-			result.Row2.X = inverse[2, 0];
-			result.Row2.Y = inverse[2, 1];
-			result.Row2.Z = inverse[2, 2];
-			result.Row2.W = inverse[2, 3];
-			result.Row3.X = inverse[3, 0];
-			result.Row3.Y = inverse[3, 1];
-			result.Row3.Z = inverse[3, 2];
-			result.Row3.W = inverse[3, 3];
+			result.Row0.X = inverse [0, 0];
+			result.Row0.Y = inverse [0, 1];
+			result.Row0.Z = inverse [0, 2];
+			result.Row0.W = inverse [0, 3];
+			result.Row1.X = inverse [1, 0];
+			result.Row1.Y = inverse [1, 1];
+			result.Row1.Z = inverse [1, 2];
+			result.Row1.W = inverse [1, 3];
+			result.Row2.X = inverse [2, 0];
+			result.Row2.Y = inverse [2, 1];
+			result.Row2.Z = inverse [2, 2];
+			result.Row2.W = inverse [2, 3];
+			result.Row3.X = inverse [3, 0];
+			result.Row3.Y = inverse [3, 1];
+			result.Row3.Z = inverse [3, 2];
+			result.Row3.W = inverse [3, 3];
 		}
 
 		/// <summary>
@@ -1174,8 +1185,9 @@ namespace Pencil.Gaming.MathUtils {
 		/// <param name="obj">The object to compare tresult.</param>
 		/// <returns>True if the instances are equal; false otherwise.</returns>
 		public override bool Equals(object obj) {
-			if (!(obj is Matrix))
+			if (!(obj is Matrix)) {
 				return false;
+			}
 
 			return this.Equals((Matrix)obj);
 		}

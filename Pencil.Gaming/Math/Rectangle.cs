@@ -77,6 +77,11 @@ namespace Pencil.Gaming.MathUtils {
 			return !((X >= rect.Right) || (Right <= rect.X) ||
 				(Y >= rect.Bottom) || (Bottom <= rect.Y));
 		}
+		public bool IsVectorEnclosedBy(Vector2 vec) {
+			return 
+				(vec.X >= X && vec.X <= Right &&
+				vec.Y >= Y && vec.Y <= Bottom);
+		}
 	}
 }
 

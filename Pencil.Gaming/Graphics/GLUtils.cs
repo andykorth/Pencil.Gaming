@@ -30,7 +30,7 @@ using System.Diagnostics;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
-	public delegate T[] TArrayFromRetrievedData<out T>(Vector4[] vertexs, Vector3[] normals, Vector2[] texCoords);
+	public delegate T[] TArrayFromRetrievedData<out T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
 
 	public static partial class GL {
 		public static class Utils {
@@ -132,17 +132,17 @@ namespace Pencil.Gaming.Graphics {
 					float xVert = xNorm * radius;
 					float zVert = zNorm * radius;
 
-					normals [2 * i + 0] = new Vector3(xNorm, 0f, zNorm);
-					normals [2 * i + 1] = new Vector3(xNorm, 0f, zNorm);
-					vertices [2 * i + 0] = new Vector4(xVert, -height / 2f, zVert, 1f);
-					vertices [2 * i + 1] = new Vector4(xVert, height / 2f, zVert, 1f);
+					normals[2 * i + 0] = new Vector3(xNorm, 0f, zNorm);
+					normals[2 * i + 1] = new Vector3(xNorm, 0f, zNorm);
+					vertices[2 * i + 0] = new Vector4(xVert, -height / 2f, zVert, 1f);
+					vertices[2 * i + 1] = new Vector4(xVert, height / 2f, zVert, 1f);
 
 					if (i != lod) {
-						normals [sideVCount + i] = -Vector3.UnitY;
-						vertices [sideVCount + i] = new Vector4(xVert, -height / 2f, zVert, 1f);
+						normals[sideVCount + i] = -Vector3.UnitY;
+						vertices[sideVCount + i] = new Vector4(xVert, -height / 2f, zVert, 1f);
 
-						normals [sideVCount + topVCount + i] = Vector3.UnitY;
-						vertices [sideVCount + topVCount + i] = new Vector4(xVert, height / 2f, zVert, 1f);
+						normals[sideVCount + topVCount + i] = Vector3.UnitY;
+						vertices[sideVCount + topVCount + i] = new Vector4(xVert, height / 2f, zVert, 1f);
 					}
 				}
 			}
@@ -154,72 +154,72 @@ namespace Pencil.Gaming.Graphics {
 			public static float[] FloatArrayFromVerticesNormalsInterleaved(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3];
 				for (int i = 0; i < final.Length; i += 7) {
-					Vector4 vertex = vertices [i / 7];
-					Vector3 normal = normals [i / 7];
-					final [i] = vertex.X;
-					final [i + 1] = vertex.Y;
-					final [i + 2] = vertex.Z;
-					final [i + 3] = vertex.W;
-					final [i + 4] = normal.X;
-					final [i + 5] = normal.Y;
-					final [i + 6] = normal.Z;
+					Vector4 vertex = vertices[i / 7];
+					Vector3 normal = normals[i / 7];
+					final[i] = vertex.X;
+					final[i + 1] = vertex.Y;
+					final[i + 2] = vertex.Z;
+					final[i + 3] = vertex.W;
+					final[i + 4] = normal.X;
+					final[i + 5] = normal.Y;
+					final[i + 6] = normal.Z;
 				}
 				return final;
 			}
 			public static float[] FloatArrayFromVerticesNormalsTexCoordsInterleaved(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3 + texCoords.Length * 2];
 				for (int i = 0; i < final.Length; i += 9) {
-					Vector4 vertex = vertices [i / 9];
-					Vector3 normal = normals [i / 9];
-					Vector2 texCoord = texCoords [i / 9];
-					final [i] = vertex.X;
-					final [i + 1] = vertex.Y;
-					final [i + 2] = vertex.Z;
-					final [i + 3] = vertex.W;
-					final [i + 4] = normal.X;
-					final [i + 5] = normal.Y;
-					final [i + 6] = normal.Z;
-					final [i + 7] = texCoord.X;
-					final [i + 8] = texCoord.Y;
+					Vector4 vertex = vertices[i / 9];
+					Vector3 normal = normals[i / 9];
+					Vector2 texCoord = texCoords[i / 9];
+					final[i] = vertex.X;
+					final[i + 1] = vertex.Y;
+					final[i + 2] = vertex.Z;
+					final[i + 3] = vertex.W;
+					final[i + 4] = normal.X;
+					final[i + 5] = normal.Y;
+					final[i + 6] = normal.Z;
+					final[i + 7] = texCoord.X;
+					final[i + 8] = texCoord.Y;
 				}
 				return final;
 			}
 			public static float[] FloatArrayFromVerticesNormals(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3];
 				for (int i = 0; i < vertices.Length * 4; i += 4) {
-					Vector4 vertex = vertices [i / 3];
-					final [i] = vertex.X;
-					final [i + 1] = vertex.Y;
-					final [i + 2] = vertex.Z;
-					final [i + 3] = vertex.W;
+					Vector4 vertex = vertices[i / 3];
+					final[i] = vertex.X;
+					final[i + 1] = vertex.Y;
+					final[i + 2] = vertex.Z;
+					final[i + 3] = vertex.W;
 				}
 				for (int i = vertices.Length * 4; i < final.Length; i += 3) {
-					Vector3 normal = normals [i];
-					final [i] = normal.X;
-					final [i + 1] = normal.Y;
-					final [i + 2] = normal.Z;
+					Vector3 normal = normals[i];
+					final[i] = normal.X;
+					final[i + 1] = normal.Y;
+					final[i + 2] = normal.Z;
 				}
 				return final;
 			}
 			public static float[] FloatArrayFromVerticesNormalsTexCoords(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3 + texCoords.Length * 2];
 				for (int i = 0; i < vertices.Length * 4; i += 4) {
-					Vector4 vertex = vertices [i / 3];
-					final [i] = vertex.X;
-					final [i + 1] = vertex.Y;
-					final [i + 2] = vertex.Z;
-					final [i + 3] = vertex.W;
+					Vector4 vertex = vertices[i / 3];
+					final[i] = vertex.X;
+					final[i + 1] = vertex.Y;
+					final[i + 2] = vertex.Z;
+					final[i + 3] = vertex.W;
 				}
 				for (int i = vertices.Length * 4; i < vertices.Length * 4 + normals.Length * 3; i += 3) {
-					Vector3 normal = normals [i];
-					final [i] = normal.X;
-					final [i + 1] = normal.Y;
-					final [i + 2] = normal.Z;
+					Vector3 normal = normals[i];
+					final[i] = normal.X;
+					final[i + 1] = normal.Y;
+					final[i + 2] = normal.Z;
 				}
 				for (int i = vertices.Length * 4 + normals.Length * 3; i < final.Length; i += 2) {
-					Vector2 texCoord = texCoords [i];
-					final [i] = texCoord.X;
-					final [i + 1] = texCoord.Y;
+					Vector2 texCoord = texCoords[i];
+					final[i] = texCoord.X;
+					final[i + 1] = texCoord.Y;
 				}
 				return final;
 			}
@@ -355,9 +355,9 @@ namespace Pencil.Gaming.Graphics {
 			private static List<VertexIndices> VIndicesFromFaces(List<Face> faces) {
 				List<VertexIndices> result = new List<VertexIndices>(faces.Count * 3);
 				for (int i = 0; i < faces.Count; ++i) {
-					Face face = faces [i];
+					Face face = faces[i];
 					for (int j = 0; j < face.Vertices.Count; ++j) {
-						result.Add(face.Vertices [j]);
+						result.Add(face.Vertices[j]);
 					}
 				}
 				return result;
@@ -365,9 +365,9 @@ namespace Pencil.Gaming.Graphics {
 
 			private static int GetFirstFinalIndexOfDuplicate(List<VertexIndices> vIndices, int currentIndex, bool optimize) {
 				if (optimize) {
-					VertexIndices vertex = vIndices [currentIndex];
+					VertexIndices vertex = vIndices[currentIndex];
 					for (int i = 0; i < currentIndex; ++i) {
-						VertexIndices other = vIndices [i];
+						VertexIndices other = vIndices[i];
 						if (vertex == other) {
 							return other.FinalIndex;
 						}
@@ -393,21 +393,21 @@ namespace Pencil.Gaming.Graphics {
 				indicesOut = new List<int>(verticesIn.Count);
 
 				for (int i = 0; i < vIndices.Count; ++i) {
-					VertexIndices vertex = vIndices [i];
+					VertexIndices vertex = vIndices[i];
 
 					int firstFinalIndex = GetFirstFinalIndexOfDuplicate(vIndices, i, optimize);
 
 					if (firstFinalIndex == -1) {
-						vIndices [i] = new VertexIndices(vertex, verticesOut.Count);
+						vIndices[i] = new VertexIndices(vertex, verticesOut.Count);
 
 						indicesOut.Add(verticesOut.Count);
-						verticesOut.Add(verticesIn [vertex.Vertex - 1]);
+						verticesOut.Add(verticesIn[vertex.Vertex - 1]);
 
 						if (vertex.TexCoord.HasValue) {
-							tCoordsOut.Add(tCoordsIn [vertex.TexCoord.Value - 1]);
+							tCoordsOut.Add(tCoordsIn[vertex.TexCoord.Value - 1]);
 						}
 						if (vertex.Normal.HasValue) {
-							normalsOut.Add(normalsIn [vertex.Normal.Value - 1]);
+							normalsOut.Add(normalsIn[vertex.Normal.Value - 1]);
 						}
 					} else {
 						indicesOut.Add(firstFinalIndex);
@@ -421,10 +421,17 @@ namespace Pencil.Gaming.Graphics {
 				string[] elements = verticesString.Split(' ');
 				switch (elements.Length) {
 				case 3:
-					vertices.Add(new Vector4(float.Parse(elements [0]), float.Parse(elements [1]), float.Parse(elements [2]), 1f));
-					break;
+					vertices.Add(new Vector4(
+						Convert.ToSingle(elements[0], CultureInfo.InvariantCulture),
+						Convert.ToSingle(elements[1], CultureInfo.InvariantCulture),
+						Convert.ToSingle(elements[2], CultureInfo.InvariantCulture), 1f));
+                    break;
 				case 4:
-					vertices.Add(new Vector4(float.Parse(elements [0]), float.Parse(elements [1]), float.Parse(elements [2]), float.Parse(elements [3])));
+					vertices.Add(new Vector4(
+						Convert.ToSingle(elements[0], CultureInfo.InvariantCulture),
+						Convert.ToSingle(elements[1], CultureInfo.InvariantCulture), 
+						Convert.ToSingle(elements[2], CultureInfo.InvariantCulture), 
+						Convert.ToSingle(elements[3], CultureInfo.InvariantCulture)));
 					break;
 				default:
 					throw new AssetLoadException("model", "vertices can only have 3 or 4 elements");
@@ -439,7 +446,10 @@ namespace Pencil.Gaming.Graphics {
 					throw new AssetLoadException("model", "normals must define 3 elements");
 				}
 
-				result = Vector3.Normalize(new Vector3(float.Parse(elements [0]), float.Parse(elements [1]), float.Parse(elements [2])));
+				result = Vector3.Normalize(new Vector3(
+					Convert.ToSingle(elements[0], CultureInfo.InvariantCulture), 
+					Convert.ToSingle(elements[1], CultureInfo.InvariantCulture), 
+					Convert.ToSingle(elements[2], CultureInfo.InvariantCulture)));
 				normals.Add(result);
 			}
 			private static void ParseVTElement(string line, List<Vector2> tCoords) {
@@ -453,7 +463,7 @@ namespace Pencil.Gaming.Graphics {
 					throw new AssetLoadException("model", "texture coordinates must define either 3 or 4 elements");
 				}
 
-				result = new Vector2(float.Parse(elements [0]), float.Parse(elements [1]));
+				result = new Vector2(Convert.ToSingle(elements[0], CultureInfo.InvariantCulture), Convert.ToSingle(elements[1], CultureInfo.InvariantCulture));
 				tCoords.Add(result);
 			}
 			private static void ParseFElement(string line, List<Face> faces) {
@@ -480,17 +490,17 @@ namespace Pencil.Gaming.Graphics {
 
 				if (element.Contains("//")) {
 					string[] vertexNormal = element.Split(new [] { "//" }, StringSplitOptions.None);
-					result.Vertex = int.Parse(vertexNormal [0]);
-					result.Normal = int.Parse(vertexNormal [1]);
+					result.Vertex = int.Parse(vertexNormal[0]);
+					result.Normal = int.Parse(vertexNormal[1]);
 				} else if (count == 1) {
 					string[] vertexTCoord = element.Split('/');
-					result.Vertex = int.Parse(vertexTCoord [0]);
-					result.TexCoord = int.Parse(vertexTCoord [1]);
+					result.Vertex = int.Parse(vertexTCoord[0]);
+					result.TexCoord = int.Parse(vertexTCoord[1]);
 				} else if (count == 2) {
 					string[] vertexTCoordNormal = element.Split('/');
-					result.Vertex = int.Parse(vertexTCoordNormal [0]);
-					result.TexCoord = int.Parse(vertexTCoordNormal [1]);
-					result.Normal = int.Parse(vertexTCoordNormal [2]);
+					result.Vertex = int.Parse(vertexTCoordNormal[0]);
+					result.TexCoord = int.Parse(vertexTCoordNormal[1]);
+					result.Normal = int.Parse(vertexTCoordNormal[2]);
 				} else {
 					throw new AssetLoadException("model", "texture face element declaration incorrect");
 				}
@@ -511,6 +521,28 @@ namespace Pencil.Gaming.Graphics {
 				}
 			}
 #endregion
+		
+			public static Vector3 UnProject(Vector3 winCoords, Matrix modelView, Matrix proj, Rectanglei viewport) {
+				Matrix finalMatrix = Matrix.Invert(modelView * proj);
+
+				Vector4 inVec = new Vector4(winCoords, 1f);
+				inVec.X = (inVec.X - viewport.X) / viewport.Width;
+				inVec.Y = (inVec.Y - viewport.Y) / viewport.Height;
+
+				inVec.X = inVec.X * 2 - 1;
+				inVec.Y = inVec.Y * 2 - 1;
+				inVec.Z = inVec.Z * 2 - 1;
+
+				Vector4 outVec = Vector4.Transform(inVec, finalMatrix);
+				if (outVec.Z == 0f) {
+					throw new Exception();
+				}
+
+				outVec.X /= outVec.W;
+				outVec.Y /= outVec.W;
+				outVec.Z /= outVec.W;
+				return outVec.Xyz;
+			}
 		}
 	}
 }

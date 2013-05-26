@@ -43,7 +43,8 @@ namespace Pencil.Gaming.Audio {
 		}
 
 		public Sound(Stream file, string extension) {
-			if (extension == "wav") {
+			switch (extension) {
+			case "wav":
 				using (MemoryStream ms = new MemoryStream()) {
 					if (!file.CanRead) {
 						throw new NotSupportedException("This stream does not support reading");
@@ -55,13 +56,13 @@ namespace Pencil.Gaming.Audio {
 					}
 
 					LoadWav(ms.ToArray());
-						
-					throw new NotSupportedException("Audio format not supported");
 				}
-			} else if (extension == "ogg") {
+				break;
+			case "ogg":
 				LoadOgg(file);
-			} else {
-				throw new NotSupportedException("File format not supported: " + extension);
+				break;
+			default:
+				throw new NotSupportedException("Audio format not supported: " + extension);
 			}
 		}
 
