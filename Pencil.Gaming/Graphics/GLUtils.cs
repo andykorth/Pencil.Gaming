@@ -27,51 +27,109 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
+using System.Globalization;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
-	public delegate T[] TArrayFromRetrievedData<out T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
+	public delegate T[] TArrayFromRetrievedData<T>(Vector4[] vertexs,Vector3[] normals,Vector2[] texCoords);
 
 	public static partial class GL {
 		public static class Utils {
 			#region Image Loading
 
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="path">The path to the image file.</param>
 			public static int LoadImage(string path) {
 				using (Bitmap bmp = new Bitmap(path)) {
 					return LoadImage(bmp);
 				}
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="path">The path to the image file.</param>
+			/// <param name="square">A value indicating whether the image is a power of two texture.</param>
 			public static int LoadImage(string path, bool square) {
 				using (Bitmap bmp = new Bitmap(path)) {
 					return LoadImage(bmp, square);
 				}
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="path">The path to the image file.</param>
+			/// <param name="square">A value indicating whether the image is a power of two texture.</param>
+			/// <param name="tmin">The required minimization filter.</param>
+			/// <param name="tmag">The required maximalization filter.</param> 
 			public static int LoadImage(string path, bool square, TextureMinFilter tmin, TextureMagFilter tmag) {
 				using (Bitmap bmp = new Bitmap(path)) {
 					return LoadImage(bmp, square, tmin, tmag);
 				}
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="file">The stream containing the image bytes.</param>
 			public static int LoadImage(Stream file) {
 				using (Bitmap bmp = new Bitmap(file)) {
 					return LoadImage(bmp);
 				}
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="file">The stream containing the image bytes.</param>
+			/// <param name="square">A value indicating whether the image is a power of two texture.</param>
 			public static int LoadImage(Stream file, bool square) {
 				using (Bitmap bmp = new Bitmap(file)) {
 					return LoadImage(bmp, square);
 				}
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="file">The stream containing the image bytes.</param>
+			/// <param name="square">A value indicating whether the image is a power of two texture.</param>
+			/// <param name="tmin">The required minimization filter.</param>
+			/// <param name="tmag">The required maximalization filter.</param> 
 			public static int LoadImage(Stream file, bool square, TextureMinFilter tmin, TextureMagFilter tmag) {
 				using (Bitmap bmp = new Bitmap(file)) {
 					return LoadImage(bmp, square, tmin, tmag);
 				}
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="bmp">The Bitmap representing the image.</param>
 			public static int LoadImage(Bitmap bmp) {
 				return LoadImage(bmp, true, TextureMinFilter.Nearest, TextureMagFilter.Nearest);
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="bmp">The Bitmap representing the image.</param>
+			/// <param name="square">A value indicating whether the image is a power of two texture.</param>
 			public static int LoadImage(Bitmap bmp, bool square) {
 				return LoadImage(bmp, square, TextureMinFilter.Nearest, TextureMagFilter.Nearest);
 			}
+			/// <summary>
+			/// Loads an image.
+			/// </summary>
+			/// <returns>The OpenGL ID representing the image.</returns>
+			/// <param name="bmp">The Bitmap representing the image.</param>
+			/// <param name="square">A value indicating whether the image is a power of two texture.</param>
+			/// <param name="tmin">The required minimization filter.</param>
+			/// <param name="tmag">The required maximalization filter.</param> 
 			public static int LoadImage(Bitmap bmp, bool square, TextureMinFilter tmin, TextureMagFilter tmag) {
 				BitmapData bmpData = bmp.LockBits(
 					new System.Drawing.Rectangle(Point.Empty, bmp.Size), 
@@ -110,12 +168,24 @@ namespace Pencil.Gaming.Graphics {
 
 			#region Cylinder Generation
 
+			/// <summary>
+			/// Draws the cylinder.
+			/// </summary>
+			/// <param name="lod">Level of detail with which the cylinder was created.</param>
 			public static void DrawCylinderArrays(int lod) {
 				GL.DrawArrays(BeginMode.TriangleStrip, 0, (lod + 1) * 2);
 				GL.DrawArrays(BeginMode.TriangleFan, (lod + 1) * 2, lod);
 				GL.DrawArrays(BeginMode.TriangleFan, (lod + 1) * 2 + lod, lod);
 			}
 
+			/// <summary>
+			/// Generates a cylinder.
+			/// </summary>
+			/// <param name="vertices">Vertices.</param>
+			/// <param name="normals">Normals.</param>
+			/// <param name="height">Height.</param>
+			/// <param name="radius">Radius.</param>
+			/// <param name="lod">Level of detail.</param>
 			public static void CreateCylinder(out Vector4[] vertices, out Vector3[] normals, float height, float radius, int lod) {
 				int sideVCount = (lod + 1) * 2;
 				int topVCount = lod;
@@ -151,6 +221,15 @@ namespace Pencil.Gaming.Graphics {
 
 			#region Wavefront Model Loading
 
+			/// <summary>
+			/// Creates a float array from vertices and normals.
+			/// This function is compatible with delegate type <see cref="TArrayFromRetrievedData"/>.
+			/// The returned value is an interleaved float array, i.e. { v, n, v, n ... }.
+			/// </summary>
+			/// <returns>The the float array, in which the elements are interleaved.</returns>
+			/// <param name="vertices">Vertices.</param>
+			/// <param name="normals">Normals.</param>
+			/// <param name="texCoords">Tex coords (can be empty).</param>
 			public static float[] FloatArrayFromVerticesNormalsInterleaved(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3];
 				for (int i = 0; i < final.Length; i += 7) {
@@ -166,6 +245,15 @@ namespace Pencil.Gaming.Graphics {
 				}
 				return final;
 			}
+			/// <summary>
+			/// Creates a float array from vertices, normals and tex coords.
+			/// This function is compatible with delegate type <see cref="TArrayFromRetrievedData"/>.
+			/// The returned value is an interleaved float array, i.e. { v, n, t, v, n t, ... }.
+			/// </summary>
+			/// <returns>The the float array, in which the elements are interleaved.</returns>
+			/// <param name="vertices">Vertices.</param>
+			/// <param name="normals">Normals.</param>
+			/// <param name="texCoords">Tex coords.</param>
 			public static float[] FloatArrayFromVerticesNormalsTexCoordsInterleaved(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3 + texCoords.Length * 2];
 				for (int i = 0; i < final.Length; i += 9) {
@@ -184,6 +272,15 @@ namespace Pencil.Gaming.Graphics {
 				}
 				return final;
 			}
+			/// <summary>
+			/// Creates a float array from vertices and normals.
+			/// This function is compatible with delegate type <see cref="TArrayFromRetrievedData"/>.
+			/// The returned value is a non-interleaved float array, i.e. { v, v, n, n, ... }.
+			/// </summary>
+			/// <returns>The the float array.</returns>
+			/// <param name="vertices">Vertices.</param>
+			/// <param name="normals">Normals.</param>
+			/// <param name="texCoords">Tex coords (can be empty).</param>
 			public static float[] FloatArrayFromVerticesNormals(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3];
 				for (int i = 0; i < vertices.Length * 4; i += 4) {
@@ -201,6 +298,15 @@ namespace Pencil.Gaming.Graphics {
 				}
 				return final;
 			}
+			/// <summary>
+			/// Creates a float array from vertices, normals and tex coords.
+			/// This function is compatible with delegate type <see cref="TArrayFromRetrievedData"/>.
+			/// The returned value is a non-interleaved float array, i.e. { v, v, n, n, t, t, ... }.
+			/// </summary>
+			/// <returns>The the float array.</returns>
+			/// <param name="vertices">Vertices.</param>
+			/// <param name="normals">Normals.</param>
+			/// <param name="texCoords">Tex coords.</param>
 			public static float[] FloatArrayFromVerticesNormalsTexCoords(Vector4[] vertices, Vector3[] normals, Vector2[] texCoords) {
 				float[] final = new float[vertices.Length * 4 + normals.Length * 3 + texCoords.Length * 2];
 				for (int i = 0; i < vertices.Length * 4; i += 4) {
@@ -224,30 +330,89 @@ namespace Pencil.Gaming.Graphics {
 				return final;
 			}
 
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">Path to .obj file.</param>
+			/// <param name="verticesOut">Vertices out.</param>
+			/// <param name="normalsOut">Normals out.</param>
+			/// <param name="tCoordsOut">Texture coords out.</param>
+			/// <param name="indicesOut">Indices out.</param>
 			public static void LoadModel(string path, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut) {
 				LoadModel(path, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, true);
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">Path to .obj file.</param>
+			/// <param name="verticesOut">Vertices out.</param>
+			/// <param name="normalsOut">Normals out.</param>
+			/// <param name="tCoordsOut">Texture coords out.</param>
+			/// <param name="indicesOut">Indices out.</param>
+			/// <param name="optimize">A value indicating whether indices should be optimized (less memory-usage, longer load time).</param>
 			public static void LoadModel(string path, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut, bool optimize) {
 				using (Stream str = File.OpenRead(path)) {
 					LoadModel(str, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, optimize);
 				}
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="file">The bytes resembling a .obj file.</param>
+			/// <param name="verticesOut">Vertices out.</param>
+			/// <param name="normalsOut">Normals out.</param>
+			/// <param name="tCoordsOut">Texture coords out.</param>
+			/// <param name="indicesOut">Indices out.</param>
 			public static void LoadModel(Stream file, out Vector4[] verticesOut, out Vector3[] normalsOut, out Vector2[] tCoordsOut, out int[] indicesOut) {
 				LoadModel(file, out verticesOut, out normalsOut, out tCoordsOut, out indicesOut, true);
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">Path to .obj file.</param>
+			/// <param name="indicesOutArr">Indices out.</param>
+			/// <param name="outArr">The array of Ts, as the given function is applied to the model data.</param>
+			/// <param name="func">Func.</param>
+			/// <typeparam name="T">The type of the required data.</typeparam>
 			public static void LoadModel<T>(string path, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func) {
 				using (Stream str = File.OpenRead(path)) {
 					LoadModel<T>(str, out indicesOutArr, out outArr, func, true);
 				}
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">Path to .obj file.</param>
+			/// <param name="indicesOutArr">Indices out.</param>
+			/// <param name="outArr">The array of Ts, as the given function is applied to the model data.</param>
+			/// <param name="func">Func.</param>
+			/// <param name="optimize">A value indicating whether indices should be optimized (less memory-usage, longer load time).</param>
+			/// <typeparam name="T">The type of the required data.</typeparam>
 			public static void LoadModel<T>(string path, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func, bool optimize) {
 				using (Stream str = File.OpenRead(path)) {
 					LoadModel<T>(str, out indicesOutArr, out outArr, func, optimize);
 				}
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">The bytes resembling a .obj file.</param>
+			/// <param name="indicesOutArr">Indices out.</param>
+			/// <param name="outArr">The array of Ts, as the given function is applied to the model data.</param>
+			/// <param name="func">Func.</param>
+			/// <typeparam name="T">The type of the required data.</typeparam>
 			public static void LoadModel<T>(Stream file, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func) {
 				LoadModel<T>(file, out indicesOutArr, out outArr, func, true);
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">The bytes resembling a .obj file.</param>
+			/// <param name="indicesOutArr">Indices out.</param>
+			/// <param name="outArr">The array of Ts, as the given function is applied to the model data.</param>
+			/// <param name="func">Func.</param>
+			/// <param name="optimize">A value indicating whether indices should be optimized (less memory-usage, longer load time).</param>
+			/// <typeparam name="T">The type of the required data.</typeparam>
 			public static void LoadModel<T>(Stream file, out int[] indicesOutArr, out T[] outArr, TArrayFromRetrievedData<T> func, bool optimize) {
 				Vector4[] vertices;
 				Vector3[] normals;
@@ -255,6 +420,15 @@ namespace Pencil.Gaming.Graphics {
 				GL.Utils.LoadModel(file, out vertices, out normals, out texCoords, out indicesOutArr, optimize);
 				outArr = func(vertices, normals, texCoords);
 			}
+			/// <summary>
+			/// Loads a wavefront model.
+			/// </summary>
+			/// <param name="path">The bytes resembling a .obj file.</param>
+			/// <param name="verticesOut">Vertices out.</param>
+			/// <param name="normalsOut">Normals out.</param>
+			/// <param name="tCoordsOut">Texture coords out.</param>
+			/// <param name="indicesOut">Indices out.</param>
+			/// <param name="optimize">A value indicating whether indices should be optimized (less memory-usage, longer load time).</param>
 			public static void LoadModel(Stream file, out Vector4[] verticesOutArr, out Vector3[] normalsOutArr, out Vector2[] tCoordsOutArr, out int[] indicesOutArr, bool optimize) {
 				List<Vector4> vertices = new List<Vector4>(1024);
 				List<Vector3> normals = new List<Vector3>(1024);
@@ -352,6 +526,10 @@ namespace Pencil.Gaming.Graphics {
 				}
 			}
 
+			private static float ToFloat(string str) {
+				return Convert.ToSingle(str, CultureInfo.InvariantCulture);
+			}
+
 			private static List<VertexIndices> VIndicesFromFaces(List<Face> faces) {
 				List<VertexIndices> result = new List<VertexIndices>(faces.Count * 3);
 				for (int i = 0; i < faces.Count; ++i) {
@@ -393,11 +571,10 @@ namespace Pencil.Gaming.Graphics {
 				indicesOut = new List<int>(verticesIn.Count);
 
 				for (int i = 0; i < vIndices.Count; ++i) {
-					VertexIndices vertex = vIndices[i];
-
 					int firstFinalIndex = GetFirstFinalIndexOfDuplicate(vIndices, i, optimize);
 
 					if (firstFinalIndex == -1) {
+						VertexIndices vertex = vIndices[i];
 						vIndices[i] = new VertexIndices(vertex, verticesOut.Count);
 
 						indicesOut.Add(verticesOut.Count);
@@ -422,16 +599,16 @@ namespace Pencil.Gaming.Graphics {
 				switch (elements.Length) {
 				case 3:
 					vertices.Add(new Vector4(
-						Convert.ToSingle(elements[0], CultureInfo.InvariantCulture),
-						Convert.ToSingle(elements[1], CultureInfo.InvariantCulture),
-						Convert.ToSingle(elements[2], CultureInfo.InvariantCulture), 1f));
+						ToFloat(elements[0]),
+						ToFloat(elements[1]),
+						ToFloat(elements[2]), 1f));
                     break;
 				case 4:
 					vertices.Add(new Vector4(
-						Convert.ToSingle(elements[0], CultureInfo.InvariantCulture),
-						Convert.ToSingle(elements[1], CultureInfo.InvariantCulture), 
-						Convert.ToSingle(elements[2], CultureInfo.InvariantCulture), 
-						Convert.ToSingle(elements[3], CultureInfo.InvariantCulture)));
+						ToFloat(elements[0]),
+						ToFloat(elements[1]), 
+						ToFloat(elements[2]), 
+						ToFloat(elements[3])));
 					break;
 				default:
 					throw new AssetLoadException("model", "vertices can only have 3 or 4 elements");
@@ -447,9 +624,9 @@ namespace Pencil.Gaming.Graphics {
 				}
 
 				result = Vector3.Normalize(new Vector3(
-					Convert.ToSingle(elements[0], CultureInfo.InvariantCulture), 
-					Convert.ToSingle(elements[1], CultureInfo.InvariantCulture), 
-					Convert.ToSingle(elements[2], CultureInfo.InvariantCulture)));
+					ToFloat(elements[0]), 
+					ToFloat(elements[1]), 
+					ToFloat(elements[2])));
 				normals.Add(result);
 			}
 			private static void ParseVTElement(string line, List<Vector2> tCoords) {
@@ -463,7 +640,7 @@ namespace Pencil.Gaming.Graphics {
 					throw new AssetLoadException("model", "texture coordinates must define either 3 or 4 elements");
 				}
 
-				result = new Vector2(Convert.ToSingle(elements[0], CultureInfo.InvariantCulture), Convert.ToSingle(elements[1], CultureInfo.InvariantCulture));
+				result = new Vector2(ToFloat(elements[0]), ToFloat(elements[1]));
 				tCoords.Add(result);
 			}
 			private static void ParseFElement(string line, List<Face> faces) {
@@ -472,8 +649,26 @@ namespace Pencil.Gaming.Graphics {
 				string elementsString = line.Substring(2);
 				string[] elements = elementsString.Split(' ');
 				List<VertexIndices> vIndices = new List<VertexIndices>(elements.Length);
-				foreach (string element in elements) {
-					vIndices.Add(ParseVertexIndices(element));
+				switch (elements.Length) {
+				case 3:
+					// Triangular face
+					foreach (string element in elements) {
+						vIndices.Add(ParseVertexIndices(element));
+					}
+					break;
+				case 4:
+					// Quad face
+					vIndices.Add(ParseVertexIndices(elements[0]));
+					vIndices.Add(ParseVertexIndices(elements[1]));
+					vIndices.Add(ParseVertexIndices(elements[2]));
+
+					vIndices.Add(ParseVertexIndices(elements[2]));
+					vIndices.Add(ParseVertexIndices(elements[3]));
+					vIndices.Add(ParseVertexIndices(elements[0]));
+					break;
+				default:
+					// Other polygon, not supported
+					throw new AssetLoadException("model", "faces with " + elements.Length.ToString() + " elements are currently not supported");
 				}
 
 				result.Vertices = vIndices;
@@ -489,14 +684,17 @@ namespace Pencil.Gaming.Graphics {
 				VertexIndices result = new VertexIndices();
 
 				if (element.Contains("//")) {
+					// Vertex, normal
 					string[] vertexNormal = element.Split(new [] { "//" }, StringSplitOptions.None);
 					result.Vertex = int.Parse(vertexNormal[0]);
 					result.Normal = int.Parse(vertexNormal[1]);
 				} else if (count == 1) {
+					// Vertex, texcoord
 					string[] vertexTCoord = element.Split('/');
 					result.Vertex = int.Parse(vertexTCoord[0]);
 					result.TexCoord = int.Parse(vertexTCoord[1]);
 				} else if (count == 2) {
+					// Vertex, texcoord, normal
 					string[] vertexTCoordNormal = element.Split('/');
 					result.Vertex = int.Parse(vertexTCoordNormal[0]);
 					result.TexCoord = int.Parse(vertexTCoordNormal[1]);
@@ -508,15 +706,15 @@ namespace Pencil.Gaming.Graphics {
 				return result;
 			}
 			private static void ParseObjLine(string line, List<Vector4> vertices, List<Vector3> normals, List<Vector2> tCoords, List<Face> faces) {
-				if (line.StartsWith("v ")) {
+				if (line.StartsWith("v ", StringComparison.InvariantCulture)) {
 					ParseVElement(line, vertices);
-				} else if (line.StartsWith("vn ")) {
+				} else if (line.StartsWith("vn ", StringComparison.InvariantCulture)) {
 					ParseVNElement(line, normals);
-				} else if (line.StartsWith("vt ")) {
+				} else if (line.StartsWith("vt ", StringComparison.InvariantCulture)) {
 					ParseVTElement(line, tCoords);
-				} else if (line.StartsWith("f ")) {
+				} else if (line.StartsWith("f ", StringComparison.InvariantCulture)) {
 					ParseFElement(line, faces);
-				} else if (!line.StartsWith("#")) {
+				} else if (!line.StartsWith("#", StringComparison.InvariantCulture)) {
 					
 				}
 			}
@@ -534,7 +732,7 @@ namespace Pencil.Gaming.Graphics {
 				inVec.Z = inVec.Z * 2 - 1;
 
 				Vector4 outVec = Vector4.Transform(inVec, finalMatrix);
-				if (outVec.Z == 0f) {
+				if (Math.Abs(outVec.Z) < 10f * float.Epsilon) {
 					throw new Exception();
 				}
 

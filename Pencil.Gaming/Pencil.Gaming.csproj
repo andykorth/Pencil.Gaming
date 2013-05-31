@@ -15,8 +15,7 @@
     <AssemblyName>Pencil.Gaming.dll</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW2|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Compatibility - GLFW2</OutputPath>
     <DefineConstants>USE_GL_COMPAT; USE_GLFW2;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -31,7 +30,6 @@
       </CustomCommands>
     </CustomCommands>
     <ConsolePause>false</ConsolePause>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW2|AnyCPU' ">
     <DebugType>none</DebugType>
