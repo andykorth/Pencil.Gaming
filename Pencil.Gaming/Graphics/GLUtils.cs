@@ -28,6 +28,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading;
 using Pencil.Gaming.MathUtils;
 
 namespace Pencil.Gaming.Graphics {
@@ -430,7 +433,7 @@ namespace Pencil.Gaming.Graphics {
 			/// <param name="indicesOut">Indices out.</param>
 			/// <param name="optimize">A value indicating whether indices should be optimized (less memory-usage, longer load time).</param>
 			public static void LoadModel(Stream file, out Vector4[] verticesOutArr, out Vector3[] normalsOutArr, out Vector2[] tCoordsOutArr, out int[] indicesOutArr, bool optimize) {
-				List<Vector4> vertices = new List<Vector4>(1024);
+				List<Vector4>vertices = new List<Vector4>(1024);
 				List<Vector3> normals = new List<Vector3>(1024);
 				List<Vector2> tCoords = new List<Vector2>(1024);
 
@@ -448,6 +451,7 @@ namespace Pencil.Gaming.Graphics {
 #endif
 					string line;
 					while ((line = sread.ReadLine()) != null) {
+						++currentLine;
 						ParseObjLine(line, vertices, normals, tCoords, faces);
 					}
 #if DEBUG
@@ -478,6 +482,8 @@ namespace Pencil.Gaming.Graphics {
 				Console.WriteLine("Converting model lists to arrays took: {0} milliseconds", swatch.ElapsedMilliseconds);
 #endif
 			}
+
+			private static int currentLine = 0;
 
 			#pragma warning disable 0661
 			#pragma warning disable 0659
@@ -611,7 +617,7 @@ namespace Pencil.Gaming.Graphics {
 						ToFloat(elements[3])));
 					break;
 				default:
-					throw new AssetLoadException("model", "vertices can only have 3 or 4 elements");
+					throw new AssetLoadException("model", "vertices can only have 3 or 4 elements @ line " + currentLine.ToString());
 				}
 			}
 			private static void ParseVNElement(string line, List<Vector3> normals) {
@@ -620,7 +626,7 @@ namespace Pencil.Gaming.Graphics {
 				string elementsString = line.Substring(3);
 				string[] elements = elementsString.Split(' ');
 				if (elements.Length != 3) {
-					throw new AssetLoadException("model", "normals must define 3 elements");
+					throw new AssetLoadException("model", "normals must define 3 elements @ line " + currentLine.ToString());
 				}
 
 				result = Vector3.Normalize(new Vector3(
@@ -635,9 +641,9 @@ namespace Pencil.Gaming.Graphics {
 				string elementsString = line.Substring(3);
 				string[] elements = elementsString.Split(' ');
 				if (elements.Length == 3) {
-					Console.WriteLine("WARNING: Object file specifies third texture coordinate, ignored");
+					Console.WriteLine("WARNING: Object file specifies third texture coordinate, ignored @ line " + currentLine.ToString());
 				} else if (elements.Length != 2) {
-					throw new AssetLoadException("model", "texture coordinates must define either 3 or 4 elements");
+					throw new AssetLoadException("model", "texture coordinates must define either 3 or 4 elements @ line " + currentLine.ToString());
 				}
 
 				result = new Vector2(ToFloat(elements[0]), ToFloat(elements[1]));
@@ -647,40 +653,36 @@ namespace Pencil.Gaming.Graphics {
 				Face result = new Face();
 
 				string elementsString = line.Substring(2);
-				string[] elements = elementsString.Split(' ');
-				List<VertexIndices> vIndices = new List<VertexIndices>(elements.Length);
-				switch (elements.Length) {
+				List<string> elements = new List<string>(elementsString.Split(' '));
+				elements.RemoveAll(str => string.IsNullOrEmpty(str));
+				List<VertexIndices> vIndices = new List<VertexIndices>(elements.Count);
+				switch (elements.Count) {
 				case 3:
 					// Triangular face
-					foreach (string element in elements) {
-						vIndices.Add(ParseVertexIndices(element));
+					for (int i = elements.Count - 1; i >= 0; --i) {
+						vIndices.Add(ParseVertexIndices(elements[i]));
 					}
 					break;
 				case 4:
 					// Quad face
-					vIndices.Add(ParseVertexIndices(elements[0]));
-					vIndices.Add(ParseVertexIndices(elements[1]));
-					vIndices.Add(ParseVertexIndices(elements[2]));
-
-					vIndices.Add(ParseVertexIndices(elements[2]));
 					vIndices.Add(ParseVertexIndices(elements[3]));
+					vIndices.Add(ParseVertexIndices(elements[2]));
+					vIndices.Add(ParseVertexIndices(elements[1]));
+
+					vIndices.Add(ParseVertexIndices(elements[1]));
 					vIndices.Add(ParseVertexIndices(elements[0]));
+					vIndices.Add(ParseVertexIndices(elements[3]));
 					break;
 				default:
 					// Other polygon, not supported
-					throw new AssetLoadException("model", "faces with " + elements.Length.ToString() + " elements are currently not supported");
+					throw new AssetLoadException("model", "faces with " + elements.Count.ToString() + " elements are currently not supported @ line " + currentLine.ToString());
 				}
 
 				result.Vertices = vIndices;
 				faces.Add(result);
 			}
 			private static VertexIndices ParseVertexIndices(string element) {
-				int count = 0;
-				foreach (char ch in element) {
-					if (ch == '/') {
-						++count;
-					}
-				}
+				int count = element.Count(ch => ch == '/');
 				VertexIndices result = new VertexIndices();
 
 				if (element.Contains("//")) {
@@ -700,7 +702,7 @@ namespace Pencil.Gaming.Graphics {
 					result.TexCoord = int.Parse(vertexTCoordNormal[1]);
 					result.Normal = int.Parse(vertexTCoordNormal[2]);
 				} else {
-					throw new AssetLoadException("model", "texture face element declaration incorrect");
+					throw new AssetLoadException("model", "texture face element declaration incorrect, count was " + count.ToString() + " @ line " + currentLine.ToString());
 				}
 
 				return result;

@@ -30,9 +30,9 @@
       </CustomCommands>
     </CustomCommands>
     <ConsolePause>false</ConsolePause>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW2|AnyCPU' ">
-    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Core - GLFW2</OutputPath>
     <DefineConstants>USE_GL_CORE; USE_GLFW2;</DefineConstants>
@@ -46,6 +46,7 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -88,6 +89,7 @@
       <HintPath>NVorbis.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />

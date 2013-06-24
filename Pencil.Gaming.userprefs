@@ -1,8 +1,8 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Core - GLFW3" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Core - GLFW2" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming\Graphics\GLUtils.cs">
     <Files>
-      <File FileName="Pencil.Gaming\Graphics\GLUtils.cs" Line="553" Column="5" />
+      <File FileName="Pencil.Gaming\Graphics\GLUtils.cs" Line="672" Column="52" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
