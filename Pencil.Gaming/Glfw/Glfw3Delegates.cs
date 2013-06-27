@@ -118,7 +118,7 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate GlfwMonitorPtr GetWindowMonitor(GlfwWindowPtr window);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate int GetWindowParam(GlfwWindowPtr window,int param);
+		internal delegate int GetWindowAttrib(GlfwWindowPtr window,int param);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetWindowUserPointer(GlfwWindowPtr window,IntPtr pointer);
 		[SuppressUnmanagedCodeSecurity]
@@ -164,7 +164,7 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetScrollCallback(GlfwWindowPtr window,GlfwScrollFun cbfun);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate int GetJoystickParam(Joystick joy,JoystickParam param);
+		internal delegate int JoystickPresent(Joystick joy);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate int GetJoystickAxes(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] float[] axes,int numaxes);
 		[SuppressUnmanagedCodeSecurity]
@@ -224,7 +224,7 @@ namespace Pencil.Gaming {
 		internal static ShowWindow glfwShowWindow;
 		internal static HideWindow glfwHideWindow;
 		internal static GetWindowMonitor glfwGetWindowMonitor;
-		internal static GetWindowParam glfwGetWindowParam;
+		internal static GetWindowAttrib glfwGetWindowAttrib;
 		internal static SetWindowUserPointer glfwSetWindowUserPointer;
 		internal static GetWindowUserPointer glfwGetWindowUserPointer;
 		internal static SetWindowPosCallback glfwSetWindowPosCallback;
@@ -247,7 +247,7 @@ namespace Pencil.Gaming {
 		internal static SetCursorPosCallback glfwSetCursorPosCallback;
 		internal static SetCursorEnterCallback glfwSetCursorEnterCallback;
 		internal static SetScrollCallback glfwSetScrollCallback;
-		internal static GetJoystickParam glfwGetJoystickParam;
+		internal static JoystickPresent glfwJoystickPresent;
 		internal static GetJoystickAxes glfwGetJoystickAxes;
 		internal static GetJoystickButtons glfwGetJoystickButtons;
 		internal static GetJoystickName glfwGetJoystickName;

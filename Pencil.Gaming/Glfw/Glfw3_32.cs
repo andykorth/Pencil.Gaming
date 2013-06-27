@@ -64,7 +64,7 @@ namespace Pencil.Gaming {
 		internal static extern void glfwDefaultWindowHints();
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwWindowHint(WindowHint target, int hint);
-		[DllImport("natives32/glfw.dll", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true, EntryPoint = "glfwCreateWindow")] 
+		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern GlfwWindowPtr glfwCreateWindow(int width, int height, [MarshalAs(UnmanagedType.LPStr)] string title, GlfwMonitorPtr monitor, GlfwWindowPtr share);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwDestroyWindow(GlfwWindowPtr window);
@@ -93,7 +93,7 @@ namespace Pencil.Gaming {
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern GlfwMonitorPtr glfwGetWindowMonitor(GlfwWindowPtr window);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern int glfwGetWindowParam(GlfwWindowPtr window, int param);
+		internal static extern int glfwGetWindowAttrib(GlfwWindowPtr window, int param);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetWindowUserPointer(GlfwWindowPtr window, IntPtr pointer);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
@@ -139,7 +139,7 @@ namespace Pencil.Gaming {
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetScrollCallback(GlfwWindowPtr window, GlfwScrollFun cbfun);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern int glfwGetJoystickParam(Joystick joy, JoystickParam param);
+		internal static extern int glfwJoystickPresent(Joystick joy);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern int glfwGetJoystickAxes(Joystick joy, [MarshalAs(UnmanagedType.LPArray)] float[] axes, int numaxes);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 

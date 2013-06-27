@@ -93,7 +93,7 @@ namespace Pencil.Gaming {
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern GlfwMonitorPtr glfwGetWindowMonitor(GlfwWindowPtr window);
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern int glfwGetWindowParam(GlfwWindowPtr window, int param);
+		internal static extern int glfwGetWindowAttrib(GlfwWindowPtr window, int param);
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetWindowUserPointer(GlfwWindowPtr window, IntPtr pointer);
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
@@ -139,7 +139,7 @@ namespace Pencil.Gaming {
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetScrollCallback(GlfwWindowPtr window, GlfwScrollFun cbfun);
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern int glfwGetJoystickParam(Joystick joy, JoystickParam param);
+		internal static extern int glfwJoystickPresent(Joystick joy);
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern int glfwGetJoystickAxes(Joystick joy, [MarshalAs(UnmanagedType.LPArray)] float[] axes, int numaxes);
 		[DllImport("natives64/glfw.dll"), SuppressUnmanagedCodeSecurity] 

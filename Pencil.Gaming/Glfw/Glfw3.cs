@@ -136,11 +136,11 @@ namespace Pencil.Gaming {
 		public static GlfwMonitorPtr GetWindowMonitor(GlfwWindowPtr window) {
 			return GlfwDelegates.glfwGetWindowMonitor(window);
 		}
-		public static int GetWindowParam(GlfwWindowPtr window, WindowParam param) {
-			return GlfwDelegates.glfwGetWindowParam(window, (int)param);
+		public static int GetWindowAttrib(GlfwWindowPtr window, WindowAttrib param) {
+			return GlfwDelegates.glfwGetWindowAttrib(window, (int)param);
 		}
-		public static int GetWindowParam(GlfwWindowPtr window, WindowHint param) {
-			return GlfwDelegates.glfwGetWindowParam(window, (int)param);
+		public static int GetWindowAttrib(GlfwWindowPtr window, WindowHint param) {
+			return GlfwDelegates.glfwGetWindowAttrib(window, (int)param);
 		}
 		public static void SetWindowUserPointer(GlfwWindowPtr window, IntPtr pointer) {
 			GlfwDelegates.glfwSetWindowUserPointer(window, pointer);
@@ -232,8 +232,8 @@ namespace Pencil.Gaming {
 			scrollFun = cbfun;
 			GlfwDelegates.glfwSetScrollCallback(window, cbfun);
 		}
-		public static int GetJoystickParam(Joystick joy, JoystickParam param) {
-			return GlfwDelegates.glfwGetJoystickParam(joy, param);
+		public static bool JoystickPresent(Joystick joy) {
+			return GlfwDelegates.glfwJoystickPresent(joy) == 1;
 		}
 		public static int GetJoystickAxes(Joystick joy, float[] axes, int numaxes) {
 			return GlfwDelegates.glfwGetJoystickAxes(joy, axes, numaxes);

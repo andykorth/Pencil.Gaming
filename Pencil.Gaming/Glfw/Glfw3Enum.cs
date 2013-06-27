@@ -199,7 +199,7 @@ namespace Pencil.Gaming {
 		FormatUnavailable,
 	}
 
-	public enum WindowParam {
+	public enum WindowAttrib {
 		Focused = 0x20001,
 		Iconified,
 		ContextRevision = 0x20004,
