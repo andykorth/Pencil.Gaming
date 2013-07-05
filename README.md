@@ -27,7 +27,7 @@ GLFW3
 | Linux 64-bit   | Stable          | Stable            | Stable          | Stable    |
 | Linux 32-bit   | Stable          | Stable            | **Broken**      | Stable    |
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
-| Windows 32-bit | Stable          | Stable            | Untested        | Stable    |
+| Windows 32-bit | Stable          | Stable            | Presumed Stable | Stable    |
 | Mac OS X       | Stable          | Stable            | Not Implemented | Stable    |
 
 Sample usage (OpenGL & GLFW)
