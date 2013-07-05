@@ -140,10 +140,10 @@ namespace Pencil.Gaming {
 		internal static extern void glfwSetScrollCallback(GlfwWindowPtr window, GlfwScrollFun cbfun);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern int glfwJoystickPresent(Joystick joy);
+		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity]
+		internal static extern float * glfwGetJoystickAxes(Joystick joy, out int numaxes);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern int glfwGetJoystickAxes(Joystick joy, [MarshalAs(UnmanagedType.LPArray)] float[] axes, int numaxes);
-		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern int glfwGetJoystickButtons(Joystick joy, [MarshalAs(UnmanagedType.LPArray)] byte[] buttons, int numbuttons);
+		internal static extern byte * glfwGetJoystickButtons(Joystick joy, out int numbuttons);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern sbyte * glfwGetJoystickName(Joystick joy);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 

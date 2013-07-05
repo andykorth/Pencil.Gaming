@@ -235,11 +235,23 @@ namespace Pencil.Gaming {
 		public static bool JoystickPresent(Joystick joy) {
 			return GlfwDelegates.glfwJoystickPresent(joy) == 1;
 		}
-		public static int GetJoystickAxes(Joystick joy, float[] axes, int numaxes) {
-			return GlfwDelegates.glfwGetJoystickAxes(joy, axes, numaxes);
+		public static float[] GetJoystickAxes(Joystick joy) {
+			int numaxes;
+			float * axes = GlfwDelegates.glfwGetJoystickAxes(joy, out numaxes);
+			float[] result = new float[numaxes];
+			for (int i = 0; i < numaxes; ++i) {
+				result[i] = axes[i];
+			}
+			return result;
 		}
-		public static int GetJoystickButtons(Joystick joy, byte[] buttons, int numbuttons) {
-			return GlfwDelegates.glfwGetJoystickButtons(joy, buttons, numbuttons);
+		public static byte[] GetJoystickButtons(Joystick joy) {
+			int numbuttons;
+			byte * buttons = GlfwDelegates.glfwGetJoystickButtons(joy, out numbuttons);
+			byte[] result = new byte[numbuttons];
+			for (int i = 0; i < numbuttons; ++i) {
+				result[i] = buttons[i];
+			}
+			return result;
 		}
 		public static string GetJoystickName(Joystick joy) {
 			return new string(GlfwDelegates.glfwGetJoystickName(joy));

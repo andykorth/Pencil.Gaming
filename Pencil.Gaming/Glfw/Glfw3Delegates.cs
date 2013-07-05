@@ -166,9 +166,9 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate int JoystickPresent(Joystick joy);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate int GetJoystickAxes(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] float[] axes,int numaxes);
+		internal delegate float * GetJoystickAxes(Joystick joy, out int numaxes);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate int GetJoystickButtons(Joystick joy,[MarshalAs(UnmanagedType.LPArray)] byte[] buttons,int numbuttons);
+		internal delegate byte * GetJoystickButtons(Joystick joy, out int numbuttons);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate sbyte * GetJoystickName(Joystick joy);
 		[SuppressUnmanagedCodeSecurity]

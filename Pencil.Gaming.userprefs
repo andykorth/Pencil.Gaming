@@ -1,13 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Core - GLFW2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming\Graphics\GLUtils.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Example.Triangle.GLFW2/MainGame.cs">
     <Files>
-      <File FileName="Pencil.Gaming\Graphics\GLUtils.cs" Line="672" Column="52" />
+      <File FileName="Example.Triangle.GLFW2/MainGame.cs" Line="27" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True" selected="True" />
+        <State expanded="True" selected="True">
+          <Node name="Example.Triangle.GLFW2" expanded="True" />
+          <Node name="Pencil.Gaming" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
