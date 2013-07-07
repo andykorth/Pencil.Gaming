@@ -30,7 +30,6 @@
       </CustomCommands>
     </CustomCommands>
     <ConsolePause>false</ConsolePause>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW2|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -46,7 +45,6 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -276,4 +274,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile">
+          <BuildFilesVar />
+          <DeployFilesVar />
+          <ResourcesVar />
+          <OthersVar />
+          <GacRefVar />
+          <AsmRefVar />
+          <ProjectRefVar />
+        </MonoDevelop.Autotools.MakefileInfo>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>
