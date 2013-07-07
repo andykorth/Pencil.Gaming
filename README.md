@@ -25,6 +25,7 @@ GLFW3
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
 | Windows 32-bit | Stable          | Stable            | Presumed Stable | Stable    |
 | Mac OS X       | Stable          | Stable            | Not Implemented | Stable    |
+
 Building using Makefile
 =======================
 Some don't like monodevelop/visual studio, for those a GNU Makefile has been made available. To generate this makefile, run the script in the main directory:
@@ -56,21 +57,21 @@ The binaries will be in the `Pencil.Gaming/bin/<Profile>` directory.
 Image loading utility
 ---------------------
 ```C#
-int image = Gl.Utils.LoadImage("myfile.png"); // Works with multiple file formats
-Gl.BindTexture(TextureTarget.Texture2D, image);
+int image = GL.Utils.LoadImage("myfile.png"); // Works with multiple file formats
+GL.BindTexture(TextureTarget.Texture2D, image);
 
-Gl.Begin(BeginMode.TriangleStrip);
-  Gl.TexCoord2(0f, 1f);
-  Gl.Vertex2(0.1f, 0.9f);
-  Gl.TexCoord2(0f, 0f);
-  Gl.Vertex2(0.1f, 0.1f);
-  Gl.TexCoord2(1f, 1f);
-  Gl.Vertex2(0.9f, 0.9f);
-  Gl.TexCoord2(1f, 0f);
-  Gl.Vertex2(0.9f, 0.1f);
-Gl.End();
+GL.Begin(BeginMode.TriangleStrip);
+  GL.TexCoord2(0f, 1f);
+  GL.Vertex2(0.1f, 0.9f);
+  GL.TexCoord2(0f, 0f);
+  GL.Vertex2(0.1f, 0.1f);
+  GL.TexCoord2(1f, 1f);
+  GL.Vertex2(0.9f, 0.9f);
+  GL.TexCoord2(1f, 0f);
+  GL.Vertex2(0.9f, 0.1f);
+GL.End();
 
-Gl.DeleteTextures(1, ref image);
+GL.DeleteTextures(1, ref image);
 ```
 
 Model loading utility
@@ -85,48 +86,48 @@ int numberOfIndices;
 
 #### During program initialization
 ```C#
-Gl.Enable(EnapleCap.DepthTest);
+GL.Enable(EnapleCap.DepthTest);
 
 Vector4[] vertices;
 Vector3[] normals;
 Vector2[] texCoords;
 int[] indices;
-Gl.Utils.LoadModel("model.obj", out vertices, out normals, out texCoords, out indices, false);
+GL.Utils.LoadModel("model.obj", out vertices, out normals, out texCoords, out indices, false);
 
 numberOfIndices = indices.Length;
 
-Gl.GenBuffers(1, out modelVbo);
-Gl.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
-Gl.BufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * 4 * sizeof(float)), vertices, BufferUsageHint.StaticDraw);
-Gl.BindBuffer(BufferTarget.ArrayBuffer, 0);
+GL.GenBuffers(1, out modelVbo);
+GL.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
+GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * 4 * sizeof(float)), vertices, BufferUsageHint.StaticDraw);
+GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 
-Gl.GenBuffers(1, out indexVbo);
-Gl.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
-Gl.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(int)), indices, BufferUsageHint.StaticDraw);
-Gl.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+GL.GenBuffers(1, out indexVbo);
+GL.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
+GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(int)), indices, BufferUsageHint.StaticDraw);
+GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 ```
 
 #### In the draw function
 ```C#
 // NOTE: This uses legacy OpenGL, just to fit in the readme...
-Gl.EnableClientState(ArrayCap.VertexArray);
+GL.EnableClientState(ArrayCap.VertexArray);
 
-Gl.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
-Gl.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
+GL.BindBuffer(BufferTarget.ArrayBuffer, modelVbo);
+GL.BindBuffer(BufferTarget.ElementArrayBuffer, indexVbo);
 
-Gl.VertexPointer(4, VertexPointerType.Float, 4 * sizeof(float), 0);
-Gl.DrawElements(BeginMode.Triangles, numberOfIndices, DrawElementsType.UnsignedInt, 0);
+GL.VertexPointer(4, VertexPointerType.Float, 4 * sizeof(float), 0);
+GL.DrawElements(BeginMode.Triangles, numberOfIndices, DrawElementsType.UnsignedInt, 0);
 
-Gl.BindBuffer(BufferTarget.ArrayBuffer, 0);
-Gl.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
-Gl.DisableClientState(ArrayCap.VertexArray);
+GL.DisableClientState(ArrayCap.VertexArray);
 ```
 
 #### During cleanup
 ```C#
-Gl.DeleteBuffers(1, ref modelVbo);
-Gl.DeleteBuffers(1, ref indexVbo);
+GL.DeleteBuffers(1, ref modelVbo);
+GL.DeleteBuffers(1, ref indexVbo);
 ```
 
 Lua
@@ -139,22 +140,22 @@ Whereas a C-api function call might be `lua_pcall(L, 0, LUA_MULTRET, 0)`, the Pe
 
 Sample usage (OpenAL)
 =====================
-Another utility is the `Al.Utils.BufferFromWav` utility, which is able to load wave files into an OpenAL buffer.
+Another utility is the `AL.Utils.BufferFromWav` utility, which is able to load wave files into an OpenAL buffer. Similarly, there's the `AL.Utils.BufferFromOgg` utility, allowing Ogg/Vorbis file loading.
 
 ```C#
-uint buffer = Al.Utils.BufferFromWav("MyWaveFile.wav");
+uint buffer = AL.Utils.BufferFromWav("MyWaveFile.wav");
 uint source;
-Al.GenSources(1, out source);
+AL.GenSources(1, out source);
 
-Al.Source(source, AlSourcei.Buffer, (int) buffer);
-Al.Source(source, AlSourceb.Looping, true);
+AL.Source(source, ALSourcei.Buffer, (int) buffer);
+AL.Source(source, ALSourceb.Looping, true);
 
-Al.SourcePlay(source);
+AL.SourcePlay(source);
 
 // ...
 // ...
 
 // When cleaning up:
-Al.DeleteSources(1, ref source);
-Al.DeleteBuffers(1, ref buffer);
+AL.DeleteSources(1, ref source);
+AL.DeleteBuffers(1, ref buffer);
 ```
