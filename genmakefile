@@ -16,7 +16,7 @@ compat_glfw2:
 \tcp -r "Pencil.Gaming/natives64-glfw2" "Pencil.Gaming/bin/Compatibility - GLFW2/natives64"
 \tmv "Pencil.Gaming/bin/Compatibility - GLFW2/natives32-glfw2" "Pencil.Gaming/bin/Compatibility - GLFW2/natives32"
 \tcp "Pencil.Gaming/Pencil.Gaming.dll.config" "Pencil.Gaming/bin/Compatibility - GLFW2/Pencil.Gaming.dll.config"
-\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Compatibility - GLFW2/Pencil.Gaming.exe" -define:USE_GL_COMPAT\;USE_GLFW2 $(CFLAGS)'
+\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Compatibility - GLFW2/Pencil.Gaming.dll" -define:USE_GL_COMPAT\;USE_GLFW2 $(CFLAGS)'
 CONFIGS2=$'
 compat_glfw3:
 \tmkdir "Pencil.Gaming/bin/Compatibility - GLFW3" -p
@@ -25,7 +25,7 @@ compat_glfw3:
 \tcp -r "Pencil.Gaming/natives64-glfw3" "Pencil.Gaming/bin/Compatibility - GLFW3/natives64"
 \tmv "Pencil.Gaming/bin/Compatibility - GLFW3/natives32-glfw3" "Pencil.Gaming/bin/Compatibility - GLFW3/natives32"
 \tcp "Pencil.Gaming/Pencil.Gaming.dll.config" "Pencil.Gaming/bin/Compatibility - GLFW3/Pencil.Gaming.dll.config"
-\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Compatibility - GLFW3/Pencil.Gaming.exe" -define:USE_GL_COMPAT\;USE_GLFW3 $(CFLAGS)'
+\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Compatibility - GLFW3/Pencil.Gaming.dll" -define:USE_GL_COMPAT\;USE_GLFW3 $(CFLAGS)'
 CONFIGS3=$'
 core_glfw2:
 \tmkdir "Pencil.Gaming/bin/Core - GLFW2" -p
@@ -34,7 +34,7 @@ core_glfw2:
 \tcp -r "Pencil.Gaming/natives64-glfw2" "Pencil.Gaming/bin/Core - GLFW2/natives64"
 \tmv "Pencil.Gaming/bin/Core - GLFW2/natives32-glfw2" "Pencil.Gaming/bin/Core - GLFW2/natives32"
 \tcp "Pencil.Gaming/Pencil.Gaming.dll.config" "Pencil.Gaming/bin/Core - GLFW2/Pencil.Gaming.dll.config"
-\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Core - GLFW2/Pencil.Gaming.exe" -define:USE_GL_CORE\;USE_GLFW2 $(CFLAGS)'
+\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Core - GLFW2/Pencil.Gaming.dll" -define:USE_GL_CORE\;USE_GLFW2 $(CFLAGS)'
 CONFIGS4=$'
 core_glfw3:
 \tmkdir "Pencil.Gaming/bin/Core - GLFW3" -p
@@ -43,7 +43,7 @@ core_glfw3:
 \tcp -r "Pencil.Gaming/natives64-glfw3" "Pencil.Gaming/bin/Core - GLFW3/natives64"
 \tmv "Pencil.Gaming/bin/Core - GLFW3/natives32-glfw3" "Pencil.Gaming/bin/Core - GLFW3/natives32"
 \tcp "Pencil.Gaming/Pencil.Gaming.dll.config" "Pencil.Gaming/bin/Core - GLFW3/Pencil.Gaming.dll.config"
-\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Core - GLFW3/Pencil.Gaming.exe" -define:USE_GL_CORE\;USE_GLFW3 $(CFLAGS)'
+\t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Core - GLFW3/Pencil.Gaming.dll" -define:USE_GL_CORE\;USE_GLFW3 $(CFLAGS)'
 MAKEFILE=$MAKEFILE$CONFIGS1$CONFIGS2$CONFIGS3$CONFIGS4
 
 echo "$MAKEFILE" > Makefile
