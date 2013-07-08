@@ -1,22 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Core - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Glfw/Glfw3Delegates.cs">
-    <Files>
-      <File FileName="Pencil.Gaming/Glfw/Glfw3Delegates.cs" Line="8" Column="70" />
-      <File FileName="Pencil.Gaming/Glfw/Glfw3.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming/Glfw/Glfw3_32.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming/Glfw/Glfw3_64.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming/Graphics/GLUtils.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True" selected="True">
-            <Node name="Glfw" expanded="True" />
-            <Node name="Graphics" expanded="True" />
-            <Node name="natives64-glfw3" expanded="True" />
-          </Node>
-        </State>
+        <State selected="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />

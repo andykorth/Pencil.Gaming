@@ -142,10 +142,6 @@
     <Compile Include="Math\Vector4.cs" />
     <Compile Include="Math\Rectanglei.cs" />
     <Compile Include="Math\Rectangle.cs" />
-    <Compile Include="Applets\PApplet.cs" />
-    <Compile Include="Applets\Browsers.cs" />
-    <Compile Include="Applets\SupportedBrowsersAttribute.cs" />
-    <Compile Include="Applets\AppletRequest.cs" />
     <Compile Include="Audio\ALUtils.cs" />
     <Compile Include="Audio\AL.cs" />
     <Compile Include="Audio\ALDelegates.cs" />
@@ -170,7 +166,6 @@
     <Folder Include="natives32-glfw3\" />
     <Folder Include="natives64-glfw3\" />
     <Folder Include="Scripting\" />
-    <Folder Include="Applets\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pencil.Gaming.dll.config">
