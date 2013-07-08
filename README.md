@@ -29,8 +29,8 @@ GLFW3
 Building using Makefile
 =======================
 Some don't like monodevelop/visual studio, for those a GNU Makefile has been made available. To generate this makefile, run the script in the main directory:
-```Batch
-./genmakefile
+```Bash
+./genmakefile.sh
 ```
 After that, a makefile is made, and you can choose from four different profiles:
 - Compatibility/GLFW 2 (profile: `compat_glfw2`)
@@ -40,8 +40,8 @@ After that, a makefile is made, and you can choose from four different profiles:
 Compatibility means that legacy OpenGL will be included in the binaries, core means that only core (non-legacy, "modern") OpenGL will be included in the binary.
 
 So an example might be:
-```Batch
-antonijn@antonijn-desktop ~/Programming/C Sharp/Pencil.Gaming $ ./genmakefile
+```Bash
+antonijn@antonijn-desktop ~/Programming/C Sharp/Pencil.Gaming $ ./genmakefile.sh
 Makefile generated successfully.
 antonijn@antonijn-desktop ~/Programming/C Sharp/Pencil.Gaming $ make core_glfw3
 mkdir "Pencil.Gaming/bin/Core - GLFW3" -p
