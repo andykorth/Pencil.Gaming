@@ -43,22 +43,28 @@ namespace Pencil.Gaming {
 		[FieldOffset(sizeof(int) * 4)]
 		public int
 			GreenBits;
+		[FieldOffset(sizeof(int) * 5)]
+		public int
+			RefreshRate;
 	}
 
-	[StructLayout(LayoutKind.Explicit, Size = sizeof(ushort) * 256 * 3)]
+	[StructLayout(LayoutKind.Sequential)]
+	internal unsafe struct GlfwGammaRampInternal {
+		public uint* Red;
+		public uint* Green;
+		public uint* Blue;
+		public uint Length;
+	}
+
+	[StructLayout(LayoutKind.Sequential)]
 	public struct GlfwGammaRamp {
-		[MarshalAsAttribute(UnmanagedType.ByValArray)]
-		[FieldOffset(sizeof(int) * 256 * 0)]
-		public ushort[]
-			Red;
-		[MarshalAsAttribute(UnmanagedType.ByValArray)]
-		[FieldOffset(sizeof(int) * 256 * 1)]
-		public ushort[]
-			Green;
-		[MarshalAsAttribute(UnmanagedType.ByValArray)]
-		[FieldOffset(sizeof(int) * 256 * 2)]
-		public ushort[]
-			Blue;
+		[MarshalAs(UnmanagedType.LPArray)]
+		public uint[] Red;
+		[MarshalAs(UnmanagedType.LPArray)]
+		public uint[] Green;
+		[MarshalAs(UnmanagedType.LPArray)]
+		public uint[] Blue;
+		internal uint Length;
 	}
 
 	#pragma warning disable 0414

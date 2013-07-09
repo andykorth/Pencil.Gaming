@@ -57,7 +57,7 @@ namespace Pencil.Gaming {
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetGamma(GlfwMonitorPtr monitor, float gamma);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern void glfwGetGammaRamp(GlfwMonitorPtr monitor, out GlfwGammaRamp ramp);
+		internal static extern void glfwGetGammaRamp(GlfwMonitorPtr monitor, out GlfwGammaRampInternal ramp);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetGammaRamp(GlfwMonitorPtr monitor, ref GlfwGammaRamp ramp);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 

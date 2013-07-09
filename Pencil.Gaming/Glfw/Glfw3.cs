@@ -83,9 +83,25 @@ namespace Pencil.Gaming {
 			GlfwDelegates.glfwSetGamma(monitor, gamma);
 		}
 		public static void GetGammaRamp(GlfwMonitorPtr monitor, out GlfwGammaRamp ramp) {
-			GlfwDelegates.glfwGetGammaRamp(monitor, out ramp);
+			GlfwGammaRampInternal rampI;
+			GlfwDelegates.glfwGetGammaRamp(monitor, out rampI);
+			uint length = rampI.Length;
+			ramp = new GlfwGammaRamp();
+			ramp.Red = new uint[length];
+			ramp.Green = new uint[length];
+			ramp.Blue = new uint[length];
+			for (int i = 0; i < ramp.Red.Length; ++i) {
+				ramp.Red[i] = rampI.Red[i];
+			}
+			for (int i = 0; i < ramp.Green.Length; ++i) {
+				ramp.Green[i] = rampI.Green[i];
+			}
+			for (int i = 0; i < ramp.Blue.Length; ++i) {
+				ramp.Blue[i] = rampI.Blue[i];
+			}
 		}
 		public static void SetGammaRamp(GlfwMonitorPtr monitor, ref GlfwGammaRamp ramp) {
+			ramp.Length = (uint)ramp.Red.Length;
 			GlfwDelegates.glfwSetGammaRamp(monitor, ref ramp);
 		}
 		public static void DefaultWindowHints() {

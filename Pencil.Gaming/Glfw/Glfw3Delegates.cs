@@ -82,7 +82,7 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetGamma(GlfwMonitorPtr monitor,float gamma);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate void GetGammaRamp(GlfwMonitorPtr monitor,out GlfwGammaRamp ramp);
+		internal delegate void GetGammaRamp(GlfwMonitorPtr monitor,out GlfwGammaRampInternal ramp);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetGammaRamp(GlfwMonitorPtr monitor,ref GlfwGammaRamp ramp);
 		[SuppressUnmanagedCodeSecurity]
