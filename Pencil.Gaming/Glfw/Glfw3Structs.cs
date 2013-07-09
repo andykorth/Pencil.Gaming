@@ -26,7 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming {
-	[StructLayout(LayoutKind.Explicit, Size = sizeof(int) * 5)]
+	[StructLayout(LayoutKind.Explicit, Size = sizeof(int) * 6)]
 	public struct GlfwVidMode {
 		[FieldOffset(sizeof(int) * 0)]
 		public int
