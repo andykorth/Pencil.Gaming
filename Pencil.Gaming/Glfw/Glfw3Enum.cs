@@ -188,7 +188,7 @@ namespace Pencil.Gaming {
 
 	public enum GlfwError {
 		NoError = 0,
-		NotInitialized = 0x70001,
+        NotInitialized = 0x10001,
 		NoCurrentContext,
 		InvalidEnum,
 		InvalidValue,
@@ -202,13 +202,13 @@ namespace Pencil.Gaming {
 	public enum WindowAttrib {
 		Focused = 0x20001,
 		Iconified,
-		ContextRevision = 0x20004,
-		Resizable = 0x22007,
-		Visible,
+		Resizeable,
+        Visible,
+        Decorated
 	}
 
 	public enum WindowHint {
-		RedBits = 0x21000,
+		RedBits = 0x21001,
 		GreenBits,
 		BlueBits,
 		AlphaBits,
@@ -222,10 +222,11 @@ namespace Pencil.Gaming {
 		Stereo,
 		Samples,
 		SRGBCapable,
-
-		ClientAPI = 0x22000,
+        RefreshRate,
+		ClientAPI = 0x22001,
 		ContextVersionMajor,
 		ContextVersionMinor,
+        ContextRevision,
 		ContextRobustness,
 		OpenGLForwardCompat,
 		OpenGLDebugContext,
@@ -233,42 +234,36 @@ namespace Pencil.Gaming {
 	}
 
 	public enum OpenGLAPI {
-		OpenGLAPI = 1,
+		OpenGLAPI = 0x30001,
 		OpenGLESAPI,
 	}
 
 	public enum ContextRobustness {
 		NoRobustness = 0,
-		NoResetNotification,
+        NoResetNotification = 0x031001,
 		LoseContextOnReset,
 	}
 
 	public enum OpenGLProfile {
-		None,
-		Core,
+		Any = 0,
+        Core = 0x032001,
 		Compatibility,
 	}
 
 	public enum InputMode {
-		CursorMode = 0x30001,
+        CursorMode = 0x00033001,
 		StickyKeys,
 		StickyMouseButtons,
 	}
 
 	public enum CursorMode {
-		CursorNormal = 0x40001,
+        CursorNormal = 0x00034001,
 		CursorHidden,
 		CursorCaptured,
 	}
 
-	public enum JoystickParam {
-		Present = 0x50001,
-		Axes,
-		Buttons,
-	}
-
 	public enum ConnectionState {
-		Connected = 0x61000,
+        Connected = 0x00040001,
 		Disconnected,
 	}
 }
