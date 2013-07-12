@@ -212,10 +212,10 @@ namespace Pencil.Gaming {
 		public static bool GetMouseButton(GlfwWindowPtr window, MouseButton button) {
 			return GlfwDelegates.glfwGetMouseButton(window, button) != 0;
 		}
-		public static void GetCursorPos(GlfwWindowPtr window, out int xpos, out int ypos) {
+		public static void GetCursorPos(GlfwWindowPtr window, out double xpos, out double ypos) {
 			GlfwDelegates.glfwGetCursorPos(window, out xpos, out ypos);
 		}
-		public static void SetCursorPos(GlfwWindowPtr window, int xpos, int ypos) {
+		public static void SetCursorPos(GlfwWindowPtr window, double xpos, double ypos) {
 			GlfwDelegates.glfwSetCursorPos(window, xpos, ypos);
 		}
 		private static GlfwKeyFun keyFun;

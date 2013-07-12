@@ -37,7 +37,7 @@ namespace Pencil.Gaming {
 	public delegate void GlfwCharFun(GlfwWindowPtr wnd,char ch);
 	public delegate void GlfwMouseButtonFun(GlfwWindowPtr wnd,MouseButton btn,KeyAction action);
 	public delegate void GlfwWindowIconifyFun(GlfwWindowPtr wnd,bool iconify);
-	public delegate void GlfwCursorPosFun(GlfwWindowPtr wnd,int x,int y);
+	public delegate void GlfwCursorPosFun(GlfwWindowPtr wnd,double x,double y);
 	public delegate void GlfwCursorEnterFun(GlfwWindowPtr wnd,bool enter);
 	public delegate void GlfwScrollFun(GlfwWindowPtr wnd,double xoffset,double yoffset);
 }

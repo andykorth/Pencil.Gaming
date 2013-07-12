@@ -148,9 +148,9 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate int GetMouseButton(GlfwWindowPtr window,MouseButton button);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate void GetCursorPos(GlfwWindowPtr window,out int xpos,out int ypos);
+		internal delegate void GetCursorPos(GlfwWindowPtr window,out double xpos,out double ypos);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate void SetCursorPos(GlfwWindowPtr window,int xpos,int ypos);
+		internal delegate void SetCursorPos(GlfwWindowPtr window,double xpos,double ypos);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetKeyCallback(GlfwWindowPtr window,GlfwKeyFun cbfun);
 		[SuppressUnmanagedCodeSecurity]

@@ -123,9 +123,9 @@ namespace Pencil.Gaming {
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern int glfwGetMouseButton(GlfwWindowPtr window, MouseButton button);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern void glfwGetCursorPos(GlfwWindowPtr window, out int xpos, out int ypos);
+		internal static extern void glfwGetCursorPos(GlfwWindowPtr window, out double xpos, out double ypos);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
-		internal static extern void glfwSetCursorPos(GlfwWindowPtr window, int xpos, int ypos);
+		internal static extern void glfwSetCursorPos(GlfwWindowPtr window, double xpos, double ypos);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 
 		internal static extern void glfwSetKeyCallback(GlfwWindowPtr window, GlfwKeyFun cbfun);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity] 

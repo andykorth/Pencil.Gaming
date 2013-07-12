@@ -30,8 +30,8 @@ namespace Pencil.Gaming {
 		public bool MiddleButton { get; private set; }
 		public bool RightButton { get; private set; }
 		public int ScrollWheel { get; private set; }
-		public int X { get; private set; }
-		public int Y { get; private set; }
+		public double X { get; private set; }
+		public double Y { get; private set; }
 
 		private MouseState() {
 		}
@@ -42,7 +42,7 @@ namespace Pencil.Gaming {
 			result.LeftButton = Glfw.GetMouseButton(window, MouseButton.LeftButton);
 			result.MiddleButton = Glfw.GetMouseButton(window, MouseButton.MiddleButton);
 			result.RightButton = Glfw.GetMouseButton(window, MouseButton.RightButton);
-			int x, y;
+			double x, y;
 			Glfw.GetCursorPos(window, out x, out y);
 			result.X = x;
 			result.Y = y;
