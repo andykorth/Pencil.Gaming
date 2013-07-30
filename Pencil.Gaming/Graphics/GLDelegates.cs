@@ -2717,6 +2717,17 @@ namespace Pencil.Gaming.Graphics {
 			[SuppressUnmanagedCodeSecurity()]
 			internal unsafe delegate void WindowPos3sv(Int16* v);
 			internal unsafe static WindowPos3sv glWindowPos3sv;
+            // Manual add
+            [SuppressUnmanagedCodeSecurity()]
+            internal unsafe delegate void DispatchCompute(UInt32 num_groups_x, UInt32 num_groups_y, UInt32 num_groups_z);
+            internal unsafe static DispatchCompute glDispatchCompute;
+            [SuppressUnmanagedCodeSecurity()]
+            internal unsafe delegate void DispatchComputeIndirect(IntPtr indirect);
+            internal unsafe static DispatchComputeIndirect glDispatchComputeIndirect;
+            [SuppressUnmanagedCodeSecurity()]
+            internal unsafe delegate void MemoryBarrier(Pencil.Gaming.Graphics.MemoryBarrierMask barriers);
+            internal unsafe static MemoryBarrier glMemoryBarrier;
+
 		}
 	}
 }
