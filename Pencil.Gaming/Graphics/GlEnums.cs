@@ -23,7 +23,38 @@
 
 using System;
 
-namespace Pencil.Gaming.Graphics {	
+namespace Pencil.Gaming.Graphics {
+    public enum MemoryBarrierMask : int {
+        VertexAttribArrayBarrierBit = ((int)0x00000001) ,
+        VertexAttribArrayBarrierBitExt = ((int)0x00000001),
+        ElementArrayBarrierBit = ((int)0x00000002),
+        ElementArrayBarrierBitExt = ((int)0x00000002),
+        UniformBarrierBit = ((int)0x00000004),
+        UniformBarrierBitExt = ((int)0x00000004),
+        TextureFetchBarrierBit = ((int)0x00000008),
+        TextureFetchBarrierBitExt = ((int)0x00000008),
+        ShaderGlobalAccessBarrierBitNV = ((int)0x00000010),
+        ShaderImageAccessBarrierBit = ((int)0x00000020),
+        ShaderImageAccessBarrierBitExt = ((int)0x00000020),
+        CommandBarrierBit = ((int)0x00000040),
+        CommandBarrierBitExt = ((int)0x00000040),
+        PixelBufferBarrierBit = ((int)0x00000080),
+        PixelBufferBarrierBitExt = ((int)0x00000080),
+        TextureUpdateBarrierBit = ((int)0x00000100),
+        TextureUpdateBarrierBitExt = ((int)0x00000100),
+        BufferUpdateBarrierBit = ((int)0x00000200),
+        BufferUpdateBarrierBitExt = ((int)0x00000200),
+        FrameBufferBarrierBit = ((int)0x00000400),
+        FrameBufferBarrierBitExt = ((int)0x00000400),
+        TransformFeedbackBarrierBit = ((int)0x00000800),
+        TransformFeedbackBarrierBitExt = ((int)0x00000800),
+        AtomicCounterBarrierBit = ((int)0x00001000),
+        AtomicCounterBarrierBitExt = ((int)0x00001000),
+        ShaderStorageBarrierBit = ((int)0x00002000),
+        AllBarrierBits = (-1),
+        AllBarrierBitsExt = (-1),
+    }
+
 	public enum AccumOp : int {
 		Accum = ((int)0x0100)		,
 		Load = ((int)0x0101)		,
@@ -1767,6 +1798,12 @@ namespace Pencil.Gaming.Graphics {
 		CopyReadBuffer = ((int)0x8F36)		,
 		CopyWriteBuffer = ((int)0x8F37)		,
 		DrawIndirectBuffer = ((int)0x8F3F)		,
+        // Manual added
+        AtomicCounterBuffer = ((int)0x92C0) ,
+        DispatchIndirectBuffer = ((int)0x90EE),
+        ShaderStorageBuffer = ((int)0x90D2) ,
+
+
 	}
 	/*public enum BufferTargetArb : int {
 		ArrayBuffer = ((int)0x8892)		,
@@ -4086,6 +4123,23 @@ namespace Pencil.Gaming.Graphics {
 		MaxGeometryInputComponents = ((int)0x9123)		,
 		MaxGeometryOutputComponents = ((int)0x9124)		,
 		MaxFragmentInputComponents = ((int)0x9125)		,
+        // Manual added
+        MaxComputeUniformBlocks = ((int)0x91BB),
+        MaxComputeTextureImageUnits = ((int)0x91BC),
+        MaxComputeImageUniforms = ((int)0x91BD),
+        MaxComputeSharedMemorySize = ((int)0x8262),
+        MaxComputeUniformComponents = ((int)0x8263),
+        MaxComputeAtomicCounterBuffers = ((int)0x8264),
+        MaxComputeAtomicCounters = ((int)0x8265),
+        MaxCombinedComputeUniformComponents = ((int)0x8266),
+        MaxComputeWorkGroupInvocations = ((int)0x90EB),
+        MaxComputeWorkGroupCount = ((int)0x91BE),
+        MaxComputeWorkGroupSize = ((int)0x91BF),
+        ComputeWorkGroupSize = ((int)0x8267),
+        MaxShaderStorageBlockSize = ((int)0x90DE),
+        UniformBlockReferencedByComputeShader = ((int)0x90EC),
+        AtomicCounterBufferReferencedByComputeShader = ((int)0x90ED),
+        DispatchIndirectBufferBinding = ((int)0x90EF),
 	}
 	public enum GetPointervPName : int {
 		FeedbackBufferPointer = ((int)0x0DF0)		,
@@ -6053,6 +6107,8 @@ namespace Pencil.Gaming.Graphics {
 		TessControlShaderBit = ((int)0x00000008)		,
 		TessEvaluationShaderBit = ((int)0x00000010)		,
 		AllShaderBits = unchecked((int)0xFFFFFFFF)		,
+        // Manual added
+        ComputeShaderBit = ((int)0x00000020),
 	}
 	
 	public enum ProgramStageParameter : int {
@@ -6688,6 +6744,8 @@ namespace Pencil.Gaming.Graphics {
 		GeometryShaderExt = ((int)0x8DD9)		,
 		TessEvaluationShader = ((int)0x8E87)		,
 		TessControlShader = ((int)0x8E88)		,
+        // Manual added
+        ComputeShader = ((int)0x91B9),
 	}
 	public enum ShadingModel : int {
 		Flat = ((int)0x1D00)		,
