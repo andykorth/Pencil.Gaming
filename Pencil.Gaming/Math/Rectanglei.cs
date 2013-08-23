@@ -70,7 +70,7 @@ namespace Pencil.Gaming.MathUtils {
 		public Rectanglei(Vector2i pos, Vector2i size) : this(pos, size.X, size.Y) {
 		}
 
-		public bool Intersects(Rectangle rect) {
+		public bool Intersects(Rectanglei rect) {
 			return !((X >= rect.Right) || (Right <= rect.X) ||
 				(Y >= rect.Bottom) || (Bottom <= rect.Y));
 		}
