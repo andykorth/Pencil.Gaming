@@ -975,104 +975,56 @@ namespace Pencil.Gaming.MathUtils {
 		/// <param name="result">The inverse of the given matrix if it has one, or the input if it is singular</param>
 		/// <exception cref="InvalidOperationException">Thrown if the Matrix4 is singular.</exception>
 		public static void Invert(ref Matrix mat, out Matrix result) {
-			int[] colIdx = { 0, 0, 0, 0 };
-			int[] rowIdx = { 0, 0, 0, 0 };
-			int[] pivotIdx = { -1, -1, -1, -1 };
+            float s0 = mat.M11 * mat.M22 - mat.M21 * mat.M12;
+            float s1 = mat.M11 * mat.M23 - mat.M21 * mat.M13;
+            float s2 = mat.M11 * mat.M24 - mat.M21 * mat.M14;
+            float s3 = mat.M12 * mat.M23 - mat.M22 * mat.M13;
+            float s4 = mat.M12 * mat.M24 - mat.M22 * mat.M14;
+            float s5 = mat.M13 * mat.M24 - mat.M23 * mat.M14;
 
-			// convert the matrix to an array for easy looping
-			float[,] inverse = {{mat.Row0.X, mat.Row0.Y, mat.Row0.Z, mat.Row0.W}, 
-								{mat.Row1.X, mat.Row1.Y, mat.Row1.Z, mat.Row1.W}, 
-								{mat.Row2.X, mat.Row2.Y, mat.Row2.Z, mat.Row2.W}, 
-								{mat.Row3.X, mat.Row3.Y, mat.Row3.Z, mat.Row3.W} };
-			int icol = 0;
-			int irow = 0;
-			for (int i = 0; i < 4; i++) {
-				// Find the largest pivot value
-				float maxPivot = 0.0f;
-				for (int j = 0; j < 4; j++) {
-					if (pivotIdx [j] != 0) {
-						for (int k = 0; k < 4; ++k) {
-							if (pivotIdx [k] == -1) {
-								float absVal = System.Math.Abs(inverse [j, k]);
-								if (absVal > maxPivot) {
-									maxPivot = absVal;
-									irow = j;
-									icol = k;
-								}
-							} else if (pivotIdx [k] > 0) {
-								result = mat;
-								return;
-							}
-						}
-					}
-				}
+            float c5 = mat.M33 * mat.M44 - mat.M43 * mat.M34;
+            float c4 = mat.M32 * mat.M44 - mat.M42 * mat.M34;
+            float c3 = mat.M32 * mat.M43 - mat.M42 * mat.M33;
+            float c2 = mat.M31 * mat.M44 - mat.M41 * mat.M34;
+            float c1 = mat.M31 * mat.M43 - mat.M41 * mat.M33;
+            float c0 = mat.M31 * mat.M42 - mat.M41 * mat.M32;
 
-				++(pivotIdx [icol]);
+            float inverseDeterminant = 1.0f / (s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0);
 
-				// Swap rows over so pivot is on diagonal
-				if (irow != icol) {
-					for (int k = 0; k < 4; ++k) {
-						float f = inverse [irow, k];
-						inverse [irow, k] = inverse [icol, k];
-						inverse [icol, k] = f;
-					}
-				}
+            float m11 = mat.M11;
+            float m12 = mat.M12;
+            float m13 = mat.M13;
+            float m14 = mat.M14;
+            float m21 = mat.M21;
+            float m22 = mat.M22;
+            float m23 = mat.M23;
+            float m31 = mat.M31;
+            float m32 = mat.M32;
+            float m33 = mat.M33;
 
-				rowIdx [i] = irow;
-				colIdx [i] = icol;
+            float m41 = mat.M41;
+            float m42 = mat.M42;
 
-				float pivot = inverse [icol, icol];
-				// check for singular matrix
-				if (pivot == 0.0f) {
-					throw new InvalidOperationException("Matrix is singular and cannot be inverted.");
-				}
+            result = new Matrix();
+            result.M11 = (mat.M22 * c5 - mat.M23 * c4 + mat.M24 * c3) * inverseDeterminant;
+            result.M12 = (-mat.M12 * c5 + mat.M13 * c4 - mat.M14 * c3) * inverseDeterminant;
+            result.M13 = (mat.M42 * s5 - mat.M43 * s4 + mat.M44 * s3) * inverseDeterminant;
+            result.M14 = (-mat.M32 * s5 + mat.M33 * s4 - mat.M34 * s3) * inverseDeterminant;
 
-				// Scale row so it has a unit diagonal
-				float oneOverPivot = 1.0f / pivot;
-				inverse [icol, icol] = 1.0f;
-				for (int k = 0; k < 4; ++k) {
-					inverse [icol, k] *= oneOverPivot;
-				}
+            result.M21 = (-mat.M21 * c5 + mat.M23 * c2 - mat.M24 * c1) * inverseDeterminant;
+            result.M22 = (m11 * c5 - m13 * c2 + m14 * c1) * inverseDeterminant;
+            result.M23 = (-mat.M41 * s5 + mat.M43 * s2 - mat.M44 * s1) * inverseDeterminant;
+            result.M24 = (mat.M31 * s5 - mat.M33 * s2 + mat.M34 * s1) * inverseDeterminant;
 
-				// Do elimination of non-diagonal elements
-				for (int j = 0; j < 4; ++j) {
-					// check this isn't on the diagonal
-					if (icol != j) {
-						float f = inverse [j, icol];
-						inverse [j, icol] = 0.0f;
-						for (int k = 0; k < 4; ++k) {
-							inverse [j, k] -= inverse [icol, k] * f;
-						}
-					}
-				}
-			}
+            result.M31 = (m21 * c4 - m22 * c2 + mat.M24 * c0) * inverseDeterminant;
+            result.M32 = (-m11 * c4 + m12 * c2 - m14 * c0) * inverseDeterminant;
+            result.M33 = (mat.M41 * s4 - mat.M42 * s2 + mat.M44 * s0) * inverseDeterminant;
+            result.M34 = (-m31 * s4 + m32 * s2 - mat.M34 * s0) * inverseDeterminant;
 
-			for (int j = 3; j >= 0; --j) {
-				int ir = rowIdx [j];
-				int ic = colIdx [j];
-				for (int k = 0; k < 4; ++k) {
-					float f = inverse [k, ir];
-					inverse [k, ir] = inverse [k, ic];
-					inverse [k, ic] = f;
-				}
-			}
-
-			result.Row0.X = inverse [0, 0];
-			result.Row0.Y = inverse [0, 1];
-			result.Row0.Z = inverse [0, 2];
-			result.Row0.W = inverse [0, 3];
-			result.Row1.X = inverse [1, 0];
-			result.Row1.Y = inverse [1, 1];
-			result.Row1.Z = inverse [1, 2];
-			result.Row1.W = inverse [1, 3];
-			result.Row2.X = inverse [2, 0];
-			result.Row2.Y = inverse [2, 1];
-			result.Row2.Z = inverse [2, 2];
-			result.Row2.W = inverse [2, 3];
-			result.Row3.X = inverse [3, 0];
-			result.Row3.Y = inverse [3, 1];
-			result.Row3.Z = inverse [3, 2];
-			result.Row3.W = inverse [3, 3];
+            result.M41 = (-m21 * c3 + m22 * c1 - m23 * c0) * inverseDeterminant;
+            result.M42 = (m11 * c3 - m12 * c1 + m13 * c0) * inverseDeterminant;
+            result.M43 = (-m41 * s3 + m42 * s1 - mat.M43 * s0) * inverseDeterminant;
+            result.M44 = (m31 * s3 - m32 * s1 + m33 * s0) * inverseDeterminant;
 		}
 
 		/// <summary>
