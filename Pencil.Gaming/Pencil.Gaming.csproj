@@ -12,7 +12,7 @@
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <Description>A minimalistic gaming library for C# based on OpenTK.</Description>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <AssemblyName>Pencil.Gaming.dll</AssemblyName>
+    <AssemblyName>Pencil.Gaming</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW2|AnyCPU' ">
     <Optimize>true</Optimize>
