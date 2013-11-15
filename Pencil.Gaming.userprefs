@@ -1,16 +1,25 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Compatibility - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming\Graphics\GLHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Glfw/Glfw3Structs.cs">
     <Files>
-      <File FileName="Pencil.Gaming\Glfw\Glfw3Structs.cs" Line="33" Column="10" />
-      <File FileName="Pencil.Gaming\Glfw\Glfw3.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming\Glfw\Glfw3Delegates.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming\Glfw\Glfw3_64.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming\Glfw\Glfw3_32.cs" Line="1" Column="1" />
-      <File FileName="Pencil.Gaming\Graphics\GL.cs" Line="2361" Column="11" />
-      <File FileName="Pencil.Gaming\Graphics\GLHelper.cs" Line="339" Column="3" />
-      <File FileName="Pencil.Gaming\Graphics\GLDelegates.cs" Line="1931" Column="47" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw3Structs.cs" Line="33" Column="10" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw3.cs" Line="1" Column="1" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw3Delegates.cs" Line="1" Column="1" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw3_64.cs" Line="1" Column="1" />
+      <File FileName="Pencil.Gaming/Glfw/Glfw3_32.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Pencil.Gaming" expanded="True" selected="True">
+            <Node name="Glfw" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
