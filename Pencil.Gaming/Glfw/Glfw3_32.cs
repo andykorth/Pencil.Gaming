@@ -53,7 +53,7 @@ namespace Pencil.Gaming
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity]
 		internal static extern GlfwVidMode* glfwGetVideoModes(GlfwMonitorPtr monitor, out int count);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity]
-		internal static extern GlfwVidMode glfwGetVideoMode(GlfwMonitorPtr monitor);
+		internal static extern GlfwVidMode* glfwGetVideoMode(GlfwMonitorPtr monitor);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwSetGamma(GlfwMonitorPtr monitor, float gamma);
 		[DllImport("natives32/glfw.dll"), SuppressUnmanagedCodeSecurity]
