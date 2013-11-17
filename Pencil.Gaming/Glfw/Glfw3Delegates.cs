@@ -76,7 +76,7 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate GlfwVidMode * GetVideoModes(GlfwMonitorPtr monitor,out int count);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate GlfwVidMode GetVideoMode(GlfwMonitorPtr monitor);
+		internal delegate GlfwVidMode * GetVideoMode(GlfwMonitorPtr monitor);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetGamma(GlfwMonitorPtr monitor,float gamma);
 		[SuppressUnmanagedCodeSecurity]
