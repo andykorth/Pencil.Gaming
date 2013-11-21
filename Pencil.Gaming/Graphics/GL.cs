@@ -21241,5 +21241,13 @@ namespace Pencil.Gaming.Graphics {
 			Delegates.glWindowPos3sv((Int16*)v);
 		}
 		#endif
+
+			//begin default arguments section by marsh poulson
+			
+			public static void VertexAttribPointer(int target, int size, VertexAttribPointerType type)
+			{
+				VertexAttribPointer( target, size, type, false, 0, 0);
+			}
+			//end default arguments section by marsh poulson
 	}
 }
