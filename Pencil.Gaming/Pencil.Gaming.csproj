@@ -156,6 +156,7 @@
     <Compile Include="Graphics\GLCore.cs" />
     <Compile Include="Graphics\GLDelegates.cs" />
     <Compile Include="Graphics\GL.cs" />
+    <Compile Include="Math\DualQuaternion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
