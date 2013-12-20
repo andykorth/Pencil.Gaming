@@ -9,18 +9,18 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Pencil.Gaming</RootNamespace>
     <ReleaseVersion>0.0.20dev</ReleaseVersion>
-    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <SynchReleaseVersion>False</SynchReleaseVersion>
     <Description>A minimalistic gaming library for C# based on OpenTK.</Description>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AssemblyName>Pencil.Gaming</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW2|AnyCPU' ">
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\Compatibility - GLFW2</OutputPath>
     <DefineConstants>USE_GL_COMPAT; USE_GLFW2;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <CustomCommands>
       <CustomCommands>
         <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
@@ -29,14 +29,15 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
-    <ConsolePause>false</ConsolePause>
+    <ConsolePause>False</ConsolePause>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW2|AnyCPU' ">
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\Core - GLFW2</OutputPath>
     <DefineConstants>USE_GL_CORE; USE_GLFW2;</DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <CustomCommands>
       <CustomCommands>
         <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw3&quot;" />
@@ -45,15 +46,16 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw2&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Compatibility - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\Compatibility - GLFW3</OutputPath>
     <DefineConstants>USE_GL_COMPAT; USE_GLFW3;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <CustomCommands>
       <CustomCommands>
         <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
@@ -62,15 +64,15 @@
         <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
       </CustomCommands>
     </CustomCommands>
-    <ConsolePause>false</ConsolePause>
+    <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core - GLFW3|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\Core - GLFW3</OutputPath>
     <DefineConstants>USE_GL_CORE; USE_GLFW3;</DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <CustomCommands>
       <CustomCommands>
         <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
@@ -154,6 +156,7 @@
     <Compile Include="Graphics\GLCore.cs" />
     <Compile Include="Graphics\GLDelegates.cs" />
     <Compile Include="Graphics\GL.cs" />
+    <Compile Include="Math\DualQuaternion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -500,5 +500,21 @@ namespace Pencil.Gaming.MathUtils {
 		public bool Equals(Quaternion other) {
 			return Xyz == other.Xyz && W == other.W;
 		}
+		/// <summary>
+		/// creates a quaternion from the vector should mostly be used for debuging
+		/// purposes
+		/// </summary>
+		/// <returns>
+		/// The vector.
+		/// </returns>
+		/// <param name='vector'>
+		/// Vector.
+		/// </param>
+		public static Quaternion FromVector(Vector3 vector)
+		{
+			//not a constructor as it would be unclear what the vector would
+			//be converted to ie a one or a zero in the last position 
+			return new Quaternion(vector, 0.0f);
+		}
 	}
 }

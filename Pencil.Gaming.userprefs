@@ -1,18 +1,22 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Compatibility - GLFW3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Glfw/Glfw3Structs.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pencil.Gaming/Math/Quaternion.cs">
     <Files>
       <File FileName="Pencil.Gaming/Glfw/Glfw3Structs.cs" Line="33" Column="10" />
       <File FileName="Pencil.Gaming/Glfw/Glfw3.cs" Line="1" Column="1" />
       <File FileName="Pencil.Gaming/Glfw/Glfw3Delegates.cs" Line="1" Column="1" />
       <File FileName="Pencil.Gaming/Glfw/Glfw3_64.cs" Line="1" Column="1" />
       <File FileName="Pencil.Gaming/Glfw/Glfw3_32.cs" Line="1" Column="1" />
+      <File FileName="Pencil.Gaming/Math/Quaternion.cs" Line="231" Column="5" />
+      <File FileName="Pencil.Gaming/Math/DualQuaternion.cs" Line="69" Column="124" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Pencil.Gaming" expanded="True" selected="True">
-            <Node name="Glfw" expanded="True" />
+          <Node name="Pencil.Gaming" expanded="True">
+            <Node name="Math" expanded="True">
+              <Node name="Quaternion.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
