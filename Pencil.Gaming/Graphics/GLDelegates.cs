@@ -410,13 +410,13 @@ namespace Pencil.Gaming.Graphics {
 			internal delegate void CopyTexSubImage3D(Pencil.Gaming.Graphics.TextureTarget target,Int32 level,Int32 xoffset,Int32 yoffset,Int32 zoffset,Int32 x,Int32 y,Int32 width,Int32 height);
 			internal static CopyTexSubImage3D glCopyTexSubImage3D;
 			[SuppressUnmanagedCodeSecurity()]
-			internal delegate Int32 CreateProgram();
+			internal delegate UInt32 CreateProgram();
 			internal static CreateProgram glCreateProgram;
 			[SuppressUnmanagedCodeSecurity()]
-			internal delegate Int32 CreateShader(Pencil.Gaming.Graphics.ShaderType type);
+			internal delegate UInt32 CreateShader(Pencil.Gaming.Graphics.ShaderType type);
 			internal static CreateShader glCreateShader;
 			[SuppressUnmanagedCodeSecurity()]
-			internal delegate Int32 CreateShaderProgramv(Pencil.Gaming.Graphics.ShaderType type,Int32 count,String[] strings);
+			internal delegate UInt32 CreateShaderProgramv(Pencil.Gaming.Graphics.ShaderType type,Int32 count,String[] strings);
 			internal static CreateShaderProgramv glCreateShaderProgramv;
 			[SuppressUnmanagedCodeSecurity()]
 			internal delegate void CullFace(Pencil.Gaming.Graphics.CullFaceMode mode);
