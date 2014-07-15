@@ -963,7 +963,27 @@ namespace Pencil.Gaming.MathUtils {
 			result.Row3.Z = (((lM41 * rM13) + (lM42 * rM23)) + (lM43 * rM33)) + (lM44 * rM43);
 			result.Row3.W = (((lM41 * rM14) + (lM42 * rM24)) + (lM43 * rM34)) + (lM44 * rM44);
 		}
-
+		/// <summary>
+		/// Mult the specified left and right where left is a Vector4 should only be used for debuging
+		/// and seeing if the point you are tryng to draw is in screen space
+		/// </summary>
+		/// <param name='left'>
+		/// Left.
+		/// </param>
+		/// <param name='right'>
+		/// Right.
+		/// </param>
+		public static Vector4 Mult(Vector4 left,Matrix right)
+		{
+			return new Vector4(left.X*right.M11 + left.Y*right.M21+ left.Z*right.M31+ left.W*right.M41,
+			                   left.X*right.M12 + left.Y*right.M22+ left.Z*right.M32+ left.W*right.M42,
+			                   left.X*right.M13 + left.Y*right.M23+ left.Z*right.M33+ left.W*right.M43,
+			                   left.X*right.M14 + left.Y*right.M24+ left.Z*right.M34+ left.W*right.M44);
+		}
+		public static Vector4 operator*(Vector4 left, Matrix right)
+		{
+			return Mult(left, right);
+		}
 		#endregion
 
 		#region Invert Functions

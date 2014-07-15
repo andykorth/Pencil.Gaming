@@ -76,7 +76,16 @@ namespace Pencil.Gaming {
 			return result;
 		}
 		public static GlfwVidMode GetVideoMode(GlfwMonitorPtr monitor) {
-			return GlfwDelegates.glfwGetVideoMode(monitor);
+            GlfwVidMode* vidMode = GlfwDelegates.glfwGetVideoMode(monitor);
+            GlfwVidMode returnMode = new GlfwVidMode {
+                RedBits = vidMode->RedBits,
+                GreenBits = vidMode->GreenBits,
+                BlueBits = vidMode->BlueBits,
+                RefreshRate = vidMode->RefreshRate,
+                Width = vidMode->Width,
+                Height = vidMode->Height
+            };
+            return returnMode;
 		}
 		public static void SetGamma(GlfwMonitorPtr monitor, float gamma) {
 			GlfwDelegates.glfwSetGamma(monitor, gamma);

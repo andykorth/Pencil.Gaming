@@ -352,10 +352,10 @@ namespace Pencil.Gaming.Graphics {
 
 		#region public static void ShaderSource(Int32 shader, System.String @string)
 
-		public static void ShaderSource(Int32 shader, System.String @string) {
+		public static void ShaderSource(UInt32 shader, System.String @string) {
 			unsafe {
 				int length = @string.Length;
-				GL.ShaderSource((UInt32)shader, 1, new string[] { @string }, &length);
+				GL.ShaderSource(shader, 1, new string[] { @string }, &length);
 			}
 		}
 
