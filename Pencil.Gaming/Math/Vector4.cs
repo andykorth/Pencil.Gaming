@@ -52,39 +52,6 @@ namespace Pencil.Gaming.MathUtils {
 		/// The W component of the Vector4.
 		/// </summary>
 		public float W;
-		[XmlIgnore]
-		public float x {
-			get { return X; }
-			set {
-				X = value;
-			}
-		}
-		[XmlIgnore]
-		public float y {
-			get { return Y; }
-			set {
-				Y = value;
-			}
-		}
-		[XmlIgnore]
-		public float z {
-			get { return Z; }
-			set {
-				Z = value;
-			}
-		}
-		[XmlIgnore]
-		public float w {
-			get { return W; }
-			set {
-				W = value;
-			}
-		}
-
-		public static implicit operator Vector3(Vector4 v)
-		{
-			return new Vector3 (v.X, v.Y, v.Z);
-		}
 
 		/// <summary>
 		/// Defines a unit-length Vector4 that points towards the X-axis.

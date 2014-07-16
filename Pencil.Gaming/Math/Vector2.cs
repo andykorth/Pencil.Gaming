@@ -43,35 +43,6 @@ namespace Pencil.Gaming.MathUtils {
 		/// </summary>
 		public float Y;
 
-
-		[XmlIgnore]
-		public float x {
-			get { return X; }
-			set {
-				X = value;
-			}
-		}
-		[XmlIgnore]
-		public float y {
-			get { return Y; }
-			set {
-				Y = value;
-			}
-		}
-
-		[XmlIgnore]
-		public Vector3 xyz {
-			get { return new Vector3(X,Y,0f); }
-		}
-
-		public static Vector2 ConstantLerp(Vector2 start, Vector2 end, float speed)
-		{
-			Vector2 diff = (end - start);
-			Vector2 dir = Vector2.Normalize (diff);
-			if (diff.Length < speed)
-				return end;
-			return start + dir * speed;
-		}
 		/// <summary>
 		/// Defines a unit-length Vector2 that points towards the X-axis.
 		/// </summary>

@@ -50,33 +50,6 @@ namespace Pencil.Gaming.MathUtils {
 		/// </summary>
 		public float Z;
 
-		public static implicit operator Pencil.Gaming.MathUtils.Vector2(Pencil.Gaming.MathUtils.Vector3 v)
-		{
-			return new Pencil.Gaming.MathUtils.Vector2 (v.X, v.Y);
-		}
-
-		[XmlIgnore]
-		public float x {
-			get { return X; }
-			set {
-				X = value;
-			}
-		}
-		[XmlIgnore]
-		public float y {
-			get { return Y; }
-			set {
-				Y = value;
-			}
-		}
-		[XmlIgnore]
-		public float z {
-			get { return Z; }
-			set {
-				Z = value;
-			}
-		}
-
 		/// <summary>
 		/// Defines a unit-length Vector3 that points towards the X-axis.
 		/// </summary>
