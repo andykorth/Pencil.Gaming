@@ -70,8 +70,8 @@ namespace Pencil.Gaming {
 		public static void SwapBuffers() {
 			GlfwDelegates.glfwSwapBuffers();
 		}
-		public static void SwapInterval(bool interval) {
-			GlfwDelegates.glfwSwapInterval(interval ? 1 : 0);
+		public static void SwapInterval(int interval) {
+			GlfwDelegates.glfwSwapInterval(interval);
 		}
 		public static int GetWindowParam(WindowParam param) {
 			return GlfwDelegates.glfwGetWindowParam((int)param);
