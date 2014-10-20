@@ -24,6 +24,15 @@
 #if USE_GLFW3
 
 namespace Pencil.Gaming {
+
+	public enum KeyModifiers
+	{
+		Shift   = 1 << 0, //1
+		Control = 1 << 1, //2
+		Alt     = 1 << 2, //4
+		Super   = 1 << 3  //8
+	}
+
 	public enum KeyAction {
 		Release = 0,
 		Press,
