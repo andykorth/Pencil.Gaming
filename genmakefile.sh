@@ -10,7 +10,7 @@ done < <(find . -name "*.cs" -type f -print0)
 
 CONFIGS1=$'
 compat_glfw2:
-\tmkdir "Pencil.Gaming/bin/Compatibility - GLFW2" -p
+\tmkdir -p "Pencil.Gaming/bin/Compatibility - GLFW2"
 \tcp "Pencil.Gaming/NVorbis.dll" "Pencil.Gaming/bin/Compatibility - GLFW2"
 \tcp -r "Pencil.Gaming/natives32-glfw2" "Pencil.Gaming/bin/Compatibility - GLFW2"
 \tcp -r "Pencil.Gaming/natives64-glfw2" "Pencil.Gaming/bin/Compatibility - GLFW2/natives64"
@@ -19,7 +19,7 @@ compat_glfw2:
 \t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Compatibility - GLFW2/Pencil.Gaming.dll" -define:USE_GL_COMPAT\;USE_GLFW2 $(CFLAGS)'
 CONFIGS2=$'
 compat_glfw3:
-\tmkdir "Pencil.Gaming/bin/Compatibility - GLFW3" -p
+\tmkdir -p "Pencil.Gaming/bin/Compatibility - GLFW3"
 \tcp "Pencil.Gaming/NVorbis.dll" "Pencil.Gaming/bin/Compatibility - GLFW3"
 \tcp -r "Pencil.Gaming/natives32-glfw3" "Pencil.Gaming/bin/Compatibility - GLFW3"
 \tcp -r "Pencil.Gaming/natives64-glfw3" "Pencil.Gaming/bin/Compatibility - GLFW3/natives64"
@@ -28,7 +28,7 @@ compat_glfw3:
 \t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Compatibility - GLFW3/Pencil.Gaming.dll" -define:USE_GL_COMPAT\;USE_GLFW3 $(CFLAGS)'
 CONFIGS3=$'
 core_glfw2:
-\tmkdir "Pencil.Gaming/bin/Core - GLFW2" -p
+\tmkdir -p "Pencil.Gaming/bin/Core - GLFW2"
 \tcp "Pencil.Gaming/NVorbis.dll" "Pencil.Gaming/bin/Core - GLFW2"
 \tcp -r "Pencil.Gaming/natives32-glfw2" "Pencil.Gaming/bin/Core - GLFW2"
 \tcp -r "Pencil.Gaming/natives64-glfw2" "Pencil.Gaming/bin/Core - GLFW2/natives64"
@@ -37,7 +37,7 @@ core_glfw2:
 \t$(CSC) $(FILES) -out:"Pencil.Gaming/bin/Core - GLFW2/Pencil.Gaming.dll" -define:USE_GL_CORE\;USE_GLFW2 $(CFLAGS)'
 CONFIGS4=$'
 core_glfw3:
-\tmkdir "Pencil.Gaming/bin/Core - GLFW3" -p
+\tmkdir -p "Pencil.Gaming/bin/Core - GLFW3"
 \tcp "Pencil.Gaming/NVorbis.dll" "Pencil.Gaming/bin/Core - GLFW3"
 \tcp -r "Pencil.Gaming/natives32-glfw3" "Pencil.Gaming/bin/Core - GLFW3"
 \tcp -r "Pencil.Gaming/natives64-glfw3" "Pencil.Gaming/bin/Core - GLFW3/natives64"
