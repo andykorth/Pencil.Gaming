@@ -24,7 +24,9 @@ GLFW3
 | Linux 32-bit   | Stable          | Stable            | **Broken**      | Stable    |
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
 | Windows 32-bit | Stable          | Stable            | Presumed Stable | Stable    |
-| Mac OS X       | Stable          | Stable            | Stable          | Stable    |
+| Mac OS X       | Stable          | Stable            | Stable*          | Stable    |
+
+*Both 32 and 64-bit versions provided for Mac OS X, but mono is realistically only available for 32-bit, so those are recommended.
 
 Building using Makefile
 =======================
