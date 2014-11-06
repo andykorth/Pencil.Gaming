@@ -163,3 +163,8 @@ AL.SourcePlay(source);
 AL.DeleteSources(1, ref source);
 AL.DeleteBuffers(1, ref buffer);
 ```
+
+Other Resources
+===============
+
+* [Collada Importer](http://sourceforge.net/projects/csharpcollada/)
