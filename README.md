@@ -24,7 +24,7 @@ GLFW3
 | Linux 32-bit   | Stable          | Stable            | **Broken**      | Stable    |
 | Windows 64-bit | Stable          | Stable            | Stable          | Stable    |
 | Windows 32-bit | Stable          | Stable            | Presumed Stable | Stable    |
-| Mac OS X       | Stable          | Stable            | Not Implemented | Stable    |
+| Mac OS X       | Stable          | Stable            | Stable          | Stable    |
 
 Building using Makefile
 =======================
@@ -137,6 +137,8 @@ Lua is a light-weight scripting language, perfectly suitable for use in game dev
 Pencil.Gaming provides support for Lua, using the default C# `PascalCased` identifiers, making it integrate seamlessly with other C# code.
 
 Whereas a C-api function call might be `lua_pcall(L, 0, LUA_MULTRET, 0)`, the Pencil.Gaming C# API call would be `Lua.PCall(L, 0, Lua.MultRet, 0)`.
+
+For more information on using these lua bindings, see the [Lua C api docs](http://www.lua.org/pil/contents.html#24).
 
 Sample usage (OpenAL)
 =====================
