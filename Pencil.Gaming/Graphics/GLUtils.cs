@@ -601,7 +601,7 @@ namespace Pencil.Gaming.Graphics {
 
 			private static void ParseVElement(string line, List<Vector4> vertices) {
 				string verticesString = line.Substring(2);
-				string[] elements = verticesString.Split(' ');
+				string[] elements = verticesString.Split(null);
 				switch (elements.Length) {
 				case 3:
 					vertices.Add(new Vector4(
@@ -624,7 +624,7 @@ namespace Pencil.Gaming.Graphics {
 				Vector3 result = Vector3.Zero;
 
 				string elementsString = line.Substring(3);
-				string[] elements = elementsString.Split(' ');
+				string[] elements = elementsString.Split(null);
 				if (elements.Length != 3) {
 					throw new AssetLoadException("model", "normals must define 3 elements @ line " + currentLine.ToString());
 				}
@@ -639,7 +639,7 @@ namespace Pencil.Gaming.Graphics {
 				Vector2 result = Vector2.Zero;
 
 				string elementsString = line.Substring(3);
-				string[] elements = elementsString.Split(' ');
+				string[] elements = elementsString.Split(null);
 				if (elements.Length == 3) {
 					Console.WriteLine("WARNING: Object file specifies third texture coordinate, ignored @ line " + currentLine.ToString());
 				} else if (elements.Length != 2) {
@@ -653,7 +653,7 @@ namespace Pencil.Gaming.Graphics {
 				Face result = new Face();
 
 				string elementsString = line.Substring(2);
-				List<string> elements = new List<string>(elementsString.Split(' '));
+				List<string> elements = new List<string>(elementsString.Split(null));
 				elements.RemoveAll(str => string.IsNullOrEmpty(str));
 				List<VertexIndices> vIndices = new List<VertexIndices>(elements.Count);
 				switch (elements.Count) {
