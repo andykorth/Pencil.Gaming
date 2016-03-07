@@ -209,20 +209,19 @@ namespace Pencil.Gaming.MathUtils {
 		/// This is an improved implementation of the the method known as Carmack's inverse square root
 		/// which is found in the Quake III source code. This implementation comes from
 		/// http://www.codemaestro.com/reviews/review00000105.html. For the history of this method, see
-		/// http://www.beyond3d.com/content/articles/8/
+		/// http://www.beyond3d.com/content/articles/8/. The 64 bit implementation uses a different magic
+		/// demon number found at https://en.wikipedia.org/wiki/Fast_inverse_square_root#History_and_investigation
 		/// </remarks>
 		public static double InverseSqrtFast(double x) {
-			return InverseSqrtFast((float)x);
-			// FIXME: The following code is wrong. Fix it, to improve precision.
-//			unsafe
-//			{
-//				double xhalf = 0.5f * x;
-//				int i = *(int*)&x;			  // Read bits as integer.
-//				i = 0x5f375a86 - (i >> 1);	  // Make an initial guess for Newton-Raphson approximation
-//				x = *(float*)&i;				// Convert bits back to float
-//				x = x * (1.5f - xhalf * x * x); // Perform left single Newton-Raphson step.
-//				return x;
-//			}
+			unsafe
+			{
+				double xhalf = 0.5 * x;
+				long i = *(long*)&x;			  // Read bits as long integer.
+				i = 0x5fe6eb50c7b537a9 - (i >> 1);	  // what the fuck?
+				x = *(double*)&i;				// Convert bits back to double
+				x = x * (1.5f - xhalf * x * x); // Perform left single Newton-Raphson step.
+				return x;
+			}
 		}
 
 		/// <summary>
