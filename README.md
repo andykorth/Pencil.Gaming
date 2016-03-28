@@ -56,6 +56,12 @@ gmcs ./Pencil.Gaming/Audio/AL32.cs ./Pencil.Gaming/Audio/AlcManager.cs ./Pencil.
 
 The binaries will be in the `Pencil.Gaming/bin/<Profile>` directory.
 
+Callback Example
+----------------
+For a quick example of the callbacks, such as the input, see:
+[https://gist.github.com/andykorth/b6abf59895c8f6a67964](https://gist.github.com/andykorth/b6abf59895c8f6a67964)
+
+
 Image loading utility
 ---------------------
 ```C#
