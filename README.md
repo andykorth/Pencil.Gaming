@@ -28,6 +28,16 @@ GLFW3
 
 *Both 32 and 64-bit versions provided for Mac OS X, but mono is realistically only available for 32-bit, so those are recommended.
 
+Fixing the `DllNotFoundException`
+===============================
+When running a Pencil.Gaming application, it's unfortunately required that you set your .NET working directory to the directory of the application. Not doing so will result in a `DllNotFoundException`. This should probably be the first thing in your main function:
+
+```C#
+ Environment.CurrentDirectory = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+ ```
+ 
+ When using Mono, it's also quite important that you **have the Pencil.Gaming.dll.config file in the same directory as Pencil.Gaming.dll**.
+
 Building using Makefile
 =======================
 Some don't like monodevelop/visual studio, for those a GNU Makefile has been made available. To generate this makefile, run the script in the main directory:
