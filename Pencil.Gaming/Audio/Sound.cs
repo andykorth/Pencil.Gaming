@@ -35,8 +35,6 @@ namespace Pencil.Gaming.Audio {
 		public Sound(string file) {
 			if (file.EndsWith("wav")) {
 				LoadWav(File.ReadAllBytes(file));
-			} else if (file.EndsWith("ogg")) {
-				LoadOgg(file);
 			} else {
 				throw new NotSupportedException("File format not supported");
 			}
@@ -58,9 +56,6 @@ namespace Pencil.Gaming.Audio {
 					LoadWav(ms.ToArray());
 				}
 				break;
-			case "ogg":
-				LoadOgg(file);
-				break;
 			default:
 				throw new NotSupportedException("Audio format not supported: " + extension);
 			}
@@ -74,26 +69,6 @@ namespace Pencil.Gaming.Audio {
 			AL.Utils.LoadWavExt(wave, out data, out chunkSize, out format, out sampleRate, out avgBytesPerSec, out bytesPerSample, out bitsPerSample);
 
 			Load(data, format, sampleRate, TimeSpan.FromSeconds(data.Length / (float)avgBytesPerSec));
-		}
-
-		private void LoadOgg(string ogg) {
-			byte[] data;
-			ALFormat format;
-			uint sampleRate;
-			TimeSpan len;
-			AL.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
-
-			Load(data, format, sampleRate, len);
-		}
-
-		private void LoadOgg(Stream ogg) {
-			byte[] data;
-			ALFormat format;
-			uint sampleRate;
-			TimeSpan len;
-			AL.Utils.LoadOgg(ogg, out data, out format, out sampleRate, out len);
-
-			Load(data, format, sampleRate, len);
 		}
 
 		private unsafe void Load(byte[] data, ALFormat format, uint sampleRate, TimeSpan len) {

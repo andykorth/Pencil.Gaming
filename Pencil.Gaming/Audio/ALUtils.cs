@@ -26,86 +26,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using NVorbis;
 
 namespace Pencil.Gaming.Audio {
 	public static partial class AL {
 		public static class Utils {
-			#region Ogg Loading
-
-			public static void LoadOgg(string file, out byte[] data, out ALFormat format, out uint sampleRate, out TimeSpan len) {
-				using (VorbisReader vorbis = new VorbisReader(file)) {
-					LoadOgg(vorbis, out data, out format, out sampleRate, out len);
-				}
-			}
-
-			public static void LoadOgg(Stream file, out byte[] data, out ALFormat format, out uint sampleRate, out TimeSpan len) {
-				using (VorbisReader vorbis = new VorbisReader(file, false)) {
-					LoadOgg(vorbis, out data, out format, out sampleRate, out len);
-				}
-			}
-
-			private static void LoadOgg(VorbisReader vorbis, out byte[] data, out ALFormat format, out uint sampleRate, out TimeSpan len) {
-				sampleRate = (uint)vorbis.SampleRate;
-				format = vorbis.Channels == 1 ? ALFormat.Mono16 : ALFormat.Stereo16;
-				len = vorbis.TotalTime;
-
-				float[] buffer = new float[vorbis.SampleRate / 10 * vorbis.Channels];
-				List<byte> bytes = new List<byte>((int)(vorbis.SampleRate * vorbis.Channels * 2 * len.TotalSeconds));
-				int count = 0;
-				while ((count = vorbis.ReadSamples(buffer, 0, buffer.Length)) > 0) {
-					for (int i = 0; i < count; i++) {
-						int temp = (int)(short.MaxValue * buffer [i]);
-						if (temp > short.MaxValue) {
-							temp = short.MaxValue;
-						} else if (temp < short.MinValue) {
-							temp = short.MinValue;
-						}
-						short tempBytes = (short)temp;
-						byte byte1 = (byte)((tempBytes >> 8) & 0x00FF);
-						byte byte2 = (byte)((tempBytes >> 0) & 0x00FF);
-
-						// Little endian
-						bytes.Add(byte2);
-						bytes.Add(byte1);
-					}
-				}
-				// TODO: Add better implementation so that there's no need for array copying
-				data = bytes.ToArray();
-			}
-
-			public static uint BufferFromOgg(string file) {
-				using (VorbisReader vorbis = new VorbisReader(file)) {
-					return BufferFromOgg(vorbis);
-				}
-			}
-
-			public static uint BufferFromOgg(Stream file) {
-				using (VorbisReader vorbis = new VorbisReader(file, false)) {
-					return BufferFromOgg(vorbis);
-				}
-			}
-
-			private unsafe static uint BufferFromOgg(VorbisReader vorbis) {
-				uint result;
-				AL.GenBuffers(1, out result);
-
-				byte[] data;
-				ALFormat format;
-				uint sampleRate;
-				TimeSpan len;
-				LoadOgg(vorbis, out data, out format, out sampleRate, out len);
-
-				fixed (byte * dataPtr = &data[0]) {
-					IntPtr dataIntPtr = new IntPtr(dataPtr);
-					AL.BufferData(result, format, dataIntPtr, data.Length, (int)sampleRate);
-				}
-
-				return result;
-			}
-
-			#endregion
-
 			#region Wav Loading
 
 			public static void LoadWav(
