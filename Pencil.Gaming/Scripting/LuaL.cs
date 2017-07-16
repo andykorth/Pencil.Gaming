@@ -1,6 +1,7 @@
 using System;
 
 namespace Pencil.Gaming.Scripting {
+	[Obsolete]
 	public static unsafe partial class LuaL {
 		public const int NoRef = -2;
 		public const int RefNil = -1;

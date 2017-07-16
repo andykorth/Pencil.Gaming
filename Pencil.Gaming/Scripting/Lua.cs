@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 
 namespace Pencil.Gaming.Scripting {
+	[Obsolete]
 	public static unsafe partial class Lua {
 		public const string VersionMajor = "5";
 		public const string VersionMinor = "2";
