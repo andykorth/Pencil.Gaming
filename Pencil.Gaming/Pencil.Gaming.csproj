@@ -71,8 +71,6 @@
     <Compile Include="Glfw\Glfw3Enum.cs" />
     <Compile Include="Glfw\Glfw3Structs.cs" />
     <Compile Include="Audio\AlcManager.cs" />
-    <Compile Include="Audio\Sound.cs" />
-    <Compile Include="Audio\Listener.cs" />
     <Compile Include="Glfw\Glfw3KeyboardState.cs" />
     <Compile Include="Glfw\Glfw3MouseState.cs" />
     <Compile Include="Math\Vector3i.cs" />
@@ -81,7 +79,6 @@
     <Compile Include="Math\Vector4.cs" />
     <Compile Include="Math\Rectanglei.cs" />
     <Compile Include="Math\Rectangle.cs" />
-    <Compile Include="Audio\ALUtils.cs" />
     <Compile Include="Audio\AL.cs" />
     <Compile Include="Audio\ALDelegates.cs" />
     <Compile Include="Audio\AL32.cs" />
