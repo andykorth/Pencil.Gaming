@@ -66,7 +66,6 @@
     <Compile Include="Audio\Alc64.cs" />
     <Compile Include="Math\Matrix.cs" />
     <Compile Include="Graphics\GlEnums.cs" />
-    <Compile Include="Graphics\AssetLoadException.cs" />
     <Compile Include="Glfw\Glfw3.cs" />
     <Compile Include="Glfw\Glfw3_32.cs" />
     <Compile Include="Glfw\Glfw3_64.cs" />
@@ -92,7 +91,6 @@
     <Compile Include="Audio\AL64.cs" />
     <Compile Include="Audio\ALEnums.cs" />
     <Compile Include="Graphics\GLHelper.cs" />
-    <Compile Include="Graphics\GLUtils.cs" />
     <Compile Include="Graphics\GLLoadException.cs" />
     <Compile Include="Graphics\GLCore.cs" />
     <Compile Include="Graphics\GLDelegates.cs" />
