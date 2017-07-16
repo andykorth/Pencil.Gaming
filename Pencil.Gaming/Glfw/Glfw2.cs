@@ -27,6 +27,7 @@ using System.Runtime.InteropServices;
 using Pencil.Gaming.Graphics;
 
 namespace Pencil.Gaming {
+	[Obsolete("Use GLFW3!")]
 	public static partial class Glfw {
 		#pragma warning disable 0414
 
