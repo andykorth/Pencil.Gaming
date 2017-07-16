@@ -75,19 +75,6 @@
     <Compile Include="Glfw\Glfw3Enum.cs" />
     <Compile Include="Glfw\Glfw3Structs.cs" />
     <Compile Include="Audio\AlcManager.cs" />
-    <Compile Include="Scripting\Lua64.cs" />
-    <Compile Include="Scripting\LuaDelegateTypes.cs" />
-    <Compile Include="Scripting\LuaStructs.cs" />
-    <Compile Include="Scripting\LuaDelegates.cs" />
-    <Compile Include="Scripting\Lua32.cs" />
-    <Compile Include="Scripting\LuaEnums.cs" />
-    <Compile Include="Scripting\Lua.cs" />
-    <Compile Include="Scripting\LuaMacroFunctions.cs" />
-    <Compile Include="Scripting\LuaL64.cs" />
-    <Compile Include="Scripting\LuaL32.cs" />
-    <Compile Include="Scripting\LuaLDelegates.cs" />
-    <Compile Include="Scripting\LuaL.cs" />
-    <Compile Include="Scripting\LuaLMacroFunctions.cs" />
     <Compile Include="Audio\Sound.cs" />
     <Compile Include="Audio\Listener.cs" />
     <Compile Include="Glfw\Glfw3KeyboardState.cs" />
@@ -120,7 +107,6 @@
     <Folder Include="Audio\" />
     <Folder Include="natives32-glfw3\" />
     <Folder Include="natives64-glfw3\" />
-    <Folder Include="Scripting\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pencil.Gaming.dll.config">
@@ -155,18 +141,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="natives64-glfw3\wrap_oal.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives64-glfw3\liblua.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32-glfw3\liblua.dylib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32-glfw3\liblua.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="natives32-glfw3\lua.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="NVorbis.dll">
