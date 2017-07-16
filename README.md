@@ -120,16 +120,6 @@ GL.DeleteBuffers(1, ref modelVbo);
 GL.DeleteBuffers(1, ref indexVbo);
 ```
 
-Lua
-===
-Lua is a light-weight scripting language, perfectly suitable for use in game development.
-
-Pencil.Gaming provides support for Lua, using the default C# `PascalCased` identifiers, making it integrate seamlessly with other C# code.
-
-Whereas a C-api function call might be `lua_pcall(L, 0, LUA_MULTRET, 0)`, the Pencil.Gaming C# API call would be `Lua.PCall(L, 0, Lua.MultRet, 0)`.
-
-For more information on using these lua bindings, see the [Lua C api docs](http://www.lua.org/pil/contents.html#24).
-
 Sample usage (OpenAL)
 =====================
 Another utility is the `AL.Utils.BufferFromWav` utility, which is able to load wave files into an OpenAL buffer. Similarly, there's the `AL.Utils.BufferFromOgg` utility, allowing Ogg/Vorbis file loading.
