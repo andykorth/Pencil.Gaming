@@ -21,7 +21,6 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-#if USE_GLFW3
 using System;
 using System.Security;
 using System.Diagnostics;
@@ -267,5 +266,3 @@ namespace Pencil.Gaming {
 		internal static SetFramebufferSizeCallback glfwSetFramebufferSizeCallback;
 	}
 }
-
-#endif

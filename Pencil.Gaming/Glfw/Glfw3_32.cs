@@ -21,7 +21,6 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-#if USE_GLFW3
 using System;
 using System.Security;
 using System.Runtime.InteropServices;
@@ -174,4 +173,3 @@ namespace Pencil.Gaming
 	}
 }
 
-#endif

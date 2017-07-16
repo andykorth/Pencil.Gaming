@@ -41,12 +41,8 @@ namespace Pencil.Gaming.Graphics {
 			sw.Start();
 #endif
 
-#if USE_GLFW3
 			IntPtr bindBuffer = Glfw.GetProcAddress("glBindBuffer");
 			if (bindBuffer == IntPtr.Zero) {
-#else
-			if (Glfw.GetWindowParam(WindowParam.Opened) == 0) {
-#endif
 				throw new GLLoadException();
 			}
 

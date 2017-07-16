@@ -21,7 +21,6 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-#if USE_GLFW3
 using System;
 using System.Runtime.InteropServices;
 
@@ -98,4 +97,3 @@ namespace Pencil.Gaming {
 	#pragma warning restore 0414
 }
 
-#endif

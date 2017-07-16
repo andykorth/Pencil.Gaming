@@ -21,7 +21,6 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-#if USE_GLFW3
 using System;
 using System.Runtime.InteropServices;
 
@@ -58,4 +57,3 @@ namespace Pencil.Gaming {
 	public delegate void GlfwFramebufferSizeFun(GlfwWindowPtr wnd,int width,int height);
 }
 
-#endif
