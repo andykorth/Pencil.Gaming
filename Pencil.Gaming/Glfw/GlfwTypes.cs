@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace Pencil.Gaming {
 	public enum KeyState {
@@ -471,24 +472,42 @@ namespace Pencil.Gaming {
 		public int RefreshRate;
 	}
 
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwErrorFun(GlfwError error, [MarshalAs(UnmanagedType.LPStr)] string message);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwWindowPosFun(GlfwWindowPtr win, int x, int y);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwWindowSizeFun(GlfwWindowPtr win, int w,int h);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwWindowCloseFun(GlfwWindowPtr win);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwWindowRefreshFun(GlfwWindowPtr win);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwWindowFocusFun(GlfwWindowPtr win, bool focus);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwWindowIconifyFun(GlfwWindowPtr win, bool iconified);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwFramebufferSizeFun(GlfwWindowPtr win, int w, int h);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwMouseButtonFun(GlfwWindowPtr win, ButtonState button, ButtonState state, KeyModifiers mods);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwCursorPosFun(GlfwWindowPtr win, double x, double y);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwCursorEnterFun(GlfwWindowPtr win, bool entered);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwScrollFun(GlfwWindowPtr win, double x, double y);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void KeyFun(GlfwWindowPtr win, Key key, int scancode, KeyState state, KeyModifiers mods);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwCharFun(GlfwWindowPtr win, uint codepoint);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwCharModsFun(GlfwWindowPtr win, uint codepoint, KeyModifiers mods);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	internal unsafe delegate void GLFWdropfun(GlfwWindowPtr win, int num, IntPtr* strings);
 	public delegate void GlfwDropFun(GlfwWindowPtr win, string[] paths);
 
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void GlfwMonitorFun(GlfwMonitorPtr mtor, ConnectionState connected);
+	[UnmanagedFunctionPointer(CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
 	public delegate void JoystickFun(Joystick stick, ConnectionState connected);
 }
