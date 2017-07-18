@@ -327,56 +327,49 @@ namespace Pencil.Gaming {
 			throw new NotImplementedException();
 		}
 
-		public static GlfwWindowPosFun SetWindowPosCallback(GlfwWindowPtr window, GlfwWindowPosFun cbfun)
-		{
+		public static GlfwWindowPosFun SetWindowPosCallback(GlfwWindowPtr window, GlfwWindowPosFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.windowposfun;
 			winDelegates.windowposfun = cbfun;
 			GlfwDelegates.glfwSetWindowPosCallback(window, cbfun);
 			return result;
 		}
-		public static GlfwWindowSizeFun SetWindowSizeCallback(GlfwWindowPtr window, GlfwWindowSizeFun cbfun)
-		{
+		public static GlfwWindowSizeFun SetWindowSizeCallback(GlfwWindowPtr window, GlfwWindowSizeFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.windowsizefun;
 			winDelegates.windowsizefun = cbfun;
 			GlfwDelegates.glfwSetWindowSizeCallback(window, cbfun);
 			return result;
 		}
-		public static GlfwWindowCloseFun SetWindowCloseCallback(GlfwWindowPtr window, GlfwWindowCloseFun cbfun)
-		{
+		public static GlfwWindowCloseFun SetWindowCloseCallback(GlfwWindowPtr window, GlfwWindowCloseFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.windowclosefun;
 			winDelegates.windowclosefun = cbfun;
 			GlfwDelegates.glfwSetWindowCloseCallback(window, cbfun);
 			return result;
 		}
-		public static GlfwWindowRefreshFun SetWindowRefreshCallback(GlfwWindowPtr window, GlfwWindowRefreshFun cbfun)
-		{
+		public static GlfwWindowRefreshFun SetWindowRefreshCallback(GlfwWindowPtr window, GlfwWindowRefreshFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.windowrefreshfun;
 			winDelegates.windowrefreshfun = cbfun;
 			GlfwDelegates.glfwSetWindowRefreshCallback(window, cbfun);
 			return result;
 		}
-		public static GlfwWindowFocusFun SetWindowFocusCallback(GlfwWindowPtr window, GlfwWindowFocusFun cbfun)
-		{
+		public static GlfwWindowFocusFun SetWindowFocusCallback(GlfwWindowPtr window, GlfwWindowFocusFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.windowfocusfun;
 			winDelegates.windowfocusfun = cbfun;
 			GlfwDelegates.glfwSetWindowFocusCallback(window, cbfun);
 			return result;
 		}
-		public static GlfwWindowIconifyFun SetWindowIconifyCallback(GlfwWindowPtr window, GlfwWindowIconifyFun cbfun)
-		{
+		public static GlfwWindowIconifyFun SetWindowIconifyCallback(GlfwWindowPtr window, GlfwWindowIconifyFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.windowiconifyfun;
 			winDelegates.windowiconifyfun = cbfun;
 			GlfwDelegates.glfwSetWindowIconifyCallback(window, cbfun);
 			return result;
 		}
-		public static GlfwFramebufferSizeFun SetFramebufferSizeCallback(GlfwWindowPtr window, GlfwFramebufferSizeFun cbfun)
-		{
+		public static GlfwFramebufferSizeFun SetFramebufferSizeCallback(GlfwWindowPtr window, GlfwFramebufferSizeFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.framebuffersizefun;
 			winDelegates.framebuffersizefun = cbfun;
