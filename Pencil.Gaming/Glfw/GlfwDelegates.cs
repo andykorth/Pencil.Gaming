@@ -16,7 +16,7 @@ namespace Pencil.Gaming {
 		}
 
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate int Init();
+		internal delegate bool Init();
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void Terminate();
 		[SuppressUnmanagedCodeSecurity]
@@ -25,7 +25,7 @@ namespace Pencil.Gaming {
 		[return: MarshalAs(UnmanagedType.LPStr)]
 		internal delegate string GetVersionString();
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate void WindowHint(GlfwWindowHint hint, int value);
+		internal delegate void WindowHintDelegate(WindowHint hint, int value);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate GlfwErrorFun SetErrorCallback(GlfwErrorFun cbfun);
 		[SuppressUnmanagedCodeSecurity]
@@ -98,7 +98,7 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetWindowMonitor(GlfwWindowPtr window, GlfwMonitorPtr monitor, int xpos, int ypos, int width, int height, int refreshRate);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate bool GetWindowAttrib(GlfwWindowPtr window, GlfwWindowAttrib attrib);
+		internal delegate bool GetWindowAttrib(GlfwWindowPtr window, WindowAttrib attrib);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetWindowUserPointer(GlfwWindowPtr window, IntPtr pointer);
 		[SuppressUnmanagedCodeSecurity]
@@ -126,16 +126,16 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void PostEmptyEvent();
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate int GetInputMode(GlfwWindowPtr window, GlfwInputMode mode);
+		internal delegate int GetInputMode(GlfwWindowPtr window, InputMode mode);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate void SetInputMode(GlfwWindowPtr window, GlfwInputMode mode, int value);
+		internal delegate void SetInputMode(GlfwWindowPtr window, InputMode mode, int value);
 		[SuppressUnmanagedCodeSecurity]
 		[return: MarshalAs(UnmanagedType.LPStr)]
-		internal delegate string GetKeyName(GlfwKey key, int scancode);
+		internal delegate string GetKeyName(Key key, int scancode);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate GlfwKeyState GetKey(GlfwWindowPtr window, GlfwKey key);
+		internal delegate KeyState GetKey(GlfwWindowPtr window, Key key);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate GlfwButtonState GetMouseButton(GlfwWindowPtr window, GlfwMouseButton button);
+		internal delegate ButtonState GetMouseButton(GlfwWindowPtr window, MouseButton button);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void GetCursorPos(GlfwWindowPtr window, out double xpos, out double ypos);
 		[SuppressUnmanagedCodeSecurity]
@@ -143,13 +143,13 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate GlfwCursorPtr CreateCursor(ref GLFWimage image, int xhot, int yhot);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate GlfwCursorPtr CreateStandardCursor(GlfwCursorShape shape);
+		internal delegate GlfwCursorPtr CreateStandardCursor(CursorShape shape);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void DestroyCursor(GlfwCursorPtr cursor);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetCursor(GlfwWindowPtr window, GlfwCursorPtr cursor);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate GlfwKeyFun SetKeyCallback(GlfwWindowPtr window, GlfwKeyFun cbfun);
+		internal delegate KeyFun SetKeyCallback(GlfwWindowPtr window, KeyFun cbfun);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate GlfwCharFun SetCharCallback(GlfwWindowPtr window, GlfwCharFun cbfun);
 		[SuppressUnmanagedCodeSecurity]
@@ -165,16 +165,16 @@ namespace Pencil.Gaming {
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate GLFWdropfun SetDropCallback(GlfwWindowPtr window, GLFWdropfun cbfun);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate bool JoystickPresent(GlfwJoystick joy);
+		internal delegate bool JoystickPresent(Joystick joy);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate float* GetJoystickAxes(GlfwJoystick joy, out int count);
+		internal delegate float* GetJoystickAxes(Joystick joy, out int count);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate byte* GetJoystickButtons(GlfwJoystick joy, out int count);
+		internal delegate byte* GetJoystickButtons(Joystick joy, out int count);
 		[SuppressUnmanagedCodeSecurity]
 		[return: MarshalAs(UnmanagedType.LPStr)]
-		internal delegate string GetJoystickName(GlfwJoystick joy);
+		internal delegate string GetJoystickName(Joystick joy);
 		[SuppressUnmanagedCodeSecurity]
-		internal delegate GlfwJoystickFun SetJoystickCallback(GlfwJoystickFun cbfun);
+		internal delegate JoystickFun SetJoystickCallback(JoystickFun cbfun);
 		[SuppressUnmanagedCodeSecurity]
 		internal delegate void SetClipboardString(GlfwWindowPtr window, [MarshalAs(UnmanagedType.LPStr)] string @string);
 		[SuppressUnmanagedCodeSecurity]
@@ -207,7 +207,7 @@ namespace Pencil.Gaming {
 		internal static Terminate glfwTerminate;
 		internal static GetVersion glfwGetVersion;
 		internal static GetVersionString glfwGetVersionString;
-		internal static WindowHint glfwWindowHint;
+		internal static WindowHintDelegate glfwWindowHint;
 		internal static SetErrorCallback glfwSetErrorCallback;
 		internal static GetMonitors glfwGetMonitors;
 		internal static GetPrimaryMonitor glfwGetPrimaryMonitor;

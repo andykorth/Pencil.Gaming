@@ -7,7 +7,7 @@ namespace Pencil.Gaming {
 		private const string lib = "natives32/glfw3.dll";
 
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern int glfwInit();
+		internal static extern bool glfwInit();
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwTerminate();
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
@@ -16,7 +16,7 @@ namespace Pencil.Gaming {
 		[return: MarshalAs(UnmanagedType.LPStr)]
 		internal static extern string glfwGetVersionString();
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern void glfwWindowHint(GlfwWindowHint hint, int value);
+		internal static extern void glfwWindowHint(WindowHint hint, int value);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern GlfwErrorFun glfwSetErrorCallback(GlfwErrorFun cbfun);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
@@ -89,7 +89,7 @@ namespace Pencil.Gaming {
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwSetWindowMonitor(GlfwWindowPtr window, GlfwMonitorPtr monitor, int xpos, int ypos, int width, int height, int refreshRate);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern bool glfwGetWindowAttrib(GlfwWindowPtr window, GlfwWindowAttrib attrib);
+		internal static extern bool glfwGetWindowAttrib(GlfwWindowPtr window, WindowAttrib attrib);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwSetWindowUserPointer(GlfwWindowPtr window, IntPtr pointer);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
@@ -117,16 +117,16 @@ namespace Pencil.Gaming {
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwPostEmptyEvent();
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern int glfwGetInputMode(GlfwWindowPtr window, GlfwInputMode mode);
+		internal static extern int glfwGetInputMode(GlfwWindowPtr window, InputMode mode);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern void glfwSetInputMode(GlfwWindowPtr window, GlfwInputMode mode, int value);
+		internal static extern void glfwSetInputMode(GlfwWindowPtr window, InputMode mode, int value);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		[return: MarshalAs(UnmanagedType.LPStr)]
-		internal static extern string glfwGetKeyName(GlfwKey key, int scancode);
+		internal static extern string glfwGetKeyName(Key key, int scancode);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern GlfwKeyState glfwGetKey(GlfwWindowPtr window, GlfwKey key);
+		internal static extern KeyState glfwGetKey(GlfwWindowPtr window, Key key);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern GlfwButtonState glfwGetMouseButton(GlfwWindowPtr window, GlfwMouseButton button);
+		internal static extern ButtonState glfwGetMouseButton(GlfwWindowPtr window, MouseButton button);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwGetCursorPos(GlfwWindowPtr window, out double xpos, out double ypos);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
@@ -134,13 +134,13 @@ namespace Pencil.Gaming {
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern GlfwCursorPtr glfwCreateCursor(ref GLFWimage image, int xhot, int yhot);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern GlfwCursorPtr glfwCreateStandardCursor(GlfwCursorShape shape);
+		internal static extern GlfwCursorPtr glfwCreateStandardCursor(CursorShape shape);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwDestroyCursor(GlfwCursorPtr cursor);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwSetCursor(GlfwWindowPtr window, GlfwCursorPtr cursor);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern GlfwKeyFun glfwSetKeyCallback(GlfwWindowPtr window, GlfwKeyFun cbfun);
+		internal static extern KeyFun glfwSetKeyCallback(GlfwWindowPtr window, KeyFun cbfun);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern GlfwCharFun glfwSetCharCallback(GlfwWindowPtr window, GlfwCharFun cbfun);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
@@ -156,16 +156,16 @@ namespace Pencil.Gaming {
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern GLFWdropfun glfwSetDropCallback(GlfwWindowPtr window, GLFWdropfun cbfun);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern bool glfwJoystickPresent(GlfwJoystick joy);
+		internal static extern bool glfwJoystickPresent(Joystick joy);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern float* glfwGetJoystickAxes(GlfwJoystick joy, out int count);
+		internal static extern float* glfwGetJoystickAxes(Joystick joy, out int count);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern byte* glfwGetJoystickButtons(GlfwJoystick joy, out int count);
+		internal static extern byte* glfwGetJoystickButtons(Joystick joy, out int count);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		[return: MarshalAs(UnmanagedType.LPStr)]
-		internal static extern string glfwGetJoystickName(GlfwJoystick joy);
+		internal static extern string glfwGetJoystickName(Joystick joy);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
-		internal static extern GlfwJoystickFun glfwSetJoystickCallback(GlfwJoystickFun cbfun);
+		internal static extern JoystickFun glfwSetJoystickCallback(JoystickFun cbfun);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]
 		internal static extern void glfwSetClipboardString(GlfwWindowPtr window, [MarshalAs(UnmanagedType.LPStr)] string @string);
 		[DllImport(lib), SuppressUnmanagedCodeSecurity]

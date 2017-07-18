@@ -23,7 +23,7 @@ namespace Pencil.Gaming {
 			};
 		}
 
-		public static int Init() {
+		public static bool Init() {
 			return GlfwDelegates.glfwInit();
 		}
 		public static void Terminate() {
@@ -35,7 +35,7 @@ namespace Pencil.Gaming {
 		public static string GetVersionString() {
 			return GlfwDelegates.glfwGetVersionString();
 		}
-		public static void WindowHint(GlfwWindowHint hint, int value) {
+		public static void WindowHint(WindowHint hint, int value) {
 			GlfwDelegates.glfwWindowHint(hint, value);
 		}
 
@@ -122,7 +122,7 @@ namespace Pencil.Gaming {
 		public static void SetWindowMonitor(GlfwWindowPtr window, GlfwMonitorPtr monitor, int xpos, int ypos, int width, int height, int refreshRate) {
 			GlfwDelegates.glfwSetWindowMonitor(window, monitor, xpos, ypos, width, height, refreshRate);
 		}
-		public static bool GetWindowAttrib(GlfwWindowPtr window, GlfwWindowAttrib attrib) {
+		public static bool GetWindowAttrib(GlfwWindowPtr window, WindowAttrib attrib) {
 			return GlfwDelegates.glfwGetWindowAttrib(window, attrib);
 		}
 		public static void SetWindowUserPointer(GlfwWindowPtr window, IntPtr pointer) {
@@ -143,19 +143,19 @@ namespace Pencil.Gaming {
 		public static void PostEmptyEvent() {
 			GlfwDelegates.glfwPostEmptyEvent();
 		}
-		public static int GetInputMode(GlfwWindowPtr window, GlfwInputMode mode) {
+		public static int GetInputMode(GlfwWindowPtr window, InputMode mode) {
 			return GlfwDelegates.glfwGetInputMode(window, mode);
 		}
-		public static void SetInputMode(GlfwWindowPtr window, GlfwInputMode mode, int value) {
+		public static void SetInputMode(GlfwWindowPtr window, InputMode mode, int value) {
 			GlfwDelegates.glfwSetInputMode(window, mode, value);
 		}
-		public static string GetKeyName(GlfwKey key, int scancode) {
+		public static string GetKeyName(Key key, int scancode) {
 			return GlfwDelegates.glfwGetKeyName(key, scancode);
 		}
-		public static GlfwKeyState GetKey(GlfwWindowPtr window, GlfwKey key) {
+		public static KeyState GetKey(GlfwWindowPtr window, Key key) {
 			return GlfwDelegates.glfwGetKey(window, key);
 		}
-		public static GlfwButtonState GetMouseButton(GlfwWindowPtr window, GlfwMouseButton button) {
+		public static ButtonState GetMouseButton(GlfwWindowPtr window, MouseButton button) {
 			return GlfwDelegates.glfwGetMouseButton(window, button);
 		}
 		public static void GetCursorPos(GlfwWindowPtr window, out double xpos, out double ypos) {
@@ -164,7 +164,7 @@ namespace Pencil.Gaming {
 		public static void SetCursorPos(GlfwWindowPtr window, double xpos, double ypos) {
 			GlfwDelegates.glfwSetCursorPos(window, xpos, ypos);
 		}
-		public static GlfwCursorPtr CreateStandardCursor(GlfwCursorShape shape) {
+		public static GlfwCursorPtr CreateStandardCursor(CursorShape shape) {
 			return GlfwDelegates.glfwCreateStandardCursor(shape);
 		}
 		public static void DestroyCursor(GlfwCursorPtr cursor) {
@@ -173,10 +173,10 @@ namespace Pencil.Gaming {
 		public static void SetCursor(GlfwWindowPtr window, GlfwCursorPtr cursor) {
 			GlfwDelegates.glfwSetCursor(window, cursor);
 		}
-		public static bool JoystickPresent(GlfwJoystick joy) {
+		public static bool JoystickPresent(Joystick joy) {
 			return GlfwDelegates.glfwJoystickPresent(joy);
 		}
-		public static string GetJoystickName(GlfwJoystick joy) {
+		public static string GetJoystickName(Joystick joy) {
 			return GlfwDelegates.glfwGetJoystickName(joy);
 		}
 		public static void SetClipboardString(GlfwWindowPtr window, string @string) {
@@ -288,22 +288,25 @@ namespace Pencil.Gaming {
 			}
 		}
 
-		public static void WindowHint(GlfwWindowHint hint, GlfwAPI value) {
+		public static void WindowHint(WindowHint hint, bool value) {
+			GlfwDelegates.glfwWindowHint(hint, value ? 1 : 0);
+		}
+		public static void WindowHint(WindowHint hint, OpenGLAPI value) {
 			GlfwDelegates.glfwWindowHint(hint, (int)value);
 		}
-		public static void WindowHint(GlfwWindowHint hint, GlfwRobustness value) {
+		public static void WindowHint(WindowHint hint, Robustness value) {
 			GlfwDelegates.glfwWindowHint(hint, (int)value);
 		}
-		public static void WindowHint(GlfwWindowHint hint, GlfwOpenGLProfile value) {
+		public static void WindowHint(WindowHint hint, OpenGLProfile value) {
 			GlfwDelegates.glfwWindowHint(hint, (int)value);
 		}
-		public static void WindowHint(GlfwWindowHint hint, GlfwInputMode value) {
+		public static void WindowHint(WindowHint hint, InputMode value) {
 			GlfwDelegates.glfwWindowHint(hint, (int)value);
 		}
-		public static void WindowHint(GlfwWindowHint hint, GlfwReleaseBehavior value) {
+		public static void WindowHint(WindowHint hint, ReleaseBehavior value) {
 			GlfwDelegates.glfwWindowHint(hint, (int)value);
 		}
-		public static void WindowHint(GlfwWindowHint hint, GlfwContextAPI value) {
+		public static void WindowHint(WindowHint hint, ContextOpenGLAPI value) {
 			GlfwDelegates.glfwWindowHint(hint, (int)value);
 		}
 
@@ -393,7 +396,7 @@ namespace Pencil.Gaming {
 			}
 		}
 
-		public static GlfwKeyFun SetKeyCallback(GlfwWindowPtr window, GlfwKeyFun cbfun) {
+		public static KeyFun SetKeyCallback(GlfwWindowPtr window, KeyFun cbfun) {
 			var winDelegates = winDelegateMap[window];
 			var result = winDelegates.keyfun;
 			winDelegates.keyfun = cbfun;
@@ -459,7 +462,7 @@ namespace Pencil.Gaming {
 			return result;
 		}
 
-		public static unsafe float[] GetJoystickAxes(GlfwJoystick joy) {
+		public static unsafe float[] GetJoystickAxes(Joystick joy) {
 			int count;
 			var buttons = GlfwDelegates.glfwGetJoystickButtons(joy, out count);
 
@@ -471,20 +474,20 @@ namespace Pencil.Gaming {
 			return result;
 		}
 
-		public static unsafe GlfwButtonState[] GetJoystickButtons(GlfwJoystick joy) {
+		public static unsafe ButtonState[] GetJoystickButtons(Joystick joy) {
 			int count;
 			var buttons = GlfwDelegates.glfwGetJoystickButtons(joy, out count);
 
-			var result = new GlfwButtonState[count];
+			var result = new ButtonState[count];
 			for (int i = 0; i < count; ++i) {
-				result[i] = (GlfwButtonState)buttons[i];
+				result[i] = (ButtonState)buttons[i];
 			}
 
 			return result;
 		}
 
-		private static GlfwJoystickFun joystickfun;
-		public static GlfwJoystickFun SetJoystickCallback(GlfwJoystickFun cbfun) {
+		private static JoystickFun joystickfun;
+		public static JoystickFun SetJoystickCallback(JoystickFun cbfun) {
 			var result = joystickfun;
 			joystickfun = cbfun;
 			GlfwDelegates.glfwSetJoystickCallback(cbfun);
