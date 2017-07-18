@@ -19,14 +19,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives32-glfw2&quot;" />
-        <Command type="AfterBuild" command="rm -r &quot;${TargetDir}/natives64-glfw2&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives32-glfw3&quot; &quot;${TargetDir}/natives32&quot;" />
-        <Command type="AfterBuild" command="mv &quot;${TargetDir}/natives64-glfw3&quot; &quot;${TargetDir}/natives64&quot;" />
-      </CustomCommands>
-    </CustomCommands>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Core|AnyCPU' ">
@@ -63,16 +55,12 @@
     <Compile Include="Audio\Alc64.cs" />
     <Compile Include="Math\Matrix.cs" />
     <Compile Include="Graphics\GlEnums.cs" />
-    <Compile Include="Glfw\Glfw3.cs" />
-    <Compile Include="Glfw\Glfw3_32.cs" />
-    <Compile Include="Glfw\Glfw3_64.cs" />
-    <Compile Include="Glfw\Glfw3Delegates.cs" />
-    <Compile Include="Glfw\Glfw3DelegateTypes.cs" />
-    <Compile Include="Glfw\Glfw3Enum.cs" />
-    <Compile Include="Glfw\Glfw3Structs.cs" />
+    <Compile Include="Glfw\Glfw32.cs" />
+    <Compile Include="Glfw\Glfw64.cs" />
+    <Compile Include="Glfw\GlfwDelegates.cs" />
+    <Compile Include="Glfw\GlfwTypes.cs" />
+    <Compile Include="Glfw\Glfw.cs" />
     <Compile Include="Audio\AlcManager.cs" />
-    <Compile Include="Glfw\Glfw3KeyboardState.cs" />
-    <Compile Include="Glfw\Glfw3MouseState.cs" />
     <Compile Include="Math\Vector3i.cs" />
     <Compile Include="Math\Vector2i.cs" />
     <Compile Include="Math\Vector4i.cs" />
@@ -97,42 +85,48 @@
     <Folder Include="Graphics\" />
     <Folder Include="Glfw\" />
     <Folder Include="Audio\" />
-    <Folder Include="natives32-glfw3\" />
-    <Folder Include="natives64-glfw3\" />
+    <Folder Include="natives32\" />
+    <Folder Include="natives64\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pencil.Gaming.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="LICENSE.TXT" />
-    <None Include="natives32-glfw3\glfw.dll">
+    <None Include="natives32\glfw3.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives32-glfw3\GLFW_LINUX_BROKEN.so">
+    <None Include="natives32\libglfw.so.3.2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives32-glfw3\libopenal.so">
+    <None Include="natives32\libglfw.x86.3.2xdylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives32-glfw3\openal32.dll">
+    <None Include="natives32\libopenal.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives32-glfw3\wrap_oal.dll">
+    <None Include="natives32\openal32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives64-glfw3\glfw.dll">
+    <None Include="natives32\wrap_oal.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives64-glfw3\libglfw.so">
+    <None Include="natives64\glfw3.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives64-glfw3\libopenal.so">
+    <None Include="natives64\libglfw.so.3.2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives64-glfw3\openal32.dll">
+    <None Include="natives64\libglfw.3.2.dylib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="natives64-glfw3\wrap_oal.dll">
+    <None Include="natives64\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64\openal32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives64\wrap_oal.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
